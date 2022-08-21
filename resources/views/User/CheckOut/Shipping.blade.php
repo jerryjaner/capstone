@@ -22,19 +22,18 @@
 					@csrf
 					
 					<label> Full Name</label>
-					<input class="agile-ltext" type="text" name="name" placeholder="Fullname"  value="{{$customer-> name}}  {{ Auth::user()->middlename }}. {{ Auth::user()->lastname }}">
+					<input class="agile-ltext" type="text" name="name" placeholder="Fullname"  value="{{$customer-> name}}  {{ Auth::user()->middlename }}. {{ Auth::user()->lastname }}" required>
 				    <input type="hidden" class="form-control"  name="user_id" value="{{$customer->user_id}}">
 
 					<label> Email</label>
-					<input class="agile-ltext" type="email" name="email" placeholder="Your Email" value="{{$customer-> email}}">
+					<input class="agile-ltext" type="email" name="email" placeholder="Your Email" value="{{$customer-> email}}" required>
 
 					<label> Phone Number</label>
-					<input class="agile-ltext" type="text" name="phone_no" placeholder="Your Phone Number" min="0" maxlength="11">			
+					<input class="agile-ltext" type="text" name="phone_no" min="0" maxlength="11" placeholder="Phone Number" required>			
 
 					<label> Address</label>
-					<input class="agile-ltext" type="text" name="address" placeholder="Enter Your Address" required="">
+					<input class="agile-ltext" type="text" name="address" placeholder="Enter Your Address" required>
 
-				
 				
 					<div class="wthreelogin-text"> 
 						<ul> 

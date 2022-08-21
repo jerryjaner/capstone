@@ -18,16 +18,14 @@
 	<!-- products -->
 	<div class="products">	 
 		<div class="container">
-			<div class="col-md-9 product-w3ls-right"> 
+			<div class="col-md-12 product-w3ls-right"> 
 				<div class="product-top">
 					<h4>Food Collection</h4>
 					
 					<div class="clearfix"> </div>
 				</div>
-
 				<div class="products-row">
-
-					@foreach($categoryDish as $dish)
+				@foreach($categoryDish as $dish)
 					<div class="col-xs-6 col-sm-4 product-grids">
 						<div class="flip-container">
 							<div class="flipper agile-products">
@@ -46,25 +44,24 @@
 								    <span>{{$dish -> dish_detail}}</span>  							
 									<h6>₱{{$dish -> full_price}}</h6>
 
-
+								
 									<form action="{{route('add_to_cart')}}" method="post">
-
 										<input type="hidden" name="id" value="$dish -> id">
 										
 										<!-- dapat dire mag add to cart an user kapag hindi pa nakakalogin -->
-
-										<a href="#" data-toggle="modal" data-target="#myModal1{{$dish -> id}}">
-											<i class="fa fa-cart-plus" aria-hidden="true" style="text-decoration: none;" style="text-decoration: none;"></i> Add to cart
+									 
+										<a href="#" data-toggle="modal" data-target="#myModal1{{$dish -> id}}" style="text-decoration: none;">
+											<i class="fa fa-cart-plus" aria-hidden="true"></i> Add to cart
 										</a>
 
-
 									</form>
+							
 								</div>
 							</div>
 						</div> 
 					</div> 
 
-						<!-- modal --> 
+				<!-- modal --> 
 					<div class="modal video-modal fade" id="myModal1{{$dish -> id}}" tabindex="-1" role="dialog" aria-labelledby="myModal1">
 						<div class="modal-dialog" role="document">
 							<div class="modal-content">
@@ -73,95 +70,96 @@
 								</div>
 								<section>
 									<div class="modal-body">
-										<div class="col-md-5 modal_body_left">
-											
+									   @if(Auth::check())	
+									   <!--  if user are logged in -->
+										<div class="col-md-5 modal_body_left">	
 											<img src="{{asset('BackEndSourceFile/dish_image/'.$dish->dish_image)}}" style="height: 300px; width:500px; border:1px solid black;"  alt="Nick's Menu" class="img-responsive">
 										</div>
 										<div class="col-md-7 modal_body_right single-top-right"> 
 											<h1 style="text-align: center;">₱{{$dish -> full_price}}</h1><br>
 											<h3 class="item_name" style="text-align: center;">{{$dish -> dish_name}}</h3>
-											<p style="text-align: center;">{{$dish -> dish_detail}}</p>
+											<p style="text-align: center;"></p>
 
-										<!--<div class="single-rating">
-												 <ul>
-													<li><i class="fa fa-star-o" aria-hidden="true"></i></li>
-													<li><i class="fa fa-star-o" aria-hidden="true"></i></li>
-													<li><i class="fa fa-star-o" aria-hidden="true"></i></li>
-													<li><i class="fa fa-star-o" aria-hidden="true"></i></li>
-													<li class="w3act"><i class="fa fa-star-o" aria-hidden="true"></i></li>
-													<li class="rating">20 reviews</li>
-													<li><a href="#">Add your review</a></li>
-												</ul> 
-											</div>
-											
-										
-											<div class="single-price">
-												<ul>
-													<li>₱{{$dish -> full_price}}</li> 
-
-												
-												    <li>Ends on : Dec,5th</li> 
-													<li><a href="#"><i class="fa fa-gift" aria-hidden="true"></i> Coupon</a></li>
-												
-
-												</ul>	
-											</div>  -->
-										 	<p class="single-price-text">Fusce a egestas nibh, eget ornare erat. Proin placerat, urna et consequat efficitur, sem odio blandit enim, sit amet euismod turpis est mattis lectus. Vestibulum maximus quam et quam egestas imperdiet. In dignissim auctor viverra. </p>
-
-											
-
-
+										 	<p class="single-price-text" style="text-align: center; margin-top: 50px;">{{$dish -> dish_detail}}</p>
 											<form action="{{route('add_to_cart')}}" method="post">
 												
 												@csrf
 												
-												<input type="hidden" name="id" value="{{$dish->id}}">
-
-												
-												  
+												<input type="hidden" name="id" value="{{$dish->id}}">										  
 												 <b> Quantity: </b> <input type="number" min="1" max="10" name="qty" style="padding: 6px; margin-left: 30px;" required>
-												 
-
 												<button type="submit" class="w3ls-cart" style="float: right; margin-right: 60px;" >
 											       <i class="fa fa-cart-plus" aria-hidden="true"></i> 
 											       Add to cart
 											   </button>
-
-											
-											</form>
-
-										<!--	<a href="#" class="w3ls-cart w3ls-cart-like"><i class="fa fa-heart-o" aria-hidden="true"></i> Add to Wishlist</a> 
-
-											<div class="single-page-icons social-icons"> 
-												<ul>
-													<li><h4>Share on</h4></li>
-													<li><a href="#" class="fa fa-facebook icon facebook"> </a></li>
-													<li><a href="#" class="fa fa-twitter icon twitter"> </a></li>
-													<li><a href="#" class="fa fa-google-plus icon googleplus"> </a></li>
-													<li><a href="#" class="fa fa-dribbble icon dribbble"> </a></li>
-													<li><a href="#" class="fa fa-rss icon rss"> </a></li> 
-												</ul>
-											</div>  -->
-
-											
+									 		</form>
 										</div> 
+										@else
+										  <!--	if user are not registered -->
+										  <div class="col-md-12">
+												<div class="card">
+													<div class="card-body" style="margin-bottom: 10px;">
+													   <!-- 
+													   	 <h2 class="text-center" style="margin-bottom: 20px;">
+															Nick's Resto Bar & Cafe-Restaurant
+														</h2>
+													    -->
+														
+													</div>
+													<div class="text-center" style="margin-top:50px;">
+														<h3 style="font-family: arial ;">Are you a New member...!</h3>
+
+														<center>
+															<a href="{{route('register')}}" class="btn-block btn-success" style="
+																										margin-top: 25px;
+																										padding:10px 15px;
+																										width: 400px; 
+																									   
+																										font-size: 25px;
+																										font-family: times new roman;
+																										margin-bottom: 25px;
+
+																										">
+															<span  class="mt-5">Register</span>
+
+															</a>
+													    </center>
+
+
+														<h3 style="font-family: arial ;">Or</h3>
+
+														<h3 style="margin-top: 25px; font-family: arial ;">Already have an account...</h3>
+
+														<center><a href="{{route('login')}}" class="btn-block btn-primary" style="
+																										margin-top: 25px;
+																										padding:10px 15px;
+																										width:400px; 
+																									
+																										font-size: 25px;
+																										font-family: times new roman;
+																										margin-bottom: 25px;
+																										
+																										">
+															<span class="mt-5">Login</span>
+														</a></center>
+													</div>
+												</div>
+											</div>	
+										@endif
 										<div class="clearfix"> </div>
 									</div>
 								</section>
 							</div>
 						</div>
 					</div> 
-							<!-- //modal -->
-
-
-
+				<!-- //modal -->
 
 				@endforeach
 					
 					<div class="clearfix"> </div>
 				</div>
 			</div>
-			<div class="col-md-3 rsidebar">
+
+		<!--<div class="col-md-3 rsidebar">
 				<div class="rsidebar-top">
 					<div class="slider-left">
 						<h4>Categories</h4>            
@@ -184,17 +182,24 @@
 					</div>
 					
 			  </div>
-			<div class="clearfix"> </div> 
+			<div class="clearfix"> </div>  -->
 		</div>
 	</div>
 </div>
-	<!-- //products --> 
-	<div class="container"> 
-		<div class="w3agile-deals prds-w3text"> 
-			<h5>Vestibulum maximus quam et quam egestas imperdiet. In dignissim auctor viverra.</h5>
+<!-- //products --> 
+
+<div class="container"> 
+	<div class="w3agile-deals prds-w3text"> 
+		<h5>Vestibulum maximus quam et quam egestas imperdiet. In dignissim auctor viverra.</h5>
+	</div>
+</div>
+<!-- deals 
+	<div class="w3agile-deals">
+		<div class="container">
+			<h3 class="w3ls-title"></h3>
+			
 		</div>
 	</div>
-	
-	
+//deals --> 
 
-	@endsection
+@endsection

@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Dish;
+
 use Cart;
 
 
@@ -38,7 +39,6 @@ class CartController extends Controller
     public function show()
     {
      	 $CartDish = Cart::content();
-  	
 
      //	return $CartDish;
      	return view('User.Cart.Show',data: compact(var_name:'CartDish'));
@@ -54,6 +54,13 @@ class CartController extends Controller
     {
             Cart::update($request->rowId, $request->qty);
             return back();
+    }
+
+    function cartCount()
+    {
+        // to count the cart content
+        $cartCount = Cart::content()->count();
+        return response() -> json(['count' =>$cartCount]);
     }
 
 }

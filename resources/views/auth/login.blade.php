@@ -31,7 +31,7 @@
 
                             <center>
                                 <a href="{{Route('google_login')}}" class="btn btn-danger">Login with Google</a> 
-                                <a href="" class="btn btn-info">Login with Facebook</a> 
+                                <a href="{{route('facebook_login')}}" class="btn btn-primary">Login with Facebook</a> 
                                 <h5 style="margin-top: 10px; margin-bottom: 10px;">OR</h5>
                             </center>
                            

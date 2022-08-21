@@ -158,7 +158,7 @@
 								<li><a href="contact.html">Contact Us</a></li>
 
 
-								<li class="w3pages"><a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Settings <span class="caret"></span></a>
+								<li class="w3pages"><a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"> <i class="fa fa-user"></i> <span class="caret"></span></a>
 									<ul class="dropdown-menu" >
 
 										  @if(Auth::check())
@@ -219,7 +219,8 @@
 								<button class="w3view-cart" type="submit" name="submit" value=""><i class="fa fa-cart-arrow-down" aria-hidden="true"></i></button>
 							</form>   -->
 
-							<a href="{{route('cart_show')}}" class="w3view-cart"><i class="fa fa-cart-arrow-down" aria-hidden="true"></i></a> 
+							<a href="{{route('cart_show')}}" class="w3view-cart"><i class="fa fa-cart-arrow-down" aria-hidden="true"> </i> <span class="badge badge-fill Cart-Count" style="background-color: blue;"> 0 </span></a> 
+
 						</div> 
 					</nav>
 				</div>
@@ -249,3 +250,30 @@
 			</div>
 		</div>
 	</div>
+
+	<script>
+		
+		
+		$(document).ready(function() {
+			
+			loadcart();
+
+		function loadcart(){
+			$.ajax({
+				method: "GET",
+				url: "/load-cart-data",
+				success: function(response){
+
+					$('.Cart-Count').html('');
+					$('.Cart-Count').html(response.count);
+					//console.log(response.count)
+
+				}
+			});
+		}
+
+
+
+
+		});
+	</script>

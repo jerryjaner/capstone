@@ -64,7 +64,7 @@ class CheckOutController extends Controller
 
      	     }
      	     Cart::destroy();
-
+             
 
      	   //  Session::flash('success', 'Your order has been successfully processed.');
      	     return redirect('checkoutComplete')->with('sms','Your order has been successfully processed.');

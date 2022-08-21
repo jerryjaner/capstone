@@ -122,20 +122,16 @@
 
 	    @if(Auth::check())
 
-	    	
+		
+		<div class="col-md-12 product-w3ls-right">
+			<a href="{{url('/shipping')}}" class="btn btn-info" style="float: right;">
+				<i class="fa fa-shopping-bag" ></i>
+				Checkout
+			</a>
 			
-			<div class="col-md-12 product-w3ls-right">
-				<a href="{{url('/shipping')}}" class="btn btn-info" style="float: right;">
-					<i class="fa fa-shopping-bag" ></i>
-					Checkout
-				</a>
-				
-			</div>
+		</div>
 
-			
-		
-		
-	
+				
 		@else
 
 
@@ -216,9 +212,6 @@
 						</div>
 					</div>	
 				</div>
-  				<div class="modal-footer">
-  					
-  				</div>
   			</div>
 		</div>
 </div> 

@@ -12,6 +12,7 @@ use App\Http\Controllers\CheckOutController;
 use App\Http\Controllers\OrderController;
 use App\Http\Controllers\ReportController;
 use App\Http\Controllers\GoogleLoginController;
+use App\Http\Controllers\FacebookLoginController;
 
 
 
@@ -129,14 +130,19 @@ Route::group(['prefix'=>'user','middleware'=>['isUser','auth','PreventBackHistor
 	Route::get('/', [UserController::class, 'index'])->name('user_dashboard');
 	Route::get('/category/dish/show{category_id}', [UserController::class, 'dish_show'])->name('category_dish');
 
+	/*  Login in with Socialite which is Facebook and Google */
 
 	Route::get('auth/google',[GoogleLoginController::class,'redirect'])->name('google_login');
 	Route::get('auth/google/call-back',[GoogleLoginController::class, 'callback']);
+
+	Route::get('login/facebook',[FacebookLoginController::class,'redirect'])->name('facebook_login');
+	Route::get('login/facebook/call-back',[FacebookLoginController::class, 'callback']);
 
 	/* Cart Route */
 
 	Route::post('/AddCart', [CartController::class, 'insert'])->name('add_to_cart');
 	Route::get('/cartShow', [CartController::class, 'show'])->name('cart_show');
+	Route::get('load-cart-data', [CartController::class, 'cartCount']);
 	Route::get('/cartRemove{rowId}', [CartController::class, 'remove'])->name('remove_item');
 	Route::post('/cartUpdate', [CartController::class, 'update'])->name('update_cart');
   
@@ -153,7 +159,7 @@ Route::group(['prefix'=>'user','middleware'=>['isUser','auth','PreventBackHistor
  	Route::get('/shipping', [UserController::class, 'shipping']);
  	Route::post('/shippingStore', [UserController::class, 'shipping_save'])-> name('store_shipping');
 
-	
+
    /*  view order */
 
    
