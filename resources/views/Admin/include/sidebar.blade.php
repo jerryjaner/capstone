@@ -13,14 +13,15 @@
          <!-- <h4 style="color: white; margin-left: 20px;">  Nick's Resto Bar</h4> -->
         </div>
        
-       <!-- <div class="info">
-          <br>
-          <br>
-          <br>
-          <br>
-          <h2>
-         <a href="#" id="info" class="d-block" style="text-decoration: none;">Nick's Resto Bar</a> </h2> 
-        </div> -->
+           <!-- <div class="info">
+              <br>
+              <br>
+              <br>
+              <br>
+              <h2>
+             <a href="#" id="info" class="d-block" style="text-decoration: none;">Nick's Resto Bar</a> </h2> 
+            </div> 
+          -->
       </div>
 
       <!-- Sidebar Menu -->
@@ -166,9 +167,7 @@
 
             </ul>
           </li>
-
-      
-              
+ 
           </li>
 
         </ul>

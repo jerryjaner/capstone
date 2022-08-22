@@ -12,27 +12,44 @@
  
 }
 </style>
-
-
-
+<!-- bootstrap-->
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
 
 
-<!-- for display mesage -->
+      <!-- for display mesage -->
 
-            @if(Session::get('sms'))
-
-
-
-                <div class="alert alert-warning alert-dismissible fade show" role="alert">
-                  <strong> {{session::get('sms')}}</strong>
+            @if(Session::get('added_msg'))
+                <div class="alert alert-success alert-dismissible fade show" role="alert">
+                  <strong> {{session::get('added_msg')}}</strong>
                   <button type="button" class="close" data-dismiss="alert" aria-label="Close">
                     <span aria-hiddden="true">&times;</span>
                   </button>
                 </div>
 
-                <!-- End of Message -->
+            @elseif(Session::get('delete_msg'))
+                <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                  <strong> {{session::get('delete_msg')}}</strong>
+                  <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                    <span aria-hiddden="true">&times;</span>
+                  </button>
+                </div>
+
+            @elseif(Session::get('update_msg'))
+                <div class="alert alert-warning alert-dismissible fade show" role="alert">
+                  <strong> {{session::get('update_msg')}}</strong>
+                  <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                    <span aria-hiddden="true">&times;</span>
+                  </button>
+                </div>
+
+            @elseif(Session::get('status_msg'))
+                <div class="alert alert-info alert-dismissible fade show" role="alert">
+                  <strong> {{session::get('status_msg')}}</strong>
+                  <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                    <span aria-hiddden="true">&times;</span>
+                  </button>
+                </div>
 
             @endif
 
@@ -40,14 +57,10 @@
 
               <div class="card-header">
                 <h3 class="card-title">Manage Category</h3>
-              
                  <button type="button" class="btn btn-success btn-sm" style="float: right;" data-bs-toggle="modal" data-bs-target="#add" data-bs-whatever="@fat"> Add Category  </button>
-
               </div>
-
-                  
-
-              <!-- /.card-header -->
+              
+        <!-- /.card-header -->
               <div class="card-body">
                 <table id="example1" class="table table-bordered table-striped">
 
@@ -65,28 +78,29 @@
 
                               <div class="form-group">
                                 <label> Category Name</label>
-                                <input type="text" class="form-control" name="category_name" onkeyup="letterOnly(this)" required>
+                                <input type="text" class="form-control" name="category_name"  
+                                       placeholder="Enter Category Name" 
+                                       pattern="[A-Za-z \s*]+$"
+                                       oninvalid="this.setCustomValidity('Letters Only are Allowed')"
+                                       oninput="this.setCustomValidity('')" 
+                                       required>
                               </div>
-
 
                               <div class="form-group">
                                 <label> Category Status</label>
-
                                 <div class="radio">
-                                  <input type="radio" name="category_status" value="1" required> Active
-                                 
+                                  <input type="radio" name="category_status" value="1" required> Active          
                                   <input type="radio" name="category_status" value="0" required> Inactive
                                 </div>
-                              
                                </div>
                                
-                                                  
+                                   
                                 <div class="modal-footer">
-                                <!-- <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button> -->
-                                  <button type="submit" name="btn" class="btn btn-outline-primary btn-block">Submit</button>
+                                  <!--<button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button> -->
+                                  <button type="submit" name="btn" class="btn btn-primary btn-block">Submit</button>
                                 </div>
-                                </form>
-                             </div>
+                          </form>
+                       </div>
                       <!-- end of caategories modal -->
 
                       
@@ -162,20 +176,18 @@
                                  @csrf
 
                               <div class="form-group">
-
-                                 <label>Category Name:</label>
-                                 <input type="text" class="form-control" name="category_name" value="{{$cate->category_name}}">
+                                 <label>Category Name</label>
+                                 <input type="text" class="form-control" name="category_name" 
+                                        placeholder="Enter Category Name" 
+                                        value="{{$cate->category_name}}"
+                                        required>
                                  <input type="hidden" class="form-control"  name="category_id" value="{{$cate->category_id}}">
-                            
                               </div>
-
-                             
-                                  <div class="modal-footer">
-                                
-                                  <button type="submit" class="btn btn-primary">Update</button>
-                                </div>
-                                </form>
+                              <div class="modal-footer">
+                                <button type="submit" class="btn btn-primary">Update</button>
                               </div>
+                          </form>
+                        </div>
                              
 
 
@@ -192,18 +204,6 @@
 
 
             </div>
-
-<!-- validation for character -->
-<script>
-  
-  function letterOnly(input){
-
-    var regex = /[^a-z]/gi;
-    input.value = input.value.replace(regex,"");
-
-  }
-
-</script>
 
 
 

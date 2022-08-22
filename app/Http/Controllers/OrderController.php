@@ -62,10 +62,7 @@ class OrderController extends Controller
     {
         $order = order::find($id);
         $order -> delete();
-
-       // dd($order);
-
-        return back()->with('sms', 'Deleted Successfully');
+        return back()->with('delete_msg', 'Order Deleted Successfully');
 
     }
     public function download_invoice($id)
@@ -97,7 +94,7 @@ class OrderController extends Controller
         $order = Payment::find( $request -> id);
         $order -> payment_status = $request -> payment_status;
         $order->save();
-        return redirect(to:'/admin/orderManage')->with('sms','Payment Status Updated Successfully');
+        return back()->with('payment_status_msg','Payment Status Updated Successfully');
  
     }
 
@@ -108,7 +105,7 @@ class OrderController extends Controller
         $order= Order::find( $request -> id);
         $order -> order_status = $request -> order_status; 
         $order->save();
-        return redirect(to:'/admin/orderManage')->with('sms','Order Status Updated Successfully');
+        return back()->with('order_status_msg','Order Status Updated Successfully');
  
     }
 

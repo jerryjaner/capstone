@@ -15,20 +15,43 @@
 }
 </style>
 
+<!-- Bootstrap link -->
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
-<!-- for display mesage -->
 
-            @if(Session::get('sms'))
 
+            @if(Session::get('added_msg'))
+                <div class="alert alert-success alert-dismissible fade show" role="alert">
+                  <strong> {{session::get('added_msg')}}</strong>
+                  <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                    <span aria-hiddden="true">&times;</span>
+                  </button>
+                </div>
+                
+             @elseif(Session::get('update_msg'))
                 <div class="alert alert-warning alert-dismissible fade show" role="alert">
-                  <strong> {{session::get('sms')}}</strong>
+                  <strong> {{session::get('update_msg')}}</strong>
                   <button type="button" class="close" data-dismiss="alert" aria-label="Close">
                     <span aria-hiddden="true">&times;</span>
                   </button>
                 </div>
 
-                <!-- End of Message -->
+            @elseif(Session::get('error_msg'))
+                <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                  <strong> {{session::get('error_msg')}}</strong>
+                  <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                    <span aria-hiddden="true">&times;</span>
+                  </button>
+                </div>
+
+            @elseif(Session::get('status_msg'))
+                <div class="alert alert-info alert-dismissible fade show" role="alert">
+                  <strong> {{session::get('status_msg')}}</strong>
+                  <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                    <span aria-hiddden="true">&times;</span>
+                  </button>
+                </div>
+
 
             @endif
         <div class="card my-5">
@@ -46,7 +69,7 @@
                       <div class="modal-dialog">
                         <div class="modal-content">
                           <div class="modal-header">
-                           <h5 class="modal-title" id="add"> Add Menu</h5>
+                           <h5 class="modal-title" id="add"> Add New Menu</h5>
                             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                           </div>
                           <div class="modal-body">
@@ -55,34 +78,40 @@
 
                              <div class="form-group ">
                                 <label>Menu Name</label>
-                                <input type="text" class="form-control" name="dish_name" onkeyup="letterOnly(this)"required>
+                                <input type="text" class="form-control" name="dish_name"
+                                       placeholder="Enter Menu Name" 
+                                       pattern="[A-Za-z \s*]+$"
+                                       oninvalid="this.setCustomValidity('Letters Only are Allowed')"
+                                       oninput="this.setCustomValidity('')" 
+                                       required>
                               </div>
                                   
                               <div class="form-group">
                                 <label> Select Category </label>
-   
-                                <select name="category_id" class="form-select" required>
-                              
+                                  <select name="category_id" class="form-select" required>
 
-                                  @foreach($categories as $cate)
+                                    @foreach($categories as $cate)
 
-                                    <option value="{{$cate->category_id}}"> {{$cate->category_name}}</option>
+                                      <option value="{{$cate->category_id}}"> {{$cate->category_name}}</option>
 
-                                  @endforeach
+                                    @endforeach
 
-                                </select>
+                                  </select>
                               </div>
 
                               <div class="form-group">
-                                <label> Detail</label>
-                                
-                                <textarea type="text" name="dish_detail" class="form-control" rows="5" required></textarea>
+                                <label> Details</label>
+                                  <textarea type="text" name="dish_detail" class="form-control" rows="5" 
+                                            placeholder="Enter Details" 
+                                            required>                 
+                                 </textarea>
                               </div>
 
                                <div class="form-group">
-                                <label> Price :</label>
-                                
-                                  <input type="number" step="any" min="1"  name="full_price">
+                                <label> Price :</label>     
+                                  <input type="number" step="any" min="1" max="1000"  name="full_price"
+                                         placeholder="Enter Price"
+                                         required>
                               </div>
 
                               <div class="form-group">
@@ -92,7 +121,6 @@
 
                               <div class="form-group">
                                 <label> Status</label>
-
                                 <div class="radio">
                                   <input type="radio" name="dish_status" value="1" required> Active
                                   <input type="radio" name="dish_status" value="0" required> Inactive
@@ -162,11 +190,9 @@
                       @endif
                     </td>
                    
-                    <td>  
-                      
-
+                    <td> 
                              <!--  action -->
-                             <div class="btn-group">
+                          <div class="btn-group">
                               <button type="button" class="btn btn-default btn-sm dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
                                 More
                               </button>
@@ -179,15 +205,11 @@
                                    <li><a class="dropdown-item" type=" button"  data-bs-toggle="modal" data-bs-target="#edit{{$dish->id}}" data-bs-whatever="@fat"> <i class="fas fa-edit"  title="click to edit">  </i> Edit</a></li>
 
                               </ul>
-                            </div>
-                                    
-
-                             
-                    
-                          </td>
+                            </div>                                                    
+                      </td>
                    </tr>
  
-
+                   <!-- modal -->
                     <div class="modal fade" id="edit{{$dish->id}}" tabindex="-1" aria-labelledby="edit{{$dish->id}}" aria-hidden="true">
                       <div class="modal-dialog">
                         <div class="modal-content">
@@ -201,9 +223,17 @@
 
                               <div class="form-group">
 
-                                 <label>Name</label>
-                                 <input type="text" class="form-control" name="dish_name" value="{{$dish->dish_name}}">
+                                 <label>Menu Name</label>
+                                 <input type="text" class="form-control" name="dish_name" value="{{$dish->dish_name}}"
+                                        placeholder="Enter Menu Name" 
+                                        pattern="[A-Za-z \s*]+$"
+                                        oninvalid="this.setCustomValidity('Letters Only are Allowed')"
+                                        oninput="this.setCustomValidity('')"
+                                        required>
+                                    
                                  <input type="hidden" class="form-control"  name="id" value="{{$dish->id}}">
+                                        
+                                        
                             
                               </div>
 
@@ -219,13 +249,14 @@
 
                                <div class="form-group">
                                   <label> Detail</label>
-                                  <textarea type="text" name="dish_detail" class="form-control" >{{$dish->dish_detail}}</textarea>
+                                  <textarea type="text" name="dish_detail" class="form-control" required>{{$dish->dish_detail}}</textarea>
                               </div>
 
                               <div class="form-group">
-                                <label> Price</label>
-                                
-                                  <input type="number" step="any" min="1"  name="full_price" placeholder="Price" value="{{$dish->full_price}}">
+                                <label> Price</label>                
+                                  <input type="number" step="any" min="1" max="1000" name="full_price" 
+                                         placeholder="Enter Price"
+                                         value="{{$dish->full_price}}">
                               </div>
 
                               <div class="form-group">

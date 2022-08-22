@@ -118,14 +118,14 @@
 											</div>
 											<div class="col-sm-6">
 												 <ul class="multi-column-dropdown">
-													<h6>Cuisine</h6> 
+													<h6>Food Category</h6> 
 
-															@foreach($categories as $category)	
+													@foreach($categories as $category)	
 
-																	<li><a style="font-size:14px"
-																	 href="{{route('category_dish',['category_id'=>$category->category_id])}}">{{$category->category_name}}</a></li>	
+														<li><a style="font-size:14px"
+														 href="{{route('category_dish',['category_id'=>$category->category_id])}}">{{$category->category_name}}</a></li>	
 
-															@endforeach
+													@endforeach
 												
 												</ul>
 											</div> 
@@ -138,6 +138,7 @@
 													<li><a href="menu.html">Special</a></li> 
 												</ul>
 											</div> -->
+											
 											<div class="clearfix"></div>
 										</div>
 									</ul>
@@ -170,8 +171,6 @@
 											  <li class="head-dpdn">
 											    <a href=""><i class="fa fa-cart-arrow-down" aria-hidden="true"></i> View Order</a>
 											  </li> 
-
-											 
 
 										  @else
 
@@ -211,13 +210,14 @@
 						</div>
 						<div class="cart cart box_1"> 
 
-							<!-- Cart -->
+						<!-- Cart -->
 							
 							<!-- <form action="#" method="post" class="last"> 
 								<input type="hidden" name="cmd" value="_cart" />
 								<input type="hidden" name="display" value="1" />
 								<button class="w3view-cart" type="submit" name="submit" value=""><i class="fa fa-cart-arrow-down" aria-hidden="true"></i></button>
-							</form>   -->
+							</form>
+						-->
 
 							<a href="{{route('cart_show')}}" class="w3view-cart"><i class="fa fa-cart-arrow-down" aria-hidden="true"> </i> <span class="badge badge-fill Cart-Count" style="background-color: blue;"> 0 </span></a> 
 
@@ -256,8 +256,7 @@
 		
 		$(document).ready(function() {
 			
-			loadcart();
-
+		loadcart();
 		function loadcart(){
 			$.ajax({
 				method: "GET",

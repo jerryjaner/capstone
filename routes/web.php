@@ -55,11 +55,8 @@ Route::group(['prefix'=>'admin','middleware'=>['isAdmin','auth','PreventBackHist
 
 	Route::post('add/user', [AdminController::class, 'create'])->name('save_user');
 	Route::get('profile',[AdminController::class,'profile'])->name('admin_profile');
-
-
 	
 	/* Category Start here */
-
 	Route::get('/category/add', [CategoryController::class, 'index'])->name('show_cate_table');
 	Route::post('/category/save', [CategoryController::class, 'save'])->name('cate_save');
 	Route::get('/category/manage', [CategoryController::class, 'manage'])->name('manage_cate'); 
@@ -92,8 +89,6 @@ Route::group(['prefix'=>'admin','middleware'=>['isAdmin','auth','PreventBackHist
 	// for the order status update
 
     Route::post('/update/order', [OrderController::class, 'order_status'])->name('update_order_status');
-
-
     /* Report */
 
     Route::get('client/report',[ReportController::class,'client_report'])->name('client_report');
@@ -115,11 +110,6 @@ Route::group(['prefix'=>'staff','middleware'=>['isStaff','auth','PreventBackHist
 
 	});
 
-
-
-
-
-
     /* Customer  */
 
 Route::group(['prefix'=>'user','middleware'=>['isUser','auth','PreventBackHistory'] ],function(){
@@ -135,8 +125,6 @@ Route::group(['prefix'=>'user','middleware'=>['isUser','auth','PreventBackHistor
 	Route::get('auth/google',[GoogleLoginController::class,'redirect'])->name('google_login');
 	Route::get('auth/google/call-back',[GoogleLoginController::class, 'callback']);
 
-	Route::get('login/facebook',[FacebookLoginController::class,'redirect'])->name('facebook_login');
-	Route::get('login/facebook/call-back',[FacebookLoginController::class, 'callback']);
 
 	/* Cart Route */
 

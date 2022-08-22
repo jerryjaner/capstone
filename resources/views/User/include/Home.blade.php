@@ -39,29 +39,29 @@
 				<div class="col-md-3 col-sm-3 col-xs-6 order-w3lsgrids"> 
 					<div class="order-w3text"> 
 						<i class="fa fa-map" aria-hidden="true"></i> 
-						<h6>Go to Food</h6>
-						<span>1</span>
+						<h3>Go to Food</h3>
+						<!--<span>1</span> -->
 					</div>
 				</div>
 				<div class="col-md-3 col-sm-3 col-xs-6 order-w3lsgrids"> 
 					<div class="order-w3text"> 
 						<i class="fa fa-cutlery" aria-hidden="true"></i> 
-						<h6>Choose Food</h6>
-						<span>2</span>
+						<h3>Choose Food</h3>
+						<!-- <span>2</span> -->
 					</div>
 				</div>
 				<div class="col-md-3 col-sm-3 col-xs-6 order-w3lsgrids"> 
 					<div class="order-w3text"> 
 						<i class="fa fa-credit-card" aria-hidden="true"></i>
-						<h6>Choose Payment Method</h6>
-						<span>3</span>
+						<h3>Choose Payment </h3>
+					<!--	<span>3</span> -->
 					</div>
 				</div>
 				<div class="col-md-3 col-sm-3 col-xs-6 order-w3lsgrids"> 
 					<div class="order-w3text"> 
 						<i class="fa fa-truck" aria-hidden="true"></i>
-						<h6>Enjoy Food</h6>
-						<span>4</span>
+						<h3>Enjoy Food</h3>
+						<!-- <span>4</span> -->
 					</div>
 				</div>
 				<div class="clearfix"> </div> 
@@ -98,7 +98,7 @@
 										<img class="lazyOwl" src="{{asset('BackEndSourceFile/dish_image/'.$dish->dish_image)}}" style="height: 190px; width:270px;" title="Our latest gallery" alt=""/>
 										<div class="agile-dish-caption">
 											<h4>{{$dish -> dish_name}}</h4>
-											<span>{{$dish -> dish_detail}}</span>
+										<!-- 	<span>{{$dish -> dish_detail}}</span> -->
 										</div>
 									</a>
 

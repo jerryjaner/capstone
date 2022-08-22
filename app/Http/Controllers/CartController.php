@@ -21,9 +21,7 @@ class CartController extends Controller
     		'qty'   => $request -> qty,
     		'name'  => $dish -> dish_name,
     		'price' => $dish -> full_price,
-    		
     		'weight'=> 550,
-
     		 'options' =>
     		 [
     		 	'image' => 'BackEndSourceFile/dish_image/'.$dish ->dish_image,

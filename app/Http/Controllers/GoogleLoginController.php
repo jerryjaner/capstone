@@ -4,7 +4,6 @@ namespace App\Http\Controllers;
 use App\Models\User;
 use Illuminate\Support\Facades\Auth;
 use Laravel\Socialite\Facades\Socialite;
-
 use Illuminate\Http\Request;
 
 class GoogleLoginController extends Controller
@@ -39,7 +38,7 @@ class GoogleLoginController extends Controller
     		}
     		
     	} catch (\Throwable $th) {
-    	//	dd('something went wrong '. $th->getMessage());
+    	
             return redirect('login') -> with('sms', 'Something went Wrong. Please Try Again Later');
     	}
     }

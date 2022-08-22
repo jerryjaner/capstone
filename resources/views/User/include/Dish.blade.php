@@ -6,8 +6,7 @@
 @endsection
 
 @section('content')
-<!-- banner -->
-	 
+<!-- banner -->	 
 	<div class="container">	
 		<ol class="breadcrumb w3l-crumbs">
 			<li><a href="#"><i class="fa fa-home"></i> Home</a></li> 
@@ -40,16 +39,14 @@
 								<div class="back">
 
 								    <h4>{{$dish -> dish_name}}</h4><br>
-
-								    <span>{{$dish -> dish_detail}}</span>  							
+								   <!-- <span>{{$dish -> dish_detail}}</span>  	-->						
 									<h6>₱{{$dish -> full_price}}</h6>
 
 								
 									<form action="{{route('add_to_cart')}}" method="post">
 										<input type="hidden" name="id" value="$dish -> id">
 										
-										<!-- dapat dire mag add to cart an user kapag hindi pa nakakalogin -->
-									 
+										<!-- dapat dire mag add to cart an user kapag hindi pa nakakalogin -->									 
 										<a href="#" data-toggle="modal" data-target="#myModal1{{$dish -> id}}" style="text-decoration: none;">
 											<i class="fa fa-cart-plus" aria-hidden="true"></i> Add to cart
 										</a>

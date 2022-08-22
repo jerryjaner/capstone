@@ -19,10 +19,10 @@
 
 <!-- for display mesage -->
 
-            @if(Session::get('sms'))
+            @if(Session::get('added_msg'))
 
-                <div class="alert alert-warning alert-dismissible fade show" role="alert">
-                  <strong> {{session::get('sms')}}</strong>
+                <div class="alert alert-success alert-dismissible fade show" role="alert">
+                  <strong> {{session::get('added_msg')}}</strong>
                   <button type="button" class="close" data-dismiss="alert" aria-label="Close">
                     <span aria-hiddden="true">&times;</span>
                   </button>
@@ -45,7 +45,7 @@
                       <div class="modal-dialog">
                         <div class="modal-content">
                           <div class="modal-header">
-                            <h5 class="modal-title" id="add">Add user</h5>
+                            <h5 class="modal-title" id="add">Add New User</h5>
                             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                           </div>
                           <div class="modal-body">
@@ -55,27 +55,45 @@
 
                               <div class="form-group">
                                 <label> First Name</label>
-                                <input type="text" class="form-control" name="name">
+                                <input type="text" class="form-control" name="name" 
+                                       placeholder="Enter First Name" 
+                                       pattern="[A-Za-z \s*]+$"
+                                       oninvalid="this.setCustomValidity('Letters only are Allowed and also this is required to fill up')"
+                                       oninput="this.setCustomValidity('')" 
+                                       required>
                               </div>
 
                               <div class="form-group">
                                 <label> Middle Name</label>
-                                <input type="text" class="form-control" name="middlename">
+                                <input type="text" class="form-control" name="middlename"
+                                       placeholder="Enter Middle Name" 
+                                       pattern="[A-Za-z \s*]+$"
+                                       oninvalid="this.setCustomValidity('Letters only are Allowed and also this is required to fill up')"
+                                       oninput="this.setCustomValidity('')" 
+                                       required>
                               </div>
 
                               <div class="form-group">
                                 <label> Last Name</label>
-                                <input type="text" class="form-control" name="lastname">
+                                <input type="text" class="form-control" name="lastname"
+                                       placeholder="Enter Last Name" 
+                                       pattern="[A-Za-z \s*]+$"
+                                       oninvalid="this.setCustomValidity('Letters only are Allowed and also this is required to fill up')"
+                                       oninput="this.setCustomValidity('')" 
+                                       required>
                               </div>
 
                               <div class="form-group">
                                 <label> Address</label>
-                                <input type="text" class="form-control" name="address">
+                                <input type="text" class="form-control" name="address"
+                                       placeholder="Enter Address" 
+                                       required>
                               </div>
 
                               <div class="form-group">
                                 <label> Email</label>
-                                <input type="text" class="form-control" name="email">
+                                <input type="email" class="form-control" name="email"
+                                       placeholder="Enter Your Email Address">
                               </div>
 
                               <div class="form-group">
@@ -88,19 +106,23 @@
 
                               <div class="form-group">
                                 <label> Password</label>
-                                <input type="Password" class="form-control" name="password">
+                                <input type="Password" class="form-control" name="password" 
+                                       placeholder="Enter Password" 
+                                       required>
                               </div>
 
                               <div class="form-group">
                                 <label> Confirm Password </label>
-                                <input type="Password" class="form-control" name=" password_confirmation">
+                                <input type="Password" class="form-control" name=" password_confirmation"
+                                       placeholder="Confirm your Password" 
+                                       required>
                               </div>
                              
                                
                                                   
                                 <div class="modal-footer">
                                 <!-- <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button> -->
-                                  <button type="submit" name="btn" class="btn btn-outline-primary btn-block">Submit</button>
+                                  <button type="submit" name="btn" class="btn btn-primary btn-block">Submit</button>
                                 </div>
                                 </form>
                              </div>
@@ -112,9 +134,10 @@
                     <th>Full Name</th>
                     <th>Address</th>
                     <th>Email</th>
-                    <th>Role</th>
+                    <th>Logged in Using</th>
+                    <th>Role</th>        
                     <th>Created at</th>
-                    <th>Action</th>
+                    
                   </tr>
                   </thead>
                   <tbody>
@@ -124,8 +147,27 @@
                   <tr>
                     <td>{{$i++}}</td>
                     <td>{{$user->name}} {{$user->middlename}} {{$user->lastname}}</td>
-                    <td>{{$user -> address}}</td>
+                    <td>
+                       @if($user->address == null)
+
+                            N/A
+                            
+                        @else
+                          {{$user->name}}
+
+                        @endif
+                    </td>
+                    
                     <td>{{$user -> email}}</td>
+                    
+                    <td>
+                        @if($user -> google_id)
+                           Google Account
+                        @else
+                           Nick's Resto Bar System 
+                        @endif
+                    </td>
+
                     <td>
                           @if($user ->role == 1)
 
@@ -140,22 +182,11 @@
                           @endif
                           
                     </td>
-                    <td>{{ \Carbon\Carbon::parse($user -> created_at)->diffForHumans() }}</td>
                     
-                             <!-- <a type="button" class="btn btn-outline-dark"  data-toggle="modal" data-target="#edit">
-                                  <i class="fas fa-edit"  title="click to Change it">  </i>
-                               </a>
-                             -->
-                      <td>
-                         <button type="button" class="btn btn-outline-dark" data-bs-toggle="modal" data-bs-target="#edit" data-bs-whatever="@fat">
-                            <i class="fas fa-edit"  title="click to Change it">  </i>
-                         </button>
-                             
-                          <a class="btn btn-outline-danger" href="">
-                            <i class="fas fa-trash"  title="click to destroy">   </i>
-                         </a>
-
-                      </td>
+                    <td>{{ \Carbon\Carbon::parse($user -> created_at)->diffForHumans() }}</td>
+                   
+                    
+                  
                    </tr>
              
                       <div class="modal fade" id="edit" tabindex="-1" aria-labelledby="edit" aria-hidden="true">

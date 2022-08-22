@@ -47,7 +47,7 @@ class AdminController extends Controller
         $user -> role = $Request-> role;
         $user -> save();
 
-        return back()->with('sms','User Save');
+        return back()->with('added_msg','New User Added Sucessfully');
 
       
     }       

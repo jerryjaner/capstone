@@ -58,7 +58,16 @@
 
                     <td>{{$i++}}</td>                
                     <td>{{$user->name}} {{$user->middlename}} {{$user->lastname}}</td>
-                    <td>{{$user -> address}}</td>
+                    <td>
+                         @if($user->address == null)
+
+                            N/A
+                            
+                        @else
+                          {{$user->name}}
+
+                        @endif
+                    </td>
                     <td>{{$user -> email}}</td>
                     <td> Customer </td>
                     

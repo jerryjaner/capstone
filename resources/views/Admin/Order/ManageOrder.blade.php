@@ -27,6 +27,32 @@
                     <span aria-hiddden="true">&times;</span>
                   </button>
                 </div>
+
+             @elseif(Session::get('delete_msg'))
+                <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                  <strong> {{session::get('delete_msg')}}</strong>
+                  <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                    <span aria-hiddden="true">&times;</span>
+                  </button>
+                </div>
+
+            @elseif(Session::get('order_status_msg'))
+                <div class="alert alert-info alert-dismissible fade show" role="alert">
+                  <strong> {{session::get('order_status_msg')}}</strong>
+                  <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                    <span aria-hiddden="true">&times;</span>
+                  </button>
+                </div>
+
+            @elseif(Session::get('payment_status_msg'))
+                <div class="alert alert-info alert-dismissible fade show" role="alert">
+                  <strong> {{session::get('payment_status_msg')}}</strong>
+                  <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                    <span aria-hiddden="true">&times;</span>
+                  </button>
+                </div>
+
+
             @endif
 
           <div class="card my-5">

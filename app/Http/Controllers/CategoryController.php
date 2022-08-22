@@ -17,13 +17,9 @@ class CategoryController extends Controller
 
 		$category = new Category();
     	$category -> category_name = $Request->category_name;
-    	
     	$category -> category_status = $Request->category_status;
-    
-
     	$category->save();
-
-    	return back()->with('sms','Category Save');
+    	return back()->with('added_msg','Category Added Successfully');
 
     	//return redirect(to:'/category/manage')->with('sms','Category Save');
 
@@ -33,7 +29,6 @@ class CategoryController extends Controller
     {
 
     	$categories = Category::all();
-
     	return view(view:'Admin.Category.ManageCategory', data: compact(var_name:'categories'));
     }
 
@@ -43,8 +38,7 @@ class CategoryController extends Controller
     	$category = Category::find($category_id);
     	$category->category_status = 1;
     	$category->save();
-
-    	return back();
+    	return back()->with('status_msg','Status Updated Successfully');
     }
      public function Inactive($category_id)
      {
@@ -52,8 +46,7 @@ class CategoryController extends Controller
     	$category = Category::find($category_id);
     	$category ->category_status = 0;
     	$category->save();
-
-    	return back();
+    	return back()->with('status_msg','Status Updated Successfully');
     }
 
     public function delete($category_id)
@@ -61,8 +54,7 @@ class CategoryController extends Controller
 
     	$category = Category::find($category_id);
     	$category->delete();
-
-    	return back();
+    	return back()->with('delete_msg', 'Category Deleted Successfully');
  
     }
 
@@ -71,11 +63,9 @@ class CategoryController extends Controller
 
     	$category = Category::find($request->category_id);
     	$category->category_name = $request->category_name;
-    
-
     	$category->save();
 
-    	return redirect(to:'/admin/category/manage')->with('sms','Category Updated');
+    	return redirect(to:'/admin/category/manage')->with('update_msg','Category Updated Successfully');
  
     }
 
