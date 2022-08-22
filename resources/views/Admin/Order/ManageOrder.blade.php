@@ -153,27 +153,7 @@
                     <td>{{$order->payment_status}}</td>
 
                     <td>
-                        
-                       
-                      <!--
-
-                      <button type="button" class="btn btn-outline-success mt-1" data-bs-toggle="modal" data-bs-target="#orderstatus{{$order->id}}" data-bs-whatever="@fat">
-                            <i class="fas fa-edit"  title="Edit Order Status">  </i>
-                       </button>
-
-                        <a class="btn btn-outline-info mt-1" href="{{route('view_invoice',['id'=>$order->id])}}">
-                           <i class="fas fa-search-plus"  title="View Invoice"></i>
-                        </a>
-
-                       <a class="btn btn-outline-danger mt-1"  href="{{route('delete_order',['id'=>$order->id])}}">
-                            <i class="fas fa-trash"  title="click to destroy"></i>
-                        </a> 
-
-                        <button type="button" class="btn btn-outline-dark mt-1" data-bs-toggle="modal" data-bs-target="#edit{{$order->id}}" data-bs-whatever="@fat">
-                            <i class="fas fa-edit"  title="Edit Payment Status">  </i>
-                       </button>
-
-                     -->
+                      
 
                       <!--  action -->
 

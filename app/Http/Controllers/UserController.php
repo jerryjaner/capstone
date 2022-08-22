@@ -69,10 +69,8 @@ class UserController extends Controller
       $shipping->address = $request -> address;
       $shipping -> save();
 
-      
-
       Session::put('shipping_id', $shipping -> id);
-       return redirect() -> route(route:'Checkout_payment'); 
+      return redirect() -> route(route:'Checkout_payment'); 
 
      
     }

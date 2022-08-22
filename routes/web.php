@@ -66,7 +66,6 @@ Route::group(['prefix'=>'admin','middleware'=>['isAdmin','auth','PreventBackHist
 	Route::post('/category/update', [CategoryController::class, 'update'])->name('cate_update'); 
 
 	/* Dish Start Here */
-
 	Route::get('/dish/add', [Dishcontroller::class, 'index'])->name('show_dish_table');
 	Route::post('/dish/save', [Dishcontroller::class, 'save_dish'])->name('save_dish_data');
 	Route::get('/dish/manage', [Dishcontroller::class, 'manage_dish'])->name('manage_dish_table');
@@ -76,7 +75,6 @@ Route::group(['prefix'=>'admin','middleware'=>['isAdmin','auth','PreventBackHist
 	Route::post('/dish/edit', [Dishcontroller::class, 'dish_update'])->name('update_dish');
 	
 	/* Order Starts Here  */
-
 	Route::get('/orderManage', [OrderController::class, 'Manage_Order'])->name('show_order');
 	Route::get('/view/order{id}', [OrderController::class, 'View_Order'])->name('view_order');
 	Route::get('/order/delete{id}', [OrderController::class, 'delete_order'])->name('delete_order');

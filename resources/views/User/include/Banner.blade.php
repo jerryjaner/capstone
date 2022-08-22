@@ -1,92 +1,35 @@
+<style>
+    #example1{
+      font-family: arial ,helvetica, sans-serif;
+      border-collapse: collapse;
+      width: 100%;
+
+    }
+    #example1 td, #example1 th {
+      border: 1px solid #ddd;
+      padding: 8px;
+    }
+    #example1 tr:nth-child(even){
+      background-color: #ddd;
+    }
+
+    #example1 th{
+      padding-top: 12px;
+      padding-bottom: 12px;
+      text-align: left;
+      background-color: green;
+      color:white;
+    }
+</style>
 <div class="banner">
 		<!-- header -->
 		<div class="header">
-			<!-- <div class="w3ls-header">
-			  	<div class="container">
-					<div class="w3ls-header-left">
-						<p>Free home delivery at your doorstep For Above $30</p>
-					</div>
-					<div class="w3ls-header-right">
-						<ul> 
-							<li class="head-dpdn">
-								<i class="fa fa-phone" aria-hidden="true"></i> Call us: +01 222 33345 
-							</li> 
-
-
-
-
-						   <li class="head-dpdn">
-								<a href="login.html"><i class="fa fa-sign-in" aria-hidden="true"></i> Login</a>
-							</li> 
-							<li class="head-dpdn">
-								<a href="signup.html"><i class="fa fa-user-plus" aria-hidden="true"></i> Signup</a>
-							</li> 
-							<li class="head-dpdn">
-								<a href="offers.html"><i class="fa fa-gift" aria-hidden="true"></i> Offers</a>
-							</li> 
-
-
-							@if(Auth::check())
-								<li class="head-dpdn">
-									<a href="{{route('logout')}}"
-									                 onclick="event.preventDefault();
-									                               document.getElementById('logout-form').submit();">
-									                
-									                 <i class="fa fa-sign-out"></i>
-									                 	{{ __('Logout') }}
-													
-									 </a>
-									  <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
-						                  @csrf
-						              </form>
-								</li> 
-
-								@else
-							<li class="head-dpdn">
-								<a href="{{route('login')}}"><i class="fa fa-sign-in" aria-hidden="true"></i> Login</a>
-							</li> 
-							@endif
-
-
-
-							@if(Auth::check())
-
-							<li class="head-dpdn">
-								<a href=""><i class="fa fa-user" aria-hidden="true"></i> {{ Auth::user()->name }}</a>
-							</li> 
-
-							@else
-
-							<li class="head-dpdn">
-								<a href="{{route('register')}}"><i class="fa fa-user-plus" aria-hidden="true"></i> Signup</a>
-							</li> 
-
-							@endif
-
-							<li class="head-dpdn">
-								<a href=""><i class="fa fa-gift" aria-hidden="true"></i> Offers</a>
-							</li> 
-							<li class="head-dpdn">
-								<a href=""><i class="fa fa-question-circle" aria-hidden="true"></i> Help</a>
-							</li>
-						
-
-		                
-						</ul>
-					</div>
-					<div class="clearfix"> </div> 
-				</div>  
-			</div> -->
-			<!-- //header-one -->    
-			<!-- navigation -->
-
 			<div class="navigation agiletop-nav">
 				<div class="container">
 					<nav class="navbar navbar-default">
 						<!-- Brand and toggle get grouped for better mobile display -->
 
 						<div class="navbar-header w3l_logo">
-
 							<button type="button" class="navbar-toggle collapsed navbar-toggle1" data-toggle="collapse" data-target="#bs-megadropdown-tabs">
 								<span class="sr-only">Toggle navigation</span>
 								<span class="icon-bar"></span>
@@ -167,10 +110,16 @@
 											  <li class="head-dpdn">
 												<a href=""><i class="fa fa-user" aria-hidden="true"></i> {{ Auth::user()->name }}</a>
 											  </li> 
-
+											  <!--
 											  <li class="head-dpdn">
-											    <a href=""><i class="fa fa-cart-arrow-down" aria-hidden="true"></i> View Order</a>
-											  </li> 
+											    <a href="#"><i class="fa fa-cart-arrow-down" aria-hidden="true"></i> View Order</a>
+											  </li>  -->
+											  <li class="head-dpdn">
+												  <a href="#" type="button" data-toggle="modal" data-target="#myModal1" style="text-decoration: none;">
+													 <i class="fa fa-cart-arrow-down" aria-hidden="true"></i> View Order
+												  </a> 
+											  </li>
+										
 
 										  @else
 
@@ -206,6 +155,50 @@
 										   
 									</ul>
 								</li> 
+
+								   <!-- View Order modal --> 
+											<div class="modal video-modal fade" id="myModal1" tabindex="-1" role="dialog" aria-labelledby="myModal1">
+												<div class="modal-dialog" role="document">
+													<div class="modal-content">
+														<div class="modal-header">
+															<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>						
+														</div>
+														<section>
+															<div class="modal-body">
+																	view Order
+															    <table id="example1" class="table table-bordered table-striped">        
+													              <thead>
+													                <tr>
+													                  <th>SL</th>
+													                  <th>Customer Name</th>
+													                  <th>Order Price Total</th>
+													                  <th>Order Status</th>
+													                  <th>Order Date</th>
+													                  <th>Payment Type</th>
+													                  <th>Payment Status</th>
+													                  <th>Action</th>
+													                </tr>
+													              </thead>
+													              <tbody>
+													              	<tr>
+													              		<td></td>
+													              		<td></td>
+													              		<td></td>
+													              		<td></td>
+													              		<td></td>
+													              		<td></td>
+													              		<td></td>
+													              		<td></td>
+													              	</tr>
+													              </tbody>
+													            </table>
+																<div class="clearfix"> </div>
+															</div>
+														</section>
+													</div>
+												</div>
+											</div> 
+											<!-- View order Modal -->
 							</ul>
 						</div>
 						<div class="cart cart box_1"> 
@@ -219,7 +212,7 @@
 							</form>
 						-->
 
-							<a href="{{route('cart_show')}}" class="w3view-cart"><i class="fa fa-cart-arrow-down" aria-hidden="true"> </i> <span class="badge badge-fill Cart-Count" style="background-color: blue;"> 0 </span></a> 
+							<a href="{{route('cart_show')}}" class="w3view-cart"><i class="fa fa-cart-arrow-down" aria-hidden="true"> </i> <span class="badge badge-fill Cart-Count" style="background-color: transparent;"> 0 </span></a> 
 
 						</div> 
 					</nav>
@@ -254,7 +247,7 @@
 	<script>
 		
 		
-		$(document).ready(function() {
+	$(document).ready(function() {
 			
 		loadcart();
 		function loadcart(){
@@ -266,13 +259,8 @@
 					$('.Cart-Count').html('');
 					$('.Cart-Count').html(response.count);
 					//console.log(response.count)
-
 				}
 			});
 		}
-
-
-
-
-		});
+	});
 	</script>
