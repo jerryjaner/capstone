@@ -24,6 +24,7 @@ class OrderController extends Controller
     		->select('orders.*', 'users.name','users.middlename','users.lastname' ,'payments.payment_type','payments.payment_status')
     		->get();
 
+        
     	return view('Admin.Order.ManageOrder',data: compact('orders'));
     }
 

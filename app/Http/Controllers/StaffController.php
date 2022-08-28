@@ -1,7 +1,6 @@
 <?php
 
 namespace App\Http\Controllers;
-
 use App\Models\order;
 use App\Models\OrderDetail;
 use App\Models\User;
@@ -44,6 +43,7 @@ class StaffController extends Controller
 
     	return view('Staff.CustomerOrder.Order',data: compact('orders'));
     }
+    
 
     public function CustomerInvoice($id)
     {
@@ -85,11 +85,10 @@ class StaffController extends Controller
 
     public function UpdatePayment(Request $request)
     {
-
         $order = Payment::find( $request -> id);
         $order -> payment_status = $request -> payment_status;
         $order->save();
-        return redirect(to:'/staff/customerOrder')->with('sms','Payment Status Updated Successfully');
+        return back()->with('sms','Payment Status Updated Successfully');
  
     }
 
@@ -98,7 +97,7 @@ class StaffController extends Controller
         $order= Order::find( $request -> id);
         $order -> order_status = $request -> order_status; 
         $order->save();
-        return redirect(to:'/staff/customerOrder')->with('sms','Order Status Updated Successfully');
+        return back()->with('sms','Order Status Updated Successfully');
     }
 
 }

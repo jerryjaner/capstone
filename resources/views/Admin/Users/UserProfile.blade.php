@@ -14,7 +14,8 @@
       <div class="container-fluid">
         <div class="row justify-content-center">
           <div class="col-md-4">
-	  
+	  			
+
 	            <!-- About Me Box -->
 	            <div class="card card-primary">
 	              <div class="card-body box-profile">
@@ -24,22 +25,26 @@
 	                       alt="User profile picture">
 	                </div>
 
-		             <h3 class="profile-username text-center">{{Auth::user() -> name}}  {{ Auth::user()->middlename }} {{ Auth::user()->lastname }}"</h3>
+	                @foreach($users as $admin)
+
+	                @if($admin -> role == '1')
+		             <h3 class="profile-username text-center">{{$admin -> name}} {{$admin->middlename}} {{$admin->lastname}}</h3>
 
 		             <p class="text-muted text-center">Administator</p>  
 	              </div>
 
 	              <!-- /.card-header -->
-	             	
 		              <div class="card-body">
-		                <strong><i class="far fa-envelope mr-1"></i>Email: </strong> {{Auth::user() -> email}}
+		                <strong><i class="far fa-envelope mr-1"></i>Email:  </strong>  {{$admin -> email}}
 		                 <hr>
-			            <strong><i class="fas fa-map-marker-alt mr-1"></i>Location: </strong> {{Auth::user() -> address}}
+			            <strong><i class="fas fa-map-marker-alt mr-1"></i>Location: </strong>  {{$admin -> address}} 
 			             <hr>
 			            <strong><i class="fas fa-phone mr-1"></i>Phone:</strong> 09876543211
 			             <hr>
 			             <button class="btn btn-success btn-sm" style="float:right;">Edit Profile</button>
 		              </div>
+		             @endif
+		             @endforeach
 		           
 		           
 	              <!-- /.card-body -->

@@ -34,7 +34,7 @@
 		<img src="{{asset('FrontEndSourceFile')}}/images/i2.jpg" class="w3order-img" alt=""/>
 		<div class="container">
 			<h3 class="w3ls-title">How To Order Online Food</h3>
-			<p class="w3lsorder-text">Get your favourite food in 4 simple steps.</p>
+			<p class="w3lsorder-text">Get your favourite food in 4 simple steps.</p>-->
 			<div class="order-agileinfo">  
 				<div class="col-md-3 col-sm-3 col-xs-6 order-w3lsgrids"> 
 					<div class="order-w3text"> 

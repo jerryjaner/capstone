@@ -25,7 +25,7 @@ Report of Customer
             <table id="example1" class="table table-bordered table-striped">              
                   <thead>
                     <tr>
-                      <th>SL</th>
+                      <th>#</th>
                       <th>Full Name</th>
                       <th>Address</th>
                       <th>Email</th>

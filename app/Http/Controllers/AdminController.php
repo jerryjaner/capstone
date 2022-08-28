@@ -27,7 +27,7 @@ class AdminController extends Controller
       $newuser = User::where('created_at', '>', today())->count();
       return view('Admin.Home.index', compact('categories','dishes','admin','staff','customers','orders','newuser','pending_orders','cancelled_orders','OnProcess_orders','delivered_orders','out_orders'));  
     }
-    
+  
 
     public function manage()
     {
@@ -37,6 +37,7 @@ class AdminController extends Controller
 
      public function create (Request $Request)
      {
+      
         $user = new User();
         $user -> name = $Request-> name;
         $user -> middlename = $Request-> middlename;
@@ -54,7 +55,8 @@ class AdminController extends Controller
 
     public function profile()
     {
-        return view(view:'Admin.Users.UserProfile');
+        $users = user::all();
+        return view(view:'Admin.Users.UserProfile', data: compact(var_name:'users')); 
     }
 
     /*

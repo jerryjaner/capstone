@@ -25,7 +25,8 @@ class GoogleLoginController extends Controller
 
     				'name' => $google_user->getName(),
     				'email' => $google_user -> getEmail(),
-    				'google_id' => $google_user ->getId()
+    				'google_id' => $google_user ->getId(),
+                    'role' => '0',
 
     			]);
 

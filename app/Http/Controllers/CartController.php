@@ -36,6 +36,7 @@ class CartController extends Controller
 
     public function show()
     {
+        
      	 $CartDish = Cart::content();
 
      //	return $CartDish;
@@ -54,11 +55,11 @@ class CartController extends Controller
             return back();
     }
 
-    function cartCount()
+    public function cartCount()
     {
         // to count the cart content
         $cartCount = Cart::content()->count();
-        return response() -> json(['count' =>$cartCount]);
+        return response() -> json(['count' => $cartCount]);
     }
 
 }

@@ -25,34 +25,30 @@
 				</div>
 				<div class="products-row">
 				@foreach($categoryDish as $dish)
+
+
 					<div class="col-xs-6 col-sm-4 product-grids">
 						<div class="flip-container">
 							<div class="flipper agile-products">
 								<div class="front"> 
 
-									<img src="{{asset('BackEndSourceFile/dish_image/'.$dish->dish_image)}}" style="height: 182px; width:277px;" class="img-responsive" alt="img">
+									<img src="{{asset('BackEndSourceFile/dish_image/'.$dish->dish_image)}}" style="height: 200px; width:352px;" class="img-responsive" alt="img">
 									<div class="agile-product-text">  
 										<h5>{{$dish -> dish_name}}</h5>	
 									</div> 
 								</div>
 								
 								<div class="back">
-
-								    <h4>{{$dish -> dish_name}}</h4><br>
-								   <!-- <span>{{$dish -> dish_detail}}</span>  	-->						
+								    <h4>{{$dish -> dish_name}}</h4><br>				
 									<h6>₱{{$dish -> full_price}}</h6>
-
-								
 									<form action="{{route('add_to_cart')}}" method="post">
 										<input type="hidden" name="id" value="$dish -> id">
 										
 										<!-- dapat dire mag add to cart an user kapag hindi pa nakakalogin -->									 
 										<a href="#" data-toggle="modal" data-target="#myModal1{{$dish -> id}}" style="text-decoration: none;">
 											<i class="fa fa-cart-plus" aria-hidden="true"></i> Add to cart
-										</a>
-
+										</a>				
 									</form>
-							
 								</div>
 							</div>
 						</div> 
@@ -83,7 +79,7 @@
 												@csrf
 												
 												<input type="hidden" name="id" value="{{$dish->id}}">										  
-												 <b> Quantity: </b> <input type="number" min="1" max="10" name="qty" style="padding: 6px; margin-left: 30px;" required>
+												 <b> Quantity: </b> <input type="number" min="1" max="10" step="1" name="qty" style="padding: 6px; margin-left: 30px;" required>
 												<button type="submit" class="w3ls-cart" style="float: right; margin-right: 60px;" >
 											       <i class="fa fa-cart-plus" aria-hidden="true"></i> 
 											       Add to cart
@@ -149,7 +145,9 @@
 						</div>
 					</div> 
 				<!-- //modal -->
-
+					
+					 
+					
 				@endforeach
 					
 					<div class="clearfix"> </div>
@@ -185,9 +183,10 @@
 </div>
 <!-- //products --> 
 
-<div class="container"> 
+<!--<div class="container">  -->
+<div>
 	<div class="w3agile-deals prds-w3text"> 
-		<h5>Vestibulum maximus quam et quam egestas imperdiet. In dignissim auctor viverra.</h5>
+		<h5>Order na tabi kamo</h5>
 	</div>
 </div>
 <!-- deals 

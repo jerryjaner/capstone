@@ -153,6 +153,7 @@
                          @endif 
                           <li><a class="dropdown-item" data-bs-toggle="modal" data-bs-target="#edit{{$cate->category_id}}" data-bs-whatever="@fat">
                             <i class="fas fa-edit"  title="click to Change it"></i> Edit Category</li>
+                            
                           <li><a class="dropdown-item"  href="{{route('cate_delete',['category_id'=>$cate->category_id])}}">
                             <i class="fas fa-trash"  title="click to Delete"></i> Delete Category </li>
                         </ul>

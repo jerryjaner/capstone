@@ -33,7 +33,6 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-
 Route::middleware(['middleware'=>'PreventBackHistory'])->group (function(){
 
 	Auth::routes();
@@ -85,12 +84,15 @@ Route::group(['prefix'=>'admin','middleware'=>['isAdmin','auth','PreventBackHist
 	Route::post('/update/payment', [OrderController::class, 'update'])->name('order_update');
 
 	// for the order status update
-
     Route::post('/update/order', [OrderController::class, 'order_status'])->name('update_order_status');
-    /* Report */
+    
+    /* Report  for the client*/
 
     Route::get('client/report',[ReportController::class,'client_report'])->name('client_report');
     Route::get('/download/clientReport', [ReportController::class, 'download_client'])->name('download_client');
+
+    /* Report for the sales */
+    Route::get('sales/report',[ReportController::class,'sales_report'])->name('sales');
 
 });
 
@@ -141,12 +143,14 @@ Route::group(['prefix'=>'user','middleware'=>['isUser','auth','PreventBackHistor
  	
 
    /* shipping */
-   
  	Route::get('/shipping', [UserController::class, 'shipping']);
  	Route::post('/shippingStore', [UserController::class, 'shipping_save'])-> name('store_shipping');
 
 
    /*  view order */
+   Route::get('/user/order', [UserController::class, 'user_order'])->name('view_user_order');
+   Route::post('cancel/order',[UserController::class,'cancel_order'])->name('cancel_customer_order');
+ 
 
    
 

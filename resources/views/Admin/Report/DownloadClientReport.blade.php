@@ -27,64 +27,51 @@
   </style>
 </head>
 <body>
+    <div class="card my-5">
+        <div class="card-body">
+          <center>
+            <h1 style="margin:50px;">Customer Report</h1>
+            <hr>
+          <table id="example1">
+            <thead>
+              <tr>
+                <th>#</th>
+                <th>FullName</th>
+                <th>Address</th>
+                <th>Email</th>
+                <th>Role</th>
+              
+              </tr>
+            </thead>
+            <tbody>
 
+              @php($i = 1)
+              @foreach($users  as $user)
+              @if($user -> role == 0)
 
-          <div class="card my-5">
+            <tr>
+              <td>{{$i++}}</td>                
+              <td>{{$user->name}} {{$user->middlename}} {{$user->lastname}}</td>
+              <td>
+                   @if($user->address == null)
 
-              <!-- /.card-header -->
-              <div class="card-body">
-                <center>
-                  <h1 style="margin:50px;">Customer Report</h1>
-                  <hr>
-                <table id="example1">
-                  <thead>
-                    <tr>
-                      <th>SL</th>
-                      <th>FullName</th>
-                      <th>Address</th>
-                      <th>Email</th>
-                      <th>Role</th>
-                    
-                    </tr>
-                  </thead>
-                  <tbody>
-                    
-                  
-                    @php($i = 1)
-                    @foreach($users  as $user)
-                    @if($user -> role == 0)
+                      N/A
+                      
+                  @else
+                    {{$user->name}}
 
-                  <tr>
-
-                    <td>{{$i++}}</td>                
-                    <td>{{$user->name}} {{$user->middlename}} {{$user->lastname}}</td>
-                    <td>
-                         @if($user->address == null)
-
-                            N/A
-                            
-                        @else
-                          {{$user->name}}
-
-                        @endif
-                    </td>
-                    <td>{{$user -> email}}</td>
-                    <td> Customer </td>
-                    
-                 </tr>
-            
-                   @endif
-                  @endforeach
-
-                  
-                  </tbody>
-                 
-                </table>
-                
-              </div>
-              <!-- /.card-body -->
-            </div>
-            
-
+                  @endif
+              </td>
+              <td>{{$user -> email}}</td>
+              <td> Customer </td>
+           </tr>
+      
+             @endif
+            @endforeach
+           
+            </tbody>                 
+          </table>               
+        </div>
+    </div>   
 </body>
 </html>

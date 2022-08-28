@@ -17,20 +17,14 @@
 }
 </style>
 
-<!-- for display mesage -->
-
-            @if(Session::get('added_msg'))
-
-                <div class="alert alert-success alert-dismissible fade show" role="alert">
-                  <strong> {{session::get('added_msg')}}</strong>
-                  <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                    <span aria-hiddden="true">&times;</span>
-                  </button>
-                </div>
-
-                <!-- End of Message -->
-
-            @endif
+  @if(Session::get('added_msg'))
+      <div class="alert alert-success alert-dismissible fade show" role="alert">
+        <strong> {{session::get('added_msg')}}</strong>
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+          <span aria-hiddden="true">&times;</span>
+        </button>
+      </div>
+  @endif
           <div class="card my-5">
               <div class="card-header">
                 <h3 class="card-title">Manage User</h3>
@@ -40,7 +34,7 @@
               <div class="card-body">
                 <table id="example1" class="table table-bordered table-striped">
 
-                    <!-- add categories modal -->
+                  <!-- add user modal -->
                    <div class="modal fade" id="add" tabindex="-1" aria-labelledby="add" aria-hidden="true">
                       <div class="modal-dialog">
                         <div class="modal-content">
@@ -49,86 +43,84 @@
                             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                           </div>
                           <div class="modal-body">
-                          <form action="{{route('save_user')}}" method="post">
+                            <form action="{{route('save_user')}}" method="post">
 
-                               @csrf
+                                 @csrf
 
-                              <div class="form-group">
-                                <label> First Name</label>
-                                <input type="text" class="form-control" name="name" 
-                                       placeholder="Enter First Name" 
-                                       pattern="[A-Za-z \s*]+$"
-                                       oninvalid="this.setCustomValidity('Letters only are Allowed and also this is required to fill up')"
-                                       oninput="this.setCustomValidity('')" 
-                                       required>
-                              </div>
-
-                              <div class="form-group">
-                                <label> Middle Name</label>
-                                <input type="text" class="form-control" name="middlename"
-                                       placeholder="Enter Middle Name" 
-                                       pattern="[A-Za-z \s*]+$"
-                                       oninvalid="this.setCustomValidity('Letters only are Allowed and also this is required to fill up')"
-                                       oninput="this.setCustomValidity('')" 
-                                       required>
-                              </div>
-
-                              <div class="form-group">
-                                <label> Last Name</label>
-                                <input type="text" class="form-control" name="lastname"
-                                       placeholder="Enter Last Name" 
-                                       pattern="[A-Za-z \s*]+$"
-                                       oninvalid="this.setCustomValidity('Letters only are Allowed and also this is required to fill up')"
-                                       oninput="this.setCustomValidity('')" 
-                                       required>
-                              </div>
-
-                              <div class="form-group">
-                                <label> Address</label>
-                                <input type="text" class="form-control" name="address"
-                                       placeholder="Enter Address" 
-                                       required>
-                              </div>
-
-                              <div class="form-group">
-                                <label> Email</label>
-                                <input type="email" class="form-control" name="email"
-                                       placeholder="Enter Your Email Address">
-                              </div>
-
-                              <div class="form-group">
-                                <label> Role</label>
-                                <div class="radio">
-                                  <input type="radio" name="role" value="1" required> Admin 
-                                  <input type="radio" name="role" value="2" required> Staff
+                                <div class="form-group">
+                                  <label> First Name</label>
+                                  <input type="text" class="form-control" name="name" 
+                                         placeholder="Enter First Name" 
+                                         pattern="[A-Za-z \s*]+$"
+                                         oninvalid="this.setCustomValidity('Letters only are Allowed and also this is required to fill up')"
+                                         oninput="this.setCustomValidity('')" 
+                                         required>
                                 </div>
-                               </div>
 
-                              <div class="form-group">
-                                <label> Password</label>
-                                <input type="Password" class="form-control" name="password" 
-                                       placeholder="Enter Password" 
-                                       required>
-                              </div>
-
-                              <div class="form-group">
-                                <label> Confirm Password </label>
-                                <input type="Password" class="form-control" name=" password_confirmation"
-                                       placeholder="Confirm your Password" 
-                                       required>
-                              </div>
-                             
-                               
-                                                  
-                                <div class="modal-footer">
-                                <!-- <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button> -->
-                                  <button type="submit" name="btn" class="btn btn-primary btn-block">Submit</button>
+                                <div class="form-group">
+                                  <label> Middle Name</label>
+                                  <input type="text" class="form-control" name="middlename"
+                                         placeholder="Enter Middle Name" 
+                                         pattern="[A-Za-z \s*]+$"
+                                         oninvalid="this.setCustomValidity('Letters only are Allowed and also this is required to fill up')"
+                                         oninput="this.setCustomValidity('')" 
+                                         required>
                                 </div>
-                                </form>
-                             </div>
-                      <!-- end of caategories modal -->
+
+                                <div class="form-group">
+                                  <label> Last Name</label>
+                                  <input type="text" class="form-control" name="lastname"
+                                         placeholder="Enter Last Name" 
+                                         pattern="[A-Za-z \s*]+$"
+                                         oninvalid="this.setCustomValidity('Letters only are Allowed and also this is required to fill up')"
+                                         oninput="this.setCustomValidity('')" 
+                                         required>
+                                </div>
+
+                                <div class="form-group">
+                                  <label> Address</label>
+                                  <input type="text" class="form-control" name="address"
+                                         placeholder="Enter Address" 
+                                         required>
+                                </div>
+
+                                <div class="form-group">
+                                  <label> Email</label>
+                                  <input type="email" class="form-control" name="email"
+                                         placeholder="Enter Your Email Address">
+                                </div>
+
+                                <div class="form-group">
+                                  <label> Role</label>
+                                  <div class="radio">
+                                    <input type="radio" name="role" value="1" required> Admin 
+                                    <input type="radio" name="role" value="2" required> Staff
+                                  </div>
+                                 </div>
+
+                                <div class="form-group">
+                                  <label> Password</label>
+                                  <input type="Password" class="form-control" name="password" 
+                                         placeholder="Enter Password" 
+                                         required>
+                                </div>
+
+                                <div class="form-group">
+                                  <label> Confirm Password </label>
+                                  <input type="Password" class="form-control" name=" password_confirmation"
+                                         placeholder="Confirm your Password" 
+                                         required>
+                                </div>
+                  
+                                <div class="modal-footer justify-content-between">
+                                  <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" >Cancel</button> 
+                                  <button type="submit" name="btn" class="btn btn-primary ">Submit</button>
+                                </div>
+
+                            </form>
+                         </div>
+                      <!-- end of user modal -->
                   <thead>
-
                   <tr>
                     <th>SL</th>
                     <th>Full Name</th>
@@ -137,13 +129,12 @@
                     <th>Logged in Using</th>
                     <th>Role</th>        
                     <th>Created at</th>
-                    
                   </tr>
                   </thead>
                   <tbody>
-                    
-                  	@php($i = 1)
-                  	@foreach($users  as $user)
+                  
+                	@php($i = 1)
+                	@foreach($users  as $user)
                   <tr>
                     <td>{{$i++}}</td>
                     <td>{{$user->name}} {{$user->middlename}} {{$user->lastname}}</td>
@@ -184,10 +175,8 @@
                     </td>
                     
                     <td>{{ \Carbon\Carbon::parse($user -> created_at)->diffForHumans() }}</td>
-                   
-                    
-                  
-                   </tr>
+  
+                    </tr>
              
                       <div class="modal fade" id="edit" tabindex="-1" aria-labelledby="edit" aria-hidden="true">
                       <div class="modal-dialog">
@@ -227,9 +216,7 @@
                                 </div>
                                 </form>
                               </div>
-                             
-
-
+                     
                   @endforeach
                   
                   </tbody>

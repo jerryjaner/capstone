@@ -62,7 +62,7 @@
                     <td>{{$order->order_total}}</td>
                     <td>{{$order->order_status}}
 
-                      <div class="modal fade" id="orderstatus{{$order->id}}" tabindex="-1" aria-labelledby="orderstatus{{$order->id}}" aria-hidden="true">
+                    <div class="modal fade" id="orderstatus{{$order->id}}" tabindex="-1" aria-labelledby="orderstatus{{$order->id}}" aria-hidden="true">
                         <div class="modal-dialog">
                           <div class="modal-content">
                             <div class="modal-header">
@@ -74,7 +74,7 @@
                                 @csrf
                                 
                                 <div class="form-group">
-                                    <input type="hidden" class="form-control"  name="id" value="{{$order->id}}">
+                                 <input type="hidden" class="form-control"  name="id" value="{{$order->id}}">
                                  <label> Select Order Status  </label>
                                   <select name="order_status" class="form-control"  required>
         
@@ -113,10 +113,6 @@
                         <button type="button" class="btn btn-outline-dark mt-1" data-bs-toggle="modal" data-bs-target="#edit{{$order->id}}" data-bs-whatever="@fat">
                             <i class="fas fa-edit"  title="Edit Payment Status">  </i>
                        </button>
-
-                  
-                       
-                    
                       </td>
                    </tr>
 

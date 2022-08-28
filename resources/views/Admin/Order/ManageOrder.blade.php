@@ -9,7 +9,6 @@
 <style>
   div.dataTables_wrapper div.dataTables_length select {
   width: 60px;
- 
 }
 </style>
 
@@ -58,11 +57,51 @@
           <div class="card my-5">
               <div class="card-header">
                 <h3 class="card-title">Manage Orders</h3>
+                 <button type="button" class="btn btn-info btn-sm" style="float: right;" data-bs-toggle="modal" data-bs-target="#add" data-bs-whatever="@fat"> Send Message</button>
+
+
               </div>
 
-              <!-- /.card-header -->
               <div class="card-body">
-                <table id="example1" class="table table-bordered table-striped">        
+                <table id="example1" class="table table-bordered table-striped">  
+                 <!-- add categories modal -->
+                   <div class="modal fade" id="add" tabindex="-1" aria-labelledby="add" aria-hidden="true">
+                      <div class="modal-dialog">
+                        <div class="modal-content">
+                          <div class="modal-header">
+                            <h5 class="modal-title" id="add" style="margin-left:150px;">Send Message</h5>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                          </div>
+                          <div class="modal-body">
+                          <form action="" method="post">
+
+                          <div class="form-group">
+                              <label>Sender:</label>
+                              <input type="text" name="" placeholder="Sender" style="border-right: none; border-left: none; border-top:none; margin-left: 25px; width: 350px; outline: none;" value="ADMIN">
+                            </div>
+
+                           <div class="form-group">
+                              <label>To:</label>
+                              <input type="text" name="" placeholder="To" style="border-right: none; border-left: none; border-top:none; margin-left: 57px; width: 350px; outline: none;">
+                            </div>
+
+                            <div class="form-group">
+                              <label>Message:</label>
+                              <input type="text" name="" placeholder="Message" style="border-right: none; border-left: none; border-top:none;margin-left: 10px; width: 350px; outline: none;">
+                            </div>
+                            
+
+
+                            <div class="modal-footer">
+                              <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button> 
+                              <button type="submit" name="btn" class="btn btn-primary">Send</button>
+                            </div>
+
+                          </form>
+                       </div>
+                    <!-- end of caategories modal -->
+
+
                   <thead>
                     <tr>
                      <th>SL</th>
@@ -96,7 +135,7 @@
 
                        
 
-                      <div class="modal fade" id="orderstatus{{$order->id}}" tabindex="-1" aria-labelledby="orderstatus{{$order->id}}" aria-hidden="true">
+                     <div class="modal fade" id="orderstatus{{$order->id}}" tabindex="-1" aria-labelledby="orderstatus{{$order->id}}" aria-hidden="true">
                       <div class="modal-dialog">
                         <div class="modal-content">
                           <div class="modal-header">
@@ -104,14 +143,10 @@
                             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                           </div>
                           <div class="modal-body">
-                            <form action="{{route('update_order_status')}}" method="post" >
-                            
+                            <form action="{{route('update_order_status')}}" method="post">
                                  @csrf
-
-                           
-
                               <div class="form-group">
-                                  <input type="hidden" class="form-control"  name="id" value="{{$order->id}}">
+                                <input type="hidden" class="form-control"  name="id" value="{{$order->id}}">
                                <label> Select Order Status  </label>
                                 <select name="order_status" class="form-select"  required>
       

@@ -77,9 +77,9 @@
 			<div id="ui-view">
 				<div class="card">
 					<div class="card-header"> 
-						@foreach($OrderD as $orderD)
-						<h3 style="float: right; margin-left: 50px;"> Invoice # <strong>{{$orderD -> order_id}}</strong></h3> 
-						@endforeach
+					
+					<!--	<h3 style="float: right; margin-left: 50px;"> Invoice # <strong></strong></h3> -->
+						
 						<div class="pull-right">
 						<!--  <a class="btn btn-sm btn-info" href="#" data-abc="true"><i class="fa fa-print mr-1"></i> Print</a>
 						  <a class="btn btn-sm btn-info" href="#" data-abc="true"><i class="fa fa-file-text-o mr-1"></i> Save</a> -->
@@ -98,7 +98,7 @@
 
 							<div class="col-sm-4">
 								<h5 class="mb-3"><strong>To:</strong></h5>
-								<div>Name:<strong>{{$customer -> name}} {{$customer -> middlename}} {{$customer -> lastname}}</strong></div>
+								<div>Name:<strong>{{$shipping -> name}}</strong></div>
 							    <div>Address: {{$shipping -> address}}</div>
 								<div>Email: {{$customer -> email}}</div>
 								<div>Phone: {{$shipping -> phone_no}}</div>
@@ -106,7 +106,17 @@
 							<hr>
 							<div class="col-sm-4">
 								<h5 class="mb-3"><strong>Details:</strong></h5>
-								<div>Payment :<strong> {{$payment -> payment_type}}</strong></div>
+								<div>Payment :
+										@if($payment -> payment_type == 'Cash_on_Delivery')
+
+										   <strong> Cash On Delivery </strong>
+
+										@elseif($payment -> payment_type == 'Cash_on_Pickup')
+
+										   <strong> Cash On Pickup </strong>
+										   
+										@endif
+								</div>
 								<div>Date: {{\Carbon\Carbon::parse($order->created_at)->toFormattedDateString() }}</div>
 							</div>
 							<hr>
@@ -157,12 +167,15 @@
 											<td></td>
 											<td></td>
 											<td class="right" style="text-align: center;"><strong>Total Amount: {{$sum}} </strong> </td>
-										</tr>
+										</tr>		
 
 										@endif
 
+										 @endforeach
 
-										@endforeach
+
+
+										
 									</tbody>
 								</table>            
 							</div>

@@ -14,5 +14,5 @@
       Anything you want
     </div>
     <!-- Default to the left -->
-    <strong>  2022 <a href="https://adminlte.io">Nick's Resto Bar</a>.</strong> All rights reserved.
+    <strong>  2022 <a href="">Nick's Resto Bar</a>.</strong> All rights reserved.
   </footer>

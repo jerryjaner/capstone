@@ -7,8 +7,6 @@
 
 @section('content')
 
-
-
 	<div class="container">
 		<ol class="breadcrumb w3l-crumbs">
 			<li><a href="#"><i class="fa fa-home"></i> Home</a></li> 
@@ -19,7 +17,6 @@
 <div class="products">
 	<div class="container">
 		<div class="col-md-12 product-w3ls-right">
-
 			<div class="card">
 				<h1 class="card-header text-center mt-3" style="background-color: rgba(253, 70, 62, 0.84); height: 70px; width: auto;">
 					Cart Items 
@@ -27,9 +24,7 @@
 			</div>
 			<div class="card-body">
 				<table class="table table-hover table-bordered">
-
-					<thead>
-							
+					<thead>					
 						<tr>
 						<!--	<th scope="col"><h5 style="color:Black; font-size: 18px;">SL</h5></th> -->
 							<th scope="col"><h5 style="color:Black;  font-size: 18px;">Remove</h5></th>
@@ -40,7 +35,6 @@
 							<th scope="col"><h5 style="color:Black;  font-size: 18px;">Total Price</h5></th>
 					        <th scope="col"><h5 style="color:Black;  font-size: 18px;">Grand Total Price</h5></th> 
 						</tr>
-						
 					</thead>
 			 		<tbody>
 			 			<!-- For the Order of the Customer- -->
@@ -69,15 +63,11 @@
 							 	<form action="{{route('update_cart')}}" method="post">
 							 		@csrf
 							 		<input type="hidden" name="rowId" value="{{$dish -> rowId}}">
-							    	<input type="text" name="qty" value="{{$dish -> qty}}" style="width: 35px; height: auto;" min="1">
-							 	    <input type="submit" name="btn" class="btn btn-success" value="Update">
-
+							    	<input type="number" name="qty" value="{{$dish -> qty}}" style="width: 50px; padding: 5px; margin-top: 1px; height: auto;" min="1" max="10" step="1">
+							 	    <input type="submit" name="btn" class="btn btn-success" value="Update" style="margin-top: 5px;">
 							 	</form>
 							 </td>
-
-							 <!-- For the Price -->
-
-							
+							 <!-- For the Price -->	
 						    @if($dish -> half_price == null)
 
 							    <td><p style="color:black; font-size: 17px; ">₱{{$subTotal = $dish -> price * $dish -> qty}}</p></td>
@@ -91,7 +81,6 @@
 							  <input type="hidden" value="{{$sum = $sum + $subTotal}}">
 			 					
 			 			  </tr>
-			 			  
 
 			 			<!-- This is for the end of the loop -->
 			 			@endforeach
@@ -112,30 +101,23 @@
 			 		</tbody>
 			   </table>
 			</div>
-
-		</div>
-
-				
-   
-			<!-- Button for check out -->
-
+		</div>			
+	<!-- Button for check out -->
 
 	    @if(Auth::check())
 
-		
+	    	
 		<div class="col-md-12 product-w3ls-right">
 			<a href="{{url('/shipping')}}" class="btn btn-info" style="float: right;">
 				<i class="fa fa-shopping-bag" ></i>
 				Checkout
 			</a>
+		</div>	
+	
 			
-		</div>
-
-				
 		@else
 
-
-		<!-- Button For the modal -->	
+	<!-- Button For the modal -->	
 		
 		<div class="col-md-12 product-w3ls-right">
 			<a href=""  data-toggle="modal"  data-target="#login_or_register" class="btn btn-info" style="float: right;">
@@ -143,7 +125,6 @@
 				Checkout
 			</a>
 		</div>
-		
 
 		@endif
 
@@ -191,9 +172,7 @@
 									</a>
 							    </center>
 
-
 								<h3 style="font-family: arial ;">Or</h3>
-
 								<h3 style="margin-top: 25px; font-family: arial ;">Already have an account...</h3>
 
 								<center><a href="{{route('login')}}" class="btn-block btn-primary" style="
