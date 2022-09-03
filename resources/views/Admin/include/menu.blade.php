@@ -11,7 +11,7 @@
       </li>
       <li class="nav-item d-none d-sm-inline-block">
     
-        <a href="{{route('admin_dashboard')}}" class="nav-link"><b>Nicks Resto Bar </b></a>
+        <a href="{{route('admin_dashboard')}}" class="nav-link" style="font-family: poppins;"><b>Nicks Resto Bar </b></a>
 
       </li>
       <!-- <li class="nav-item d-none d-sm-inline-block">
@@ -24,7 +24,7 @@
    <!-- <form class="form-inline ml-3">
       <div class="input-group input-group-sm">
         <input class="form-control form-control-navbar" type="search" placeholder="Search" aria-label="Search">
-        <div class="input-group-append">
+        <div class="input-group-append">  
           <button class="btn btn-navbar" type="submit">
             <i class="fas fa-search"></i>
           </button>
@@ -36,36 +36,14 @@
     <!-- Right navbar links -->
     <ul class="navbar-nav ml-auto">
       
+      <div class="dropdown" style="font-family: poppins;">
+          Hi<b> Admin </b> </span>
 
-      <li class="nav-item dropdown">
-        <!--
-          <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
-              {{ Auth::user()->name }}
-          </a>
-
-          <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
-              <a class="dropdown-item" href="{{ route('logout') }}"
-                 onclick="event.preventDefault();
-                               document.getElementById('logout-form').submit();">
-                  {{ __('Logout') }}
-              </a>
-
-              <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
-                  @csrf
-              </form>
-          </div> -
-           <a ></a> -->
-      </li>
-
-
-
-      <div class="dropdown">
-          Hi Admin<b> {{ Auth::user()->name }} </b> </span>
-        <button class="btn btn-default btn-sm dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false" style="margin-right: 10px;">
-          <i class="fas fa-user" >  </i>
+        <button class="btn btn-default btn-sm dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false" style="margin-right: 30px;">
+          <i class="fas fa-user"></i>
         </button>
-        <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
 
+        <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
           <li><a class="dropdown-item" href="{{route('admin_profile')}}">View Profile</a></li>
           <li><a class="dropdown-item"href="{{ route('logout') }}"
                  onclick="event.preventDefault();
@@ -76,8 +54,6 @@
                   </form>
               </a>
           </li>
-
-      
         </ul>
       </div>
 

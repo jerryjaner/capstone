@@ -93,6 +93,7 @@ Route::group(['prefix'=>'admin','middleware'=>['isAdmin','auth','PreventBackHist
 
     /* Report for the sales */
     Route::get('sales/report',[ReportController::class,'sales_report'])->name('sales');
+    Route::get('monthly/report',[ReportController::class,'monthly_report'])->name('monthly');
 
 });
 
@@ -137,7 +138,7 @@ Route::group(['prefix'=>'user','middleware'=>['isUser','auth','PreventBackHistor
 
    /* Check out */
 
-	Route::get('/checkOut/Payment', [CheckOutController::class, 'payment'])->name('Checkout_payment');
+	Route::get('/checkOut/payment', [CheckOutController::class, 'payment'])->name('Checkout_payment');
 	Route::post('/checkOut/NewOrder', [CheckOutController::class, 'order'])->name('new_order');
 	Route::get('/checkoutComplete', [CheckOutController::class, 'complete'])->name('order_complete');
  	
@@ -148,9 +149,13 @@ Route::group(['prefix'=>'user','middleware'=>['isUser','auth','PreventBackHistor
 
 
    /*  view order */
-   Route::get('/user/order', [UserController::class, 'user_order'])->name('view_user_order');
+  
    Route::post('cancel/order',[UserController::class,'cancel_order'])->name('cancel_customer_order');
+
+   Route::get('customer/order',[UserController::class,'customerOrder'])->name('customer_order');
+   Route::get('order/details{id}',[UserController::class,'viewOrder'])->name('view_order');
  
+
 
    
 

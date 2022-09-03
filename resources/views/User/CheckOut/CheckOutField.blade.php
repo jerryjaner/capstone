@@ -34,7 +34,7 @@
 													Cash on Delivery (COD)
 												</th>
 												<td>
-													<input type="radio" name="payment_type" value="Cash_on_Delivery">
+													<input type="radio" name="payment_type" value="Cash_on_Delivery" required>
 												</td>
 											</tr>
 
@@ -43,7 +43,7 @@
 													Cash on Pickup (COP)
 												</th>
 												<td>
-													<input type="radio" name="payment_type" value="Cash_on_Pickup" >
+													<input type="radio" name="payment_type" value="Cash_on_Pickup" required>
 												</td>
 											</tr>
 
@@ -51,7 +51,7 @@
 											<!--	<td><input style="float: right; margin-right:" type="submit" name="btn" class="btn btn-success" value="Confirm Order"></td> -->
 
 												<td>
-													<button type="submit" name="btn" class="btn btn-success" style="margin-left: 80%;">
+													<button type="submit" name="btn" class="btn btn-success" style="margin-left: 90%; outline: none;">
 													   Confirm  Order
 													</button>
 												</td>

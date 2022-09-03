@@ -19,6 +19,7 @@
 	<!-- web-fonts -->   
 	<link href="//fonts.googleapis.com/css?family=Berkshire+Swash" rel="stylesheet"> 
 	<link href="//fonts.googleapis.com/css?family=Yantramanav:100,300,400,500,700,900" rel="stylesheet">
+	<link href='https://fonts.googleapis.com/css?family=Poppins' rel='stylesheet'>
 	<!-- //web-fonts -->
 	</head>
 <body> 

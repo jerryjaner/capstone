@@ -9,7 +9,7 @@ class CategoryController extends Controller
     //
     public function index()
     {
-    	return view (view:'Admin.Category.AddCategory');
+    	return view ('Admin.Category.AddCategory');
     }
 
      public function save (Request $Request)
@@ -29,7 +29,7 @@ class CategoryController extends Controller
     {
 
     	$categories = Category::all();
-    	return view(view:'Admin.Category.ManageCategory', data: compact(var_name:'categories'));
+    	return view('Admin.Category.ManageCategory', data: compact(var_name:'categories'));
     }
 
       public function active($category_id)

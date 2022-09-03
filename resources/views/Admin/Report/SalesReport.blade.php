@@ -25,7 +25,7 @@
 		        <th style="text-align: center;">Customer Name</th>
 		        <th style="text-align: center;">Order Price Total</th>
 		        <th style="text-align: center;">Order Date</th>
-		        <th style="text-align: center;">Month</th>
+		       
 		        
 	        </tr>
 	      </thead>
@@ -37,11 +37,12 @@
 	      	<tr>
 	      		<td style="text-align: center;">{{$i++}}</td>
 	      		<td style="text-align: center;">{{$ReportOrder -> name}} {{$ReportOrder -> middlename}} {{$ReportOrder -> lastname}}</td>
-	      		<td style="text-align: center;">{{$ReportOrder -> order_total}} Pesos</td>
+	      		<td style="text-align: center;">{{$TotalAmount =  $ReportOrder -> order_total}} Pesos</td>
 	      		<td style="text-align: center;">
 	      			{{\Carbon\Carbon::parse($ReportOrder->created_at)->toFormattedDateString()}}
+	      		
 	      		</td>
-	      		<td>{{$TotalAmount = $ReportOrder -> order_total}}</td>
+	      	
 	      	</tr>
 	      	@php($sum = $sum + $TotalAmount)
  		

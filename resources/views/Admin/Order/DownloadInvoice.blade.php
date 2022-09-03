@@ -79,7 +79,7 @@
 					<div class="card-header"> 
 					
 					<!--	<h3 style="float: right; margin-left: 50px;"> Invoice # <strong></strong></h3> -->
-						
+					
 						<div class="pull-right">
 						<!--  <a class="btn btn-sm btn-info" href="#" data-abc="true"><i class="fa fa-print mr-1"></i> Print</a>
 						  <a class="btn btn-sm btn-info" href="#" data-abc="true"><i class="fa fa-file-text-o mr-1"></i> Save</a> -->
@@ -137,7 +137,7 @@
 					                    @php($i = 1)
 										@php($sum = 0)
 										@php($ship = 1)
-										@foreach($OrderD as $orderdetail)
+									@foreach($OrderD as $orderdetail)
 
 					                  <tr>
 										<td class="center" style="text-align: center;">{{$i++}}</td>
@@ -171,11 +171,8 @@
 
 										@endif
 
-										 @endforeach
+									@endforeach
 
-
-
-										
 									</tbody>
 								</table>            
 							</div>

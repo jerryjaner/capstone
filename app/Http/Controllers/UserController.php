@@ -21,6 +21,8 @@ class UserController extends Controller
    	 //	$categories = Category::where('category_status', 1) -> get();
     
    		$dishes = Dish::where('dish_status', 1) -> get();
+
+
    		return view('User.include.Home',data: compact('dishes') );
    }
 
@@ -28,10 +30,10 @@ class UserController extends Controller
    {
    // $categories = Category::where('category_status', 1) -> get();
       $categoryDish = Dish::where('category_id', $id)
-                    ->where('dish_status', 1) 
-                    ->get();
+                          ->where('dish_status', 1) 
+                          ->get();
 
-        return view('User.include.Dish',data: compact('categoryDish') );
+      return view('User.include.Dish',data: compact('categoryDish') );
    }
 
    // For the Shipping //
@@ -42,7 +44,7 @@ class UserController extends Controller
         
         $user_id = Auth::user()->id;
         $customer = User::find($user_id);
-        return view(view:'User.CheckOut.Shipping',data: compact('customer'));
+        return view('User.CheckOut.Shipping',data: compact('customer'));
       }
       else{
 
@@ -53,74 +55,58 @@ class UserController extends Controller
      // for shipping information
     public function shipping_save(Request $request)
     {
+      if(Auth::check())
+      {
+        $shipping = new Shipping();
+        $shipping->name = $request -> name;
+        $shipping->email = $request -> email;
+        $shipping->phone_no = $request -> phone_no;
+        $shipping->address = $request -> address;
+        $shipping -> save();
 
-      $shipping = new Shipping();
-      $shipping->name = $request -> name;
-      $shipping->email = $request -> email;
-      $shipping->phone_no = $request -> phone_no;
-      $shipping->address = $request -> address;
-      $shipping -> save();
+        Session::put('shipping_id', $shipping -> id);
+        return redirect() -> route('Checkout_payment');
+      }
+      else{
 
-      Session::put('shipping_id', $shipping -> id);
-      return redirect() -> route(route:'Checkout_payment'); 
+        return back();
+      }
    
     }
-    
-     
-    public function user_order()
+
+    public function customerOrder()
     {
-      // $orders = DB::table('orders')
-      //             ->join('users','orders.user_id','=', 'users.id')
-      //             ->join('order_details','orders.id','=','order_details.id')
-      //             ->select('orders.*', 'users.name','users.middlename','users.lastname','order_details.dish_name','order_details.dish_qty','order_details.dish_price')
-      //             ->get();
+      $orders = DB::table('orders')
+        ->join('users','orders.user_id','=', 'users.id')
+        ->join('payments','orders.id','=', 'payments.order_id')
+        ->select('orders.*', 'users.name','users.middlename','users.lastname' ,'payments.payment_type','payments.payment_status')
+        ->get();
 
-
-     //$orders = order::with('OrderDetail', 'User')->get();
-
-      // foreach ($orders as $order) {
-
-      //   return $order->dish_name;
-      //   # code...
-      // }
-      //           // return $orders;
-
-
-
-        //return view('User.Order.CustomerOrder',data: compact('orders'));
         
-
-       // return($orders);
-      // return view('User.Order.ViewOrder',data: compact('orders')); 
-
-       
-
-   
-    }     
-
-
-   /*
-    public function user_order()
-    {
-     
-       $customer_order = DB::table('orders')
-            ->join('users','orders.user_id','=', 'users.id')
-            ->join('order_details','orders.id','=','order_details.order_id')
-            ->select('orders.*', 'users.name','users.middlename','users.lastname','order_details.dish_name','order_details.dish_qty','order_details.dish_price')
-            ->get();
-
-      $orders = DB::table ('orders')
-       ->join('users','orders.user_id','=', 'users.id')
-            ->join('order_details','orders.id','=','order_details.id')
-            ->select('orders.*', 'users.name','users.middlename','users.lastname','order_details.dish_name','order_details.dish_qty','order_details.dish_price')
-            ->get();
-      
-
-
-            return view('User.Order.CustomerOrder',data: compact('customer_order','orders'));
-     
+      return view('User.Order.ViewOrder',data: compact('orders'));
     }
-     */
+      
+    public function ViewOrder($id)
+    {
+      
+        $order = Order::find($id);
+        $user_id = Auth::user()->id;
+        $customer = User::find($order -> user_id);
+        $OrderD = OrderDetail::where('order_id', $order-> id)->get();
+
+        // pag ang user pumunta sa order details tapos hindi nya order id yung pinuntahan nya automatic
+        // mag rereturn back sya
+
+          if($customer -> id == $user_id &&  $order -> order_status != 'Cancelled'){
+          
+             return view('User.Order.OrderDetails',data: compact('order','customer','OrderD'));
+          }
+          else
+          {
+             return back();
+          }
+        
+    }
   
     public function cancel_order(Request $request)
     {

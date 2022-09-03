@@ -32,7 +32,7 @@ class AdminController extends Controller
     public function manage()
     {
         $users = user::all();
-        return view(view:'Admin.Users.ManageUsers', data: compact(var_name:'users'));   
+        return view('Admin.Users.ManageUsers', data: compact(var_name:'users'));   
     }
 
      public function create (Request $Request)
@@ -56,7 +56,7 @@ class AdminController extends Controller
     public function profile()
     {
         $users = user::all();
-        return view(view:'Admin.Users.UserProfile', data: compact(var_name:'users')); 
+        return view('Admin.Users.UserProfile', data: compact(var_name:'users')); 
     }
 
     /*

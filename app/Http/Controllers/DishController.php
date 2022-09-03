@@ -13,7 +13,7 @@ class DishController extends Controller
     public function index(){
 
     	$categories = Category::where('category_status',1) -> get();
-    	return view(view:'Admin.Dish.AddCuisine', data: compact(var_name:'categories'));
+    	return view('Admin.Dish.AddCuisine', data: compact(var_name:'categories'));
     }
 
     public function save_dish(Request $request)

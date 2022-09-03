@@ -10,6 +10,9 @@
   div.dataTables_wrapper div.dataTables_length select {
   width: 60px;
 }
+#orderfont{
+  font-family: poppins;
+}
 </style>
 
 
@@ -56,45 +59,45 @@
 
           <div class="card my-5">
               <div class="card-header">
-                <h3 class="card-title">Manage Orders</h3>
-                 <button type="button" class="btn btn-info btn-sm" style="float: right;" data-bs-toggle="modal" data-bs-target="#add" data-bs-whatever="@fat"> Send Message</button>
-
-
+                <h3 class="card-title" id="orderfont"><b>Manage Orders</b></h3>
+                
+                 <button type="button" class="btn btn-info btn-sm" style="float: right;" data-bs-toggle="modal" data-bs-target="#add" data-bs-whatever="@fat" id="orderfont"> Send Message</button>
               </div>
 
               <div class="card-body">
                 <table id="example1" class="table table-bordered table-striped">  
-                 <!-- add categories modal -->
+
+                   <!-- add categories modal -->
                    <div class="modal fade" id="add" tabindex="-1" aria-labelledby="add" aria-hidden="true">
                       <div class="modal-dialog">
                         <div class="modal-content">
                           <div class="modal-header">
-                            <h5 class="modal-title" id="add" style="margin-left:150px;">Send Message</h5>
+                            <h5 class="modal-title" id="add" style="margin-left:150px; font-family: poppins;">Send Message</h5>
                             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                           </div>
                           <div class="modal-body">
                           <form action="" method="post">
 
                           <div class="form-group">
-                              <label>Sender:</label>
-                              <input type="text" name="" placeholder="Sender" style="border-right: none; border-left: none; border-top:none; margin-left: 25px; width: 350px; outline: none;" value="ADMIN">
+                              <label id="orderfont">Sender:</label>
+                              <input type="text" name="" placeholder="Sender" style="border-right: none; border-left: none; border-top:none; margin-left: 25px; width: 350px; outline: none;" value="ADMIN" id="orderfont">
                             </div>
 
                            <div class="form-group">
-                              <label>To:</label>
-                              <input type="text" name="" placeholder="To" style="border-right: none; border-left: none; border-top:none; margin-left: 57px; width: 350px; outline: none;">
+                              <label id="orderfont">To:</label>
+                              <input type="text" name="" placeholder="To" style="border-right: none; border-left: none; border-top:none; margin-left: 57px; width: 350px; outline: none;" id="orderfont">
                             </div>
 
                             <div class="form-group">
-                              <label>Message:</label>
+                              <label id="orderfont">Message:</label>
                               <input type="text" name="" placeholder="Message" style="border-right: none; border-left: none; border-top:none;margin-left: 10px; width: 350px; outline: none;">
                             </div>
                             
 
 
                             <div class="modal-footer">
-                              <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button> 
-                              <button type="submit" name="btn" class="btn btn-primary">Send</button>
+                              <button id="orderfont" type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button> 
+                              <button id="orderfont" type="submit" name="btn" class="btn btn-primary">Send</button>
                             </div>
 
                           </form>
@@ -104,14 +107,14 @@
 
                   <thead>
                     <tr>
-                     <th>SL</th>
-                      <th>Customer Name</th>
-                      <th>Order Price Total</th>
-                      <th>Order Status</th>
-                      <th>Order Date</th>
-                      <th>Payment Type</th>
-                      <th>Payment Status</th>
-                      <th>Action</th>
+                      <th id="orderfont">SL</th>
+                      <th id="orderfont">Customer Name</th>
+                      <th id="orderfont">Order Price Total</th>
+                      <th id="orderfont">Order Status</th>
+                      <th id="orderfont">Order Date</th>
+                      <th id="orderfont">Payment Type</th>
+                      <th id="orderfont">Payment Status</th>
+                      <th id="orderfont">Action</th>
                     </tr>
                   </thead>
                   <tbody>
@@ -123,10 +126,10 @@
               
                   <tr>
 
-                    <td>{{$i++}}</td>
-                    <td>{{$order->name}} {{$order->middlename}} {{$order -> lastname}}</td>
-                    <td>{{$order->order_total}}</td>
-                    <td> {{$order->order_status}} 
+                    <td id="orderfont">{{$i++}}</td>
+                    <td id="orderfont">{{$order->name}} {{$order->middlename}} {{$order -> lastname}}</td>
+                    <td id="orderfont">{{$order->order_total}}</td>
+                    <td id="orderfont"> {{$order->order_status}} 
 
                       <!-- 
                        <button type="button" class="btn btn-outline-dark mt-1" data-bs-toggle="modal" data-bs-target="#orderstatus{{$order->id}}" data-bs-whatever="@fat">
@@ -139,7 +142,7 @@
                       <div class="modal-dialog">
                         <div class="modal-content">
                           <div class="modal-header">
-                            <h5 class="modal-title" id="orderstatus{{$order->id}}">Update Order Status</h5>
+                            <h5 class="modal-title" id="orderstatus{{$order->id}}" style="font-family: poppins;">Update Order Status</h5>
                             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                           </div>
                           <div class="modal-body">
@@ -147,20 +150,21 @@
                                  @csrf
                               <div class="form-group">
                                 <input type="hidden" class="form-control"  name="id" value="{{$order->id}}">
-                               <label> Select Order Status  </label>
-                                <select name="order_status" class="form-select"  required>
-      
-                                    <option>On Process</option>
-                                    <option>Out of Delivery</option>
-                                    <option>Delivered</option>
-                                    <option>Cancelled</option>
+                               <label id="orderfont"> Select Order Status  </label>
+                                <select name="order_status" class="form-select"  required title="">
+                    
+                                    <option id="orderfont">On Process</option>
+                                    <option id="orderfont">On Delivery</option>
+                                    <option id="orderfont">Delivered</option>
+                                    <option id="orderfont">Cancelled</option>
 
                                 </select>                        
                               </div>
 
                                
                                  <div class="modal-footer">
-                                  <button type="submit" class="btn btn-primary">Update</button>
+                                  <button id="orderfont" type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button> 
+                                  <button id="orderfont" type="submit" class="btn btn-primary">Update</button>
                                 </div>
                             </form>
                           </div>
@@ -170,7 +174,7 @@
                     <td>{{\Carbon\Carbon::parse($order->created_at)->toFormattedDateString() }}</td>
                    
 
-                    <td>
+                    <td id="orderfont">
 
                          @if($order -> payment_type == 'Cash_on_Delivery') 
 
@@ -182,10 +186,8 @@
 
                         @endif
 
-
-
                     </td>
-                    <td>{{$order->payment_status}}</td>
+                    <td id="orderfont">{{$order->payment_status}}</td>
 
                     <td>
                       
@@ -193,14 +195,18 @@
                       <!--  action -->
 
                        <div class="btn-group">
-                        <button type="button" class="btn btn-default btn-sm dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
+                        <button id="orderfont" type="button" class="btn btn-default btn-sm dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
                           More
                         </button>
                         <ul class="dropdown-menu">
-                          <li><a class="dropdown-item" href="{{route('view_invoice',['id'=>$order->id])}}"><i class="fas fa-search-plus"  title="View Invoice"> </i> View Invoice</a></li>
-                          <li><a class="dropdown-item" href="#" type="button" data-bs-toggle ="modal" data-bs-target="#orderstatus{{$order->id}}" data-bs-whatever="@fat"> <i class="fas fa-edit"  title="Edit Order Status">  </i> Edit Order Status</a></li>      
-                          <li><a class="dropdown-item" href="#" type="button" data-bs-toggle ="modal" data-bs-target="#edit{{$order->id}}" data-bs-whatever="@fat"> <i class="fas fa-edit"  title="Edit Payment Status">  </i> Edit Payment Status</a></li>
-                          <li><a class="dropdown-item" href="{{route('delete_order',['id'=>$order->id])}}"> <i class="fas fa-trash"  title="click to delete"> </i> Delete Order</a></li>
+
+                          <li><a class="dropdown-item" href="{{route('view_invoice',['id'=>$order->id])}}" id="orderfont"><i class="fas fa-search-plus"  title="View Invoice"> </i> View Invoice</a></li>
+
+                          <li><a class="dropdown-item" href="#" type="button" data-bs-toggle ="modal" data-bs-target="#orderstatus{{$order->id}}" data-bs-whatever="@fat" id="orderfont"> <i class="fas fa-edit"  title="Edit Order Status">  </i> Edit Order Status</a></li> 
+
+                          <li><a class="dropdown-item" href="#" type="button" data-bs-toggle ="modal" data-bs-target="#edit{{$order->id}}" data-bs-whatever="@fat" id="orderfont"> <i class="fas fa-edit"  title="Edit Payment Status">  </i> Edit Payment Status</a></li>
+
+                          <li><a class="dropdown-item" href="{{route('delete_order',['id'=>$order->id])}}" id="orderfont"> <i class="fas fa-trash"  title="click to delete" > </i> Delete Order</a></li>
                         </ul>
                       </div>
 
@@ -212,7 +218,7 @@
                       <div class="modal-dialog">
                         <div class="modal-content">
                           <div class="modal-header">
-                            <h5 class="modal-title" id="edit{{$order->id}}">Update Payment Status</h5>
+                            <h5 class="modal-title" id="edit{{$order->id}}" style="font-family: poppins;">Update Payment Status</h5>
                             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                           </div>
                           <div class="modal-body">
@@ -224,18 +230,20 @@
                                     <input type="hidden" class="form-control"  name="id" value="{{$order->id}}">                    
                                  </div>
 
-                               <label> Select Payment Status  </label>
+                               <label id="orderfont"> Select Payment Status  </label>
                                 <select name="payment_status" class="form-select" required >
                                    
-                                    <option>Pending</option>
-                                    <option>Paid</option>
-                                    <option>Cancelled</option>
+
+                                    <option id="orderfont">Pending</option>
+                                    <option id="orderfont">Paid</option>
+                                    <option id="orderfont">Cancelled</option>
 
 
                                 </select>                       
                 
                                 <div class="modal-footer">
-                                  <button type="submit" class="btn btn-primary">Update</button>
+                                  <button id="orderfont" type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button> 
+                                  <button id="orderfont" type="submit" class="btn btn-primary">Update</button>
                                 </div>
                             </form>
                         </div>
@@ -249,7 +257,6 @@
 
                  
                   </tbody>
-                 
                 </table>
               </div>
               <!-- /.card-body -->

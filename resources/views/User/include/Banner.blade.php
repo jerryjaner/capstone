@@ -1,4 +1,6 @@
 
+
+
 <div class="banner">
 		<!-- header -->
 		<div class="header">
@@ -31,7 +33,7 @@
 										<div class="row">
 											<div class="col-sm-6">
 												<ul class="multi-column-dropdown">
-													<h6>Food Category</h6> 
+													<h6> Category</h6> 
 
 													@foreach($categories as $category)	
 
@@ -41,9 +43,9 @@
 													@endforeach
 												</ul>
 											</div>
-											<div class="col-sm-6">
+											<!-- <div class="col-sm-6">
 												 <ul class="multi-column-dropdown">
-												 	<!--
+												
 													<h6>Food Category</h6> 
 
 													@foreach($categories as $category)	
@@ -52,10 +54,10 @@
 														 href="{{route('category_dish',['category_id'=>$category->category_id])}}">{{$category->category_name}}</a></li>	
 
 													@endforeach
-												-->
+												
 												</ul>
 											</div> 
-											<!-- <div class="col-sm-4">
+											<div class="col-sm-4">
 												<ul class="multi-column-dropdown">
 													<h6>Box type</h6> 
 													<li><a href="menu.html">Diet</a></li> 
@@ -63,14 +65,12 @@
 													<li><a href="menu.html">Regular</a></li> 
 													<li><a href="menu.html">Special</a></li> 
 												</ul>
-											</div> -->
-											
-											<div class="clearfix"></div>
+											</div>
+											 -->
+											<!-- <div class="clearfix"></div> -->
 										</div>
 									</ul>
 								</li>
-
-							
 							
 							<!-- <li class="w3pages"><a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Menu <span class="caret"></span></a>
 									<ul class="dropdown-menu ">
@@ -94,7 +94,7 @@
 											  </li> 
 											  
 											  <li class="head-dpdn">
-											     <a href="{{route('view_user_order')}}"><i class="fa fa-cart-arrow-down" aria-hidden="true"></i> View Order</a>
+											     <a href="{{route('customer_order')}}"><i class="fa fa-cart-arrow-down" aria-hidden="true"></i> View Order</a>
 											  </li>  
 											
 										  @else
@@ -125,8 +125,6 @@
 										   
 									</ul>
 								</li> 
-
-								
 							</ul>
 						</div>
 						<div class="cart cart box_1"> 
@@ -140,7 +138,9 @@
 							</form>
 						-->
 
-							<a href="{{route('cart_show')}}" class="w3view-cart"><i class="fa fa-cart-arrow-down" aria-hidden="true"> </i> <span class="badge badge-fill Cart-Count" style="background-color: transparent;"> 0 </span></a> 
+							<a href="{{route('cart_show')}}" class="w3view-cart"><i class="fa fa-cart-arrow-down" aria-hidden="true"> </i>
+								 <span class="badge badge-fill Cart-Count" style="background-color: transparent;">  </span>
+							</a> 
 
 						</div> 
 					</nav>
@@ -152,7 +152,7 @@
 		<!-- banner-text -->
 		<div class="banner-text">	
 			<div class="container">
-			   <center>	<h2> <br> <span>Parot Mo</span></h2></center>
+			 <h2 style="font-family: Poppins; color: white; letter-spacing: 3px; font-size: 30px; line">We provide happiness through delicious food <br> <span style="font-family: Poppins; color: white;">and will comfort you </span></h2>
 				<!--<h2>We Provide happiness<br> <span> though our  delicous food and will comfort you. </span></h2>-->
 				<div class="agileits_search">
 					<!-- <form action="#" method="post">

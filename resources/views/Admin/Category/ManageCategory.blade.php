@@ -11,6 +11,9 @@
   width: 60px;
  
 }
+#userfont{
+  font-family: poppins;
+}
 </style>
 <!-- bootstrap-->
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
@@ -51,25 +54,23 @@
                   </button>
                 </div>
 
-            @endif
+            @endif  
 
           <div class="card my-5">
-
               <div class="card-header">
-                <h3 class="card-title">Manage Category</h3>
-                 <button type="button" class="btn btn-success btn-sm" style="float: right;" data-bs-toggle="modal" data-bs-target="#add" data-bs-whatever="@fat"> Add Category  </button>
+                <h3 class="card-title" id="userfont"><b>Manage Category</b></h3>
+                 <button type="button" class="btn btn-success btn-sm" style="float: right;" data-bs-toggle="modal" data-bs-target="#add" data-bs-whatever="@fat" id="userfont"> Add Category  </button>
               </div>
               
         <!-- /.card-header -->
               <div class="card-body">
                 <table id="example1" class="table table-bordered table-striped">
-
                 <!-- add categories modal -->
                    <div class="modal fade" id="add" tabindex="-1" aria-labelledby="add" aria-hidden="true">
                       <div class="modal-dialog">
                         <div class="modal-content">
                           <div class="modal-header">
-                            <h5 class="modal-title" id="add">Add Category</h5>
+                            <h5 class="modal-title"  id="add" style="font-family: poppins;">Add Category</h5>
                             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                           </div>
                           <div class="modal-body">
@@ -77,8 +78,9 @@
                                @csrf
 
                               <div class="form-group">
-                                <label> Category Name</label>
-                                <input type="text" class="form-control" name="category_name"  
+                                <label id="userfont"> Category Name</label>
+                                <input type="text" class="form-control" id="userfont" 
+                                       name="category_name"  
                                        placeholder="Enter Category Name" 
                                        pattern="[A-Za-z \s*]+$"
                                        oninvalid="this.setCustomValidity('Letters Only are Allowed')"
@@ -87,17 +89,17 @@
                               </div>
 
                               <div class="form-group">
-                                <label> Category Status</label>
+                                <label id="userfont" > Category Status</label>
                                 <div class="radio">
-                                  <input type="radio" name="category_status" value="1" required> Active          
-                                  <input type="radio" name="category_status" value="0" required> Inactive
+                                  <input id="userfont"  type="radio" name="category_status" value="1" required> Active          
+                                  <input id="userfont"  type="radio" name="category_status" value="0" required> Inactive
                                 </div>
                                </div>
                                
                                    
                                 <div class="modal-footer">
-                                  <!--<button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button> -->
-                                  <button type="submit" name="btn" class="btn btn-primary btn-block">Submit</button>
+                                  <button id="userfont" type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button> 
+                                  <button id="userfont"  type="submit" name="btn" class="btn btn-primary">Submit</button>
                                 </div>
                           </form>
                        </div>
@@ -106,10 +108,10 @@
                       
                   <thead>
                     <tr>
-                      <th>SL</th>
-                      <th>Category Name</th>
-                      <th>Status</th>
-                      <th>Action</th>
+                      <th  id="userfont">SL</th>
+                      <th  id="userfont">Category Name</th>
+                      <th  id="userfont">Status</th>
+                      <th  id="userfont">Action</th>
                     </tr>
                   </thead>
                   <tbody>
@@ -121,11 +123,11 @@
 
                   <tr>
 
-                    <td>{{$i++}}</td>
-                    <td>{{$cate->category_name}}</td>
+                    <td  id="userfont">{{$i++}}</td>
+                    <td  id="userfont">{{$cate->category_name}}</td>
                    
                     
-                     <td>
+                     <td  id="userfont">
                       @if($cate->category_status == 1)
                           Active
                       @else
@@ -134,41 +136,34 @@
 
                      </td>
                   
-                    <td>	
-                       
-
-
-                       <!--  action -->
-
-                       <div class="btn-group">
-                        <button type="button" class="btn btn-default btn-sm dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
+                    <td id="userfont">	
+                      <div class="btn-group">
+                        <button type="button" class="btn btn-default btn-sm dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false" id="userfont">
                           More
                         </button>
-                        <ul class="dropdown-menu">
+                       <ul class="dropdown-menu">
 
                          @if($cate->category_status == 1)
-                          <li><a class="dropdown-item" href="{{route('Inactive_cate',['category_id'=>$cate->category_id])}}"><i class="fas fa-arrow-down "  title="click to Inactive"></i> Click to Inactive</li>
+                          <li><a class="dropdown-item" href="{{route('Inactive_cate',['category_id'=>$cate->category_id])}}" id="userfont"><i class="fas fa-arrow-down "  title="click to Inactive"  ></i> Click to Inactive</li>
                          @else
-                          <li><a class="dropdown-item" href="{{route('category_active',['category_id'=>$cate->category_id])}}"> <i class="fas fa-arrow-up"  title="click to Active"></i> Click to Active</li>     
+                          <li><a class="dropdown-item" href="{{route('category_active',['category_id'=>$cate->category_id])}}" id="userfont"> <i class="fas fa-arrow-up"  title="click to Active"  ></i> Click to Active</li>     
                          @endif 
-                          <li><a class="dropdown-item" data-bs-toggle="modal" data-bs-target="#edit{{$cate->category_id}}" data-bs-whatever="@fat">
-                            <i class="fas fa-edit"  title="click to Change it"></i> Edit Category</li>
+                          <li><a class="dropdown-item" data-bs-toggle="modal" data-bs-target="#edit{{$cate->category_id}}" data-bs-whatever="@fat" id="userfont">
+                            <i class="fas fa-edit"  title="click to Change it"  ></i> Edit Category</li>
                             
-                          <li><a class="dropdown-item"  href="{{route('cate_delete',['category_id'=>$cate->category_id])}}">
+                          <li><a class="dropdown-item"  href="{{route('cate_delete',['category_id'=>$cate->category_id])}}"  id="userfont">
                             <i class="fas fa-trash"  title="click to Delete"></i> Delete Category </li>
                         </ul>
-                      </div>
-
+                      </div>  
                       
                     </td>
                    </tr>
-
 
                     <div class="modal fade" id="edit{{$cate->category_id}}" tabindex="-1" aria-labelledby="edit{{$cate->category_id}}" aria-hidden="true">
                       <div class="modal-dialog">
                         <div class="modal-content">
                           <div class="modal-header">
-                            <h5 class="modal-title" id="edit{{$cate->category_id}}">Update Category</h5>
+                            <h5 class="modal-title" id="edit{{$cate->category_id}}" style="font-family: poppins;">Update Category</h5>
                             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                           </div>
                           <div class="modal-body">
@@ -177,15 +172,17 @@
                                  @csrf
 
                               <div class="form-group">
-                                 <label>Category Name</label>
-                                 <input type="text" class="form-control" name="category_name" 
+                                 <label id="userfont" >Category Name</label>
+                                 <input type="text" class="form-control" id="userfont" 
+                                        name="category_name" 
                                         placeholder="Enter Category Name" 
                                         value="{{$cate->category_name}}"
                                         required>
                                  <input type="hidden" class="form-control"  name="category_id" value="{{$cate->category_id}}">
                               </div>
                               <div class="modal-footer">
-                                <button type="submit" class="btn btn-primary">Update</button>
+                                <button id="userfont" type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button> 
+                                <button type="submit" class="btn btn-primary" id="userfont" >Update</button>
                               </div>
                           </form>
                         </div>

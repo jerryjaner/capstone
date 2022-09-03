@@ -34,12 +34,12 @@
 		<img src="{{asset('FrontEndSourceFile')}}/images/i2.jpg" class="w3order-img" alt=""/>
 		<div class="container">
 			<h3 class="w3ls-title">How To Order Online Food</h3>
-			<p class="w3lsorder-text">Get your favourite food in 4 simple steps.</p>-->
+			<p class="w3lsorder-text" >Get your favourite food in 4 simple steps.</p>-->
 			<div class="order-agileinfo">  
 				<div class="col-md-3 col-sm-3 col-xs-6 order-w3lsgrids"> 
 					<div class="order-w3text"> 
 						<i class="fa fa-map" aria-hidden="true"></i> 
-						<h3>Go to Food</h3>
+						<h3 >Go to Food</h3>
 						<!--<span>1</span> -->
 					</div>
 				</div>
@@ -72,11 +72,11 @@
 	<!-- dishes -->
 	<div class="w3agile-spldishes">
 		<div class="container">
-			<h3 class="w3ls-title">Nick's Resto Foods</h3>
+			<h3 class="w3ls-title" style="font-family: Poppins;">Nick's Resto Foods</h3>
 			<div class="spldishes-agileinfo">
 				<div class="col-md-3 spldishes-w3left">
-					<h5 class="w3ltitle">Nick's Resto </h5>
-					<p>Vero vulputate enim non justo posuere placerat Phasellus mauris vulputate enim non justo enim .</p>
+					<h5 class="w3ltitle" style="font-family: Poppins;">Nick's Resto </h5>
+					<p style="font-family: Poppins;">Vero vulputate enim non justo posuere placerat Phasellus mauris justo enim .</p>
 				</div> 
 
 
@@ -115,15 +115,15 @@
 	<!-- deals -->
 	<div class="w3agile-deals">
 		<div class="container">
-			<h3 class="w3ls-title">Special Services</h3>
+			<h3 class="w3ls-title" style="font-family: Poppins;">Special Services</h3>
 			<div class="dealsrow">
 				<div class="col-md-6 col-sm-6 deals-grids">
 					<div class="deals-left">
 						<i class="fa fa-truck" aria-hidden="true"></i>
 					</div> 
 					<div class="deals-right">
-						<h4>FREE DELIVERY</h4>
-						<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce tempus justo ac </p>
+						<h4 style="font-family: Poppins;">FREE DELIVERY</h4>
+						<p style="font-family: Poppins;">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce tempus justo ac </p>
 					</div> 
 					<div class="clearfix"> </div>
 				</div> 
@@ -132,8 +132,8 @@
 						<i class="fa fa-birthday-cake" aria-hidden="true"></i>
 					</div> 
 					<div class="deals-right">
-						<h4>Party Orders</h4>
-						<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce tempus justo ac </p>
+						<h4 style="font-family: Poppins;">Party Orders</h4>
+						<p style="font-family: Poppins;">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce tempus justo ac </p>
 					</div> 
 					<div class="clearfix"> </div>
 				</div>
@@ -142,8 +142,8 @@
 						<i class="fa fa-users" aria-hidden="true"></i>
 					</div> 
 					<div class="deals-right">
-						<h4>Team up Scheme</h4>
-						<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce tempus justo ac </p>
+						<h4 style="font-family: Poppins;">Team up Scheme</h4>
+						<p style="font-family: Poppins;">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce tempus justo ac </p>
 					</div>
 					<div class="clearfix"> </div>
 				</div> 
@@ -152,8 +152,8 @@
 						<i class="fa fa-building" aria-hidden="true"></i>
 					</div> 
 					<div class="deals-right">
-						<h4>corporate orders</h4>
-						<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce tempus justo ac </p>
+						<h4 style="font-family: Poppins;">corporate orders</h4>
+						<p style="font-family: Poppins;">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce tempus justo ac </p>
 					</div>
 					<div class="clearfix"> </div>
 				</div> 

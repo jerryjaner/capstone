@@ -18,7 +18,7 @@ class CheckOutController extends Controller
     {
         if(Auth::check())
         {
-            return view(view:'User.CheckOut.CheckOutField');
+            return view('User.CheckOut.CheckOutField');
         }
         else
         {

@@ -5,7 +5,6 @@
 
 @endsection
 @section('content')
-
 <style>
     #example1{
       font-family: arial ,helvetica, sans-serif;
@@ -32,13 +31,12 @@
 </style> 
 <h3 style="text-align: center; margin-top: 30px; margin-bottom: 20px;" >View Order</h3> 
 
-<!-- Note if order cannot be cancellled -->
-
 <center>
 <table id="example1" class="table table-bordered table-striped">        
   <thead>
     <tr>
       <th style="text-align: center;">Cancel Order</th>
+      <th style="text-align:  center;">Order Id</th>
       <th style="text-align: center;">Customer Name</th>
       <th style="text-align: center;">Order Price Total</th>
       <th style="text-align: center;">Order Status</th>
@@ -46,90 +44,97 @@
       <th style="text-align: center;">Action</th>
     </tr>
   </thead>
-
   <tbody>
-   
+
     @php($i = 1)
-    @foreach($orders  as $order)
-    @if($order -> user_id == Auth::user()->id)
-   	 
-  	<tr>
-
-  		 <td>
-         cancel
-        </td>
-
-  			 		
-  	     <td style="text-align: center; color: 	black;">{{$order->name}} {{$order->middlename}} {{$order -> lastname}}</td>
-  	     <td style="text-align: center; color: 	black;">{{$order->order_total}}</td>
-
-  	     <td style="text-align: center; color: 	black;">{{$order->order_status}} </td>
-  	     <td style="text-align: center; color: 	black;">{{\Carbon\Carbon::parse($order->created_at)->toFormattedDateString()}}</td>
-  	     <td> 
-
-  	     	<!-- modal --> 	
-          <!-- modal represents the order details of the customer -->
-  				<div class="modal video-modal fade" id="myModal1{{$order->id}}" tabindex="-1" role="dialog" aria-labelledby="myModal1">
-  					<div class="modal-dialog" role="document">
-  							<div class="modal-content">
-  								<div class="modal-header">
-  									<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>						
-  								</div>
-  								<section>
-  									<div class="modal-body">
-  									    <h3 style="text-align: center; font-family: Arial sans-serif; margin-bottom: 20px; color: black;">Order Details </h3>
-  									    <table class="table table-bordered table-striped">        
-  							              <thead>
-  							                <tr>						                  								               
-          												<th style="text-align: center;">Item</th>
-          												<th style="text-align: center;">Quantity</th>
-          												<th style="text-align: center;">Price</th>
-          												<th style="text-align: center;">Total</th>								
-  							                </tr>
-  							              </thead>
-  							              <tbody>
-                              
-                             
-                      
-  							              	<tr> 		
-  							              		<td style="text-align: center; color: black;">{{$order -> dish_name}}</td>
-  							             		  <td style="text-align: center; color: black;">{{$order -> dish_qty}}</td>
-  							              		<td style="text-align: center; color: black;">{{$order -> dish_price}}</td>
-  											         	<td style="text-align: center; color:black;">{{$total = $order -> dish_price * $order -> dish_qty}}</td>						        	
-  							              	</tr>				
-                              
-                              
-          
-  							              </tbody>
-  							            </table>
-  										<div class="clearfix"> </div>
-  									</div>
-  								</section>
-  							</div>
-  					</div>
-  				</div> 
-      		<!-- end of modal -->
-
-       	  <a class="btn" data-toggle="modal" data-target="#myModal1{{$order->id}}" style="text-decoration: none; color: green;">
-			       <i class="fa fa-cart-arrow-down" aria-hidden="true"></i> Order Details
-		      </a> 
-
-		 </td>     
     
-  	</tr>	
-  @endif
-  @endforeach
-  	 	
+    @foreach ($orders  as $order)
+    @if(Auth::user()->id == $order -> user_id)
+       
+          <tr>
+             @if($order -> order_status == 'Cancelled')
+            
+             
 
+             @else
+
+             
+              @if($order->order_status == 'pending')
+              <td style="text-align: center; color:  black;">
+                 <button class="btn btn-danger btn-sm" style="outline:none;" data-toggle="modal" data-target="#CancelOrder{{$order->id}}">Cancel Order</button>
+
+                 <!-- modal for cancellation of order -->
+                  <div class="modal video-modal fade" id="CancelOrder{{$order->id}}" tabindex="-1" role="dialog" aria-labelledby="CancelOrder">
+                    <div class="modal-dialog " role="document">
+                        <div class="modal-content">
+                          <div class="modal-header">
+                          <!--   <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button> -->            
+                          </div>
+                          <section>
+                            <div class="modal-body">
+                              <form action="{{route('cancel_customer_order')}}" method="post">
+                                @csrf
+                                <input type="hidden" name="id" value="{{$order->id}}">
+
+                                <h2 style="text-align: center; font-family: Arial sans-serif;  color: black; ">
+                                   <b> Are you sure ?</b>
+                                </h2>
+                                <br>
+
+                                <h4 style="text-align: center; font-family: Arial sans-serif; color: black;">  You want to <b> Cancel </b> your order </h4> 
+                                <br>
+                                <br>
+
+                              <center>   
+                                <div>
+                                  <button type="button" class="btn btn-danger"  data-dismiss="modal" style="margin-right: 25px; width: 100px; outline: none;">No</button> 
+                            
+                                  <button type="submit" name="btn" class="btn btn-primary" style="margin-left: 25px; width: 100px; outline: none;">Yes</button>
+                                </div>  
+                              </center>  
+
+                            </form>
+                            </div>
+                          </section>
+                        </div>
+                    </div>
+                  </div>
+
+              </td>
+                
+
+
+
+
+              @else
+              <td style="text-align: center; color:  black;">
+                 <button class="btn btn-success btn-sm" disabled style="outline:none;">Cancel Order</button>
+              </td>
+
+
+              @endif
+
+               <td style="text-align: center; color:  black;"># {{$order -> id}}</td>
+               <td style="text-align: center; color:  black;">{{$order->name}} {{$order->middlename}} {{$order -> lastname}}</td>
+               <td style="text-align: center; color:  black;">{{$order->order_total}}</td>
+               <td style="text-align: center; color:  black;">{{$order->order_status}} </td>
+               <td style="text-align: center; color:  black;">{{\Carbon\Carbon::parse($order->created_at)->toFormattedDateString()}}</td>
+              
+               <td style="text-align: center;"> 
+                  <a href="{{route('view_order',['id'=>$order->id])}}"> 
+                    <i class="fa fa-cart-arrow-down" aria-hidden="true"></i> View Details
+                  </a>
+               </td>
+              @endif
+          </tr>
+         
+
+     @endif
+     @endforeach
+       
   </tbody>
 </table>
-
- <!-- View Order modal -->
-  		
-   <!-- View order Modal -->
 </center>
-  
-  	
 
 
 @endsection

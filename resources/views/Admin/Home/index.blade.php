@@ -19,8 +19,8 @@
               <!-- small box -->
               <div class="small-box bg-info">
                 <div class="inner">
-                  <h3>{{$admin}}</h3>
-                  <p>Admin Registered</p>
+                  <h3 class="dashboard">{{$admin}}</h3>
+                  <p class="dashboard">Admin Registered</p>
                 </div> 
               </div>
             </div>
@@ -29,8 +29,8 @@
               <!-- small box -->
               <div class="small-box bg-success">
                 <div class="inner">
-                  <h3>{{$staff}}</h3>
-                  <p>Staff Registered</p>
+                  <h3 class="dashboard">{{$staff}}</h3>
+                  <p class="dashboard">Staff Registered</p>
                 </div> 
               </div>
             </div>
@@ -39,8 +39,8 @@
               <!-- small box -->
               <div class="small-box bg-warning">
                 <div class="inner">
-                  <h3>{{$customers}}</h3>
-                  <p>Customers Registered</p>
+                  <h3 class="dashboard">{{$customers}}</h3>
+                  <p class="dashboard">Customers Registered</p>
                 </div>
                 <div class="icon">
                   <i class="ion ion-person-add"></i>
@@ -52,30 +52,20 @@
               <!-- small box -->
               <div class="small-box bg-danger">
                 <div class="inner">
-                  <h3>{{$newuser}}</h3>
-                  <p>User Registered Today</p>
+                  <h3 class="dashboard">{{$newuser}}</h3>
+                  <p class="dashboard">User Registered Today</p>
                 </div>
               </div>
             </div>
-
-
-
-
-
-
-            <!-- ./col -->
           </div>
-
-
           <!-- Orders count -->
            <div class="row">
             <div class="col-lg-3 col-6">
               <!-- small box -->
               <div class="small-box bg-info">
                 <div class="inner">
-                  <h3>{{$orders}}</h3>
-
-                  <p>Orders</p>
+                  <h3 class="dashboard">{{$orders}}</h3>
+                  <p class="dashboard">Orders</p>
                 </div>
                 <div class="icon">
                   <i class="ion ion-bag"></i>
@@ -88,9 +78,8 @@
               <!-- small box -->
               <div class="small-box bg-success">
                 <div class="inner">
-                  <h3>{{$pending_orders}}</h3>
-
-                  <p>Pending Orders</p>
+                  <h3 class="dashboard">{{$pending_orders}}</h3>
+                  <p class="dashboard">Pending Orders</p>
                 </div>
               </div>
             </div>
@@ -99,9 +88,8 @@
               <!-- small box -->
               <div class="small-box bg-warning">
                 <div class="inner">
-                  <h3>{{$cancelled_orders}}</h3>
-
-                  <p>Cancelled Orders</p>
+                  <h3 class="dashboard">{{$cancelled_orders}}</h3>
+                  <p class="dashboard">Cancelled Orders</p>
                 </div>
                 <div class="icon">
                   <i class="ion ion-person-add"></i>
@@ -113,15 +101,12 @@
               <!-- small box -->
               <div class="small-box bg-danger">
                 <div class="inner">
-                  <h3>{{$OnProcess_orders}}</h3>
-                  <p>On Process</p>
+                  <h3 class="dashboard">{{$OnProcess_orders}}</h3>
+                  <p class="dashboard">On Process</p>
                 </div>
               </div>
             </div>
-        
           </div>
-
-
 
           <!-- Menucount  -->
            <div class="row">
@@ -129,8 +114,8 @@
               <!-- small box -->
               <div class="small-box bg-info">
                 <div class="inner">
-                  <h3>{{$out_orders}}</h3>
-                  <p>Out For Delivery</p>
+                  <h3 class="dashboard">{{$out_orders}}</h3>
+                  <p class="dashboard">Out For Delivery</p>
                 </div> 
               </div>
             </div>
@@ -139,8 +124,8 @@
               <!-- small box -->
               <div class="small-box bg-success">
                 <div class="inner">
-                  <h3>{{$delivered_orders}}</h3>
-                  <p>Delivered</p>
+                  <h3 class="dashboard">{{$delivered_orders}}</h3>
+                  <p class="dashboard">Delivered</p>
                 </div> 
               </div>
             </div>
@@ -149,8 +134,8 @@
               <!-- small box -->
               <div class="small-box bg-warning">
                 <div class="inner">
-                  <h3>{{$categories}}</h3>
-                  <p>Categories</p>
+                  <h3 class="dashboard">{{$categories}}</h3>
+                  <p class="dashboard">Categories</p>
                 </div> 
               </div>
             </div>
@@ -160,8 +145,8 @@
               <!-- small box -->
               <div class="small-box bg-danger">
                 <div class="inner">
-                  <h3>{{$dishes}}</h3>
-                  <p>Menu / Dish</p>
+                  <h3 class="dashboard">{{$dishes}}</h3>
+                  <p class="dashboard">Menu / Dish</p>
                 </div> 
               </div>
             </div> 

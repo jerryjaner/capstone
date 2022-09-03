@@ -26,26 +26,26 @@
 				<div class="products-row">
 				@foreach($categoryDish as $dish)
 
-
+				
 					<div class="col-xs-6 col-sm-4 product-grids">
 						<div class="flip-container">
 							<div class="flipper agile-products">
 								<div class="front"> 
 
-									<img src="{{asset('BackEndSourceFile/dish_image/'.$dish->dish_image)}}" style="height: 200px; width:352px;" class="img-responsive" alt="img">
+									<img src="{{asset('BackEndSourceFile/dish_image/'.$dish->dish_image)}}" style="height: 200px; width:400px; border: none;" class="img-responsive" alt="img">
+
 									<div class="agile-product-text">  
 										<h5>{{$dish -> dish_name}}</h5>	
 									</div> 
 								</div>
 								
 								<div class="back">
-								    <h4>{{$dish -> dish_name}}</h4><br>				
-									<h6>₱{{$dish -> full_price}}</h6>
+								   <!--  <h4>{{$dish -> dish_name}}</h4><br> -->				
+									<h6 style="margin-top: 50px;">₱{{$dish -> full_price}}</h6>
 									<form action="{{route('add_to_cart')}}" method="post">
-										<input type="hidden" name="id" value="$dish -> id">
-										
+										<input type="hidden" name="id" value="$dish -> id">		
 										<!-- dapat dire mag add to cart an user kapag hindi pa nakakalogin -->									 
-										<a href="#" data-toggle="modal" data-target="#myModal1{{$dish -> id}}" style="text-decoration: none;">
+										<a href="#" data-toggle="modal" data-target="#myModal2{{$dish -> id}}" style="text-decoration: none;">
 											<i class="fa fa-cart-plus" aria-hidden="true"></i> Add to cart
 										</a>				
 									</form>
@@ -54,8 +54,8 @@
 						</div> 
 					</div> 
 
-				<!-- modal --> 
-					<div class="modal video-modal fade" id="myModal1{{$dish -> id}}" tabindex="-1" role="dialog" aria-labelledby="myModal1">
+				<!--  dating modal sa dish--> 
+					<!-- <div class="modal video-modal fade" id="myModal1{{$dish -> id}}" tabindex="-1" role="dialog" aria-labelledby="myModal1">
 						<div class="modal-dialog" role="document">
 							<div class="modal-content">
 								<div class="modal-header">
@@ -64,7 +64,7 @@
 								<section>
 									<div class="modal-body">
 									   @if(Auth::check())	
-									   <!--  if user are logged in -->
+								
 										<div class="col-md-5 modal_body_left">	
 											<img src="{{asset('BackEndSourceFile/dish_image/'.$dish->dish_image)}}" style="height: 300px; width:500px; border:1px solid black;"  alt="Nick's Menu" class="img-responsive">
 										</div>
@@ -87,17 +87,10 @@
 									 		</form>
 										</div> 
 										@else
-										  <!--	if user are not registered -->
+										
 										  <div class="col-md-12">
 												<div class="card">
-													<div class="card-body" style="margin-bottom: 10px;">
-													   <!-- 
-													   	 <h2 class="text-center" style="margin-bottom: 20px;">
-															Nick's Resto Bar & Cafe-Restaurant
-														</h2>
-													    -->
-														
-													</div>
+													
 													<div class="text-center" style="margin-top:50px;">
 														<h3 style="font-family: arial ;">Are you a New member...!</h3>
 
@@ -143,10 +136,105 @@
 								</section>
 							</div>
 						</div>
-					</div> 
+					</div>  -->
 				<!-- //modal -->
-					
-					 
+
+			    <!--- Modal 2 -->
+			    	<div class="modal video-modal fade" id="myModal2{{$dish -> id}}" tabindex="-1" role="dialog" aria-labelledby="myModal2">
+										<div class="modal-dialog" role="document">
+											<div class="modal-content">
+												<div class="modal-header">
+													<!-- <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>		 -->				
+												</div>
+												<section>
+													<div class="modal-body">
+													    @if(Auth::check())
+														<div class="col-md-12">	
+															<img src="{{asset('BackEndSourceFile/dish_image/'.$dish->dish_image)}}" style="height: 300px; width:500px;"  alt="Nick's Menu" class="img-responsive">
+														</div>
+
+														<div class="col-md-12"> 
+															<h3 style="text-align: left; margin-top: 8px; color: orange;">
+																{{$dish -> dish_name}}        
+																<span style="color: black; float: right;">₱{{$dish -> full_price}}</span>
+															</h3><br>
+
+															<form action="{{route('add_to_cart')}}" method="post">
+																@csrf
+																<input type="hidden" name="id" value="{{$dish->id}}">
+																 <b> Quantity: </b> 
+
+																 <input type="number"
+																	    min="1" max="10" step="1" 
+																	    name="qty" 
+																 		style="padding: 3px; margin-left:10px; border-top:none; border-right: none; border-left: none; outline: none;" 
+																 		required><br>
+
+																  <p class="single-price-text" style="text-align: center; margin-top: 10px; margin-bottom: 5px; overflow: hidden;">{{$dish -> dish_detail}}</p>
+
+															 
+
+																<button type="submit" class="btn btn-primary" style=" float: right; outline: none;">
+															       <i class="fa fa-cart-plus" aria-hidden="true"></i> 
+															       Add to cart
+															   </button>
+
+															   <button type="button" class="btn btn-danger" data-dismiss="modal" style="float: right; outline: none; margin-right: 5px;">
+															   		Cancel
+															   	</button>  
+
+													 		</form>
+														</div>
+														@else
+														  <!--	if user are not registered -->
+														  <div class="col-md-12">
+																<div class="card">
+																	<div class="text-center" style="margin-top:50px;">
+																		<h3 style="font-family: arial ;">Are you a New member...!</h3>
+																		<center>
+																			<a href="{{route('register')}}" class="btn-block btn-success" style="
+																														margin-top: 25px;
+																														padding:10px 15px;
+																														width: 300px; 
+																														font-size: 25px;
+																														font-family: times new roman;
+																														margin-bottom: 25px;">
+																			<span  class="mt-5">Register</span>
+																			</a>
+																	    </center>
+
+
+																		<h3 style="font-family: arial ;">Or</h3>
+
+																		<h3 style="margin-top: 25px; font-family: arial ;">Already have an account...</h3>
+
+																		<center><a href="{{route('login')}}" class="btn-block btn-primary" style="
+																														margin-top: 25px;
+																														padding:10px 15px;
+																														width:300px; 
+																														font-size: 25px;
+																														font-family: times new roman;
+																														margin-bottom: 25px;">
+																			<span class="mt-5">Login</span>
+																		</a></center>
+																	</div>
+																</div>
+														  </div>	
+														@endif
+
+
+
+
+														<div class="clearfix"> </div>
+													</div>
+												</section>
+											</div>
+										</div>
+					</div> 
+
+			    <!-- End of modal 2 -->
+				
+	
 					
 				@endforeach
 					
@@ -186,7 +274,7 @@
 <!--<div class="container">  -->
 <div>
 	<div class="w3agile-deals prds-w3text"> 
-		<h5>Order na tabi kamo</h5>
+		<h5></h5>
 	</div>
 </div>
 <!-- deals 

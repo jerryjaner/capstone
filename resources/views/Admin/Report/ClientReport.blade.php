@@ -29,6 +29,7 @@ Report of Customer
                       <th>Full Name</th>
                       <th>Address</th>
                       <th>Email</th>
+                      <th>Date</th>
                       <th>Logged in Using</th>
                       <th>Role</th>
                      </tr>
@@ -53,6 +54,7 @@ Report of Customer
                         @endif
                       </td>
                       <td>{{$user -> email}}</td>
+                      <td>{{\Carbon\Carbon::parse($user->created_at)->toFormattedDateString() }}</td>
                       <td>
                         @if($user -> google_id)
                            Google Account

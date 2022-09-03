@@ -13,7 +13,7 @@
 		<div class="container"> 
 			<h3 class="w3ls-title w3ls-title1">Enter Your Shipping Information</h3>  
 
-			<p class="w3ls-title w3ls-title1 text-center"> If You can change your Shipping Information</p>
+			<p class="w3ls-title w3ls-title1 text-center"> Please Fill up valid Shipping Information</p>
 
 			<div class="login-agileinfo"> 
 				<form action="{{route('store_shipping')}}" method="post"> 
@@ -21,26 +21,52 @@
 
 					@csrf
 					
-					<label> Full Name</label>
-					<input class="agile-ltext" type="text" name="name" placeholder="Fullname"  value="{{$customer-> name}}  {{ Auth::user()->middlename }}. {{ Auth::user()->lastname }}" required>
+				<!-- 	<label> Full Name</label> -->
+					<input class="agile-ltext" type="text" name="name" placeholder="Enter your FullName" required>
 				    <input type="hidden" class="form-control"  name="user_id" value="{{$customer->user_id}}">
 
-					<label> Email</label>
-					<input class="agile-ltext" type="email" name="email" placeholder="Your Email" value="{{$customer-> email}}" required>
+				<!-- 	<label> Email</label> -->
+					<input class="agile-ltext" type="email" name="email" placeholder="Enter your Email" required>
 
-					<label> Phone Number</label>
+					<!-- <label> Phone Number</label> -->
 					<input class="agile-ltext" type="text" name="phone_no" min="0" maxlength="11" placeholder="Phone Number" required>			
 
-					<label> Address</label>
+					<!-- <label> Address</label> -->
 					<input class="agile-ltext" type="text" name="address" placeholder="Enter Your Address" required>
 
 				
 					<div class="wthreelogin-text"> 
 						<ul> 
 							<li>
-								<label class="checkbox"><input type="checkbox" name="checkbox"><i></i> 
-									<span> I agree to the terms of service</span> 
+								<label class="checkbox">
+									<input type="checkbox" name="checkbox" required><i></i> 
+									<!-- <span> I agree to the terms of service</span>  -->
+								
+									<a href="#" data-toggle="modal" data-target="#myModal1" style="text-decoration: none;">
+										 I agree to the terms of service
+									</a>
+
+									<!-- modal --> 
+									<div class="modal video-modal fade" id="myModal1" tabindex="-1" role="dialog" aria-labelledby="myModal1">
+										<div class="modal-dialog" role="document">
+											<div class="modal-content">
+												<div class="modal-header">
+													<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>						
+												</div>
+												<section>
+													<div class="modal-body">
+													  terms and condition
+														<div class="clearfix"> </div>
+													</div>
+												</section>
+											</div>
+										</div>
+									</div> 
+								<!-- //modal -->
+				
 								</label>  
+
+
 							</li> 
 						</ul>
 						<div class="clearfix"> </div>

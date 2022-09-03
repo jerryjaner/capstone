@@ -45,6 +45,11 @@
 					    line-height: 1.5;
 					    border-radius: .2rem;
 					}
+					#invoicefont{
+						font-family: poppins;
+					}
+
+
 		</style>
 	</head>
 	<body>
@@ -57,10 +62,10 @@
 					
 					<div class="card ">
 						<div class="card-header"> 
-							<a class="btn btn-info btn-sm" style="float: right;" href="{{route('download_invoice',['id'=>$order->id])}}">
-       						     <b>Print / Download Invoice </b>
-      			   			 </a>
-							
+						<a class="btn btn-info btn-sm" style="float: right;" href="{{route('download_invoice',['id'=>$order->id])}}" id="invoicefont">
+   						     <b>Print / Download Invoice </b>
+  			   			 </a>
+						
 							<!--- for the invoice -->
 							
 							<div class="pull-right">
@@ -71,24 +76,24 @@
 						<div class="card-body">
 							<div class="row mb-4">
 								<div class="col-sm-4">
-									<h5 class="mb-3"> <strong>From:</strong> </h5>
-									<div>Name: <strong>Nicks Resto Bar & Cafe Restaurant</strong></div>
-									<div>Address: Gadgaron Matnog Sorsogon</div>
-									<div>Email: Nicks@gmail.com</div>
-									<div>Phone: 09706677438</div>
+									<h5 class="mb-3" id="invoicefont"> <strong>From:</strong> </h5>
+									<div id="invoicefont">Name: <strong>Nicks Resto Bar & Cafe Restaurant</strong></div>
+									<div id="invoicefont">Address: Gadgaron Matnog Sorsogon</div>
+									<div id="invoicefont">Email: Nicks@gmail.com</div>
+									<div id="invoicefont">Phone: 09706677438</div>
 								</div>
 
 								<div class="col-sm-4">
-									<h5 class="mb-3"><strong>To:</strong></h5>
-									<div>Name: <strong>{{$shipping -> name}}</strong></div>
-								    <div>Address: {{$shipping -> address}}</div>
-									<div>Email: {{$customer -> email}}</div>
-									<div>Phone: {{$shipping -> phone_no}}</div>
+									<h5 class="mb-3"  id="invoicefont"><strong>To:</strong></h5>
+									<div  id="invoicefont">Name: <strong>{{$shipping -> name}}</strong></div>
+								    <div  id="invoicefont">Address: {{$shipping -> address}}</div>
+									<div  id="invoicefont">Email: {{$customer -> email}}</div>
+									<div  id="invoicefont">Phone: {{$shipping -> phone_no}}</div>
 								</div>
 
 								<div class="col-sm-4">
-									<h5 class="mb-3"><strong>Details:</strong></h5>
-									<div>Payment :
+									<h5 class="mb-3"  id="invoicefont"><strong>Details:</strong></h5>
+									<div  id="invoicefont">Payment :
 										
 										@if($payment -> payment_type == 'Cash_on_Delivery')
 
@@ -101,7 +106,7 @@
 										@endif
 										      
 									</div>
-									<div>Date: {{\Carbon\Carbon::parse($payment -> created_at)->toFormattedDateString() }}</div>
+									<div  id="invoicefont">Date: {{\Carbon\Carbon::parse($payment -> created_at)->toFormattedDateString() }}</div>
 								</div>
 						</div>
 
@@ -109,11 +114,11 @@
 							<table class="table table-striped">
 								<thead>
 									<tr>
-									<th class="center">#</th>
-									<th>Item</th>
-									<th class="center">Quantity</th>
-									<th class="right">Price</th>
-									<th class="right">Total</th>
+									<th id="invoicefont">#</th>
+									<th id="invoicefont">Item</th>
+									<th id="invoicefont">Quantity</th>
+									<th id="invoicefont">Price</th>
+									<th id="invoicefont">Total</th>
 									</tr>
 								</thead>
 								<tbody>
@@ -123,12 +128,11 @@
 
 									@foreach($OrderD as $orderdetail)
 									<tr>
-										<td class="center">{{$i++}}</td>
-										<td class="left">{{$orderdetail -> dish_name}}</td>
-										
-										<td class="center">{{$orderdetail -> dish_qty}}</td>
-										<td class="right">{{$orderdetail -> dish_price}}</td>
-										<td class="right">{{$total = $orderdetail -> dish_price * $orderdetail -> dish_qty}}</td>
+										<td  id="invoicefont" >{{$i++}}</td>
+										<td  id="invoicefont">{{$orderdetail -> dish_name}}</td>	
+										<td  id="invoicefont">{{$orderdetail -> dish_qty}}</td>
+										<td  id="invoicefont">{{$orderdetail -> dish_price}}</td>
+										<td  id="invoicefont">{{$total = $orderdetail -> dish_price * $orderdetail -> dish_qty}}</td>
 									</tr>
 									@php($sum = $sum + $total)
 									@php ($totalAmount = $sum + $ship)
@@ -137,22 +141,22 @@
 							</table>
 						</div>
 						<div class="row">
-						 <div class="col-lg-4 col-sm-5"><br><br><br><h3>Thank You For Your Order :)</h3></div> 
-						<div class="col-lg-3 col-sm-4 ml-auto " style="margin-left: 1000px;">
-							<table class="table table-clear">
+						 <div class="col-lg-4 col-sm-5"  id="invoicefont"><br><br><br><h3>Thank You For Your Order :)</h3></div> 
+						<div class="col-lg-3 col-sm-4 ml-auto " style="margin-left: 1000px;"  id="invoicefont">
+							<table class="table table-clear" >
 								<tbody>
 
 									@if($payment -> payment_type == 'Cash_on_Delivery')
-									<tr>
-										<td class="right"><strong> Shipping Fee : 1</strong></td>
+									<tr >
+										<td  id="invoicefont"><strong> Shipping Fee : 1</strong></td>
 									</tr>
 									<tr>
-										<td class="right"><strong>Total Amount: {{$totalAmount}} </strong> </td>
+										<td  id="invoicefont"><strong>Total Amount: {{$totalAmount}} </strong> </td>
 									</tr>
 
 									@else
 									<tr>
-										<td class="right"><strong>Total Amount: {{$sum}} </strong> </td>
+										<td  id="invoicefont"><strong>Total Amount: {{$sum}} </strong> </td>
 									</tr>
 
 									@endif

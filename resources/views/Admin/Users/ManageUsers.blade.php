@@ -15,6 +15,10 @@
   width: 60px;
  
 }
+
+#add_user{
+  font-family: poppins;
+}
 </style>
 
   @if(Session::get('added_msg'))
@@ -27,12 +31,14 @@
   @endif
           <div class="card my-5">
               <div class="card-header">
-                <h3 class="card-title">Manage User</h3>
-                    <button type="button" class="btn btn-success btn-sm" style="float: right;" data-bs-toggle="modal" data-bs-target="#add" data-bs-whatever="@fat"> Add User  </button>
+                <h3 class="card-title" id ="add_user"><b>Manage User</b></h3>
+                    <button type="button" class="btn btn-success btn-sm" style="float: right;" data-bs-toggle="modal" data-bs-target="#add" data-bs-whatever="@fat" id="add_user">
+                       Add User 
+                    </button>
               </div>   
               <!-- /.card-header -->
               <div class="card-body">
-                <table id="example1" class="table table-bordered table-striped">
+                <table id="example2" class="table table-bordered table-striped">
 
                   <!-- add user modal -->
                    <div class="modal fade" id="add" tabindex="-1" aria-labelledby="add" aria-hidden="true">
@@ -48,7 +54,7 @@
                                  @csrf
 
                                 <div class="form-group">
-                                  <label> First Name</label>
+                                  <label style="font-family: poppins"> First Name</label>
                                   <input type="text" class="form-control" name="name" 
                                          placeholder="Enter First Name" 
                                          pattern="[A-Za-z \s*]+$"
@@ -122,13 +128,13 @@
                       <!-- end of user modal -->
                   <thead>
                   <tr>
-                    <th>SL</th>
-                    <th>Full Name</th>
-                    <th>Address</th>
-                    <th>Email</th>
-                    <th>Logged in Using</th>
-                    <th>Role</th>        
-                    <th>Created at</th>
+                    <th style="font-family: poppins">SL</th>
+                    <th style="font-family: poppins">Full Name</th>
+                    <th style="font-family: poppins">Address</th>
+                    <th style="font-family: poppins">Email</th>
+                    <th style="font-family: poppins">Logged in Using</th>
+                    <th style="font-family: poppins">Role</th>        
+                    <th style="font-family: poppins">Created at</th>
                   </tr>
                   </thead>
                   <tbody>
@@ -136,9 +142,9 @@
                 	@php($i = 1)
                 	@foreach($users  as $user)
                   <tr>
-                    <td>{{$i++}}</td>
-                    <td>{{$user->name}} {{$user->middlename}} {{$user->lastname}}</td>
-                    <td>
+                    <td style="font-family: poppins">{{$i++}}</td>
+                    <td style="font-family: poppins">{{$user->name}} {{$user->middlename}} {{$user->lastname}}</td>
+                    <td style="font-family: poppins">
                        @if($user->address == null)
 
                             N/A
@@ -149,17 +155,16 @@
                         @endif
                     </td>
                     
-                    <td>{{$user -> email}}</td>
+                    <td style="font-family: poppins">{{$user -> email}}</td>
                     
-                    <td>
+                    <td style="font-family: poppins">
                         @if($user -> google_id)
                            Google Account
                         @else
                            Nick's Resto Bar System 
                         @endif
-                    </td>
-
-                    <td>
+                    </td >
+                    <td style="font-family: poppins">
                           @if($user ->role == 1)
 
                                   Admin
@@ -174,7 +179,7 @@
                           
                     </td>
                     
-                    <td>{{ \Carbon\Carbon::parse($user -> created_at)->diffForHumans() }}</td>
+                    <td style="font-family: poppins">{{ \Carbon\Carbon::parse($user -> created_at)->diffForHumans() }}</td>
   
                     </tr>
              
