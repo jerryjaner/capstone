@@ -106,14 +106,23 @@
 
 	    @if(Auth::check())
 
-	    	
-		<div class="col-md-12 product-w3ls-right">
-			<a href="{{url('/shipping')}}" class="btn btn-info" style="float: right;">
-				<i class="fa fa-shopping-bag" ></i>
-				Checkout
-			</a>
-		</div>	
-	
+	 	    @foreach($CartDish as $dish) 
+
+		 	   	@if($dish -> rowId != null)
+		    	
+					<div class="col-md-12 product-w3ls-right">
+						<a href="{{url('/shipping')}}" class="btn btn-info" style="float: right;">
+							<i class="fa fa-shopping-bag" ></i>
+							Checkout
+						</a>
+					</div>	
+
+				@else
+
+				@endif
+
+
+		    @endforeach
 			
 		@else
 

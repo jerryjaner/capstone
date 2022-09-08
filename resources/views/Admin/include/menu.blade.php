@@ -34,17 +34,15 @@
   -->
 
     <!-- Right navbar links -->
-    <ul class="navbar-nav ml-auto">
-      
+    <ul class="navbar-nav ml-auto">    
       <div class="dropdown" style="font-family: poppins;">
           Hi<b> Admin </b> </span>
-
         <button class="btn btn-default btn-sm dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false" style="margin-right: 30px;">
           <i class="fas fa-user"></i>
         </button>
 
         <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
-          <li><a class="dropdown-item" href="{{route('admin_profile')}}">View Profile</a></li>
+          <li><a class="dropdown-item" href="{{route('admin_profile')}}">Profile</a></li>
           <li><a class="dropdown-item"href="{{ route('logout') }}"
                  onclick="event.preventDefault();
                                document.getElementById('logout-form').submit();">Logout

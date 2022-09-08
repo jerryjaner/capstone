@@ -154,10 +154,14 @@
 														</div>
 
 														<div class="col-md-12"> 
-															<h3 style="text-align: left; margin-top: 8px; color: orange;">
+															<h3 style="text-align: center; margin-top: 8px; color: orange;">
 																{{$dish -> dish_name}}        
-																<span style="color: black; float: right;">₱{{$dish -> full_price}}</span>
-															</h3><br>
+																
+															</h3>
+														    <h3 style="margin-top: 5px; margin-bottom: 5px;">
+														    	₱{{$dish -> full_price}}
+														    </h3>
+
 
 															<form action="{{route('add_to_cart')}}" method="post">
 																@csrf
@@ -170,9 +174,12 @@
 																 		style="padding: 3px; margin-left:10px; border-top:none; border-right: none; border-left: none; outline: none;" 
 																 		required><br>
 
-																  <p class="single-price-text" style="text-align: center; margin-top: 10px; margin-bottom: 5px; overflow: hidden;">{{$dish -> dish_detail}}</p>
-
-															 
+																  <h5 class="single-price-text" style="text-align: center; 
+																  								margin-top: 15px; margin-bottom: 20px;
+																  								overflow: hidden;">
+																  	{{$dish -> dish_detail}}
+																  	
+																  </h5>
 
 																<button type="submit" class="btn btn-primary" style=" float: right; outline: none;">
 															       <i class="fa fa-cart-plus" aria-hidden="true"></i> 
@@ -189,8 +196,13 @@
 														  <!--	if user are not registered -->
 														  <div class="col-md-12">
 																<div class="card">
-																	<div class="text-center" style="margin-top:50px;">
-																		<h3 style="font-family: arial ;">Are you a New member...!</h3>
+																	<center>
+																		<img src="{{asset('/BackEndSourceFile')}}/Nicks_logo/nickslogo.jpg" style="width: 100px; border-radius: 50%; " alt="Nicks_logo"> 
+																	</center>
+																	
+
+																	<div class="text-center" style="margin-top:20px;">
+																		<h3 style="font-family: arial ;">Are you a New member ?</h3>
 																		<center>
 																			<a href="{{route('register')}}" class="btn-block btn-success" style="
 																														margin-top: 25px;
@@ -206,7 +218,7 @@
 
 																		<h3 style="font-family: arial ;">Or</h3>
 
-																		<h3 style="margin-top: 25px; font-family: arial ;">Already have an account...</h3>
+																		<h3 style="margin-top: 25px; font-family: arial ;">Already have an Account ?</h3>
 
 																		<center><a href="{{route('login')}}" class="btn-block btn-primary" style="
 																														margin-top: 25px;

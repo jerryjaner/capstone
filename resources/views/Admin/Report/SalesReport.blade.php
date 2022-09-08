@@ -33,24 +33,26 @@
 	      	@php($i = 1)
 	      	@php($sum = 0)
             @foreach($orders  as $ReportOrder)
-           
+            	@if(\Carbon\Carbon::parse($ReportOrder -> created_at)->Format('F') == 'August')
 	      	<tr>
+
 	      		<td style="text-align: center;">{{$i++}}</td>
 	      		<td style="text-align: center;">{{$ReportOrder -> name}} {{$ReportOrder -> middlename}} {{$ReportOrder -> lastname}}</td>
 	      		<td style="text-align: center;">{{$TotalAmount =  $ReportOrder -> order_total}} Pesos</td>
 	      		<td style="text-align: center;">
-	      			{{\Carbon\Carbon::parse($ReportOrder->created_at)->toFormattedDateString()}}
+	      			{{\Carbon\Carbon::parse($ReportOrder->created_at)->Format('F')}}
 	      		
 	      		</td>
-	      	
+	      		
 	      	</tr>
 	      	@php($sum = $sum + $TotalAmount)
- 		
+
+	      		@endif
 	      	@endforeach  
 	      </tbody>
 	  </table>
 		  <div style="margin-top: 10px;">
-		  	 <h3>Total Amount of Orders: Php {{$sum}}</h3>
+		  	 <p><b>Total Amount of Orders: Php {{$sum}}</b></p>
 		  </div>
 	</div>
 </div>

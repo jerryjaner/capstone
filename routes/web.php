@@ -1,7 +1,6 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\StaffController;
@@ -13,9 +12,7 @@ use App\Http\Controllers\OrderController;
 use App\Http\Controllers\ReportController;
 use App\Http\Controllers\GoogleLoginController;
 use App\Http\Controllers\FacebookLoginController;
-
-
-
+use App\Http\Controllers\MessageController;
 use Illuminate\Support\Facades\Auth;
 
 /*
@@ -94,6 +91,13 @@ Route::group(['prefix'=>'admin','middleware'=>['isAdmin','auth','PreventBackHist
     /* Report for the sales */
     Route::get('sales/report',[ReportController::class,'sales_report'])->name('sales');
     Route::get('monthly/report',[ReportController::class,'monthly_report'])->name('monthly');
+
+
+
+    /* Message Customer */
+    Route::get('message',[MessageController::class,'message_customer'])->name('message');
+
+
 
 });
 

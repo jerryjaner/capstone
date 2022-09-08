@@ -31,7 +31,11 @@
   <!-- /.login-logo -->
   <div class="card">
     <div class="card-body login-card-body">
-      <p class="login-box-msg">Sign in to start your session</p>
+     <center>
+        <img src="{{asset('/BackEndSourceFile')}}/Nicks_logo/nickslogo.jpg"  style="width: 100px; border-radius: 50%; margin-bottom: 20px;" alt="User Image"> 
+     </center>
+     
+     <!--  <p class="login-box-msg">Sign in to start your session</p> -->
 
     @if(Session('sms'))
     <div class="alert alert-warning alert-dismissible fade show" role="alert">

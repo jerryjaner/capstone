@@ -60,15 +60,15 @@
           <div class="card my-5">
               <div class="card-header">
                 <h3 class="card-title" id="orderfont"><b>Manage Orders</b></h3>
-                
-                 <button type="button" class="btn btn-info btn-sm" style="float: right;" data-bs-toggle="modal" data-bs-target="#add" data-bs-whatever="@fat" id="orderfont"> Send Message</button>
+               <!--  
+                 <button type="button" class="btn btn-info btn-sm" style="float: right;" data-bs-toggle="modal" data-bs-target="#add" data-bs-whatever="@fat" id="orderfont"> Send Message</button> -->
               </div>
 
               <div class="card-body">
                 <table id="example1" class="table table-bordered table-striped">  
 
                    <!-- add categories modal -->
-                   <div class="modal fade" id="add" tabindex="-1" aria-labelledby="add" aria-hidden="true">
+                   <!-- <div class="modal fade" id="add" tabindex="-1" aria-labelledby="add" aria-hidden="true">
                       <div class="modal-dialog">
                         <div class="modal-content">
                           <div class="modal-header">
@@ -101,7 +101,7 @@
                             </div>
 
                           </form>
-                       </div>
+                       </div> -->
                     <!-- end of caategories modal -->
 
 
@@ -129,7 +129,7 @@
                     <td id="orderfont">{{$i++}}</td>
                     <td id="orderfont">{{$order->name}} {{$order->middlename}} {{$order -> lastname}}</td>
                     <td id="orderfont">{{$order->order_total}}</td>
-                    <td id="orderfont"> {{$order->order_status}} 
+                    <td id="orderfont"> {{$order->order_status}}
 
                       <!-- 
                        <button type="button" class="btn btn-outline-dark mt-1" data-bs-toggle="modal" data-bs-target="#orderstatus{{$order->id}}" data-bs-whatever="@fat">
@@ -138,7 +138,7 @@
 
                        
 
-                     <div class="modal fade" id="orderstatus{{$order->id}}" tabindex="-1" aria-labelledby="orderstatus{{$order->id}}" aria-hidden="true">
+                    <div class="modal fade" id="orderstatus{{$order->id}}" tabindex="-1" aria-labelledby="orderstatus{{$order->id}}" aria-hidden="true">
                       <div class="modal-dialog">
                         <div class="modal-content">
                           <div class="modal-header">

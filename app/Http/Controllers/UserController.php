@@ -16,8 +16,7 @@ use Illuminate\Http\Request;
 class UserController extends Controller
 {
 
-   public function index()
-   {
+   public function index(){
    	 //	$categories = Category::where('category_status', 1) -> get();
     
    		$dishes = Dish::where('dish_status', 1) -> get();
@@ -26,8 +25,7 @@ class UserController extends Controller
    		return view('User.include.Home',data: compact('dishes') );
    }
 
-   public function dish_show($id)
-   {
+   public function dish_show($id){
    // $categories = Category::where('category_status', 1) -> get();
       $categoryDish = Dish::where('category_id', $id)
                           ->where('dish_status', 1) 
@@ -37,8 +35,7 @@ class UserController extends Controller
    }
 
    // For the Shipping //
-   public function shipping()
-   {
+   public function shipping(){
       if(Auth::check())
       {
         
@@ -53,8 +50,7 @@ class UserController extends Controller
      
    }
      // for shipping information
-    public function shipping_save(Request $request)
-    {
+    public function shipping_save(Request $request){
       if(Auth::check())
       {
         $shipping = new Shipping();
@@ -74,8 +70,8 @@ class UserController extends Controller
    
     }
 
-    public function customerOrder()
-    {
+    public function customerOrder(){
+
       $orders = DB::table('orders')
         ->join('users','orders.user_id','=', 'users.id')
         ->join('payments','orders.id','=', 'payments.order_id')
@@ -86,8 +82,7 @@ class UserController extends Controller
       return view('User.Order.ViewOrder',data: compact('orders'));
     }
       
-    public function ViewOrder($id)
-    {
+    public function ViewOrder($id){
       
         $order = Order::find($id);
         $user_id = Auth::user()->id;
@@ -108,8 +103,7 @@ class UserController extends Controller
         
     }
   
-    public function cancel_order(Request $request)
-    {
+    public function cancel_order(Request $request){
         $order= Order::find( $request -> id);
         $order -> order_status = 'Cancelled'; 
         $order->save();

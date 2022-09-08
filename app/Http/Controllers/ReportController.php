@@ -31,50 +31,71 @@ class ReportController extends Controller
 
     public function sales_report()
     {
-        $orders = DB::table('orders')
-        ->join('users','orders.user_id','=', 'users.id')
-        ->join('payments','orders.id','=', 'payments.order_id')
-        ->select('orders.*', 'users.name','users.middlename','users.lastname' ,'payments.payment_type','payments.payment_status')
+         $orders = DB::table('orders')
+         ->join('users','orders.user_id','=', 'users.id')
+         ->join('payments','orders.id','=', 'payments.order_id')
+         ->select('orders.*', 'users.name','users.middlename','users.lastname' ,'payments.payment_type','payments.payment_status')
+         ->get();
+
+        
+        $months = Order::select(
+        DB::raw("(COUNT(*)) as count"),
+        DB::raw("MONTHNAME(created_at) as monthname"))
+        ->whereYear('created_at', date('F') )
+        ->groupBy('monthname')
         ->get();
 
+         //  dd($months);
+
+        return view('Admin.Report.SalesReport',data: compact('orders','months'));
+       
         // $month=Order::whereMonth('created_at', date('m'))
         // ->whereYear('created_at', date('Y'))
         // ->get(['user_id','created_at']);
 
         // dd($month);
 
-        $month = Order::select(
-            DB::raw("(COUNT(*)) as count"),
-            DB::raw("MONTHNAME(created_at) as monthname"))
-            ->whereYear('created_at', 2022 )
-            ->groupBy('monthname')
-            ->get();
-            dd($month);
-
-
-            
-
-        return view('Admin.Report.SalesReport',data: compact('orders','month'));
-
     } 
 
     public function monthly_report()
     {
-        $current_month = User::whereYear('created_at',Carbon::now()->year)
+
+
+        $current_month = Order::whereYear('created_at',Carbon::now()->year)
             ->whereMonth('created_at',Carbon::now()->month)->count(); 
 
-        $before_1month = User::whereYear('created_at',Carbon::now()->year)
-            ->whereMonth('created_at',Carbon::now()->submonth(1))->count(); 
+        $one_month = Order::whereYear('created_at',Carbon::now()->year)
+            ->whereMonth('created_at',Carbon::now()->submonth(1))->count();
 
+        $two_month = Order::whereYear('created_at',Carbon::now()->year)
+            ->whereMonth('created_at',Carbon::now()->submonth(2))->count(); 
+
+        $three_month = Order::whereYear('created_at',Carbon::now()->year)
+             ->whereMonth('created_at',Carbon::now()->submonth(3))->count(); 
+
+        $four_month = Order::whereYear('created_at',Carbon::now()->year)
+             ->whereMonth('created_at',Carbon::now()->submonth(4))->count(); 
+
+        $five_month = Order::whereYear('created_at',Carbon::now()->year)
+             ->whereMonth('created_at',Carbon::now()->submonth(5))->count(); 
+
+        $six_month = Order::whereYear('created_at',Carbon::now()->year)
+             ->whereMonth('created_at',Carbon::now()->submonth(6))->count(); 
+
+        $seven_month = Order::whereYear('created_at',Carbon::now()->year)
+             ->whereMonth('created_at',Carbon::now()->submonth(7))->count();
+
+        $eight_months = Order::whereYear('created_at',Carbon::now()->year)
+             ->whereMonth('created_at',Carbon::now()->submonth(8))->count(); 
+
+         $month_count = array($current_month, $one_month, $two_month, $three_month, $four_month, $five_month, $six_month, $seven_month, $eight_months);
+
+      //  dd($month_count);
+   
+        return view('Admin.Report.Monthly',compact('month_count'));
+            
+       
         
-
-        $monthCount = array( $current_month, $before_1month);
-
-      
-
-          
-       return view('Admin.Report.Monthly')
-        ->with(compact('monthCount'));
     }
 
 

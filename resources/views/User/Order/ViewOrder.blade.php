@@ -121,7 +121,7 @@
                <td style="text-align: center; color:  black;">{{\Carbon\Carbon::parse($order->created_at)->toFormattedDateString()}}</td>
               
                <td style="text-align: center;"> 
-                  <a href="{{route('view_order',['id'=>$order->id])}}"> 
+                  <a href="{{route('view_order',['id'=>$order->id])}}" style="color: black;"> 
                     <i class="fa fa-cart-arrow-down" aria-hidden="true"></i> View Details
                   </a>
                </td>

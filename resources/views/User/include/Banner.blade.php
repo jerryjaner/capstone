@@ -17,8 +17,8 @@
 								<span class="icon-bar"></span>
 
 							</button>
-
-							<h1><a href="">Nick's<span>Resto Bar & Cafe-Restaurant</span></a></h1>
+							<!-- <img src="{{asset('/BackEndSourceFile')}}/Nicks_logo/nickslogo.jpg" style="width: 80px; border-radius: 50%; margin-top: 5px;" alt="User Image">  -->
+							<h1><a href="#">Nick's<span>Resto Bar & Cafe-Restaurant</span></a></h1>
 						</div> 
 						<div class="collapse navbar-collapse" id="bs-megadropdown-tabs">
 							<ul class="nav navbar-nav navbar-right">
@@ -92,6 +92,10 @@
 											  <li class="head-dpdn">
 												<a href=""><i class="fa fa-user" aria-hidden="true"></i> {{ Auth::user()->name }}</a>
 											  </li> 
+
+											   <li class="head-dpdn">
+											     <a href=""><i class="fa fa-bell" aria-hidden="true"></i> Notification</a>
+											  </li>  
 											  
 											  <li class="head-dpdn">
 											     <a href="{{route('customer_order')}}"><i class="fa fa-cart-arrow-down" aria-hidden="true"></i> View Order</a>

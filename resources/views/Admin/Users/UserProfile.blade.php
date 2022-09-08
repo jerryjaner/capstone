@@ -29,7 +29,6 @@
 
 	                @if($admin -> role == '1')
 		             <h3 class="profile-username text-center">{{$admin -> name}} {{$admin->middlename}} {{$admin->lastname}}</h3>
-
 		             <p class="text-muted text-center">Administator</p>  
 	              </div>
 

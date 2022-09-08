@@ -68,6 +68,14 @@
             </a>
           </li>
           <li class="nav-item has-treeview ">
+            <a href="{{route('message')}}" class="nav-link ">
+              <i class="nav-icon fas fa-envelope"></i>
+              <p class="sidebarfont">
+                  Message Customer
+              </p>
+            </a>
+          </li>
+          <li class="nav-item has-treeview ">
             <a href="{{route('client_report')}}" class="nav-link ">
               <i class="nav-icon fas fa-folder"></i>
               <p class="sidebarfont">
@@ -80,6 +88,14 @@
               <i class="nav-icon fas fa-folder"></i>
               <p class="sidebarfont">
                   Monthly Report
+              </p>
+            </a>
+          </li>
+           <li class="nav-item has-treeview ">
+            <a href="{{route('sales')}}" class="nav-link ">
+              <i class="nav-icon fas fa-folder"></i>
+              <p class="sidebarfont">
+                  Sales Report
               </p>
             </a>
           </li>
