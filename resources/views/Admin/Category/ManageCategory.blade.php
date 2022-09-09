@@ -66,7 +66,7 @@
               <div class="card-body">
                 <table id="example1" class="table table-bordered table-striped">
                 <!-- add categories modal -->
-                   <div class="modal fade" id="add" tabindex="-1" aria-labelledby="add" aria-hidden="true">
+                    <div class="modal fade" id="add" tabindex="-1" aria-labelledby="add" aria-hidden="true">
                       <div class="modal-dialog">
                         <div class="modal-content">
                           <div class="modal-header">
@@ -102,10 +102,8 @@
                                   <button id="userfont"  type="submit" name="btn" class="btn btn-primary">Submit</button>
                                 </div>
                           </form>
-                       </div>
-                      <!-- end of caategories modal -->
-
-                      
+                       </div>    
+                <!-- end of caategories modal -->    
                   <thead>
                     <tr>
                       <th  id="userfont">SL</th>
@@ -115,9 +113,6 @@
                     </tr>
                   </thead>
                   <tbody>
-
-             
-
                   	@php($i = 1)
                   	@foreach($categories  as $cate)
 
@@ -125,16 +120,15 @@
 
                     <td  id="userfont">{{$i++}}</td>
                     <td  id="userfont">{{$cate->category_name}}</td>
-                   
-                    
-                     <td  id="userfont">
+                    <td  id="userfont">
+
                       @if($cate->category_status == 1)
                           Active
                       @else
                           Inactive
                       @endif    
 
-                     </td>
+                    </td>
                   
                     <td id="userfont">	
                       <div class="btn-group">
@@ -155,11 +149,11 @@
                             <i class="fas fa-trash"  title="click to Delete"></i> Delete Category </li>
                         </ul>
                       </div>  
-                      
+      
                     </td>
                    </tr>
 
-                    <div class="modal fade" id="edit{{$cate->category_id}}" tabindex="-1" aria-labelledby="edit{{$cate->category_id}}" aria-hidden="true">
+                  <div class="modal fade" id="edit{{$cate->category_id}}" tabindex="-1" aria-labelledby="edit{{$cate->category_id}}" aria-hidden="true">
                       <div class="modal-dialog">
                         <div class="modal-content">
                           <div class="modal-header">
@@ -185,7 +179,7 @@
                                 <button type="submit" class="btn btn-primary" id="userfont" >Update</button>
                               </div>
                           </form>
-                        </div>
+                  </div>
                              
 
 
@@ -194,13 +188,8 @@
 
                  
                   </tbody>
-                 
                 </table>
               </div>
-              <!-- /.card-body -->
-
-
-
             </div>
 
 

@@ -34,7 +34,7 @@
 		<img src="{{asset('FrontEndSourceFile')}}/images/i2.jpg" class="w3order-img" alt=""/>
 		<div class="container">
 			<h3 class="w3ls-title">How To Order Online Food</h3>
-			<p class="w3lsorder-text" >Get your favourite food in 4 simple steps.</p>-->
+			<p class="w3lsorder-text" >Get your favourite food in 4 simple steps.</p>
 			<div class="order-agileinfo">  
 				<div class="col-md-3 col-sm-3 col-xs-6 order-w3lsgrids"> 
 					<div class="order-w3text"> 
@@ -95,7 +95,7 @@
 								 @foreach($dishes as $dish)
 
 									<a href="{{route('category_dish',['category_id' => $dish -> category_id]) }}" class="item g1">
-										<img class="lazyOwl" src="{{asset('BackEndSourceFile/dish_image/'.$dish->dish_image)}}" style="height: 190px; width:270px;" title="Our latest gallery" alt=""/>
+										<img class="lazyOwl" src="{{asset('BackEndSourceFile/dish_image/'.$dish->dish_image)}}" style="height: 190px; width:250px;" title="Our latest gallery" alt=""/>
 										<div class="agile-dish-caption">
 											<h4>{{$dish -> dish_name}}</h4>
 										<!-- 	<span>{{$dish -> dish_detail}}</span> -->

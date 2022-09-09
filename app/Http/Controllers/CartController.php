@@ -37,9 +37,7 @@ class CartController extends Controller
     public function show()
     {
         
-     	 $CartDish = Cart::content();
-
-     //	return $CartDish;
+     	$CartDish = Cart::content();
      	return view('User.Cart.Show',data: compact(var_name:'CartDish'));
     }
 

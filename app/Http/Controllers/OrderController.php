@@ -95,6 +95,7 @@ class OrderController extends Controller
         $order = Payment::find( $request -> id);
         $order -> payment_status = $request -> payment_status;
         $order->save();
+        
         return back()->with('payment_status_msg','Payment Status Updated Successfully');
  
     }
@@ -106,6 +107,7 @@ class OrderController extends Controller
         $order= Order::find( $request -> id);
         $order -> order_status = $request -> order_status; 
         $order->save();
+
         return back()->with('order_status_msg','Order Status Updated Successfully');
  
     }

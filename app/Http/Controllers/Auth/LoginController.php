@@ -69,12 +69,13 @@ class LoginController extends Controller
 
         if(auth()->attempt(array('email'=> $input ['email'],'password' => $input ['password'])) ){
           
+            
             if(Auth() -> user() -> role == 1){
 
                 return redirect()-> route('admin_dashboard');
             }
 
-             elseif(Auth() -> user() -> role == 0){
+            elseif(Auth() -> user() -> role == 0){
 
                 return redirect()-> route('user_dashboard');
             }
@@ -87,7 +88,7 @@ class LoginController extends Controller
         }
         else
         {
-            return redirect()->route('login')->with('sms','Email and Password are Wrong');
+            return redirect()->route('login')->with('sms','Email or Password are invalid');
         }
     }
 }

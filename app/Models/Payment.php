@@ -9,6 +9,7 @@ class Payment extends Model
 {
     use HasFactory;
     protected $primaryKey = 'id';
+    
     public function order()
     {
     	return $this -> belongsTo(Order::class)->withDefault();

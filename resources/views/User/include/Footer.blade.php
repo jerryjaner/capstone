@@ -29,7 +29,7 @@
 		</div>
 	</div>
 
-
+<!-- 
 <div class="footer agileits-w3layouts">
 		<div class="container">
 			<div class="w3_footer_grids">
@@ -71,9 +71,9 @@
 				<div class="clearfix"> </div>
 			</div>
 		</div> 
+</div> -->
+<div class="copyw3-agile"> 
+	<div class="container">
+		<p>&copy; 2022 Nick's Resto Bar & Cafe Restaurant. All rights reserved | Design by <a style="text-decoration: none">JERRY MONTEREY JANER</a></p>
 	</div>
-	<div class="copyw3-agile"> 
-		<div class="container">
-			<p>&copy; 2022 Nick's Resto Bar & Cafe Restaurant. All rights reserved | Design by <a style="text-decoration: none">BSIT</a></p>
-		</div>
-	</div>
+</div>

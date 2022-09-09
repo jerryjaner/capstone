@@ -32,7 +32,8 @@
 							<div class="flipper agile-products">
 								<div class="front"> 
 
-									<img src="{{asset('BackEndSourceFile/dish_image/'.$dish->dish_image)}}" style="height: 200px; width:400px; border: none;" class="img-responsive" alt="img">
+									<img src="{{asset('BackEndSourceFile/dish_image/'.$dish->dish_image)}}" 
+									style="height: 200px; width:400px; border: none;" class="img-responsive" alt="img">
 
 									<div class="agile-product-text">  
 										<h5>{{$dish -> dish_name}}</h5>	
@@ -141,113 +142,107 @@
 
 			    <!--- Modal 2 -->
 			    	<div class="modal video-modal fade" id="myModal2{{$dish -> id}}" tabindex="-1" role="dialog" aria-labelledby="myModal2">
-										<div class="modal-dialog" role="document">
-											<div class="modal-content">
-												<div class="modal-header">
-													<!-- <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>		 -->				
-												</div>
-												<section>
-													<div class="modal-body">
-													    @if(Auth::check())
-														<div class="col-md-12">	
-															<img src="{{asset('BackEndSourceFile/dish_image/'.$dish->dish_image)}}" style="height: 300px; width:500px;"  alt="Nick's Menu" class="img-responsive">
-														</div>
-
-														<div class="col-md-12"> 
-															<h3 style="text-align: center; margin-top: 8px; color: orange;">
-																{{$dish -> dish_name}}        
-																
-															</h3>
-														    <h3 style="margin-top: 5px; margin-bottom: 5px;">
-														    	₱{{$dish -> full_price}}
-														    </h3>
-
-
-															<form action="{{route('add_to_cart')}}" method="post">
-																@csrf
-																<input type="hidden" name="id" value="{{$dish->id}}">
-																 <b> Quantity: </b> 
-
-																 <input type="number"
-																	    min="1" max="10" step="1" 
-																	    name="qty" 
-																 		style="padding: 3px; margin-left:10px; border-top:none; border-right: none; border-left: none; outline: none;" 
-																 		required><br>
-
-																  <h5 class="single-price-text" style="text-align: center; 
-																  								margin-top: 15px; margin-bottom: 20px;
-																  								overflow: hidden;">
-																  	{{$dish -> dish_detail}}
-																  	
-																  </h5>
-
-																<button type="submit" class="btn btn-primary" style=" float: right; outline: none;">
-															       <i class="fa fa-cart-plus" aria-hidden="true"></i> 
-															       Add to cart
-															   </button>
-
-															   <button type="button" class="btn btn-danger" data-dismiss="modal" style="float: right; outline: none; margin-right: 5px;">
-															   		Cancel
-															   	</button>  
-
-													 		</form>
-														</div>
-														@else
-														  <!--	if user are not registered -->
-														  <div class="col-md-12">
-																<div class="card">
-																	<center>
-																		<img src="{{asset('/BackEndSourceFile')}}/Nicks_logo/nickslogo.jpg" style="width: 100px; border-radius: 50%; " alt="Nicks_logo"> 
-																	</center>
-																	
-
-																	<div class="text-center" style="margin-top:20px;">
-																		<h3 style="font-family: arial ;">Are you a New member ?</h3>
-																		<center>
-																			<a href="{{route('register')}}" class="btn-block btn-success" style="
-																														margin-top: 25px;
-																														padding:10px 15px;
-																														width: 300px; 
-																														font-size: 25px;
-																														font-family: times new roman;
-																														margin-bottom: 25px;">
-																			<span  class="mt-5">Register</span>
-																			</a>
-																	    </center>
-
-
-																		<h3 style="font-family: arial ;">Or</h3>
-
-																		<h3 style="margin-top: 25px; font-family: arial ;">Already have an Account ?</h3>
-
-																		<center><a href="{{route('login')}}" class="btn-block btn-primary" style="
-																														margin-top: 25px;
-																														padding:10px 15px;
-																														width:300px; 
-																														font-size: 25px;
-																														font-family: times new roman;
-																														margin-bottom: 25px;">
-																			<span class="mt-5">Login</span>
-																		</a></center>
-																	</div>
-																</div>
-														  </div>	
-														@endif
-
-
-
-
-														<div class="clearfix"> </div>
-													</div>
-												</section>
-											</div>
+						<div class="modal-dialog" role="document">
+							<div class="modal-content">
+								<div class="modal-header">
+									<!-- <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>		 -->				
+								</div>
+								<section>
+									<div class="modal-body">
+								    @if(Auth::check())
+										<div class="col-md-12">	
+											<img src="{{asset('BackEndSourceFile/dish_image/'.$dish->dish_image)}}" style="height: 300px; width:500px;"  alt="Nick's Menu" class="img-responsive">
 										</div>
+
+										<div class="col-md-12"> 
+											<h3 style="text-align: center; margin-top: 8px; color: orange;">
+												{{$dish -> dish_name}}        
+												
+											</h3>
+										    <h3 style="margin-top: 5px; margin-bottom: 5px;">
+										    	₱{{$dish -> full_price}}
+										    </h3>
+
+
+											<form action="{{route('add_to_cart')}}" method="post">
+												@csrf
+												<input type="hidden" name="id" value="{{$dish->id}}">
+												 <b> Quantity: </b> 
+
+												 <input type="number"
+													    min="1" max="10" step="1" 
+													    name="qty" 
+												 		style="padding: 3px; margin-left:10px; border-top:none; border-right: none; border-left: none; outline: none;" 
+												 		required><br>
+
+												  <h5 class="single-price-text" style="text-align: center; 
+												  								margin-top: 15px; margin-bottom: 20px;
+												  								overflow: hidden;">
+												  	{{$dish -> dish_detail}}
+												  	
+												  </h5>
+
+												<button type="submit" class="btn btn-primary" style=" float: right; outline: none;">
+											       <i class="fa fa-cart-plus" aria-hidden="true"></i> 
+											       Add to cart
+											   </button>
+
+											   <button type="button" class="btn btn-danger" data-dismiss="modal" style="float: right; outline: none; margin-right: 5px;">
+											   		Cancel
+											   	</button>  
+
+									 		</form>
+										</div>
+										@else
+										  <!--	if user are not registered -->
+										  <div class="col-md-12">
+												<div class="card">
+													<center>
+														<img src="{{asset('/BackEndSourceFile')}}/Nicks_logo/nickslogo.jpg" style="width: 200px; border-radius: 50%; " alt="Nicks_logo"> 
+													</center>
+													
+
+													<div class="text-center" style="margin-top:20px;">
+														<h3 style="font-family: arial ;">Are you a New member ?</h3>
+														<center>
+															<a href="{{route('register')}}" class="btn-block btn-success" style="
+																										margin-top: 25px;
+																										padding:10px 15px;
+																										width: 300px; 
+																										font-size: 25px;
+																										font-family: times new roman;
+																										margin-bottom: 25px;">
+															<span  class="mt-5">Register</span>
+															</a>
+													    </center>
+
+
+														<h3 style="font-family: arial ;">Or</h3>
+
+														<h3 style="margin-top: 25px; font-family: arial ;">Already have an Account ?</h3>
+
+														<center><a href="{{route('login')}}" class="btn-block btn-primary" style="
+																										margin-top: 25px;
+																										padding:10px 15px;
+																										width:300px; 
+																										font-size: 25px;
+																										font-family: times new roman;
+																										margin-bottom: 25px;">
+															<span class="mt-5">Login</span>
+														</a></center>
+													</div>
+												</div>
+										  </div>	
+										@endif
+
+										<div class="clearfix"> </div>
+									</div>
+								</section>
+							</div>
+						</div>
 					</div> 
 
 			    <!-- End of modal 2 -->
-				
-	
-					
 				@endforeach
 					
 					<div class="clearfix"> </div>

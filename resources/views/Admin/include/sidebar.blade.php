@@ -91,14 +91,14 @@
               </p>
             </a>
           </li>
-           <li class="nav-item has-treeview ">
+          <!--  <li class="nav-item has-treeview ">
             <a href="{{route('sales')}}" class="nav-link ">
               <i class="nav-icon fas fa-folder"></i>
               <p class="sidebarfont">
                   Sales Report
               </p>
             </a>
-          </li>
+          </li> -->
         </ul>
       </nav>
       <!-- /.sidebar-menu -->

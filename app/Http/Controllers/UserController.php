@@ -72,17 +72,27 @@ class UserController extends Controller
 
     public function customerOrder(){
 
-      $orders = DB::table('orders')
-        ->join('users','orders.user_id','=', 'users.id')
-        ->join('payments','orders.id','=', 'payments.order_id')
-        ->select('orders.*', 'users.name','users.middlename','users.lastname' ,'payments.payment_type','payments.payment_status')
-        ->get();
+      if(Auth::check())
+      {
+        $orders = DB::table('orders')
+          ->join('users','orders.user_id','=', 'users.id')
+          ->join('payments','orders.id','=', 'payments.order_id')
+          ->select('orders.*', 'users.name','users.middlename','users.lastname' ,'payments.payment_type','payments.payment_status')
+          ->get();
 
+          
+        return view('User.Order.ViewOrder',data: compact('orders'));
+      }
+      else{
         
-      return view('User.Order.ViewOrder',data: compact('orders'));
+        return back();
+      }
     }
       
     public function ViewOrder($id){
+
+      if(Auth::check())
+      {
       
         $order = Order::find($id);
         $user_id = Auth::user()->id;
@@ -100,6 +110,12 @@ class UserController extends Controller
           {
              return back();
           }
+
+       }
+       else{
+
+         return back();
+       }
         
     }
   

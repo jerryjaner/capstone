@@ -7,15 +7,14 @@ use Illuminate\Http\Request;
 class CategoryController extends Controller
 {
     //
-    public function index()
-    {
+    public function index(){
+
     	return view ('Admin.Category.AddCategory');
     }
 
-     public function save (Request $Request)
-     {
+    public function save (Request $Request){
 
-		$category = new Category();
+		  $category = new Category();
     	$category -> category_name = $Request->category_name;
     	$category -> category_status = $Request->category_status;
     	$category->save();
@@ -25,19 +24,19 @@ class CategoryController extends Controller
 
     }		
 
- public function manage()
-    {
+    public function manage(){
 
     	$categories = Category::all();
+      
     	return view('Admin.Category.ManageCategory', data: compact(var_name:'categories'));
     }
 
-      public function active($category_id)
-     {
+    public function active($category_id){
 
     	$category = Category::find($category_id);
     	$category->category_status = 1;
     	$category->save();
+
     	return back()->with('status_msg','Status Updated Successfully');
     }
      public function Inactive($category_id)

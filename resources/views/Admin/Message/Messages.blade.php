@@ -75,21 +75,21 @@
                            <!--  <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button> -->
                           </div>
                           <div class="modal-body">
-                          <form action="" method="post">
-
+                          <form action="{{route('send_smg')}}" method="post">
+                             @csrf
                           <div class="form-group">
                               <label id="messagefont">Sender:</label>
-                              <input type="text" name="" placeholder="Sender" style="border-right: none; border-left: none; border-top:none; margin-left: 25px; width: 350px; outline: none;" value="ADMIN" id="messagefont">
+                              <input type="text" name="sender" placeholder="Sender" style="border-right: none; border-left: none; border-top:none; margin-left: 25px; width: 350px; outline: none;" value="ADMIN" id="messagefont">
                             </div>
 
                            <div class="form-group">
                               <label id="messagefont">To:</label>
-                              <input type="text" name="" placeholder="To" style="border-right: none; border-left: none; border-top:none; margin-left: 57px; width: 350px; outline: none;" id="messagefont">
+                              <input type="text" name="user_id" placeholder="To" style="border-right: none; border-left: none; border-top:none; margin-left: 57px; width: 350px; outline: none;" id="messagefont">
                             </div>
 
                             <div class="form-group">
                               <label id="messagefont">Message:</label>
-                              <input type="text" name="" placeholder="Message" style="border-right: none; border-left: none; border-top:none;margin-left: 10px; width: 350px; outline: none;">
+                              <input type="text" name="message" placeholder="Message" style="border-right: none; border-left: none; border-top:none;margin-left: 10px; width: 350px; outline: none;">
                             </div>
                             
 

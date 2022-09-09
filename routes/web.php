@@ -92,10 +92,9 @@ Route::group(['prefix'=>'admin','middleware'=>['isAdmin','auth','PreventBackHist
     Route::get('sales/report',[ReportController::class,'sales_report'])->name('sales');
     Route::get('monthly/report',[ReportController::class,'monthly_report'])->name('monthly');
 
-
-
     /* Message Customer */
     Route::get('message',[MessageController::class,'message_customer'])->name('message');
+    Route::post('newMessage', [MessageController::class, 'new_message'])->name('send_smg');
 
 
 
@@ -126,13 +125,11 @@ Route::group(['prefix'=>'user','middleware'=>['isUser','auth','PreventBackHistor
 	Route::get('/category/dish/show{category_id}', [UserController::class, 'dish_show'])->name('category_dish');
 
 	/*  Login in with Socialite which is Facebook and Google */
-
 	Route::get('auth/google',[GoogleLoginController::class,'redirect'])->name('google_login');
 	Route::get('auth/google/call-back',[GoogleLoginController::class, 'callback']);
 
 
 	/* Cart Route */
-
 	Route::post('/AddCart', [CartController::class, 'insert'])->name('add_to_cart');
 	Route::get('/cartShow', [CartController::class, 'show'])->name('cart_show');
 	Route::get('load-cart-data', [CartController::class, 'cartCount']);
@@ -141,7 +138,6 @@ Route::group(['prefix'=>'user','middleware'=>['isUser','auth','PreventBackHistor
   
 
    /* Check out */
-
 	Route::get('/checkOut/payment', [CheckOutController::class, 'payment'])->name('Checkout_payment');
 	Route::post('/checkOut/NewOrder', [CheckOutController::class, 'order'])->name('new_order');
 	Route::get('/checkoutComplete', [CheckOutController::class, 'complete'])->name('order_complete');
@@ -153,9 +149,7 @@ Route::group(['prefix'=>'user','middleware'=>['isUser','auth','PreventBackHistor
 
 
    /*  view order */
-  
    Route::post('cancel/order',[UserController::class,'cancel_order'])->name('cancel_customer_order');
-
    Route::get('customer/order',[UserController::class,'customerOrder'])->name('customer_order');
    Route::get('order/details{id}',[UserController::class,'viewOrder'])->name('view_order');
  

@@ -35,8 +35,8 @@ class AdminController extends Controller
         return view('Admin.Users.ManageUsers', data: compact(var_name:'users'));   
     }
 
-     public function create (Request $Request)
-     {
+    public function create (Request $Request)
+    {
       
         $user = new User();
         $user -> name = $Request-> name;
@@ -49,7 +49,6 @@ class AdminController extends Controller
         $user -> save();
 
         return back()->with('added_msg','New User Added Sucessfully');
-
       
     }       
 

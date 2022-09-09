@@ -67,7 +67,7 @@
               <div class="card-body">
                 <table id="example1" class="table table-bordered table-striped">  
 
-                   <!-- add categories modal -->
+                  <!-- add categories modal -->
                    <!-- <div class="modal fade" id="add" tabindex="-1" aria-labelledby="add" aria-hidden="true">
                       <div class="modal-dialog">
                         <div class="modal-content">
@@ -102,19 +102,19 @@
 
                           </form>
                        </div> -->
-                    <!-- end of caategories modal -->
+                  <!-- end of caategories modal -->
 
 
                   <thead>
                     <tr>
-                      <th id="orderfont">SL</th>
-                      <th id="orderfont">Customer Name</th>
-                      <th id="orderfont">Order Price Total</th>
-                      <th id="orderfont">Order Status</th>
-                      <th id="orderfont">Order Date</th>
-                      <th id="orderfont">Payment Type</th>
-                      <th id="orderfont">Payment Status</th>
-                      <th id="orderfont">Action</th>
+                      <th id="orderfont" style="text-align: center;">SL</th>
+                      <th id="orderfont" style="text-align: center;">Customer Name</th>
+                      <th id="orderfont" style="text-align: center;">Order Price Total</th>
+                      <th id="orderfont" style="text-align: center;">Order Status</th>
+                      <th id="orderfont" style="text-align: center;">Order Date</th>
+                      <th id="orderfont" style="text-align: center;">Payment Type</th>
+                      <th id="orderfont" style="text-align: center;">Payment Status</th>
+                      <th id="orderfont" style="text-align: center;">Action</th>
                     </tr>
                   </thead>
                   <tbody>
@@ -129,8 +129,41 @@
                     <td id="orderfont">{{$i++}}</td>
                     <td id="orderfont">{{$order->name}} {{$order->middlename}} {{$order -> lastname}}</td>
                     <td id="orderfont">{{$order->order_total}}</td>
-                    <td id="orderfont"> {{$order->order_status}}
+                    <td id="orderfont">
 
+                      @if($order->order_status =='pending')
+
+                        <p id="orderfont" style="text-align: center; color: black; background-color: yellow;">
+                          <strong>Pending</strong>
+                        </p>
+
+                      @elseif($order->order_status =="On Delivery")
+
+                        <p id="orderfont" style="text-align: center; color: white; background-color: blue;">
+                          <strong>On Delivery</strong>
+                        </p>
+
+                      @elseif($order->order_status =='Delivered')
+
+                        <p id="orderfont" style="text-align: center; color: white; background-color: green; ">
+                          <strong>Delivered</strong>
+                        </p>
+
+                      @elseif($order->order_status =='Cancelled')
+
+                        <p id="orderfont" style="text-align: center; color: white; background-color: red; ">
+                          <strong> Cancelled </strong>
+                        </p>
+
+                       @elseif($order->order_status == "On Process")
+
+                      <p id="orderfont" style="text-align: center; color: white; background-color: orange; ">
+                          <strong> On Process </strong>
+                        </p>
+
+                      @endif
+
+                    
                       <!-- 
                        <button type="button" class="btn btn-outline-dark mt-1" data-bs-toggle="modal" data-bs-target="#orderstatus{{$order->id}}" data-bs-whatever="@fat">
                             <i class="fas fa-edit"  title="click to Change it">  </i>
@@ -143,16 +176,17 @@
                         <div class="modal-content">
                           <div class="modal-header">
                             <h5 class="modal-title" id="orderstatus{{$order->id}}" style="font-family: poppins;">Update Order Status</h5>
-                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                            <!-- <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button> -->
                           </div>
                           <div class="modal-body">
                             <form action="{{route('update_order_status')}}" method="post">
                                  @csrf
                               <div class="form-group">
                                 <input type="hidden" class="form-control"  name="id" value="{{$order->id}}">
-                               <label id="orderfont"> Select Order Status  </label>
-                                <select name="order_status" class="form-select"  required title="">
-                    
+                                <label id="orderfont">Order Status</label>
+                                <select name="order_status" class="form-select"  required >
+
+                                    <option value="" hidden id="orderfont" > ---Select Order Status---</option>
                                     <option id="orderfont">On Process</option>
                                     <option id="orderfont">On Delivery</option>
                                     <option id="orderfont">Delivered</option>
@@ -171,7 +205,7 @@
 
 
                     </td>
-                    <td>{{\Carbon\Carbon::parse($order->created_at)->toFormattedDateString() }}</td>
+                    <td id="orderfont">{{\Carbon\Carbon::parse($order->created_at)->toFormattedDateString() }}</td>
                    
 
                     <td id="orderfont">
@@ -187,7 +221,29 @@
                         @endif
 
                     </td>
-                    <td id="orderfont">{{$order->payment_status}}</td>
+                    <td id="orderfont">
+                     
+                      @if($order -> payment_status == 'pending')
+
+                        <p id="orderfont" style="text-align: center; color: black; background-color: yellow;">
+                          <strong> Pending </strong>
+                        </p>
+
+                      @elseif($order -> payment_status == 'Paid')
+
+                        <p id="orderfont" style="text-align: center; color: white; background-color: green;">
+                          <strong> Paid </strong>
+                        </p>
+
+                      @elseif($order -> payment_status == 'Cancelled')
+
+                        <p id="orderfont" style="text-align: center; color: white; background-color: red;">
+                          <strong> Cancelled </strong>
+                        </p>
+
+                      @endif
+
+                    </td>
 
                     <td>
                       
@@ -219,7 +275,7 @@
                         <div class="modal-content">
                           <div class="modal-header">
                             <h5 class="modal-title" id="edit{{$order->id}}" style="font-family: poppins;">Update Payment Status</h5>
-                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                            <!-- <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button> -->
                           </div>
                           <div class="modal-body">
                             <form action="{{route('order_update')}}" method="post" >
@@ -233,8 +289,8 @@
                                <label id="orderfont"> Select Payment Status  </label>
                                 <select name="payment_status" class="form-select" required >
                                    
-
-                                    <option id="orderfont">Pending</option>
+                                    <option value="" hidden id="orderfont"> ---Select Payment Status---</option>
+                                   <!--  <option id="orderfont">Pending</option> -->
                                     <option id="orderfont">Paid</option>
                                     <option id="orderfont">Cancelled</option>
 
