@@ -124,7 +124,7 @@
 								<tbody>
 									@php($i = 1)
 									@php($sum = 0)
-									@php($ship = 1)
+									@php($ship = 50)
 
 									@foreach($OrderD as $orderdetail)
 									<tr>
@@ -141,14 +141,14 @@
 							</table>
 						</div>
 						<div class="row">
-						 <div class="col-lg-4 col-sm-5"  id="invoicefont"><br><br><br><h3>Thank You For Your Order :)</h3></div> 
+						 <div class="col-lg-4 col-sm-5"  id="invoicefont"><br><br><br><h5>Thank You For Your Order :)</h5></div> 
 						<div class="col-lg-3 col-sm-4 ml-auto " style="margin-left: 1000px;"  id="invoicefont">
 							<table class="table table-clear" >
 								<tbody>
 
 									@if($payment -> payment_type == 'Cash_on_Delivery')
 									<tr >
-										<td  id="invoicefont"><strong> Shipping Fee : 1</strong></td>
+										<td  id="invoicefont"><strong> Shipping Fee : 50</strong></td>
 									</tr>
 									<tr>
 										<td  id="invoicefont"><strong>Total Amount: {{$totalAmount}} </strong> </td>

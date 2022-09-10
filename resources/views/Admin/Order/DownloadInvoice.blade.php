@@ -136,7 +136,7 @@
 					                <tbody>	                    				                  
 					                    @php($i = 1)
 										@php($sum = 0)
-										@php($ship = 1)
+										@php($ship = 50)
 									@foreach($OrderD as $orderdetail)
 
 					                  <tr>
@@ -156,7 +156,7 @@
 											<td></td>
 											<td></td>
 											<td></td>
-											<td style="text-align: center;">Shipping Fee :<strong>1</strong><br>
+											<td style="text-align: center;">Shipping Fee :<strong>50</strong><br>
 												   Total Amount: <strong> {{$totalAmount}}</strong>
 											</td>										
 										</tr>

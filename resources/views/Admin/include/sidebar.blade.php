@@ -1,3 +1,9 @@
+  @php
+
+    $prefix = Request::route()->getPrefix();
+    $route = Route::current()->getName();
+    
+  @endphp
   <aside class="main-sidebar sidebar-dark-primary elevation-4">
     <!-- Brand Logo -->
   
@@ -28,7 +34,7 @@
           <!-- Add icons to the links using the .nav-icon class
                with font-awesome or any other icon font library -->   
           <li class="nav-item has-treeview ">
-            <a href="{{asset('/home')}}" class="nav-link ">
+            <a href="{{asset('admin_dashboard')}}" class="nav-link {{($route == 'admin_dashboard')?'active':''}}">
               <i class="nav-icon fas fa-tachometer-alt"></i>
               <p class="sidebarfont">
                   Dashboard
@@ -36,7 +42,7 @@
             </a>
           </li>
           <li class="nav-item has-treeview ">
-            <a href="{{route('manage_user')}}" class="nav-link ">
+            <a href="{{route('manage_user')}}" class="nav-link {{($route == 'manage_user')?'active':''}}" >
                <i class="nav-icon fas fa-users"></i>
               <p class="sidebarfont">
                   Users
@@ -44,7 +50,7 @@
             </a>
           </li>
           <li class="nav-item has-treeview ">
-            <a href="{{route('manage_cate')}}" class="nav-link ">
+            <a href="{{route('manage_cate')}}" class="nav-link {{($route == 'manage_cate')?'active':''}}">
                 <i class="nav-icon fas fa-utensil-spoon"></i>
               <p class="sidebarfont">
                   Category
@@ -52,7 +58,7 @@
             </a>
           </li>
           <li class="nav-item has-treeview ">
-            <a href="{{route('manage_dish_table')}}" class="nav-link ">
+            <a href="{{route('manage_dish_table')}}" class="nav-link {{($route == 'manage_dish_table')?'active':''}} ">
               <i class="nav-icon fas fa-utensils"></i>
               <p class="sidebarfont">
                   Menu
@@ -60,7 +66,7 @@
             </a>
           </li>
           <li class="nav-item has-treeview ">
-            <a href="{{route('show_order')}}" class="nav-link ">
+            <a href="{{route('show_order')}}" class="nav-link {{($route == 'show_order')?'active':''}}">
               <i class="nav-icon fas fa-shopping-cart"></i>
               <p class="sidebarfont">
                   Orders
@@ -68,7 +74,7 @@
             </a>
           </li>
           <li class="nav-item has-treeview ">
-            <a href="{{route('message')}}" class="nav-link ">
+            <a href="{{route('message')}}" class="nav-link {{($route == 'message')?'active':''}}">
               <i class="nav-icon fas fa-envelope"></i>
               <p class="sidebarfont">
                   Message Customer
@@ -76,7 +82,7 @@
             </a>
           </li>
           <li class="nav-item has-treeview ">
-            <a href="{{route('client_report')}}" class="nav-link ">
+            <a href="{{route('client_report')}}" class="nav-link {{($route == 'client_report')?'active':''}} ">
               <i class="nav-icon fas fa-folder"></i>
               <p class="sidebarfont">
                   Report of Customers
@@ -84,7 +90,7 @@
             </a>
           </li>
            <li class="nav-item has-treeview ">
-            <a href="{{route('monthly')}}" class="nav-link ">
+            <a href="{{route('monthly')}}" class="nav-link {{($route == 'monthly')?'active':''}}">
               <i class="nav-icon fas fa-folder"></i>
               <p class="sidebarfont">
                   Monthly Report

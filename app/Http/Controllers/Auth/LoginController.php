@@ -88,7 +88,7 @@ class LoginController extends Controller
         }
         else
         {
-            return redirect()->route('login')->with('sms','Email or Password are invalid');
+            return redirect()->route('login')->with('sms','Invalid Email or Password');
         }
     }
 }

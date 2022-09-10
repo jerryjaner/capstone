@@ -13,15 +13,25 @@
 			<li class="active">Cart</li>
 		</ol>
 	</div>
+	<div class="container" style="margin-top: 10px;">
+		<h3><b>Note:</b></h3>
+		<ul style="margin-left: 50px;">
+		   <li style="color: red;"><b>Cash on Delivery (COD) have Addional 50 pesos for the Shipping Fee </b> </li>
+	    </ul>
+	</div>
 
 <div class="products">
 	<div class="container">
+		
 		<div class="col-md-12 product-w3ls-right">
 			<div class="card">
 				<h1 class="card-header text-center mt-3" style="background-color: rgba(253, 70, 62, 0.84); height: 70px; width: auto;">
 					Cart Items 
 				</h1>
+				
+				
 			</div>
+			
 			<div class="card-body">
 				<table class="table table-hover table-bordered">
 					<thead>					

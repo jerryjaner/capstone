@@ -178,27 +178,22 @@
                        </button> -->
 
 
-                      <div class="btn-group">
-                        <button type="button" class="btn btn-default btn-sm dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
-                          More
-                        </button>
-                        <ul class="dropdown-menu">
+                        <div class="btn-group">
+                          <button type="button" class="btn btn-default btn-sm dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
+                            More
+                          </button>
+                          <ul class="dropdown-menu">
 
-                          <li><a class="dropdown-item" href="{{route('customer_invoice',['id'=>$order->id])}}" id="orderfont"><i class="fas fa-search-plus"  title="View Invoice"> </i> View Invoice</a></li>
+                            <li><a class="dropdown-item" href="{{route('customer_invoice',['id'=>$order->id])}}" id="orderfont"><i class="fas fa-search-plus"  title="View Invoice"> </i> View Invoice</a></li>
 
-                    
-                          <li><a class="dropdown-item" href="#" type="button" data-bs-toggle ="modal" data-bs-target="#orderstatus{{$order->id}}" data-bs-whatever="@fat" id="orderfont"> <i class="fas fa-edit"  title="Edit Order Status">  </i> Edit Order Status</a></li> 
+                      
+                            <li><a class="dropdown-item" href="#" type="button" data-bs-toggle ="modal" data-bs-target="#orderstatus{{$order->id}}" data-bs-whatever="@fat" id="orderfont"> <i class="fas fa-edit"  title="Edit Order Status">  </i> Edit Order Status</a></li> 
 
-                          <li><a class="dropdown-item" href="#" type="button" data-bs-toggle ="modal" data-bs-target="#edit{{$order->id}}" data-bs-whatever="@fat" id="orderfont"> <i class="fas fa-edit"  title="Edit Payment Status">  </i> Edit Payment Status</a></li>
+                            <li><a class="dropdown-item" href="#" type="button" data-bs-toggle ="modal" data-bs-target="#edit{{$order->id}}" data-bs-whatever="@fat" id="orderfont"> <i class="fas fa-edit"  title="Edit Payment Status">  </i> Edit Payment Status</a></li>
 
-                        
-                        </ul>
-                      </div>
-
-
-
-
-
+                          
+                          </ul>
+                        </div>
 
                       </td>
                    </tr>
@@ -213,20 +208,18 @@
                             <div class="modal-body">
                               <form action="{{route('update_payment')}}" method="post" >
                               
-                                   @csrf
+                                @csrf
          
                                   <div class="form-group">
-                                      <input type="hidden" class="form-control"  name="id" value="{{$order->id}}">                    
-                                   </div>
+                                    <input type="hidden" class="form-control"  name="id" value="{{$order->id}}">
+                                  </div>
 
-                                 <label> Select Payment Status  </label>
+                                  <label> Select Payment Status  </label>
                                   <select name="payment_status" class="form-control" required>
                                 
                                       <option>Pending</option>
                                       <option>Paid</option>
                                       <option>Cancelled</option>
-
-
                                   </select>                       
                   
                                   <div class="modal-footer">
