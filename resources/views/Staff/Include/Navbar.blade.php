@@ -54,8 +54,8 @@
 
        <div class="dropdown">
            
-            Hi Staff<b> {{ Auth::user()->name }} </b> </span>!
-            <button class="btn btn-default btn-sm dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false" style="margin-right: 10px;">
+            Hi Staff!
+            <button class="btn btn-default btn-sm dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false" style="margin-right: 20px;">
               <i class="fas fa-user" >  </i>
             </button>
           <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">

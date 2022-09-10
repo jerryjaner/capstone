@@ -1,4 +1,4 @@
-  <script src="https://kit.fontawesome.com/ffc4ac712c.js" crossorigin="anonymous"></script>
+
 
   <aside class="main-sidebar sidebar-dark-primary elevation-4">
     <!-- Brand Logo -->
@@ -103,21 +103,20 @@
           </li>
         -->
            <li class="nav-item has-treeview ">
-            <a href="#" class="nav-link ">
+            <a href="{{route('manage_customer_orders')}}" class="nav-link ">
               <i class="nav-icon fas fa-shopping-cart"></i>
               <p>
-                  Orders 
-                <i class="right fas fa-angle-left"></i>
+                   Customer Orders 
               </p>
             </a>
-            <ul class="nav nav-treeview">
+           <!--  <ul class="nav nav-treeview">
               <li class="nav-item"> 
                 <a href="{{route('customer_order')}}" class="nav-link">
                   <i class="far fa-edit nav-icon"></i>
                   <p>Manage Orders</p>
                 </a>
               </li>
-            </ul>
+            </ul> -->
           </li>
 
          <!-- 

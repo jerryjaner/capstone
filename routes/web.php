@@ -105,7 +105,7 @@ Route::group(['prefix'=>'admin','middleware'=>['isAdmin','auth','PreventBackHist
 Route::group(['prefix'=>'staff','middleware'=>['isStaff','auth','PreventBackHistory'] ],function(){
 
 	Route::get('dashboard',[StaffController::class,'index'])->name('staff_dashboard');
-	Route::get('/customerOrder', [StaffController::class, 'CustomerOrder'])->name('customer_order');
+	Route::get('/customerOrder', [StaffController::class, 'CustomerOrder'])->name('manage_customer_orders');
 	Route::get('/customerInvoice{id}', [StaffController::class, 'CustomerInvoice'])->name('customer_invoice');
 	Route::get('/downloadInvoice{id}', [StaffController::class, 'DownloadCustomerInvoice'])->name('download_receipt');
 	Route::post('/updatePayment', [StaffController::class, 'UpdatePayment'])->name('update_payment');
