@@ -1,4 +1,9 @@
+  @php
 
+    $prefix = Request::route()->getPrefix();
+    $route = Route::current()->getName();
+    
+  @endphp
 
   <aside class="main-sidebar sidebar-dark-primary elevation-4">
     <!-- Brand Logo -->
@@ -28,7 +33,7 @@
                with font-awesome or any other icon font library -->
           
           <li class="nav-item has-treeview ">
-            <a href="{{route('staff_dashboard')}}" class="nav-link ">
+            <a href="{{route('staff_dashboard')}}" class="nav-link {{($route == 'staff_dashboard')?'active':''}} ">
               <i class="nav-icon fas fa-tachometer-alt"></i>
               <p>
                  Staff Dashboard
@@ -103,7 +108,7 @@
           </li>
         -->
            <li class="nav-item has-treeview ">
-            <a href="{{route('manage_customer_orders')}}" class="nav-link ">
+            <a href="{{route('manage_customer_orders')}}" class="nav-link {{($route == 'manage_customer_orders')?'active':''}}">
               <i class="nav-icon fas fa-shopping-cart"></i>
               <p>
                    Customer Orders 

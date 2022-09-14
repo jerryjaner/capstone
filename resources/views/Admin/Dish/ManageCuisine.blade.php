@@ -174,11 +174,11 @@ div.dataTables_wrapper div.dataTables_length select {
                     <td id="menu_font">
                       @if($dish -> dish_status == 1)
 
-                          Active
+                        <p>   Active </p>
 
                       @else
 
-                          Inactive
+                        <p>    Inactive </p>
 
                       @endif
                     </td>
@@ -190,6 +190,7 @@ div.dataTables_wrapper div.dataTables_length select {
                               </button>
                               <ul class="dropdown-menu">
                                 @if($dish->dish_status == 1)
+
                                    <li><a class="dropdown-item"  href="{{route('dish_Inactive',['id'=>$dish->id])}}" id="menu_font"><i class="fas fa-arrow-down"  title="click to Inactive"> </i> Click to Inactive</a></li>
                                 @else
                                    <li><a class="dropdown-item"  href="{{route('dish_Active',['id'=>$dish->id])}}" id="menu_font"><i class="fas fa-arrow-up"  title="click to Active">  </i> Click to Active</a></li>

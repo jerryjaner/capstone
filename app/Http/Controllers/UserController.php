@@ -20,8 +20,6 @@ class UserController extends Controller
    	 //	$categories = Category::where('category_status', 1) -> get();
     
    		$dishes = Dish::where('dish_status', 1) -> get();
-
-
    		return view('User.include.Home',data: compact('dishes') );
    }
 

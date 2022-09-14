@@ -92,6 +92,8 @@ Route::group(['prefix'=>'admin','middleware'=>['isAdmin','auth','PreventBackHist
     Route::get('sales/report',[ReportController::class,'sales_report'])->name('sales');
     Route::get('monthly/report',[ReportController::class,'monthly_report'])->name('monthly');
 
+    Route::post('filter/report',[ReportController::class,'filter'])->name('filter');
+
     /* Message Customer */
     Route::get('message',[MessageController::class,'message_customer'])->name('message');
     Route::post('newMessage', [MessageController::class, 'new_message'])->name('send_smg');

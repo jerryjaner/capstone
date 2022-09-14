@@ -34,7 +34,7 @@
           <!-- Add icons to the links using the .nav-icon class
                with font-awesome or any other icon font library -->   
           <li class="nav-item has-treeview ">
-            <a href="{{asset('admin_dashboard')}}" class="nav-link {{($route == 'admin_dashboard')?'active':''}}">
+            <a href="{{route('admin_dashboard')}}" class="nav-link {{($route == 'admin_dashboard')?'active':''}}">
               <i class="nav-icon fas fa-tachometer-alt"></i>
               <p class="sidebarfont">
                   Dashboard
@@ -97,14 +97,14 @@
               </p>
             </a>
           </li>
-          <!--  <li class="nav-item has-treeview ">
-            <a href="{{route('sales')}}" class="nav-link ">
+           <li class="nav-item has-treeview ">
+            <a href="{{route('sales')}}" class="nav-link {{($route == 'sales')?'active':''}}">
               <i class="nav-icon fas fa-folder"></i>
               <p class="sidebarfont">
                   Sales Report
               </p>
             </a>
-          </li> -->
+          </li>
         </ul>
       </nav>
       <!-- /.sidebar-menu -->

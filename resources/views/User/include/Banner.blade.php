@@ -93,9 +93,9 @@
 												<a href=""><i class="fa fa-user" aria-hidden="true"></i> {{ Auth::user()->name }}</a>
 											  </li> 
 
-											  <!--  <li class="head-dpdn">
+											   <li class="head-dpdn">
 											     <a href=""><i class="fa fa-bell" aria-hidden="true"></i> Notification</a>
-											  </li>   -->
+											  </li>  
 											  
 											  <li class="head-dpdn">
 											     <a href="{{route('customer_order')}}"><i class="fa fa-cart-arrow-down" aria-hidden="true"></i> View Order</a>

@@ -182,7 +182,7 @@
         @enderror
 
         <div class="input-group mb-3">
-          <input id="middlename" type="text" placeholder="Middlename" class="form-control @error('middlename') is-invalid @enderror" name="middlename" value="{{ old('middlename') }}" required autocomplete="middlename" autofocus onkeyup="letterOnly(this)">
+          <input id="middlename" type="text" placeholder="Middlename" class="form-control @error('middlename') is-invalid @enderror" name="middlename"   onkeyup="letterOnly(this)">
           <div class="input-group-append">
             <div class="input-group-text">
               <span class="fas fa-user"></span>

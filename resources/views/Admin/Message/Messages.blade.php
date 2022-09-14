@@ -101,6 +101,10 @@
 
                           </form>
                        </div>
+                     </div>
+                   </div>
+                 </div>
+                 
                   <!-- end of caategories modal -->
                   <thead>
                     <tr>

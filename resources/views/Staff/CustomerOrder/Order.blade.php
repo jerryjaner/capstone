@@ -60,7 +60,6 @@
                       <div class="modal-content">
                         <div class="modal-header">
                           <h5 class="modal-title" id="orderstatus{{$order->id}}">Update Order Status</h5>
-                          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                         </div>
                         <div class="modal-body">
                           <form action="{{route('update_order')}}" method="post" >
@@ -80,6 +79,7 @@
                               </select>                        
                             </div>
                             <div class="modal-footer">
+                              <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button> 
                               <button type="submit" class="btn btn-primary">Update</button>
                             </div>
                           </form>
@@ -203,7 +203,7 @@
                           <div class="modal-content">
                             <div class="modal-header">
                               <h5 class="modal-title" id="edit{{$order->id}}">Update Payment Status</h5>
-                              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                              <!-- <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button> -->
                             </div>
                             <div class="modal-body">
                               <form action="{{route('update_payment')}}" method="post" >

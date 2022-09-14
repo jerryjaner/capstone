@@ -33,21 +33,27 @@ class ReportController extends Controller
     {
          $orders = DB::table('orders')
          ->join('users','orders.user_id','=', 'users.id')
-         ->join('payments','orders.id','=', 'payments.order_id')
-         ->select('orders.*', 'users.name','users.middlename','users.lastname' ,'payments.payment_type','payments.payment_status')
+       //  ->join('payments','orders.id','=', 'payments.order_id')
+
+         // ->select('orders.*', 'users.name','users.middlename','users.lastname' ,'payments.payment_type','payments.payment_status')
+
+         ->select('orders.*', 'users.name','users.middlename','users.lastname')
          ->get();
+          return view('Admin.Report.SalesReport',data: compact('orders'));
+
+
 
         
-        $months = Order::select(
-        DB::raw("(COUNT(*)) as count"),
-        DB::raw("MONTHNAME(created_at) as monthname"))
-        ->whereYear('created_at', date('F') )
-        ->groupBy('monthname')
-        ->get();
+        // $months = Order::select(
+        // DB::raw("(COUNT(*)) as count"),
+        // DB::raw("MONTHNAME(created_at) as monthname"))
+        // ->whereYear('created_at', date('F') )
+        // ->groupBy('monthname')
+        // ->get();
 
          //  dd($months);
 
-        return view('Admin.Report.SalesReport',data: compact('orders','months'));
+       
        
         // $month=Order::whereMonth('created_at', date('m'))
         // ->whereYear('created_at', date('Y'))
@@ -56,6 +62,29 @@ class ReportController extends Controller
         // dd($month);
 
     } 
+
+    public function filter(Request $request){
+
+       $fromdate = $request->input('fromdate');
+        $todate = $request->input('todate');
+    
+
+        $orders = DB::table('orders')
+        ->join('users','orders.user_id','=', 'users.id')
+        ->select('orders.*','orders.created_at','users.name','users.middlename','users.lastname')
+        ->whereDate('orders.created_at', '>=', $fromdate)
+        ->whereDate('orders.created_at', '<=', $todate)
+        
+        //->whereBetween('orders.created_at', [$request->fromdate, $request -> todate])
+        ->get();
+
+      //  dd($orders);
+
+        return view('Admin.Report.result',data: compact('orders'));
+            //['orders' => $orders]);
+
+
+    }
 
     public function monthly_report()
     {

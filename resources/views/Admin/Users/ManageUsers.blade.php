@@ -125,6 +125,10 @@
 
                         </form>
                      </div>
+                   </div>
+                 </div>
+               </div>
+               
                   <!-- end of user modal -->
 
               <thead>
