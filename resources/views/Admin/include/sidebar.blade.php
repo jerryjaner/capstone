@@ -93,15 +93,15 @@
             <a href="{{route('monthly')}}" class="nav-link {{($route == 'monthly')?'active':''}}">
               <i class="nav-icon fas fa-folder"></i>
               <p class="sidebarfont">
-                  Monthly Report
+                  Monthly Order 
               </p>
             </a>
           </li>
            <li class="nav-item has-treeview ">
-            <a href="{{route('sales')}}" class="nav-link {{($route == 'sales')?'active':''}}">
+            <a href="{{route('month')}}" class="nav-link {{($route == 'month')?'active':''}}">
               <i class="nav-icon fas fa-folder"></i>
               <p class="sidebarfont">
-                  Sales Report
+                   Report
               </p>
             </a>
           </li>

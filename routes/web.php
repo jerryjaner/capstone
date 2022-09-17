@@ -48,7 +48,6 @@ Route::group(['prefix'=>'admin','middleware'=>['isAdmin','auth','PreventBackHist
 	Route::get('manageorder',[AdminController::class,'order'])->name('manage_order');
 
 	/* Add user here */
-
 	Route::post('add/user', [AdminController::class, 'create'])->name('save_user');
 	Route::get('profile',[AdminController::class,'profile'])->name('admin_profile');
 	
@@ -77,22 +76,23 @@ Route::group(['prefix'=>'admin','middleware'=>['isAdmin','auth','PreventBackHist
 	Route::get('/view/invoice{id}', [OrderController::class, 'view_invoice'])->name('view_invoice');
 	Route::get('/download/invoice{id}', [OrderController::class, 'download_invoice'])->name('download_invoice');
 
-	// For the payment update
+	/* For the payment update */
 	Route::post('/update/payment', [OrderController::class, 'update'])->name('order_update');
 
-	// for the order status update
+	/* For the order status update*/
     Route::post('/update/order', [OrderController::class, 'order_status'])->name('update_order_status');
     
-    /* Report  for the client*/
-
+    /* Report  for the client */
     Route::get('client/report',[ReportController::class,'client_report'])->name('client_report');
     Route::get('/download/clientReport', [ReportController::class, 'download_client'])->name('download_client');
 
     /* Report for the sales */
-    Route::get('sales/report',[ReportController::class,'sales_report'])->name('sales');
+    Route::get('month/report',[ReportController::class,'month'])->name('month');
     Route::get('monthly/report',[ReportController::class,'monthly_report'])->name('monthly');
 
     Route::post('filter/report',[ReportController::class,'filter'])->name('filter');
+    Route::get('filter', [ReportController::class, 'download_filtered'])->name('filtered');
+    
 
     /* Message Customer */
     Route::get('message',[MessageController::class,'message_customer'])->name('message');

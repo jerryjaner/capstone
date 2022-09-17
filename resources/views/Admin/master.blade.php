@@ -90,8 +90,16 @@ scratch. This page gets rid of all links and provides the needed markup only.
 <script src="{{asset('/BackEndSourceFile')}}/plugins/datatables-responsive/js/dataTables.responsive.min.js"></script>
 <script src="{{asset('/BackEndSourceFile')}}/plugins/datatables-responsive/js/responsive.bootstrap4.min.js"></script>
 
+<!--- this feature for the pdf button -->
 
-
+<script src="{{asset('/BackEndSourceFile')}}/plugins/datatables-buttons/js/dataTables.buttons.min.js"></script>
+<script src="{{asset('/BackEndSourceFile')}}/plugins/datatables-buttons/js/buttons.bootstrap4.min.js"></script>
+<script src="{{asset('/BackEndSourceFile')}}/plugins/jszip/jszip.min.js"></script>
+<script src="{{asset('/BackEndSourceFile')}}/plugins/pdfmake/pdfmake.min.js"></script>
+<script src="{{asset('/BackEndSourceFile')}}/plugins/pdfmake/vfs_fonts.js"></script>
+<script src="{{asset('/BackEndSourceFile')}}/plugins/datatables-buttons/js/buttons.html5.min.js"></script>
+<script src="{{asset('/BackEndSourceFile')}}/plugins/datatables-buttons/js/buttons.print.min.js"></script>
+<script src="{{asset('/BackEndSourceFile')}}/plugins/datatables-buttons/js/buttons.colVis.min.js"></script>
 
 
 <script src="{{asset('/BackEndSourceFile')}}/plugins/jquery-mousewheel/jquery.mousewheel.js"></script>
@@ -108,11 +116,15 @@ scratch. This page gets rid of all links and provides the needed markup only.
 <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
 
+ the old datatable
+
 <script>
   $(function () {
     $("#example1").DataTable({
       "responsive": true,
       "autoWidth": false,
+
+
     });
     $('#example2').DataTable({
       "paging": true,
@@ -169,6 +181,25 @@ scratch. This page gets rid of all links and provides the needed markup only.
 </script>
 
 -->
+
+
+<script>
+  $(function () {
+    $("#example3").DataTable({
+      "responsive": true, "lengthChange": false, "autoWidth": false,
+      "buttons": ["excel", "pdf", "print"]
+    }).buttons().container().appendTo('#example3_wrapper .col-md-6:eq(0)');
+    $('#example2').DataTable({
+      "paging": true,
+      "lengthChange": false,
+      "searching": false,
+      "ordering": true,
+      "info": true,
+      "autoWidth": false,
+      "responsive": true,
+    });
+  });
+</script>
 
 </body>
 </html>

@@ -29,45 +29,20 @@ class ReportController extends Controller
         return $pdf->stream('DownloadClientReport.pdf');
     }
 
-    public function sales_report()
+    public function month()
     {
          $orders = DB::table('orders')
          ->join('users','orders.user_id','=', 'users.id')
-       //  ->join('payments','orders.id','=', 'payments.order_id')
-
-         // ->select('orders.*', 'users.name','users.middlename','users.lastname' ,'payments.payment_type','payments.payment_status')
-
          ->select('orders.*', 'users.name','users.middlename','users.lastname')
          ->get();
-          return view('Admin.Report.SalesReport',data: compact('orders'));
-
-
-
-        
-        // $months = Order::select(
-        // DB::raw("(COUNT(*)) as count"),
-        // DB::raw("MONTHNAME(created_at) as monthname"))
-        // ->whereYear('created_at', date('F') )
-        // ->groupBy('monthname')
-        // ->get();
-
-         //  dd($months);
-
-       
-       
-        // $month=Order::whereMonth('created_at', date('m'))
-        // ->whereYear('created_at', date('Y'))
-        // ->get(['user_id','created_at']);
-
-        // dd($month);
+         return view('Admin.Report.Month', compact('orders'));
 
     } 
 
     public function filter(Request $request){
 
-       $fromdate = $request->input('fromdate');
+        $fromdate = $request->input('fromdate');
         $todate = $request->input('todate');
-    
 
         $orders = DB::table('orders')
         ->join('users','orders.user_id','=', 'users.id')
@@ -78,13 +53,41 @@ class ReportController extends Controller
         //->whereBetween('orders.created_at', [$request->fromdate, $request -> todate])
         ->get();
 
-      //  dd($orders);
+       // dd($orders);
 
-        return view('Admin.Report.result',data: compact('orders'));
-            //['orders' => $orders]);
+        return view('Admin.Report.Month',data: compact('orders'));
 
+         // $pdf = PDF::loadView('Admin.Report.filter',compact('orders'));
+         // return $pdf->stream('filtered.pdf');
+
+
+     //  return view('Admin.Report.result',data: compact('orders'));
+     //  return view('Admin.Report.Month', compact('orders'));
 
     }
+
+    public function download_filtered(){
+
+       
+
+        $orders = DB::table('orders')
+        ->join('users','orders.user_id','=', 'users.id')
+       
+        ->select('orders.*', 'orders.created_at','users.name','users.middlename','users.lastname')
+        ->get();
+
+
+        
+
+     
+        $pdf = PDF::loadView('Admin.Report.filter',compact('orders'));
+        return $pdf->stream('filtered.pdf');
+    }
+
+
+
+   
+
 
     public function monthly_report()
     {
