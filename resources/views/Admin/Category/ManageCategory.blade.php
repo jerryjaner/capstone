@@ -11,9 +11,16 @@
   width: 60px;
  
 }
-#userfont{
+
+/*#userfont{
   font-family: poppins;
+}*/
+
+/*#example1 th{
+  text-align: center;
 }
+*/
+
 </style>
 <!-- bootstrap-->
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
@@ -65,10 +72,11 @@
 
       <!-- Modal start here -->
         <div class="modal fade" id="add" tabindex="-1" aria-labelledby="add" aria-hidden="true">
-          <div class="modal-dialog">
+          <div class="modal-dialog modal-dialog-centered">
             <div class="modal-content">
-              <div class="modal-header">
-                <h5 class="modal-title"  id="add" style="font-family: poppins;">Add Category</h5>
+              <div class="modal-header text-center">
+               
+                <h5 class="modal-title w-100"  id="add">Add Category</h5>
                 <!-- <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button> -->
               </div>
               <div class="modal-body">
@@ -76,8 +84,8 @@
                      @csrf
 
                       <div class="form-group">
-                        <label id="userfont"> Category Name</label>
-                        <input type="text" class="form-control" id="userfont" 
+                        <label > Category Name</label>
+                        <input type="text" class="form-control" 
                                name="category_name"  
                                placeholder="Enter Category Name" 
                                pattern="[A-Za-z \s*]+$"
@@ -87,16 +95,16 @@
                       </div>
 
                       <div class="form-group">
-                        <label id="userfont" > Category Status</label>
+                        <label> Category Status</label>
                         <div class="radio">
-                          <input id="userfont"  type="radio" name="category_status" value="1" required> Active          
-                          <input id="userfont"  type="radio" name="category_status" value="0" required> Inactive
+                          <input  type="radio" name="category_status" value="1" required> Active          
+                          <input  type="radio" name="category_status" value="0" required> Inactive
                         </div>
                       </div>
                      
                       <div class="modal-footer">
-                        <button id="userfont" type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button> 
-                        <button id="userfont"  type="submit" name="btn" class="btn btn-primary">Submit</button>
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button> 
+                        <button type="submit" name="btn" class="btn btn-primary">Submit</button>
                       </div>
                 </form>
               </div>
@@ -106,19 +114,20 @@
        <!-- End of Modal --> 
       <thead>
         <tr>
-          <th id="userfont" style="text-align: center;">SL</th>
-          <th id="userfont" style="text-align: center;">Category Name</th>
-          <th id="userfont" style="text-align: center;">Category Status</th>
-          <th id="userfont" style="text-align: center;">Action</th>
+          <th>#</th>
+          <th>Category Name</th>
+          <th>Category Status</th>
+          <th>Action</th>
         </tr>
       </thead>
       <tbody>
         @php($i = 1)
         @foreach($categories  as $cate)
+
       <tr>
-        <td id="userfont" >{{$i++}}</td>
-        <td id="userfont" >{{$cate->category_name}}</td>
-        <td id="userfont" >
+        <td>{{$i++}}</td>
+        <td>{{$cate->category_name}}</td>
+        <td>
 
           @if($cate -> category_status == 1)
 
@@ -131,20 +140,22 @@
           @endif
 
         </td>
-        <td id="userfont" >
+        <td>
           <div class="btn-group">
-            <button type="button" class="btn btn-default btn-sm dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false" id="userfont">
+            <button type="button" class="btn btn-primary btn-sm dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false" id="userfont">
               More
             </button>
            <ul class="dropdown-menu">
 
 
              @if($cate->category_status == 1)
-              <li><a class="dropdown-item" href="{{route('Inactive_cate',['category_id'=>$cate->category_id])}}" id="userfont"><i class="fas fa-arrow-down "  title="click to Inactive"  ></i> Click to Inactive</li>
+              <li><a class="dropdown-item" href="{{route('Inactive_cate',['category_id'=>$cate->category_id])}}" ><i class="fas fa-arrow-down "  title="click to Inactive"  ></i> Click to Inactive</li>
              @else
-              <li><a class="dropdown-item" href="{{route('category_active',['category_id'=>$cate->category_id])}}" id="userfont"> <i class="fas fa-arrow-up"  title="click to Active"  ></i> Click to Active</li>     
+              <li><a class="dropdown-item" href="{{route('category_active',['category_id'=>$cate->category_id])}}"> <i class="fas fa-arrow-up"  title="click to Active"  ></i> Click to Active</li>     
              @endif 
-              <li><a class="dropdown-item" data-bs-toggle="modal" data-bs-target="#edit{{$cate->category_id}}" data-bs-whatever="@fat" id="userfont">
+
+
+              <li><a href="" class="dropdown-item" data-bs-toggle="modal" data-bs-target="#edit{{$cate->category_id}}" data-bs-whatever="@fat">
                 <i class="fas fa-edit"  title="click to Change it"  ></i> Edit Category</li>
                 
               <li><a class="dropdown-item"  href="{{route('cate_delete',['category_id'=>$cate->category_id])}}"  id="userfont">
@@ -155,10 +166,10 @@
       </tr>  
 
       <div class="modal fade" id="edit{{$cate->category_id}}" tabindex="-1" aria-labelledby="edit{{$cate->category_id}}" aria-hidden="true">
-        <div class="modal-dialog">
+        <div class="modal-dialog modal-dialog-centered">
           <div class="modal-content">
-            <div class="modal-header">
-              <h5 class="modal-title" id="edit{{$cate->category_id}}" style="font-family: poppins;">Update Category</h5>
+            <div class="modal-header text-center">
+              <h5 class="modal-title w-100" id="edit{{$cate->category_id}}">Update Category</h5>
               <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">

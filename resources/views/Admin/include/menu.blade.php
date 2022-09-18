@@ -11,7 +11,7 @@
       </li>
       <li class="nav-item d-none d-sm-inline-block">
     
-        <a href="{{route('admin_dashboard')}}" class="nav-link" style="font-family: poppins;"><b>Nicks Resto Bar </b></a>
+        <a href="{{route('admin_dashboard')}}" class="nav-link"><b>Nicks Resto Bar </b></a>
 
       </li>
       <!-- <li class="nav-item d-none d-sm-inline-block">
@@ -35,9 +35,9 @@
 
     <!-- Right navbar links -->
     <ul class="navbar-nav ml-auto">    
-      <div class="dropdown" style="font-family: poppins;">
+      <div class="dropdown">
           Hi<b> Admin </b> </span>
-        <button class="btn btn-default btn-sm dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false" style="margin-right: 30px;">
+        <button class="btn btn-default btn-sm dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false" style="margin-right: 50px;">
           <i class="fas fa-user"></i>
         </button>
 

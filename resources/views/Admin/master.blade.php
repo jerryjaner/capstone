@@ -28,13 +28,13 @@ scratch. This page gets rid of all links and provides the needed markup only.
 </head>
 
 <style>
-  .sidebarfont{
+/*  .sidebarfont{
     font-family: poppins;
-  }
+  } 
   .dashboard{
     font-family: poppins;
   }
-
+*/
 </style>
 
 <body class="hold-transition sidebar-mini">
@@ -116,7 +116,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
 <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
 
- the old datatable
+ <!-- the old datatable -->
 
 <script>
   $(function () {

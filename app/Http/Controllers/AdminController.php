@@ -45,7 +45,7 @@ class AdminController extends Controller
         $user -> address = $Request-> address;
         $user -> email = $Request-> email;
         $user -> password = bcrypt($Request-> password);
-        $user -> role = $Request-> role;
+        $user -> role = 2;
         $user -> save();
 
         return back()->with('added_msg','New User Added Sucessfully');

@@ -11,15 +11,24 @@
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
 
 <style>
+  
   div.dataTables_wrapper div.dataTables_length select {
   width: 60px;
  
 }
+/*#example1 th{
+  text-align: center;
+}*/
 
-#add_user{
+/*#example1 td{
+  text-align: center;
+}*/
+/*#add_user{
   font-family: poppins;
-}
+}*/
 </style>
+
+
 
   @if(Session::get('added_msg'))
       <div class="alert alert-success alert-dismissible fade show" role="alert">
@@ -42,11 +51,11 @@
 
               <!-- add user modal -->
                <div class="modal fade" id="add" tabindex="-1" aria-labelledby="add" aria-hidden="true">
-                  <div class="modal-dialog">
+                  <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable ">
                     <div class="modal-content">
-                      <div class="modal-header">
-                        <h5 class="modal-title" id="add" style="font-family: poppins;"><b>Add New Staff</b></h5>
-                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                      <div class="modal-header text-center">
+                        <h5 class="modal-title w-100" id="add">Add New Staff</h5>
+                       <!--  <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button> -->
                       </div>
                       <div class="modal-body">
                         <form action="{{route('save_user')}}" method="post">
@@ -54,7 +63,7 @@
                              @csrf
 
                             <div class="form-group">
-                              <label style="font-family: poppins"> First Name</label>
+                              <label> First Name</label>
                               <input type="text" class="form-control" name="name" 
                                      placeholder="Enter First Name" 
                                      pattern="[A-Za-z \s*]+$"
@@ -96,13 +105,13 @@
                                      placeholder="Enter Your Email Address">
                             </div>
 
-                            <div class="form-group">
+                           <!--  <div class="form-group">
                               <label> Role</label>
                               <div class="radio">
-                               <!--  <input type="radio" name="role" value="1" required> Admin  -->
+                                <input type="radio" name="role" value="1" required> Admin 
                                 <input type="radio" name="role" value="2" required> Staff
                               </div>
-                             </div>
+                             </div> -->
 
                             <div class="form-group">
                               <label> Password</label>
@@ -133,13 +142,13 @@
 
               <thead>
               <tr>
-                <th style="font-family: poppins">SL</th>
-                <th style="font-family: poppins">Full Name</th>
-                <th style="font-family: poppins">Address</th>
-                <th style="font-family: poppins">Email</th>
-                <th style="font-family: poppins">Logged in Using</th>
-                <th style="font-family: poppins">Role</th>        
-                <th style="font-family: poppins">Created at</th>
+                <th>#</th>
+                <th>Full Name</th>
+                <th>Address</th>
+                <th>Email</th>
+                <th>Logged in Using</th>
+                <th>Role</th>        
+                <th>Created at</th>
               </tr>
               </thead>
               <tbody>
@@ -147,9 +156,9 @@
             	@php($i = 1)
             	@foreach($users  as $user)
               <tr>
-                <td style="font-family: poppins">{{$i++}}</td>
-                <td style="font-family: poppins">{{$user->name}} {{$user->middlename}} {{$user->lastname}}</td>
-                <td style="font-family: poppins">
+                <td>{{$i++}}</td>
+                <td>{{$user->name}} {{$user->middlename}} {{$user->lastname}}</td>
+                <td>
 
                    @if($user->address == null)
 
@@ -162,9 +171,9 @@
                     
                 </td>
                 
-                <td style="font-family: poppins">{{$user -> email}}</td>
+                <td>{{$user -> email}}</td>
                 
-                <td style="font-family: poppins">
+                <td>
 
                     @if($user -> google_id)
                        Google Account
@@ -174,7 +183,7 @@
 
                 </td >
 
-                <td style="font-family: poppins">
+                <td>
 
                       @if($user ->role == 1)
 
@@ -190,7 +199,7 @@
                       
                 </td>
                 
-                <td style="font-family: poppins">{{ \Carbon\Carbon::parse($user -> created_at)->diffForHumans() }}</td>
+                <td>{{ \Carbon\Carbon::parse($user -> created_at)->diffForHumans() }}</td>
 
                 </tr>
           
