@@ -73,10 +73,10 @@ class StaffController extends Controller
         $payment = payment::where('id',$order-> id)->first();
         $OrderD = OrderDetail::where('order_id', $order-> id)->get();
         $orders = DB::table('orders')
-            ->join('users','orders.user_id','=', 'users.id')
-            ->join('payments','orders.id','=', 'payments.order_id')
-            ->select('orders.*', 'users.name','users.middlename','users.lastname','payments.payment_type','payments.payment_status')
-            ->get();
+                    ->join('users','orders.user_id','=', 'users.id')
+                    ->join('payments','orders.id','=', 'payments.order_id')
+                    ->select('orders.*', 'users.name','users.middlename','users.lastname','payments.payment_type','payments.payment_status')
+                    ->get();
 
         $pdf = PDF::loadView('Staff.CustomerOrder.Receipt',compact('order','customer','shipping','payment','OrderD','orders'));
         return $pdf->stream('OrderInvoice.pdf');
@@ -88,7 +88,15 @@ class StaffController extends Controller
         $order = Payment::find( $request -> id);
         $order -> payment_status = $request -> payment_status;
         $order->save();
-        return back()->with('sms','Payment Status Updated Successfully');
+
+        $notification = array (
+
+            'message' => 'Payment Status Updated Successfully',
+            'alert-type' =>'success'
+        );
+
+        return back()->with($notification);
+        //return back()->with('sms','Payment Status Updated Successfully');
  
     }
 
@@ -97,7 +105,16 @@ class StaffController extends Controller
         $order= Order::find( $request -> id);
         $order -> order_status = $request -> order_status; 
         $order->save();
-        return back()->with('sms','Order Status Updated Successfully');
+
+        $notification = array (
+
+            'message' => 'Order Status Updated Successfully',
+            'alert-type' =>'success'
+        );
+
+        return back()->with($notification);
+
+        // return back()->with('sms','Order Status Updated Successfully');
     }
 
 }

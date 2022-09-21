@@ -32,10 +32,12 @@
       </div>
     </form>
   -->
+  
+     
 
     <!-- Right navbar links -->
     <ul class="navbar-nav ml-auto">    
-      <div class="dropdown">
+     {{--  <div class="dropdown">
           Hi<b> Admin </b> </span>
         <button class="btn btn-default btn-sm dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false" style="margin-right: 50px;">
           <i class="fas fa-user"></i>
@@ -53,7 +55,40 @@
               </a>
           </li>
         </ul>
-      </div>
+      </div> --}}
+
+      <!-- Notifications Dropdown Menu -->
+      <li class="nav-item dropdown">
+        <a class="nav-link" data-toggle="dropdown" href="#">
+          <i class="fas fa-user"></i> {{Auth::user()->name}}
+         {{--  <span class="badge badge-warning navbar-badge">15</span> --}}
+        </a>
+        <div class="dropdown-menu dropdown-menu-lg dropdown-menu-right">
+         {{--  <span class="dropdown-item dropdown-header text-center">Hi <b>{{Auth::user()->name}}</b></span>
+          <div class="dropdown-divider"></div> --}}
+          <a href="{{route('admin_profile')}}" class="dropdown-item" style="text-align: center; font-size: 16px;">
+            {{-- <i class="fas fa-user mr-2"></i>  --}}View Profile
+           {{--  <span class="float-right text-muted text-sm">3 mins</span> --}}
+          </a>
+      
+          <div class="dropdown-divider"></div>
+
+          <a   class="dropdown-item dropdown-footer" style="text-align: center; font-size: 16px;" href="{{ route('logout') }}"
+                 onclick="event.preventDefault();
+                 document.getElementById('logout-form').submit();" >
+
+                  {{-- <i class="fas fa-sign-out alt"></i> --}}Logout
+
+                <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+                    @csrf
+                </form>
+
+          </a>
+        </div>
+      </li>
 
     </ul>
   </nav>
+
+
+ 

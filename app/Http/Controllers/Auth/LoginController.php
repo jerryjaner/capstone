@@ -81,7 +81,7 @@ class LoginController extends Controller
             }
 
             elseif(Auth()->user()-> role == 2){
-
+            
                  return redirect()->route('staff_dashboard');
             }
 

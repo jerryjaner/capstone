@@ -21,7 +21,10 @@
 	<link href="//fonts.googleapis.com/css?family=Yantramanav:100,300,400,500,700,900" rel="stylesheet">
 	<link href='https://fonts.googleapis.com/css?family=Poppins' rel='stylesheet'>
 	<!-- //web-fonts -->
-	</head>
+	<!--toastr link  -->
+   <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.css">
+   
+</head>
 <body> 
 	<!-- banner -->
 	@include('User.include.Banner')
@@ -100,3 +103,35 @@
     <script src="{{asset('FrontEndSourceFile')}}/js/bootstrap.js"></script>
 </body>
 </html>
+
+<!-- toastr script -->
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
+
+<script>
+
+    @if (Session::has('message'))
+    
+    var type = "{{Session::get('alert-type','info')}}"
+
+    switch(type){
+
+      case 'info':
+        toastr.info("{{Session::get('message')}}");
+        break;
+
+       case 'success':
+        toastr.success("{{Session::get('message')}}");
+        break;
+
+       case 'warning':
+        toastr.warning("{{Session::get('message')}}");
+        break;
+
+        case 'error':
+        toastr.error("{{Session::get('message')}}");
+        break;
+    }
+
+    @endif
+   
+</script>

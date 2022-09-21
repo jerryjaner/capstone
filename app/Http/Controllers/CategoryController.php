@@ -18,10 +18,19 @@ class CategoryController extends Controller
     	$category -> category_name = $Request->category_name;
     	$category -> category_status = $Request->category_status;
     	$category->save();
-    	return back()->with('added_msg','Category Added Successfully');
+
+    	// return back()->with('added_msg','Category Added Successfully');
+
+        $notification = array (
+
+            'message' => 'Category Added Successfully',
+            'alert-type' =>'success'
+        );
+
+        return back()->with($notification);
 
     	//return redirect(to:'/category/manage')->with('sms','Category Save');
-
+        
     }		
 
     public function manage(){
@@ -37,15 +46,32 @@ class CategoryController extends Controller
     	$category->category_status = 1;
     	$category->save();
 
-    	return back()->with('status_msg','Status Updated Successfully');
+        $notification = array (
+
+            'message' => 'Status Updated Successfully',
+            'alert-type' =>'info'
+        );
+
+        return back()->with($notification);
+
+    	// return back()->with('status_msg','Status Updated Successfully');
     }
-     public function Inactive($category_id)
-     {
+    public function Inactive($category_id)
+    {
 
     	$category = Category::find($category_id);
     	$category ->category_status = 0;
     	$category->save();
-    	return back()->with('status_msg','Status Updated Successfully');
+
+        $notification = array (
+
+            'message' => 'Status Updated Successfully',
+            'alert-type' =>'info'
+        );
+
+        return back()->with($notification);
+
+    	// return back()->with('status_msg','Status Updated Successfully');
     }
 
     public function delete($category_id)
@@ -53,7 +79,15 @@ class CategoryController extends Controller
 
     	$category = Category::find($category_id);
     	$category->delete();
-    	return back()->with('delete_msg', 'Category Deleted Successfully');
+
+        $notification = array (
+
+            'message' => 'Category Deleted Successfully',
+            'alert-type' =>'error'
+        );
+
+        return back()->with($notification);
+    	// return back()->with('delete_msg', 'Category Deleted Successfully');
  
     }
 

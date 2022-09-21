@@ -29,9 +29,14 @@ class CartController extends Controller
     		
     	]);
 
+        $notification = array (
+
+            'message' => 'Item Added to Cart',
+            'alert-type' =>'success'
+        );
     	
     	// return redirect()->route('cart_show'); 
-         return back();
+         return back()->with($notification);
     }
 
     public function show()
@@ -44,13 +49,26 @@ class CartController extends Controller
     public function remove($rowId)
     {
         Cart::remove($rowId);
-        return back();
+
+         $notification = array (
+
+            'message' => 'Item deleted Succesfully',
+            'alert-type' =>'error'
+        );
+
+        return back()->with($notification);
     }
 
      public function update(Request $request)
     {
             Cart::update($request->rowId, $request->qty);
-            return back();
+
+             $notification = array (
+
+            'message' => 'Updated Successfully',
+            'alert-type' =>'success'
+        );
+            return back()->with($notification);
     }
 
     public function cartCount()

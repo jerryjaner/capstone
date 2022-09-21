@@ -18,7 +18,7 @@
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
 
 
-        @if(Session::get('sms'))
+     {{--    @if(Session::get('sms'))
             <div class="alert alert-warning alert-dismissible fade show" role="alert">
               <strong> {{session::get('sms')}}</strong>
               <button type="button" class="close" data-dismiss="alert" aria-label="Close">
@@ -52,7 +52,7 @@
 
 
         @endif
-
+ --}}
      
           <div class="card my-5">
               <div class="card-header">
@@ -117,6 +117,7 @@
                     <td>{{$order->name}} {{$order->middlename}} {{$order -> lastname}}</td>
                     <td>{{$order->order_total}}</td>
                     <td>
+
                       @if($order->order_status =='pending')
 
                         <p style="text-align: center; color: black; background-color: yellow;">
@@ -125,38 +126,39 @@
 
                       @elseif($order->order_status =="On Delivery")
 
-                        <p  style="text-align: center; color: white; background-color: blue;">
+                        <p style="text-align: center; color: white; background-color: blue;">
                           <strong>On Delivery</strong>
                         </p>
 
                       @elseif($order->order_status =='Delivered')
 
-                        <p  style="text-align: center; color: white; background-color: green; ">
+                        <p style="text-align: center; color: white; background-color: green; ">
                           <strong>Delivered</strong>
                         </p>
 
                       @elseif($order->order_status =='Cancelled')
 
-                        <p  style="text-align: center; color: white; background-color: red; ">
+                        <p style="text-align: center; color: white; background-color: red; ">
                           <strong> Cancelled </strong>
                         </p>
 
-                       @elseif($order->order_status == "On Process")
+                      @elseif($order->order_status == "On Process")
 
-                      <p  style="text-align: center; color: white; background-color: orange; ">
+                        <p style="text-align: center; color: white; background-color: orange; ">
                           <strong> On Process </strong>
                         </p>
 
                       @endif
+
                     </td>
                     <td>{{\Carbon\Carbon::parse($order->created_at)->toFormattedDateString() }}</td>
                     <td>
 
-                       @if($order -> payment_type == 'Cash_on_Delivery') 
+                      @if($order -> payment_type == 'Cash_on_Delivery') 
 
-                                Cash on Delivery (COD)
+                            Cash on Delivery (COD)
 
-                       @elseif($order -> payment_type == 'Cash_on_Pickup') 
+                      @elseif($order -> payment_type == 'Cash_on_Pickup') 
 
                             Cash on Pickup (COP)
 

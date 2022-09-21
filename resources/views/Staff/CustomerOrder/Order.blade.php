@@ -56,10 +56,10 @@
                   @foreach($orders  as $order)
 
                   <div class="modal fade" id="orderstatus{{$order->id}}" tabindex="-1" aria-labelledby="orderstatus{{$order->id}}" aria-hidden="true">
-                    <div class="modal-dialog">
+                    <div class="modal-dialog modal-dialog-centered">
                       <div class="modal-content">
-                        <div class="modal-header">
-                          <h5 class="modal-title" id="orderstatus{{$order->id}}">Update Order Status</h5>
+                        <div class="modal-header text-center">
+                          <h5 class="modal-title w-100" id="orderstatus{{$order->id}}">Update Order Status</h5>
                         </div>
                         <div class="modal-body">
                           <form action="{{route('update_order')}}" method="post" >
@@ -199,10 +199,10 @@
                    </tr>
 
                   <div class="modal fade" id="edit{{$order->id}}" tabindex="-1" aria-labelledby="edit{{$order->id}}" aria-hidden="true">
-                        <div class="modal-dialog">
+                        <div class="modal-dialog modal-dialog-centered">
                           <div class="modal-content">
-                            <div class="modal-header">
-                              <h5 class="modal-title" id="edit{{$order->id}}">Update Payment Status</h5>
+                            <div class="modal-header text-center">
+                              <h5 class="modal-title w-100" id="edit{{$order->id}}">Update Payment Status</h5>
                               <!-- <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button> -->
                             </div>
                             <div class="modal-body">
@@ -215,11 +215,12 @@
                                   </div>
 
                                   <label> Select Payment Status  </label>
-                                  <select name="payment_status" class="form-control" required>
+                                  <select name="payment_status" class="form-select" required>
                                 
-                                      <option>Pending</option>
-                                      <option>Paid</option>
-                                      <option>Cancelled</option>
+                                    <option value="" hidden> ---Select Payment Status---</option>
+                                    <option>Paid</option>
+                                    <option>Cancelled</option>
+
                                   </select>                       
                   
                                   <div class="modal-footer">

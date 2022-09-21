@@ -22,12 +22,12 @@ Report of Customer
     <div class="card my-5">
       <div class="card-header">
         <h3 class="card-title" id="report"><b>Report of Customer</b></h3>
-            <a href="{{route('download_client')}}"  class="btn btn-info btn-sm" style="float: right;" id="report">
+            <a href="{{route('download_client')}}"  class="btn btn-info btn-sm" style="float: right;">
               Print Report
             </a>
       </div>        
           <div class="card-body">
-            <table id="example1" class="table table-bordered table-striped">              
+            <table id="example3" class="table table-bordered table-striped">              
                   <thead>
                     <tr>
                       <th>#</th>

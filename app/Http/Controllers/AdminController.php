@@ -48,7 +48,16 @@ class AdminController extends Controller
         $user -> role = 2;
         $user -> save();
 
-        return back()->with('added_msg','New User Added Sucessfully');
+        $notification = array (
+
+            'message' => 'New User Added Sucessfully',
+            'alert-type' =>'success'
+        );
+
+        return back()->with($notification);
+
+
+        // return back()->with('added_msg','New User Added Sucessfully');
       
     }       
 

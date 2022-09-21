@@ -61,9 +61,18 @@ class OrderController extends Controller
 
     public function delete_order($id)
     {
+
         $order = order::find($id);
         $order -> delete();
-        return back()->with('delete_msg', 'Order Deleted Successfully');
+
+        $notification = array (
+
+            'message' => 'Order Deleted Successfully',
+            'alert-type' =>'error'
+        );
+
+        return back()->with($notification);
+       // return back()->with('delete_msg', 'Order Deleted Successfully');
 
     }
     public function download_invoice($id)
@@ -96,7 +105,14 @@ class OrderController extends Controller
         $order -> payment_status = $request -> payment_status;
         $order->save();
         
-        return back()->with('payment_status_msg','Payment Status Updated Successfully');
+         $notification = array (
+
+            'message' => 'Payment Status Update Successfully',
+            'alert-type' =>'info'
+        );
+
+        return back()->with($notification);
+        // return back()->with('payment_status_msg','Payment Status Updated Successfully');
  
     }
 
@@ -108,7 +124,14 @@ class OrderController extends Controller
         $order -> order_status = $request -> order_status; 
         $order->save();
 
-        return back()->with('order_status_msg','Order Status Updated Successfully');
+        $notification = array (
+
+            'message' => 'Order Status Update Successfully',
+            'alert-type' =>'info'
+        );
+
+        return back()->with($notification);
+        // return back()->with('order_status_msg','Order Status Updated Successfully');
  
     }
 

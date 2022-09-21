@@ -27,7 +27,7 @@ div.dataTables_wrapper div.dataTables_length select {
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
 
-
+{{-- 
             @if(Session::get('added_msg'))
                 <div class="alert alert-success alert-dismissible fade show" role="alert">
                   <strong> {{session::get('added_msg')}}</strong>
@@ -60,8 +60,9 @@ div.dataTables_wrapper div.dataTables_length select {
                   </button>
                 </div>
 
+            @endif --}}
 
-            @endif
+            
         <div class="card my-5">
               <div class="card-header">
                 <h3 class="card-title" id="menu_font"><b> Manage Menu </b></h3>
@@ -110,15 +111,15 @@ div.dataTables_wrapper div.dataTables_length select {
 
                                   <div class="form-group">
                                     <label> Details</label>
-                                      <textarea type="text" name="dish_detail" class="form-control" rows="2"  
-                                                placeholder="Enter Details"
-                                                required>                 
-                                     </textarea>
+                                    <textarea type="text" name="dish_detail" class="form-control" rows="2"  
+                                              placeholder="Enter Details"
+                                              required>                 
+                                   </textarea>
                                   </div>
 
                                   <div class="form-group">
                                     <label> Price :</label>     
-                                      <input type="number" step="any" min="1" max="1000"  name="full_price"
+                                    <input type="number" step="any" min="1" max="1000"  name="full_price"
                                              id="menu_font"
                                              style="border-right: none; border-left: none; border-top: none; outline: none;" 
                                              required>
@@ -146,59 +147,59 @@ div.dataTables_wrapper div.dataTables_length select {
                       <!-- end of caategories modal -->
 
                   <thead>
-                  <tr>
-
-                    <th>#</th>
-                    <th>Name</th>
-                    <th>Category</th>
-                    <th>Dish Detail</th>
-                    <th>Dish Image</th>
-                    <th>Price</th>
-                    <th>Status</th>
-                    <th>Action</th>
-                  </tr>
+                    <tr>
+                      <th>#</th>
+                      <th>Name</th>
+                      <th>Category</th>
+                      <th>Dish Detail</th>
+                      <th>Dish Image</th>
+                      <th>Price</th>
+                      <th>Status</th>
+                      <th>Action</th>
+                    </tr>
                   </thead>
                   <tbody>
+                    
                     @php($i = 1)
                     @foreach($dishes  as $dish)
-                  <tr>
-                    <td>{{$i++}}</td>
-                    <td>{{$dish->dish_name}}</td>
-                    <td>{{$dish->category_name}}</td>
-                    <td>{{$dish->dish_detail}}</td>
-                    <td>
-                         <img src="{{asset('BackEndSourceFile/dish_image/'.$dish->dish_image)}}" alt="Image" width="90" height="50" class="img-fluid img-thumbnail">
-                    </td>
-                    <td>{{$dish->full_price}}</td>
-                    <td>
-                      @if($dish -> dish_status == 1)
-
-                        <p>   Active </p>
-
-                      @else
-
-                        <p>    Inactive </p>
-
-                      @endif
-                    </td>
-                    <td> 
-                             <!--  action -->
-                          <div class="btn-group">
-                            <button type="button" class="btn btn-primary btn-sm dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
-                                   More
-                            </button>
-                            <ul class="dropdown-menu">
-                              @if($dish->dish_status == 1)
-
-                                 <li><a class="dropdown-item"  href="{{route('dish_Inactive',['id'=>$dish->id])}}" ><i class="fas fa-arrow-down"  title="click to Inactive"> </i> Click to Inactive</a></li>
-                              @else
-                                 <li><a class="dropdown-item"  href="{{route('dish_Active',['id'=>$dish->id])}}"><i class="fas fa-arrow-up"  title="click to Active">  </i> Click to Active</a></li>
-                              @endif
-                                 <li><a href="" class="dropdown-item" type=" button"  data-bs-toggle="modal" data-bs-target="#edit{{$dish->id}}" data-bs-whatever="@fat"> <i class="fas fa-edit"  title="click to edit"></i> Edit</a></li>
-                            </ul>
-                          </div>                                                    
+                    <tr>
+                      <td>{{$i++}}</td>
+                      <td>{{$dish->dish_name}}</td>
+                      <td>{{$dish->category_name}}</td>
+                      <td>{{$dish->dish_detail}}</td>
+                      <td>
+                           <img src="{{asset('BackEndSourceFile/dish_image/'.$dish->dish_image)}}" alt="Image" width="90" height="50" class="img-fluid img-thumbnail">
                       </td>
-                   </tr>
+                      <td>{{$dish->full_price}}</td>
+                      <td>
+                        @if($dish -> dish_status == 1)
+
+                          <p>   Active </p>
+
+                        @else
+
+                          <p>    Inactive </p>
+
+                        @endif
+                      </td>
+                      <td> 
+                           <!--  action -->
+                            <div class="btn-group">
+                              <button type="button" class="btn btn-primary btn-sm dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
+                                     More
+                              </button>
+                              <ul class="dropdown-menu">
+                                @if($dish->dish_status == 1)
+
+                                   <li><a class="dropdown-item"  href="{{route('dish_Inactive',['id'=>$dish->id])}}" ><i class="fas fa-arrow-down"  title="click to Inactive"> </i> Click to Inactive</a></li>
+                                @else
+                                   <li><a class="dropdown-item"  href="{{route('dish_Active',['id'=>$dish->id])}}"><i class="fas fa-arrow-up"  title="click to Active">  </i> Click to Active</a></li>
+                                @endif
+                                   <li><a href="" class="dropdown-item" type=" button"  data-bs-toggle="modal" data-bs-target="#edit{{$dish->id}}" data-bs-whatever="@fat"> <i class="fas fa-edit"  title="click to edit"></i> Edit</a></li>
+                              </ul>
+                            </div>                                                    
+                      </td>
+                    </tr>
  
                    <!-- modal -->
                     <div class="modal fade" id="edit{{$dish->id}}" tabindex="-1" aria-labelledby="edit{{$dish->id}}" aria-hidden="true">
@@ -289,4 +290,6 @@ div.dataTables_wrapper div.dataTables_length select {
 
 </script>
 
+
 @endsection
+

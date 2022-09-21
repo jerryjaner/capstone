@@ -136,7 +136,9 @@
 <body class="hold-transition register-page">
 <div class="register-box">
   <div class="register-logo">
+
     <a href="#"><b>Nick's </b>Resto Bar</a>
+  {{--   <img src="{{asset('/BackEndSourceFile')}}/Nicks_logo/nickslogo.jpg" class="img-circle elevation-2" style="width: 250px; border-radius: 50%;" alt="Nicks Logo"> --}} 
   </div>
 
   <div class="card">

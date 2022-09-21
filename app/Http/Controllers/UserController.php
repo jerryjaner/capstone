@@ -112,6 +112,7 @@ class UserController extends Controller
        }
        else{
 
+        
          return back();
        }
         
@@ -122,7 +123,14 @@ class UserController extends Controller
         $order -> order_status = 'Cancelled'; 
         $order->save();
 
-        return back();
+        $notification = array (
+
+            'message' => 'Order is Cancelled Succesfully',
+            'alert-type' =>'error'
+        );
+
+        return back()->with($notification);
+      //  return back();
     }
 
       

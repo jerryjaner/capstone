@@ -31,7 +31,14 @@ class GoogleLoginController extends Controller
     			]);
 
     			Auth::login($new_user);
-    			return redirect()->intended('/home');
+
+                $notification = array (
+
+                    'message' => 'Welcome Customer',
+                    'alert-type' =>'success'
+                );
+
+    			return redirect()->intended('/home')->with($notification);
     		}
     		else{
     			Auth::login($user);

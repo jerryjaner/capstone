@@ -30,14 +30,15 @@
 
 
 
-  @if(Session::get('added_msg'))
+  {{-- @if(Session::get('added_msg'))
       <div class="alert alert-success alert-dismissible fade show" role="alert">
         <strong> {{session::get('added_msg')}}</strong>
         <button type="button" class="close" data-dismiss="alert" aria-label="Close">
           <span aria-hiddden="true">&times;</span>
         </button>
       </div>
-  @endif
+  @endif --}}
+  
       <div class="card my-5">
           <div class="card-header">
             <h3 class="card-title" id ="add_user"><b>Manage User</b></h3>

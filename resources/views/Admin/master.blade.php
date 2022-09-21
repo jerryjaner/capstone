@@ -9,10 +9,11 @@ scratch. This page gets rid of all links and provides the needed markup only.
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta http-equiv="x-ua-compatible" content="ie=edge">
 
-  <title>@yield('title')</title>
+  <title> @yield('title')</title>
 
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
 
+
+  <link rel="shortcut icon" sizes="32x32"  type="image/png" href="{{asset('/BackEndSourceFile')}}/Nicks_logo/nickslogo.jpg">
 
   <!-- Font Awesome Icons -->
   <link rel="stylesheet" href="{{asset('/BackEndSourceFile')}}/plugins/fontawesome-free/css/all.min.css">
@@ -25,6 +26,10 @@ scratch. This page gets rid of all links and provides the needed markup only.
   <link href='https://fonts.googleapis.com/css?family=Poppins' rel='stylesheet'>
 
    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+
+   <!--toastr link  -->
+   <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.css">
+
 </head>
 
 <style>
@@ -76,7 +81,8 @@ scratch. This page gets rid of all links and provides the needed markup only.
 <!-- ./wrapper -->
 
 <!-- ./wrapper -->
-
+<!-- Bootstrap -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
 <!-- REQUIRED SCRIPTS -->
 <!-- jQuery -->
 <script src="{{asset('/BackEndSourceFile')}}/plugins/jquery/jquery.min.js"></script>
@@ -115,6 +121,39 @@ scratch. This page gets rid of all links and provides the needed markup only.
 <!-- Swwet alert -->
 <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
+<!-- toastr script -->
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
+
+<script>
+
+    @if (Session::has('message'))
+    
+    var type = "{{Session::get('alert-type','info')}}"
+
+    switch(type){
+
+      case 'info':
+        toastr.info("{{Session::get('message')}}");
+        break;
+
+      case 'success':
+        toastr.success("{{Session::get('message')}}");
+        break;
+
+      case 'warning':
+        toastr.warning("{{Session::get('message')}}");
+        break;
+
+      case 'error':
+        toastr.error("{{Session::get('message')}}");
+        break;
+    }
+
+    @endif
+   
+</script>
+
+
 
  <!-- the old datatable -->
 
@@ -139,49 +178,6 @@ scratch. This page gets rid of all links and provides the needed markup only.
 </script>
 
 
-<!-- Sweet alert-->
-
-<!-- 
-<script>
-  
-  $(function(){
-
-      $('#delete').on('click',function(e){
-
-       // alert('ok');
-
-        Swal.fire({
-        title: 'Are you sure?',
-        text: "You won't be able to revert this!",
-        icon: 'warning',
-       // showCancelButton: true,
-        confirmButtonColor: '#3085d6',
-       // cancelButtonColor: '#d33',
-        confirmButtonText: 'Yes, delete it!'
-      }).then((result) => {
-        if (result.isConfirmed) {
-          
-          Swal.fire(
-            'Deleted!',
-            'Your file has been deleted.',
-            'success'
-          )
-          window.location.href = link;
-        }
-      })
-
-
-
-      });
-
-  });
-
-
- 
-</script>
-
--->
-
 
 <script>
   $(function () {
@@ -200,6 +196,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
     });
   });
 </script>
+
 
 </body>
 </html>
