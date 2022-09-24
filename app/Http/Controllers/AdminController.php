@@ -37,7 +37,11 @@ class AdminController extends Controller
 
     public function create (Request $request)
     {
-      
+
+      $validated = $request->validate([
+        'email' => 'required|email|string|unique:users|max:255',
+      ]);
+
         $user = new User();
 
         $user -> name = $request-> name;

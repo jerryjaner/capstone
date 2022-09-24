@@ -29,37 +29,44 @@
 </style>
 
 
+{{-- 
+  @if(Session::get('email'))
+      
+  @endif --}}
 
-  {{-- @if(Session::get('added_msg'))
-      <div class="alert alert-success alert-dismissible fade show" role="alert">
-        <strong> {{session::get('added_msg')}}</strong>
+  @error('email')
+      <div class="alert alert-danger alert-dismissible fade show" role="alert">
+           <strong>Error in Creating Staff! <br>{{ $message }}</strong>
         <button type="button" class="close" data-dismiss="alert" aria-label="Close">
           <span aria-hiddden="true">&times;</span>
         </button>
       </div>
-  @endif --}}
+  @enderror
+
+
   
       <div class="card my-5">
           <div class="card-header">
             <h3 class="card-title" id ="add_user"><b>Manage User</b></h3>
+
                 <button type="button" class="btn btn-success btn-sm" style="float: right;" data-bs-toggle="modal" data-bs-target="#add" data-bs-whatever="@fat" id="add_user">
                    Add Staff 
                 </button>
           </div>   
-        
+  
           <div class="card-body">
             <table id="example1" class="table table-bordered table-striped">
 
               <!-- add user modal -->
                <div class="modal fade" id="add" tabindex="-1" aria-labelledby="add" aria-hidden="true">
-                  <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable ">
+                  <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
                     <div class="modal-content">
                       <div class="modal-header text-center">
                         <h5 class="modal-title w-100" id="add">Add New Staff</h5>
-                       <!--  <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button> -->
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                       </div>
                       <div class="modal-body">
-                        <form action="{{route('save_user')}}" method="post">
+                        <form action="{{route('save_user')}}" method="post" onsubmit="btn.disabled = true; return true;">
 
                              @csrf
 
@@ -102,8 +109,10 @@
 
                             <div class="form-group">
                               <label> Email</label>
-                              <input type="email" class="form-control" name="email"
+                              <input type="email" class="form-control" name="email" 
                                      placeholder="Enter Your Email Address">
+
+                           
                             </div>
 
                            <!--  <div class="form-group">
@@ -129,8 +138,10 @@
                             </div>
               
                             <div class="modal-footer">
-                              <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" >Cancel</button> 
-                              <button type="submit" name="btn" class="btn btn-primary ">Submit</button>
+                              {{-- <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" >Cancel</button>  --}}
+                              <button class="btn btn-primary" type="submit" name="btn" id="submit" onclick="loading()" >
+                               <i class="fas fa-spinner fa-spin" style="display: none;"></i><span class="btn-text">Submit</span>
+                              </button>
                             </div>
 
                         </form>

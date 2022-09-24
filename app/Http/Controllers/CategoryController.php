@@ -14,6 +14,10 @@ class CategoryController extends Controller
 
     public function save (Request $Request){
 
+       $validated = $Request->validate([
+        'category_name' => 'required|string|unique:categories|max:255',
+      ]);
+
 		$category = new Category();
     	$category -> category_name = $Request->category_name;
     	$category -> category_status = $Request->category_status;

@@ -220,5 +220,13 @@
 })()
  </script>
 
+ <script type="text/javascript">
+     function loading(){
+
+      $(".btn .fa-spinner").show();
+      $(".btn .btn-text").html(" Processing...");
+     }
+</script>
+
 </body>
 </html>

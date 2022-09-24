@@ -43,6 +43,8 @@
 								<div class="back">
 								   <!--  <h4>{{$dish -> dish_name}}</h4><br> -->				
 									<h6 style="margin-top: 50px;">₱{{$dish -> full_price}}</h6>
+
+									
 									<form action="{{route('add_to_cart')}}" method="post">
 										<input type="hidden" name="id" value="$dish -> id">		
 										<!-- dapat dire mag add to cart an user kapag hindi pa nakakalogin -->									 
@@ -138,7 +140,7 @@
 							</div>
 						</div>
 					</div>  -->
-				<!-- //modal -->
+				{{-- //modal --}}
 
 			    <!--- Modal 2 -->
 			    	<div class="modal video-modal fade" id="myModal2{{$dish -> id}}" tabindex="-1" role="dialog" aria-labelledby="myModal2">

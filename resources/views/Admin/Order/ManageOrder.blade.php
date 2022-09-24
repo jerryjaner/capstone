@@ -53,6 +53,7 @@
 
         @endif
  --}}
+ 
      
           <div class="card my-5">
               <div class="card-header">
@@ -102,8 +103,11 @@
                             </div>
 
                             <div class="modal-footer">
-                              <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button> 
-                              <button type="submit" class="btn btn-primary">Update</button>
+                              {{-- <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button> 
+                              <button type="submit" class="btn btn-primary">Update</button> --}}
+                              <button class="btn btn-primary" type="submit" name="btn" id="submit" onclick="loading()" >
+                               <i class="fas fa-spinner fa-spin" style="display: none;"></i><span class="btn-text">Update</span>
+                              </button>
                             </div>
 
                           </form>
@@ -257,8 +261,11 @@
 
                                 </select>                       
                                 <div class="modal-footer">
-                                  <button  type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button> 
-                                  <button  type="submit" class="btn btn-primary">Update</button>
+                                  {{-- <button  type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button> 
+                                  <button  type="submit" class="btn btn-primary">Update</button> --}}
+                                  <button class="btn btn-primary" type="submit" name="btn" id="submit" onclick="loading()" >
+                                   <i class="fas fa-spinner fa-spin" style="display: none;"></i><span class="btn-text">Update</span>
+                                  </button>
                                 </div>
                             </form>
                         </div> 

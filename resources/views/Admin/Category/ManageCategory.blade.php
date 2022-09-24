@@ -27,6 +27,8 @@ Manage Category
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
 
+
+
 {{-- 
 @if(Session::get('added_msg'))
 <div class="alert alert-success alert-dismissible fade show" role="alert">
@@ -62,6 +64,14 @@ Manage Category
 
 @endif   --}}
 
+  @error('category_name')
+      <div class="alert alert-danger alert-dismissible fade show" role="alert">
+           <strong>{{ $message }}</strong>
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+          <span aria-hiddden="true">&times;</span>
+        </button>
+      </div>
+  @enderror
 
 
 
@@ -81,11 +91,11 @@ Manage Category
            <div class="modal-header text-center">
 
               <h5 class="modal-title w-100"  id="add">Add Category</h5>
-            <!-- <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button> -->
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
            </div>
           <div class="modal-body">
 
-            <form action="{{route('cate_save')}}" method="post">
+            <form action="{{route('cate_save')}}" method="post" onsubmit="btn.disabled = true; return true;">
                 @csrf
 
                 <div class="form-group">
@@ -106,12 +116,16 @@ Manage Category
                   </div>
                 </div>
                 <div class="modal-footer">
-                  <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button> 
-                  <button type="submit" name="btn" class="btn btn-primary">Submit</button>
+{{-- 
+                    <button type="submit"  name="btn" class="btn btn-primary">
+                    Submit</button> 
+ --}}
+                    <button class="btn btn-primary" type="submit" name="btn" id="submit" onclick="loading()" >
+                     <i class="fas fa-spinner fa-spin" style="display: none;"></i><span class="btn-text">Submit</span>
+                    </button>
+               
                 </div>
-                
-
-
+            
             </form>
           </div>
         </div>
@@ -185,7 +199,7 @@ Manage Category
                 </div>
 
                 <div class="modal-body">
-                  <form action="{{route('cate_update')}}" method="post" >
+                  <form action="{{route('cate_update')}}" method="post" onsubmit="btn.disabled = true; return true;">
 
                      @csrf
 
@@ -200,8 +214,12 @@ Manage Category
                      </div>
 
                      <div class="modal-footer">
-                      <button id="userfont" type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button> 
-                      <button type="submit" class="btn btn-primary" id="userfont" >Update</button>
+                     {{-- <button id="userfont" type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>  --}}
+                     {{--  <button type="submit" class="btn btn-primary" name="btn" >Update</button> --}}
+
+                      <button class="btn btn-primary" type="submit" name="btn" id="submit" onclick="loading()" >
+                       <i class="fas fa-spinner fa-spin" style="display: none;"></i><span class="btn-text">Update</span>
+                      </button>
                     </div>
 
                   </form>

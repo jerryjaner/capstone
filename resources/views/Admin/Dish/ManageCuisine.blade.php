@@ -78,10 +78,10 @@ div.dataTables_wrapper div.dataTables_length select {
                         <div class="modal-content">
                           <div class="modal-header text-center">
                            <h5 class="modal-title w-100" id="add" > Add New Menu</h5>
-                          <!--   <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button> -->
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                           </div>
                           <div class="modal-body">
-                            <form action="{{route('save_dish_data')}}" method="post" enctype="multipart/form-data">
+                            <form action="{{route('save_dish_data')}}" method="post" enctype="multipart/form-data" onsubmit="btn.disabled = true; return true;">
                                    @csrf
 
                                   <div class="form-group ">
@@ -139,8 +139,11 @@ div.dataTables_wrapper div.dataTables_length select {
                                   </div>
 
                                   <div class="modal-footer">
-                                     <button  type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button> 
-                                     <button  type="submit" name="btn" class="btn btn-primary"> Add Menu</button>
+                                    {{--  <button  type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>  --}}
+                                    {{--  <button  type="submit" name="btn" class="btn btn-primary"> Add Menu</button> --}}
+                                    <button class="btn btn-primary" type="submit" name="btn" id="submit" onclick="loading()" >
+                                     <i class="fas fa-spinner fa-spin" style="display: none;"></i><span class="btn-text">Submit</span>
+                                    </button>
                                   </div>
                             </form>
                           </div>
@@ -210,7 +213,7 @@ div.dataTables_wrapper div.dataTables_length select {
                           <!--   <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button> -->
                           </div>
                           <div class="modal-body">
-                              <form action="{{route('update_dish')}}" method="post" enctype="multipart/form-data" >
+                              <form action="{{route('update_dish')}}" method="post" enctype="multipart/form-data" onsubmit="btn.disabled = true; return true;">
                                      @csrf
 
                                   <div class="form-group">
@@ -262,8 +265,11 @@ div.dataTables_wrapper div.dataTables_length select {
                                   </div>
                                      <br>
                                   <div class="modal-footer">
-                                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button> 
-                                    <button type="submit" class="btn btn-primary">Update</button>
+                                   {{--  <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button> 
+                                    <button type="submit" class="btn btn-primary" name="btn">Update</button> --}}
+                                    <button class="btn btn-primary" type="submit" name="btn" id="submit" onclick="loading()" >
+                                     <i class="fas fa-spinner fa-spin" style="display: none;"></i><span class="btn-text">Update</span>
+                                    </button>
                                   </div>
                               </form>
                            </div>
