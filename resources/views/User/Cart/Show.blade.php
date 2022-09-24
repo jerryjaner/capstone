@@ -65,7 +65,7 @@
 			 				
 			 				<td id="display"><p style="color:black; font-size: 17px; ">{{$dish ->name}}</p></td>
 
-			 				<td> <img src="{{asset($dish->options->image)}}" style="max-height:150px; width:150px auto; border-radius: 50%;"  alt=" " class="img-responsive"></td>
+			 				<td> <img src="{{asset($dish->options->image)}}" style="max-height:150px; width:150px auto; "  alt=" " class="img-responsive"></td>
 						    <td> <p style="color:black; font-size: 17px; ">₱{{$dish -> price }}</p></td>
 						   
 						    <!-- For Updating Cart -->
@@ -213,4 +213,6 @@
   			</div>
 		</div>
 </div> 
+
+
 @endsection

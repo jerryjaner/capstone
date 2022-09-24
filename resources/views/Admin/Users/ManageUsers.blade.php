@@ -166,7 +166,7 @@
                         N/A
                         
                     @else
-                      {{$user->name}}
+                      {{$user->address}}
 
                     @endif
                     

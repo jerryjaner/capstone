@@ -164,7 +164,7 @@
 										    </h3>
 
 
-											<form action="{{route('add_to_cart')}}" method="post">
+											<form action="{{route('add_to_cart')}}" method="post" onsubmit="btn.disabled = true; return true;">
 												@csrf
 												<input type="hidden" name="id" value="{{$dish->id}}">
 												 <b> Quantity: </b> 
@@ -182,11 +182,12 @@
 												  	
 												  </h5>
 
-												<button type="submit" class="btn btn-primary" style=" float: right; outline: none;">
+												<button type="submit" name="btn" class="btn btn-primary" id="oneclick" style=" float: right; outline: none;">
 											       <i class="fa fa-cart-plus" aria-hidden="true"></i> 
 											       Add to cart
 											   </button>
 
+											 
 											   <button type="button" class="btn btn-danger" data-dismiss="modal" style="float: right; outline: none; margin-right: 5px;">
 											   		Cancel
 											   	</button>  

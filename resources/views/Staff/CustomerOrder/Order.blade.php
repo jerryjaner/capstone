@@ -40,7 +40,7 @@
                 <table id="example1" class="table table-bordered table-striped">
                   <thead>
                     <tr>
-                      <th style="text-align: center;">SL</th>
+                      <th style="text-align: center;">#</th>
                       <th style="text-align: center;">Customer Name</th>
                       <th style="text-align: center;">Order Price Total</th>
                       <th style="text-align: center;">Order Status</th>
@@ -95,32 +95,32 @@
                     <td>
                       @if($order->order_status =='pending')
 
-                        <p id="orderfont" style="text-align: center; color: black; background-color: yellow;">
-                          <strong>Pending</strong>
+                        <p class="text-center">
+                           <span class="badge badge-warning">Pending</span>
                         </p>
 
                       @elseif($order->order_status =="On Delivery")
 
-                        <p id="orderfont" style="text-align: center; color: white; background-color: blue;">
-                          <strong>On Delivery</strong>
+                        <p class="text-center">
+                           <span class="badge badge-info">On Delivery</span>
                         </p>
 
                       @elseif($order->order_status =='Delivered')
 
-                        <p id="orderfont" style="text-align: center; color: white; background-color: green; ">
-                          <strong>Delivered</strong>
+                       <p class="text-center">
+                           <span class="badge badge-success">Delivered</span>
                         </p>
 
                       @elseif($order->order_status =='Cancelled')
 
-                        <p id="orderfont" style="text-align: center; color: white; background-color: red; ">
-                          <strong> Cancelled </strong>
-                        </p>
+                       <p class="text-center">
+                           <span class="badge badge-danger">Cancelled</span>
+                       </p>
 
-                       @elseif($order->order_status == "On Process")
+                      @elseif($order->order_status == "On Process")
 
-                      <p id="orderfont" style="text-align: center; color: white; background-color: orange; ">
-                          <strong> On Process </strong>
+                        <p class="text-center">
+                            <span class="badge badge-secondary">On Process</span>
                         </p>
 
                       @endif
@@ -142,20 +142,20 @@
                     <td>
                       @if($order -> payment_status == 'pending')
 
-                        <p id="orderfont" style="text-align: center; color: black; background-color: yellow;">
-                          <strong> Pending </strong>
+                        <p class="text-center">
+                           <span class="badge badge-warning">Pending</span>
                         </p>
 
                       @elseif($order -> payment_status == 'Paid')
 
-                        <p id="orderfont" style="text-align: center; color: white; background-color: green;">
-                          <strong> Paid </strong>
+                        <p class="text-center">
+                           <span class="badge badge-success">Paid</span>
                         </p>
 
                       @elseif($order -> payment_status == 'Cancelled')
 
-                        <p id="orderfont" style="text-align: center; color: white; background-color: red;">
-                          <strong> Cancelled </strong>
+                        <p class="text-center">
+                           <span class="badge badge-danger">Cancelled</span>
                         </p>
 
                       @endif
@@ -186,8 +186,9 @@
 
                             <li><a class="dropdown-item" href="{{route('customer_invoice',['id'=>$order->id])}}" id="orderfont"><i class="fas fa-search-plus"  title="View Invoice"> </i> View Invoice</a></li>
 
-                      
+                        
                             <li><a class="dropdown-item" href="#" type="button" data-bs-toggle ="modal" data-bs-target="#orderstatus{{$order->id}}" data-bs-whatever="@fat" id="orderfont"> <i class="fas fa-edit"  title="Edit Order Status">  </i> Edit Order Status</a></li> 
+
 
                             <li><a class="dropdown-item" href="#" type="button" data-bs-toggle ="modal" data-bs-target="#edit{{$order->id}}" data-bs-whatever="@fat" id="orderfont"> <i class="fas fa-edit"  title="Edit Payment Status">  </i> Edit Payment Status</a></li>
 

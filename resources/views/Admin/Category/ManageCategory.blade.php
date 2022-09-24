@@ -80,41 +80,42 @@ Manage Category
           <div class="modal-content">
            <div class="modal-header text-center">
 
-            <h5 class="modal-title w-100"  id="add">Add Category</h5>
+              <h5 class="modal-title w-100"  id="add">Add Category</h5>
             <!-- <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button> -->
-          </div>
+           </div>
           <div class="modal-body">
 
             <form action="{{route('cate_save')}}" method="post">
-              @csrf
-             <div class="form-group">
-              
-              <label > Category Name</label>
-              <input type="text" class="form-control" 
-                     name="category_name"  
-                     placeholder="Enter Category Name" 
-                     pattern="[A-Za-z \s*]+$"
-                     oninvalid="this.setCustomValidity('Letters Only are Allowed')"
-                     oninput="this.setCustomValidity('')" 
-                     required>
-            </div>
+                @csrf
 
-            <div class="form-group">
-              <label> Category Status</label>
-              <div class="radio">
-                <input  type="radio" name="category_status" value="1" required> Active          
-                <input  type="radio" name="category_status" value="0" required> Inactive
-              </div>
-            </div>
+                <div class="form-group">
+                  <label > Category Name</label>
+                  <input type="text" class="form-control" 
+                         name="category_name"  
+                         placeholder="Enter Category Name" 
+                         pattern="[A-Za-z \s*]+$"
+                         oninvalid="this.setCustomValidity('Letters Only are Allowed')"
+                         oninput="this.setCustomValidity('')" 
+                         required>
+                </div>
+                <div class="form-group">
+                  <label> Category Status</label>
+                  <div class="radio">
+                    <input  type="radio" name="category_status" value="1" required> Active          
+                    <input  type="radio" name="category_status" value="0" required> Inactive
+                  </div>
+                </div>
+                <div class="modal-footer">
+                  <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button> 
+                  <button type="submit" name="btn" class="btn btn-primary">Submit</button>
+                </div>
+                
 
-            <div class="modal-footer">
-              <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button> 
-              <button type="submit" name="btn" class="btn btn-primary">Submit</button>
-            </div>
-          </form>
+
+            </form>
+          </div>
         </div>
-      </div>
-    </div>
+     </div>
   </div>    
   <!-- End of Modal --> 
   <thead>
@@ -186,24 +187,24 @@ Manage Category
                 <div class="modal-body">
                   <form action="{{route('cate_update')}}" method="post" >
 
-                   @csrf
+                     @csrf
 
-                   <div class="form-group">
-                     <label id="userfont" >Category Name</label>
-                     <input type="text" class="form-control" id="userfont" 
-                     name="category_name" 
-                     placeholder="Enter Category Name" 
-                     value="{{$cate->category_name}}"
-                     required>
-                     <input type="hidden" class="form-control"  name="category_id" value="{{$cate->category_id}}">
-                   </div>
+                     <div class="form-group">
+                       <label id="userfont" >Category Name</label>
+                       <input type="text" class="form-control" id="userfont" 
+                              name="category_name" 
+                              placeholder="Enter Category Name" 
+                              value="{{$cate->category_name}}"
+                              required>
+                       <input type="hidden" class="form-control"  name="category_id" value="{{$cate->category_id}}">
+                     </div>
 
-                   <div class="modal-footer">
-                    <button id="userfont" type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button> 
-                    <button type="submit" class="btn btn-primary" id="userfont" >Update</button>
-                  </div>
+                     <div class="modal-footer">
+                      <button id="userfont" type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button> 
+                      <button type="submit" class="btn btn-primary" id="userfont" >Update</button>
+                    </div>
 
-                </form>
+                  </form>
               </div>
             </div>
           </div>

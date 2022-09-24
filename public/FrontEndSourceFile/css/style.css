@@ -133,7 +133,8 @@ li.w3pages .dropdown-menu > li > a {
 li.w3pages ul.dropdown-menu {
     left: 3%;
     padding: 10px 0;
-    min-width: 120px;
+    min-width: 150px ;
+  
 }
 li.w3pages .dropdown-menu > li > a:hover,li.w3pages .dropdown-menu > li > a.active{
     color: #000; 
@@ -2570,6 +2571,9 @@ img.w3order-img {
 	.grid_3 {
 		margin-bottom: 0em;
 	}
+    .nicks_logo{
+        display: none;
+    }
 }
 @media (max-width:640px){
 	h1, .h1, h2, .h2, h3, .h3 {
@@ -2605,6 +2609,9 @@ img.w3order-img {
 	.in-gp-tb {
 		padding-right: 1em;
 	}
+    .nicks_logo{
+        display: none;
+    }
 }
 @media (max-width:480px){
 	h3.w3ls-hdg {
@@ -2645,6 +2652,9 @@ img.w3order-img {
 	.icons .bs-glyphicons li { 
 		width: 31%; 
 	} 
+    .nicks_logo{
+        display: none;
+    }
 }
 @media (max-width: 320px){ 
 	.alert,ol.breadcrumb li, .grid_3 p,.well, ul.list-group li, li.list-group-item1,a.list-group-item {
@@ -2680,6 +2690,9 @@ img.w3order-img {
 		font-size: 18px;
 		margin: 21px 0 12px;
 	}
+    .nicks_logo{
+        display: none;
+    }
 }
 /*-- //pages --*/  
 /*-- responsive-design --*/

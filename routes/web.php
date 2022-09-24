@@ -50,6 +50,8 @@ Route::group(['prefix'=>'admin','middleware'=>['isAdmin','auth','PreventBackHist
 	/* Add user here */
 	Route::post('add/user', [AdminController::class, 'create'])->name('save_user');
 	Route::get('profile',[AdminController::class,'profile'])->name('admin_profile');
+	Route::post('update', [AdminController::class, 'profile_update'])->name('profile_update');
+	Route::get('change/password',[AdminController::class,'change_pass'])->name('change_password');
 	
 	/* Category Start here */
 	Route::get('/category/add', [CategoryController::class, 'index'])->name('show_cate_table');
@@ -155,9 +157,10 @@ Route::group(['prefix'=>'user','middleware'=>['isUser','auth','PreventBackHistor
    Route::get('customer/order',[UserController::class,'customerOrder'])->name('customer_order');
    Route::get('order/details{id}',[UserController::class,'viewOrder'])->name('view_order');
  
+   // profile
 
 
-   
+    Route::get('profile',[UserController::class,'customerprofile'])->name('customer_profile');
 
 
 	

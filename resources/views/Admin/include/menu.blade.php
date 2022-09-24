@@ -66,18 +66,26 @@
         <div class="dropdown-menu dropdown-menu-lg dropdown-menu-right">
          {{--  <span class="dropdown-item dropdown-header text-center">Hi <b>{{Auth::user()->name}}</b></span>
           <div class="dropdown-divider"></div> --}}
-          <a href="{{route('admin_profile')}}" class="dropdown-item" style="text-align: center; font-size: 16px;">
-            {{-- <i class="fas fa-user mr-2"></i>  --}}View Profile
+          <a href="{{route('admin_profile')}}" class="dropdown-item" style="font-size: 16px;" >
+            <i class="fas fa-user mr-3"></i> Profile
            {{--  <span class="float-right text-muted text-sm">3 mins</span> --}}
           </a>
+
+          <div class="dropdown-divider"></div> 
+          <a href="{{ route('change_password') }}" class="dropdown-item" style="font-size: 16px;" >
+            <i class="fas fa-cog mr-3"></i>Change Password
+           {{--  <span class="float-right text-muted text-sm">3 mins</span> --}}
+          </a>
+
+
       
           <div class="dropdown-divider"></div>
 
-          <a   class="dropdown-item dropdown-footer" style="text-align: center; font-size: 16px;" href="{{ route('logout') }}"
+          <a   class="dropdown-item dropdown-footer" style="font-size: 16px;"  href="{{ route('logout') }}"
                  onclick="event.preventDefault();
                  document.getElementById('logout-form').submit();" >
 
-                  {{-- <i class="fas fa-sign-out alt"></i> --}}Logout
+                  <i class="fas fa-sign-out-alt mr-3"></i>Logout
 
                 <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
                     @csrf

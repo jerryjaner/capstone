@@ -65,9 +65,15 @@ class CheckOutController extends Controller
      	     }
      	     Cart::destroy();
              
+              $notification = array (
+
+                'message' => 'Your order has been Successfully processed',
+                'alert-type' =>'success'
+            );
+            return redirect('/')->with($notification);
 
      	   //  Session::flash('success', 'Your order has been successfully processed.');
-     	     return redirect('checkoutComplete')->with('sms','Your order has been successfully processed.');
+     	    // return redirect('checkoutComplete')->with('sms','Your order has been successfully processed.');
 
 
 
@@ -105,7 +111,14 @@ class CheckOutController extends Controller
      	     }
      	     Cart::destroy();
 
-             return redirect('checkoutComplete')->with('sms','Your order has been successfully processed.');
+             $notification = array (
+
+                'message' => 'Your order has been Successfully processed',
+                'alert-type' =>'success'
+            );
+            return redirect('/')->with($notification);
+
+           //  return redirect('checkoutComplete')->with('sms','Your order has been successfully processed.');
      	     // return redirect('checkoutComplete');
 
     	}

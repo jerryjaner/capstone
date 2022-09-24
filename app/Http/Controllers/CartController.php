@@ -63,7 +63,7 @@ class CartController extends Controller
     {
             Cart::update($request->rowId, $request->qty);
 
-             $notification = array (
+            $notification = array (
 
             'message' => 'Updated Successfully',
             'alert-type' =>'success'

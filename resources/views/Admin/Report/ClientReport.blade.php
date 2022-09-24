@@ -54,7 +54,7 @@ Report of Customer
                             N/A
 
                         @else
-                          {{$user->name}}
+                          {{$user->address}}
 
                         @endif
                       </td>

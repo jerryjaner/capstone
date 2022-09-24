@@ -16,7 +16,7 @@
 			<p class="w3ls-title w3ls-title1 text-center"> Please Fill up valid Shipping Information</p>
 
 			<div class="login-agileinfo"> 
-				<form action="{{route('store_shipping')}}" method="post"> 
+				<form action="{{route('store_shipping')}}" method="post" onsubmit="btn.disabled = true; return true;"> 
 
 
 					@csrf
@@ -71,7 +71,7 @@
 						</ul>
 						<div class="clearfix"> </div>
 					</div>   
-					<input type="submit" value="Sign Up">
+					<input type="submit" value="Sign Up" name="btn">
 				</form>
 				
 			</div>	 

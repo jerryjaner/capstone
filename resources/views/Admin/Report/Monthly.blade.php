@@ -59,7 +59,7 @@ var chart = new CanvasJS.Chart("chartContainer", {
 		text: "Monthly Orders"
 	},
 	axisY: {
-		title: "Number Orders"
+		title: "Number of Orders"
 	},
 	data: [{
 		type: "column",

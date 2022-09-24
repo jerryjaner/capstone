@@ -49,6 +49,7 @@ class UserController extends Controller
    }
      // for shipping information
     public function shipping_save(Request $request){
+      
       if(Auth::check())
       {
         $shipping = new Shipping();
@@ -125,12 +126,32 @@ class UserController extends Controller
 
         $notification = array (
 
-            'message' => 'Order is Cancelled Succesfully',
+            'message' => 'Order Cancelled ',
             'alert-type' =>'error'
         );
 
         return back()->with($notification);
       //  return back();
+    }
+
+    public function customerprofile(){
+
+
+      $customers = User::where('role',0)
+                       ->where('id', Auth::user()->id)
+                       ->get();
+
+      if(Auth::check()){
+
+
+        return view('User.CustomerProfile.Profile', compact('customers'));
+
+      }
+      else{
+        return back();
+      }
+      
+      
     }
 
       

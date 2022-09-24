@@ -24,7 +24,7 @@
 							<div class="checkout-left">
 								<div class="address_form_agile mt-sm-5 mt-4">
 									
-									<form action="{{route('new_order')}}" method="post">
+									<form action="{{route('new_order')}}" method="post" onsubmit="btn.disabled = true; return true;">
 										@csrf
 
 										<table class="table table-border">
@@ -51,7 +51,7 @@
 											<!--	<td><input style="float: right; margin-right:" type="submit" name="btn" class="btn btn-success" value="Confirm Order"></td> -->
 
 												<td>
-													<button type="submit" name="btn" class="btn btn-success" style="margin-left: 90%; outline: none;">
+													<button type="submit" name="btn" class="btn btn-success"  style="margin-left: 90%; outline: none;">
 													   Confirm  Order
 													</button>
 												</td>
@@ -69,5 +69,7 @@
 			</div>
 		</div>
 	</div>
+
+	
 	
 @endsection

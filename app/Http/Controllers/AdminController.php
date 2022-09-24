@@ -32,19 +32,20 @@ class AdminController extends Controller
     public function manage()
     {
         $users = user::all();
-        return view('Admin.Users.ManageUsers', data: compact(var_name:'users'));   
+        return view('Admin.Users.ManageUsers', compact('users'));   
     }
 
-    public function create (Request $Request)
+    public function create (Request $request)
     {
       
         $user = new User();
-        $user -> name = $Request-> name;
-        $user -> middlename = $Request-> middlename;
-        $user -> lastname = $Request-> lastname;
-        $user -> address = $Request-> address;
-        $user -> email = $Request-> email;
-        $user -> password = bcrypt($Request-> password);
+
+        $user -> name = $request-> name;
+        $user -> middlename = $request-> middlename;
+        $user -> lastname = $request-> lastname;
+        $user -> address = $request-> address;
+        $user -> email = $request-> email;
+        $user -> password = bcrypt($request-> password);
         $user -> role = 2;
         $user -> save();
 
@@ -54,27 +55,45 @@ class AdminController extends Controller
             'alert-type' =>'success'
         );
 
-        return back()->with($notification);
+        return redirect()-> back()->with($notification);
 
 
         // return back()->with('added_msg','New User Added Sucessfully');
       
-    }       
+    }
 
-    public function profile()
-    {
+    public function profile(){
+    
         $users = user::all();
         return view('Admin.Users.UserProfile', data: compact(var_name:'users')); 
     }
 
-    /*
-         public function order()
-        {
-            $orders = OrderDetail::all();
+    public function profile_update(Request $request){
 
-            return view(view:'Admin.Users.Order', data: compact(var_name:'orders'));   
-        }
 
-    */
+    	$profile = User::find($request->id);
+    	$profile->name = $request->name;
+    	$profile->middlename = $request->middlename;
+    	$profile->lastname = $request->lastname;
+    	$profile -> address = $request -> address;
+    	$profile->save();
+
+        $notification = array (
+
+            'message' => 'Profile Updated Successfully',
+            'alert-type' =>'info'
+        );
+
+        return back()->with($notification);
+    }  
+
+    public function change_pass(){
+
+        return view('Admin.Users.UserPass');
+    }
+    
+
+
+    
 
 }

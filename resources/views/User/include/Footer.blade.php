@@ -5,15 +5,15 @@
 				<ul>
 					<li><a href="#" class="fa fa-facebook icon facebook"> </a></li>
 					<li><a href="#" class="fa fa-twitter icon twitter"> </a></li>
-					<li><a href="#" class="fa fa-google-plus icon googleplus"> </a></li>
-					<li><a href="#" class="fa fa-dribbble icon dribbble"> </a></li>
-					<li><a href="#" class="fa fa-rss icon rss"> </a></li> 
+					<li><a href="#" class="fa fa-google-plus icon google-plus"> </a></li>
+					{{-- <li><a href="#" class="fa fa-dribbble icon dribbble"> </a></li>
+					<li><a href="#" class="fa fa-rss icon rss"> </a></li>  --}}
 				</ul> 
 				<ul class="apps"> 
-					<li><h4>Download Our app : </h4> </li>
+				{{-- 	<li><h4>Download Our app : </h4> </li>
 					<li><a href="#" class="fa fa-apple"></a></li>
 					<li><a href="#" class="fa fa-windows"></a></li>
-					<li><a href="#" class="fa fa-android"></a></li>
+					<li><a href="#" class="fa fa-android"></a></li> --}}
 				</ul> 
 			</div> 
 			<div class="col-md-6 subscribe-right">

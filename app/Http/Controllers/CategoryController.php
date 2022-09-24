@@ -98,7 +98,15 @@ class CategoryController extends Controller
     	$category->category_name = $request->category_name;
     	$category->save();
 
-    	return redirect(to:'/admin/category/manage')->with('update_msg','Category Updated Successfully');
+        $notification = array (
+
+            'message' => 'Category Updated Successfully',
+            'alert-type' =>'info'
+        );
+
+        return back()->with($notification);
+
+    // return redirect(to:'/admin/category/manage')->with('update_msg','Category Updated Successfully');
  
     }
 

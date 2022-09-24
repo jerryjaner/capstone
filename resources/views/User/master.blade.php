@@ -7,6 +7,9 @@
 	<meta name="keywords" content="Staple Food Responsive web template, Bootstrap Web Templates, Flat Web Templates, Android Compatible web template, 
 		SmartPhone Compatible web template, free WebDesigns for Nokia, Samsung, LG, Sony Ericsson, Motorola web design" />
 	<script type="application/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false); function hideURLbar(){ window.scrollTo(0,1); } </script>
+
+	{{-- title bar logo --}}
+	<link rel="shortcut icon" sizes="32x32"  type="image/png" href="{{asset('/BackEndSourceFile')}}/Nicks_logo/nickslogo.jpg">
 	<!-- Custom Theme files -->
 	<link href="{{asset('FrontEndSourceFile')}}/css/bootstrap.css" type="text/css" rel="stylesheet" media="all">
 	<link href="{{asset('FrontEndSourceFile')}}/css/style.css" type="text/css" rel="stylesheet" media="all">  
@@ -111,6 +114,7 @@
 
     @if (Session::has('message'))
     
+    toastr.options.progressBar = true;
     var type = "{{Session::get('alert-type','info')}}"
 
     switch(type){

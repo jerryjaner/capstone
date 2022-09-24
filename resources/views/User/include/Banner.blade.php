@@ -8,16 +8,18 @@
 				<div class="container">
 					<nav class="navbar navbar-default">
 						<!-- Brand and toggle get grouped for better mobile display -->
+						<img class="nicks_logo" src="{{asset('/BackEndSourceFile')}}/Nicks_logo/nickslogo.jpg" style="width: 80px; border-radius: 50%; float: left;  margin-top: 5px; margin-right: 20px; " alt="Nicks_Logo"> 
 
 						<div class="navbar-header w3l_logo">
 							<button type="button" class="navbar-toggle collapsed navbar-toggle1" data-toggle="collapse" data-target="#bs-megadropdown-tabs">
+								
 								<span class="sr-only">Toggle navigation</span>
 								<span class="icon-bar"></span>
 								<span class="icon-bar"></span>
 								<span class="icon-bar"></span>
 
 							</button>
-							<!-- <img src="{{asset('/BackEndSourceFile')}}/Nicks_logo/nickslogo.jpg" style="width: 80px; border-radius: 50%; margin-top: 5px;" alt="User Image">  -->
+							
 							<h1><a href="#">Nick's<span>Resto Bar & Cafe-Restaurant</span></a></h1>
 						</div> 
 						<div class="collapse navbar-collapse" id="bs-megadropdown-tabs">
@@ -84,13 +86,19 @@
 								 
 								<li><a href="contact.html">Contact Us</a></li> 
 
+
+
+
 								<li class="w3pages"><a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"> <i class="fa fa-user"></i> <span class="caret"></span></a>
 									<ul class="dropdown-menu" >
 
-										  @if(Auth::check())
+
+										  @if(Auth::check())					  
 
 											  <li class="head-dpdn">
-												<a href=""><i class="fa fa-user" aria-hidden="true"></i> {{ Auth::user()->name }}</a>
+												<a href="{{ route('customer_profile') }}" ><i class="fa fa-user" aria-hidden="true"></i> {{ Auth::user()->name }}</a>
+
+
 											  </li> 
 
 											   <li class="head-dpdn">
@@ -108,6 +116,9 @@
 											  </li> 
 
 										  @endif
+
+
+
 
 										  @if(Auth::check())
 
@@ -131,6 +142,8 @@
 								</li> 
 							</ul>
 						</div>
+
+
 						<div class="cart cart box_1"> 
 
 						<!-- Cart -->

@@ -99,6 +99,8 @@
 <script>
 
     @if (Session::has('message'))
+
+     toastr.options.progressBar = true;
     
     var type = "{{Session::get('alert-type','info')}}"
 

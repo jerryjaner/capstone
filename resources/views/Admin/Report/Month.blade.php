@@ -72,10 +72,11 @@
          <!-- End of Modal -->     
 	      <thead>
 	        <tr>
-		        <th>#</th>
+		      {{--   <th>#</th> --}}
+		        <th>Order Date</th>
 		        <th>Customer Name</th>
 		        <th>Order Price Total</th>
-		        <th>Order Date</th>
+		       
 		          
 	        </tr>
 	      </thead>
@@ -86,10 +87,11 @@
             
 	      	<tr>
 
-	      		<td>{{$i++}}</td>
+	      	{{-- 	<td>{{$i++}}</td> --}}
+	      		<td>{{\Carbon\Carbon::parse($ReportOrder->created_at)->Format('m-d-Y')}}</td>
 	      		<td>{{$ReportOrder -> name}} {{$ReportOrder -> middlename}} {{$ReportOrder -> lastname}}</td>
 	      		<td>{{ $ReportOrder -> order_total}} Pesos</td>
-	      		<td>{{\Carbon\Carbon::parse($ReportOrder->created_at)->Format('m-d-Y')}}</td>
+	      		
 
 	      	</tr>
 	     
