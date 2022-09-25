@@ -34,9 +34,6 @@ class AdminController extends Controller
     public function manage()
     {
         $users = user::all();
-
-        // ->where('id', Auth::user()->id)
-        //                ->get();
         return view('Admin.Users.ManageUsers', compact('users'));   
     }
 
@@ -117,12 +114,7 @@ class AdminController extends Controller
 
       if(Hash::check($request -> oldpassword,$hashedPassword)){
 
-           $notification = array (
-
-              'message' => 'Change Password Successfully ',
-              'alert-type' =>'info'
-          );
-
+           
 
           $user = User::find(Auth::id());
           $user -> password = Hash::make($request-> password);
@@ -131,7 +123,7 @@ class AdminController extends Controller
 
          
          
-          return redirect()->route('login')->with($notification);
+          return redirect()->route('login')->with('sms','Password Successfully Change. You need to login with new password');
       }
       else
       {

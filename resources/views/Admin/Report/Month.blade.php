@@ -41,29 +41,27 @@
 	            <div class="modal-content">
 	              <div class="modal-header text-center">
 	                <h5 class="modal-title w-100"  id="modalfilter">Filter Order Report</h5>
-	                <!-- <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button> -->
+	                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
 	              </div>
 	              <div class="modal-body">
-	                <form action="{{route('filter')}}" method="post">
+	                <form action="{{route('filter')}}" method="post"  onsubmit="btn.disabled = true; return true;">
 	                     @csrf
 
 	                      <div class="form-group">
 
 	                      	<label for="date">Date From:</label>
-				 			<input type="date" name="fromdate" style="outline: none;" required>
-	                        
+				 			<input type="date" class="form-control" name="fromdate" style="outline: none;" required>
+	                      
 	                      </div>
 
 	                      <div class="form-group">
-
 	                       	<label for="date">Date To:</label>
-				 			<input type="date" name="todate" style="outline: none;" required>
-
+				 			<input type="date" name="todate" class="form-control" style="outline: none;" required>
 	                      </div>
 	                     
 	                      <div class="modal-footer">
-	                        <button  type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button> 
-	                        <button  type="submit" name="btn" class="btn btn-primary">Apply Filter</button>
+	                      {{--   <button  type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>  --}}
+	                        <button  type="submit" name="btn" class="btn btn-primary ">Apply Filter</button>
 	                      </div>
 	                </form>
 	              </div>

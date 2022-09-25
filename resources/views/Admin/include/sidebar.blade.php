@@ -101,7 +101,7 @@
             <a href="{{route('month')}}" class="nav-link {{($route == 'month')?'active':''}}">
               <i class="nav-icon fas fa-folder"></i>
               <p class="sidebarfont">
-                   Report
+                   Monthly Transactions
               </p>
             </a>
           </li>

@@ -46,12 +46,12 @@
 				              <div class="modal-content">
 				                <div class="modal-header text-center">
 				                  <h5 class="modal-title w-100" id="edit{{$admin -> id}}">Update Profile</h5>
-				                  {{-- <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button> --}}
+				                  <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
 				                </div>
 
 				                <div class="modal-body">
 	     
-				                    <form class="row g-3" action="{{route('profile_update')}}" method="post">
+				                    <form class="row g-3" action="{{route('profile_update')}}" method="post" onsubmit="btn.disabled = true; return true;">
 
 				                       @csrf
 				                      <input type="hidden" class="form-control"  name="id" value="{{$admin -> id}}">
@@ -74,8 +74,8 @@
 									  </div>
 									  
 									  <div class="col-12">
-				                        <button type="submit" class="btn btn-primary float-right">Update Profile</button>
-				                        <button id="userfont" type="button" class="btn btn-secondary float-right mr-1" data-bs-dismiss="modal">Close</button> 
+				                        <button type="submit" name="btn" class="btn btn-primary float-right">Update Profile</button>
+				                        {{-- <button id="userfont" type="button" class="btn btn-secondary float-right mr-1" data-bs-dismiss="modal">Close</button>  --}}
 									  </div>
 									</form>
 				                </div>

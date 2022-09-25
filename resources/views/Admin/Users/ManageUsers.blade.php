@@ -193,19 +193,26 @@
 
                       @if($user ->role == 1)
 
-                              Admin
+                        <p class="text-center">
+                         <span class="badge badge-info">Admin</span>
+                        </p>
 
                       @elseif($user ->role == 2)
 
-                              Staff
+                        <p class="text-center">
+                         <span class="badge badge-secondary">Staff</span>
+                        </p>
 
                       @else
-                              Customer
+                        <p class="text-center">
+                         <span class="badge badge-warning">Customer</span>
+                        </p>
                       @endif
                       
                 </td>
                 
-                <td>{{ \Carbon\Carbon::parse($user -> created_at)->diffForHumans() }}</td>
+                {{-- <td>{{ \Carbon\Carbon::parse($user -> created_at)->diffForHumans() }}</td> --}}
+                <td>{{\Carbon\Carbon::parse($user->created_at)->Format('m-d-Y')}}</td>
 
                 </tr>
           
