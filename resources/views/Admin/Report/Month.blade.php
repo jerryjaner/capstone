@@ -28,10 +28,11 @@
 	    <button type="button" class="btn btn-secondary btn-sm" style="float: right;" data-bs-toggle="modal" data-bs-target="#modalfilter" data-bs-whatever="@fat" id="userfont"><i class="fas fa-filter"></i> Filter Orders Report</button>
 
 	    <a href="{{route('month')}}" class="btn btn-success btn-sm " style="float: right; margin-right: 5px;" ><i class="fas fa-sync"></i> Refresh</a>
-
-	    <!-- <a href="" class="btn btn-default" style="float: right;"><i class="fas fa-print"></i> Print</a> -->
 	 </div>
 	 <div class="card-body">
+
+
+        
 
 	    <table id="example3" class="table table-bordered table-striped">   
 	     <!-- Modal start here -->
@@ -69,7 +70,11 @@
 	            </div>
 	          </div>
 	        </div>    
-         <!-- End of Modal -->     
+         <!-- End of Modal --> 
+
+         	
+
+	             
 	      <thead>
 	        <tr>
 		      {{--   <th>#</th> --}}
@@ -101,6 +106,7 @@
 		
 	</div>
 </div>
+
 
 
 

@@ -24,9 +24,9 @@
 	                </div>
 
 	                
-	                @foreach($users as $admin)
+	              {{--   @foreach($users as $admin) --}}
 
-	                @if($admin -> role == '1')
+	               {{--  @if($admin -> role == '1') --}}
 		             <h3 class="profile-username text-center">{{$admin -> name}} {{$admin->middlename}} {{$admin->lastname}}</h3>
 		             <p class="text-muted text-center">Administator</p>  
 	              </div>
@@ -37,11 +37,9 @@
 		           	   
 			          	 <i class="fas fa-map-marker-alt mr-2"></i>{{$admin -> address}} <hr>
 			        
-			           {{--  <strong><i class="fas fa-phone mr-1"></i>Phone:</strong> 09876543211
-			             <hr> --}}
 			             <button class="btn btn-success btn-sm" style="float:right;" data-bs-toggle="modal" data-bs-target="#edit{{$admin->id}}" data-bs-whatever="@fat">Edit Profile</button>
 		              </div>
-		             @endif
+		           {{--   @endif --}}
 
 						<div class="modal fade" id="edit{{$admin -> id}}" tabindex="-1" aria-labelledby="edit{{$admin -> id}}" aria-hidden="true">
 				            <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
@@ -85,7 +83,7 @@
 				          </div>
 				        </div>
 
-		             @endforeach
+		            {{--  @endforeach --}}
 		           
 		           
 	              <!-- /.card-body -->

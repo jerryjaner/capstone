@@ -140,10 +140,10 @@ div.dataTables_wrapper div.dataTables_length select {
 
                                   <div class="modal-footer">
                                     {{--  <button  type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>  --}}
-                                    {{--  <button  type="submit" name="btn" class="btn btn-primary"> Add Menu</button> --}}
-                                    <button class="btn btn-primary" type="submit" name="btn" id="submit" onclick="loading()" >
+                                     <button  type="submit" name="btn" class="btn btn-primary"> Submit</button>
+                                   {{--  <button class="btn btn-primary" type="submit" name="btn" id="submit" onclick="loading()" >
                                      <i class="fas fa-spinner fa-spin" style="display: none;"></i><span class="btn-text">Submit</span>
-                                    </button>
+                                    </button> --}}
                                   </div>
                             </form>
                           </div>
@@ -265,11 +265,11 @@ div.dataTables_wrapper div.dataTables_length select {
                                   </div>
                                      <br>
                                   <div class="modal-footer">
-                                   {{--  <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button> 
-                                    <button type="submit" class="btn btn-primary" name="btn">Update</button> --}}
-                                    <button class="btn btn-primary" type="submit" name="btn" id="submit" onclick="loading()" >
+                                    {{-- <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>  --}}
+                                    <button type="submit" class="btn btn-primary" name="btn">Update</button>
+                                    {{-- <button class="btn btn-primary" type="submit" name="btn" id="submit" onclick="loading()" >
                                      <i class="fas fa-spinner fa-spin" style="display: none;"></i><span class="btn-text">Update</span>
-                                    </button>
+                                    </button> --}}
                                   </div>
                               </form>
                            </div>

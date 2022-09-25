@@ -84,9 +84,10 @@
                       <div class="modal-content">
                         <div class="modal-header text-center">
                           <h5 class="modal-title w-100" id="orderstatus{{$order->id}}">Update Order Status</h5>
+                          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                         </div>
                         <div class="modal-body">
-                          <form action="{{route('update_order_status')}}" method="post">
+                          <form action="{{route('update_order_status')}}" method="post" onsubmit="btn.disabled = true; return true;">
                                @csrf
                             <div class="form-group">
                               <input type="hidden" class="form-control"  name="id" value="{{$order->id}}">
@@ -103,11 +104,11 @@
                             </div>
 
                             <div class="modal-footer">
-                              {{-- <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button> 
-                              <button type="submit" class="btn btn-primary">Update</button> --}}
-                              <button class="btn btn-primary" type="submit" name="btn" id="submit" onclick="loading()" >
+                         {{--      <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>  --}}
+                              <button type="submit" class="btn btn-primary">Update</button>
+{{--                               <button class="btn btn-primary" type="submit" name="btn" id="submit" onclick="loading()" >
                                <i class="fas fa-spinner fa-spin" style="display: none;"></i><span class="btn-text">Update</span>
-                              </button>
+                              </button> --}}
                             </div>
 
                           </form>
@@ -235,9 +236,10 @@
                             <h5 class="modal-title w-100" id="edit{{$order->id}}" >
                               Update Payment Status
                             </h5>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                           </div>
                           <div class="modal-body">
-                            <form action="{{route('order_update')}}" method="post" >
+                            <form action="{{route('order_update')}}" method="post" onsubmit="btn.disabled = true; return true;">
                             
                                  @csrf
        
@@ -261,11 +263,11 @@
 
                                 </select>                       
                                 <div class="modal-footer">
-                                  {{-- <button  type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button> 
-                                  <button  type="submit" class="btn btn-primary">Update</button> --}}
-                                  <button class="btn btn-primary" type="submit" name="btn" id="submit" onclick="loading()" >
+                                  {{-- <button  type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>  --}}
+                                  <button  type="submit" class="btn btn-primary" name="btn">Update</button>
+                                  {{-- <button class="btn btn-primary" type="submit" name="btn" id="submit" onclick="loading()" >
                                    <i class="fas fa-spinner fa-spin" style="display: none;"></i><span class="btn-text">Update</span>
-                                  </button>
+                                  </button> --}}
                                 </div>
                             </form>
                         </div> 

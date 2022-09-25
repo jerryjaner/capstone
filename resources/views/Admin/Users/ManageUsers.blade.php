@@ -115,13 +115,6 @@
                            
                             </div>
 
-                           <!--  <div class="form-group">
-                              <label> Role</label>
-                              <div class="radio">
-                                <input type="radio" name="role" value="1" required> Admin 
-                                <input type="radio" name="role" value="2" required> Staff
-                              </div>
-                             </div> -->
 
                             <div class="form-group">
                               <label> Password</label>
@@ -139,9 +132,10 @@
               
                             <div class="modal-footer">
                               {{-- <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" >Cancel</button>  --}}
-                              <button class="btn btn-primary" type="submit" name="btn" id="submit" onclick="loading()" >
+                             {{--  <button class="btn btn-primary" type="submit" name="btn" id="submit" onclick="loading()" >
                                <i class="fas fa-spinner fa-spin" style="display: none;"></i><span class="btn-text">Submit</span>
-                              </button>
+                              </button> --}}
+                              <button class="btn btn-primary" type="submit" name="btn">Submit</button>
                             </div>
 
                         </form>

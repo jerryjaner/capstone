@@ -16,18 +16,53 @@
 	              	<div class="mb-5">
 	                  <h4>Change Password</h4>
 	                </div>
-	                <form class="row g-3">
+	                <form class="row g-3" action="{{ route('password_update') }}" method="POST">
+	                	@csrf
 					  <div class="col-md-12">
-					    <label for="" class="form-label">Old Password</label>
-					    <input type="password" name="oldpassword" class="form-control">
+					    <label for="" class="form-label">Current Password</label>
+					    {{-- <input type="password" name="oldpassword" class="form-control" id="curent_passwrod" placeholder="Current Password">
+						    @error('oldpassword')
+							    <span class="invalid-feedback" role="alert">
+							    	<strong>{{ $message }}</strong>
+							    </span>
+						    @enderror --}}
+
+						    <input id="oldpassword" type="password" class="form-control @error('oldpassword') is-invalid @enderror" name="oldpassword"  autocomplete="oldpassword" placeholder="Current Password">
+
+                                @error('oldpassword')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                @enderror
 					  </div>
+
 					  <div class="col-md-12">
-					    <label for="" class="form-label">Password</label>
-					    <input type="password" name="password" class="form-control" required>
+					    <label for="" class="form-label">New Password</label>
+					   {{--  <input type="password" name="password" class="form-control" id="password" placeholder="New Password" required>
+					     
+					     @error('password')
+							    <span class="invalid-feedback" role="alert">
+							    	<strong>{{ $message }}</strong>
+							    </span>
+						  @enderror --}}
+
+						  <input id="password" type="password" class="form-control @error('password') is-invalid @enderror" name="password"  autocomplete="new-password" placeholder="New Password">
+
+                            @error('password')
+                                <span class="invalid-feedback" role="alert">
+                                    <strong>{{ $message }}</strong>
+                                </span>
+                            @enderror
 					  </div>
 					  <div class="col-md-12">
 					    <label for="" class="form-label">Confirm Password</label>
-					    <input type="password" name="cpassword" class="form-control" required>
+					    <input type="password" name="password_confirmation" class="form-control @error('password_confirmation') is-invalid @enderror" id="password_confirmation" placeholder="Confirm Password">
+
+					    @error('password_confirmation')
+                                <span class="invalid-feedback" role="alert">
+                                    <strong>{{ $message }}</strong>
+                                </span>
+                            @enderror
 					  </div>
 					  <div class="col-12">
 					    <button type="submit" class="btn btn-primary">Save</button>
@@ -44,7 +79,7 @@
       <!-- /.container-fluid -->
  </section>
 
- <script type="text/javascript">
+{{--  <script type="text/javascript">
  	
  // Example starter JavaScript for disabling form submissions if there are invalid fields
 (function () {
@@ -66,5 +101,5 @@
       }, false)
     })
 })()
- </script>
+ </script> --}}
 @endsection	

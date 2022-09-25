@@ -52,6 +52,7 @@ Route::group(['prefix'=>'admin','middleware'=>['isAdmin','auth','PreventBackHist
 	Route::get('profile',[AdminController::class,'profile'])->name('admin_profile');
 	Route::post('update', [AdminController::class, 'profile_update'])->name('profile_update');
 	Route::get('change/password',[AdminController::class,'change_pass'])->name('change_password');
+	Route::post('update/password', [AdminController::class, 'update_pass'])->name('password_update');
 	
 	/* Category Start here */
 	Route::get('/category/add', [CategoryController::class, 'index'])->name('show_cate_table');

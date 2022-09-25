@@ -6,6 +6,8 @@ use App\Models\order;
 use App\Models\OrderDetail;
 use App\Models\category;
 use App\Models\Dish;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Hash;
 use Illuminate\Http\Request;
 
 class AdminController extends Controller
@@ -32,6 +34,9 @@ class AdminController extends Controller
     public function manage()
     {
         $users = user::all();
+
+        // ->where('id', Auth::user()->id)
+        //                ->get();
         return view('Admin.Users.ManageUsers', compact('users'));   
     }
 
@@ -68,8 +73,8 @@ class AdminController extends Controller
 
     public function profile(){
     
-        $users = user::all();
-        return view('Admin.Users.UserProfile', data: compact(var_name:'users')); 
+         $admin = User::find(Auth::id());
+        return view('Admin.Users.UserProfile', data: compact(var_name:'admin')); 
     }
 
     public function profile_update(Request $request){
@@ -96,6 +101,49 @@ class AdminController extends Controller
         return view('Admin.Users.UserPass');
     }
     
+    public function update_pass(Request $request){
+
+      $validated = $request->validate([
+       
+        'oldpassword' => 'required|password',
+        'password' => 'required|confirmed|min:8|max:255',
+        'password_confirmation' => 'required',
+
+
+      ]);
+
+      $hashedPassword = Auth::user()->password;
+     
+
+      if(Hash::check($request -> oldpassword,$hashedPassword)){
+
+           $notification = array (
+
+              'message' => 'Change Password Successfully ',
+              'alert-type' =>'info'
+          );
+
+
+          $user = User::find(Auth::id());
+          $user -> password = Hash::make($request-> password);
+          $user->save();
+          Auth::logout();
+
+         
+         
+          return redirect()->route('login')->with($notification);
+      }
+      else
+      {
+
+         
+          return redirect()->back();
+
+
+
+      }
+
+    }
 
 
     
