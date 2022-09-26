@@ -70,7 +70,7 @@
 						   
 						    <!-- For Updating Cart -->
 							<td>
-							 	<form action="{{route('update_cart')}}" method="post">
+							 	<form action="{{route('update_cart')}}" method="post" onsubmit="btn.disabled = true; return true;">
 							 		@csrf
 							 		<input type="hidden" name="rowId" value="{{$dish -> rowId}}">
 							    	<input type="number" name="qty" value="{{$dish -> qty}}" style="width: 50px; padding: 5px; margin-top: 1px; height: auto;" min="1" max="10" step="1">
@@ -113,7 +113,7 @@
 			</div>
 		</div>			
 	<!-- Button for check out -->
-
+{{-- 
 	    @if(Auth::check())
 
 	 	    @foreach($CartDish as $dish) 
@@ -133,6 +133,12 @@
 
 
 		    @endforeach
+		    <div class="col-md-12 product-w3ls-right">
+				<a href="{{url('/shipping')}}" class="btn btn-info" style="float: right;">
+					<i class="fa fa-shopping-bag" ></i>
+					Checkout
+				</a>
+			</div>	
 			
 		@else
 
@@ -146,6 +152,26 @@
 		</div>
 
 		@endif
+ --}}
+
+ 		 @foreach($CartDish as $dish) 
+
+ 		 	@if($dish -> rowId != null)
+
+ 		 		<div class="col-md-12 product-w3ls-right">
+					<a href="{{url('/shipping')}}" class="btn btn-info" style="float: right;">
+						<i class="fa fa-shopping-bag" ></i>
+						Checkout
+					</a>
+				</div>	
+
+ 		 	@endif
+
+
+ 		 @endforeach
+
+
+
 
 	</div>
 </div>

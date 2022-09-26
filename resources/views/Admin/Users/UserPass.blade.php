@@ -16,7 +16,7 @@
 	              	<div class="mb-5">
 	                  <h4>Change Password</h4>
 	                </div>
-	                <form class="row g-3" action="{{ route('password_update') }}" method="POST">
+	                <form class="row g-3" action="{{ route('password_update') }}" method="POST" onsubmit="btn.disabled = true; return true;">
 	                	@csrf
 					  <div class="col-md-12">
 					    <label for="" class="form-label">Current Password</label>
@@ -64,8 +64,8 @@
                                 </span>
                             @enderror
 					  </div>
-					  <div class="col-12">
-					    <button type="submit" class="btn btn-primary">Save</button>
+					  <div class="col-12 mt-2">
+					    <button type="submit" name="btn" class="btn btn-primary">Save</button>
 					  </div>
 					</form>  
 	              <!-- /.card-body -->

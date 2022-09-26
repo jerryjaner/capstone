@@ -147,10 +147,11 @@
 						<div class="modal-dialog" role="document">
 							<div class="modal-content">
 								<div class="modal-header">
-									<!-- <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>		 -->				
+									<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>						
 								</div>
 								<section>
 									<div class="modal-body">
+										
 								    @if(Auth::check())
 										<div class="col-md-12">	
 											<img src="{{asset('BackEndSourceFile/dish_image/'.$dish->dish_image)}}" style="height: 300px; width:500px;"  alt="Nick's Menu" class="img-responsive">
@@ -190,9 +191,9 @@
 											   </button>
 
 											 
-											   <button type="button" class="btn btn-danger" data-dismiss="modal" style="float: right; outline: none; margin-right: 5px;">
+											   {{-- <button type="button" class="btn btn-danger" data-dismiss="modal" style="float: right; outline: none; margin-right: 5px;">
 											   		Cancel
-											   	</button>  
+											   	</button>  --}} 
 
 									 		</form>
 										</div>
@@ -252,7 +253,7 @@
 				</div>
 			</div>
 
-		<!--<div class="col-md-3 rsidebar">
+		{{-- <div class="col-md-3 rsidebar">
 				<div class="rsidebar-top">
 					<div class="slider-left">
 						<h4>Categories</h4>            
@@ -275,7 +276,7 @@
 					</div>
 					
 			  </div>
-			<div class="clearfix"> </div>  -->
+			<div class="clearfix"> </div>   --}}
 		</div>
 	</div>
 </div>

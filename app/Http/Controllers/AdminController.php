@@ -110,28 +110,19 @@ class AdminController extends Controller
       ]);
 
       $hashedPassword = Auth::user()->password;
-     
 
       if(Hash::check($request -> oldpassword,$hashedPassword)){
-
-           
 
           $user = User::find(Auth::id());
           $user -> password = Hash::make($request-> password);
           $user->save();
           Auth::logout();
-
-         
          
           return redirect()->route('login')->with('sms','Password Successfully Change. You need to login with new password');
       }
-      else
-      {
+      else{      
 
-         
           return redirect()->back();
-
-
 
       }
 

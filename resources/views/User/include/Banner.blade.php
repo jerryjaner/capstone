@@ -143,7 +143,7 @@
 							</ul>
 						</div>
 
-
+					    @if(Auth::check())
 						<div class="cart cart box_1"> 
 
 						<!-- Cart -->
@@ -160,6 +160,7 @@
 							</a> 
 
 						</div> 
+						@endif
 					</nav>
 				</div>
 			</div>

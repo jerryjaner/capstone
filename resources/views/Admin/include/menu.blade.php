@@ -81,7 +81,7 @@
       
           <div class="dropdown-divider"></div>
 
-          <a   class="dropdown-item dropdown-footer" style="font-size: 16px;"  href="{{ route('logout') }}"
+          <a class="dropdown-item " style="font-size: 16px;"  href="{{ route('logout') }}"
                  onclick="event.preventDefault();
                  document.getElementById('logout-form').submit();" >
 
