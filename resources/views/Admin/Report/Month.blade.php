@@ -61,7 +61,7 @@
 	                     
 	                      <div class="modal-footer">
 	                      {{--   <button  type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>  --}}
-	                        <button  type="submit" name="btn" class="btn btn-primary ">Apply Filter</button>
+	                        <button  type="submit" name="btn" class="btn btn-primary">Apply Filter</button>
 	                      </div>
 	                </form>
 	              </div>

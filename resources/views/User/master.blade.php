@@ -26,6 +26,13 @@
 	<!-- //web-fonts -->
 	<!--toastr link  -->
    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.css">
+
+{{-- 
+   <style type="text/css">
+   	body{
+   		scroll-behavior: smooth;
+   	}
+   </style> --}}
    
 </head>
 <body> 

@@ -71,7 +71,7 @@
 						</ul>
 						<div class="clearfix"> </div>
 					</div>   
-					<input type="submit" value="Sign Up" name="btn">
+					<input type="submit" value="Submit" name="btn">
 				</form>
 				
 			</div>	 

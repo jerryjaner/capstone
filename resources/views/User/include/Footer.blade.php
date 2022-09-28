@@ -74,6 +74,6 @@
 </div> -->
 <div class="copyw3-agile"> 
 	<div class="container">
-		<p>&copy; 2022 Nick's Resto Bar & Cafe Restaurant. All rights reserved | Design by <a style="text-decoration: none">JERRY MONTEREY JANER</a></p>
+		<p>&copy; 2022 Nick's Resto Bar & Cafe Restaurant. All rights reserved </p>
 	</div>
 </div>

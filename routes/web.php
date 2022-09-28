@@ -159,9 +159,10 @@ Route::group(['prefix'=>'user','middleware'=>['isUser','auth','PreventBackHistor
    Route::get('order/details{id}',[UserController::class,'viewOrder'])->name('view_order');
  
    // profile
-
-
     Route::get('profile',[UserController::class,'customerprofile'])->name('customer_profile');
+    Route::post('update', [UserController::class, 'customer_profile_update'])->name('customer_update');
+    Route::get('change/password',[UserController::class,'view_of_change_pass'])->name('view_of_changepassword');
+    Route::post('update/password', [UserController::class, 'customer_update_password'])->name('update_pass');
 
 
 	

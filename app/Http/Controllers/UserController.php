@@ -10,7 +10,7 @@ use App\Models\OrderDetail;
 use DB;
 use Session;
 use Illuminate\Support\Facades\Auth;
-
+use Illuminate\Support\Facades\Hash;
 use Illuminate\Http\Request;
 
 class UserController extends Controller
@@ -135,16 +135,16 @@ class UserController extends Controller
     }
 
     public function customerprofile(){
+      // $customers = User::where('role',0)
+      //                  ->where('id', Auth::user()->id)
+      //                  ->get();
 
-
-      $customers = User::where('role',0)
-                       ->where('id', Auth::user()->id)
-                       ->get();
+      $CustomerProfile = User::find(Auth::id());
 
       if(Auth::check()){
 
 
-        return view('User.CustomerProfile.Profile', compact('customers'));
+        return view('User.CustomerProfile.Profile', compact('CustomerProfile'));
 
       }
       else{
@@ -154,12 +154,68 @@ class UserController extends Controller
       
     }
 
+    public function customer_profile_update(Request $request){
+
+      $validated = $request->validate([
+        'email' => 'required|email|string|unique:users|max:255',
+
+      ]);
+
+      $customer_profile = User::find($request->id);
+      $customer_profile->name = $request->name;
+      $customer_profile->middlename = $request->middlename;
+      $customer_profile->lastname = $request->lastname;
+      $customer_profile -> address = $request -> address;
+      $customer_profile -> email = $request -> email;
+      $customer_profile->save();
+
+        $notification = array (
+
+            'message' => 'Your Profile Updated Successfully',
+            'alert-type' =>'info'
+        );
+
+        return back()->with($notification);
+
+    }
+
+    public function view_of_change_pass(){
+
+
+       return view('User.CustomerProfile.ChangePassword');
+    }
+
+    public function customer_update_password(Request $request){
+
+      $validated = $request -> validate([
+
+        'oldpassword' => 'required|password',
+        'password' => 'required|min:8|max:50',
+        'password_confirmation' => 'required',
+
+      ]);
+
+      $hashedPass = Auth::user()->password;
+
+      if(Hash::check($request -> oldpassword, $hashedPass)){
+
+        $customer = User::find(Auth::id());
+        $customer -> password = Hash::make($request -> password);
+        $customer -> save();
+        Auth::logout();
+
+
+        return redirect()->route('login')->with('sms','Password Successfully Change. You need to login with new password');
+      }
+      else{
+
+         return redirect()->back();
+      }
+
+    }
+
       
-    
-
-  
-
-
 
 
 }
+
