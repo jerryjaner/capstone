@@ -66,7 +66,7 @@
             </a>
           </li>
           <li class="nav-item has-treeview ">
-            <a href="{{route('show_order')}}" class="nav-link {{($route == 'show_order')?'active':''}}">
+            <a href="{{route('show_order')}}" class="nav-link {{($route == 'show_order ' || $route == 'view_invoice')?'active':''}}">
               <i class="nav-icon fas fa-shopping-cart"></i>
               <p class="sidebarfont">
                   Orders

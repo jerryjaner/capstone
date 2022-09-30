@@ -14,7 +14,7 @@
 			@import url(http://fonts.googleapis.com/css?family=Calibri:400,300,700);
 
 					body {
-					  /*  background-color: blue; */
+					 
 					    font-family: 'Calibri', sans-serif !important;
 					}
 
@@ -45,9 +45,9 @@
 					    line-height: 1.5;
 					    border-radius: .2rem;
 					}
-					#invoicefont{
+					/*#invoicefont{
 						font-family: poppins;
-					}
+					}*/
 
 
 		</style>
@@ -62,15 +62,15 @@
 					
 					<div class="card ">
 						<div class="card-header"> 
+						<h5 style="float: left;"><strong>Invoice # {{$order->id}}</strong></h5>
 						<a class="btn btn-info btn-sm" style="float: right;" href="{{route('download_invoice',['id'=>$order->id])}}" id="invoicefont">
    						     <b>Print / Download Invoice </b>
   			   			 </a>
 						
-							<!--- for the invoice -->
+							
 							
 							<div class="pull-right">
-							<!--  <a class="btn btn-sm btn-info" href="#" data-abc="true"><i class="fa fa-print mr-1"></i> Print</a>
-							  <a class="btn btn-sm btn-info" href="#" data-abc="true"><i class="fa fa-file-text-o mr-1"></i> Save</a> -->
+							
 							</div>
 						</div>
 						<div class="card-body">
@@ -163,10 +163,7 @@
 								</tbody>
 							</table>
 
-						<!--	<div class="pull-right">
-							  <a class="btn btn-sm btn-success" href="#" data-abc="true"><i class="fa fa-paper-plane mr-1"></i> Proceed to payment
-							  </a>
-							</div> -->
+					
 
 						</div>
 						</div>

@@ -32,6 +32,7 @@
 	<!-- order -->   	
 	<div class="wthree-order">  
 		<img src="{{asset('FrontEndSourceFile')}}/images/i2.jpg" class="w3order-img" alt=""/>
+
 		<div class="container">
 			<h3 class="w3ls-title">How To Order Online Food</h3>
 			<p class="w3lsorder-text" >Get your favourite food in 4 simple steps.</p>
@@ -64,7 +65,8 @@
 						<!-- <span>4</span> -->
 					</div>
 				</div>
-				<div class="clearfix"> </div> 
+				<div class="clearfix"> </div>
+				
 			</div>
 		</div>
 	</div>

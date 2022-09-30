@@ -8,7 +8,8 @@ use App\Models\Dish;
 use App\Models\Payment;
 use App\Models\Shipping;
 use DB;
-use PDF;
+// use PDF;
+use Barryvdh\DomPDF\Facade\Pdf;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
 
@@ -91,8 +92,12 @@ class OrderController extends Controller
             ->select('orders.*', 'users.name','payments.payment_type','payments.payment_status')
             ->get();
 
+  
         $pdf = PDF::loadView('Admin.Order.DownloadInvoice',compact('order','customer','shipping','payment','OrderD','orders'));
-        return $pdf->stream('OrderInvoice.pdf');
+        return $pdf  
+
+                    ->setPaper('short', 'landscape')
+                    ->stream('OrderInvoice.pdf');
      
     }
 
