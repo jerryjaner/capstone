@@ -15,12 +15,12 @@ class CreateDishesTable extends Migration
     {
         Schema::create('dishes', function (Blueprint $table) {
             $table->id();
-            $table->foreignId(column:'category_id');
-            $table->string(column:'dish_name');
-            $table->longtext(column:'dish_detail');
-            $table->text(column:'dish_image');
-            $table->integer(column:'dish_status');
-            $table -> float(column:'full_price', total:10, places:2)->nullable();
+            $table->foreignId('category_id');
+            $table->string('dish_name');
+            $table->longtext('dish_detail');
+            $table->text('dish_image');
+            $table->integer('dish_status');
+            $table -> float('full_price', total:10, places:2)->nullable();
             $table->timestamps();
         });
     }

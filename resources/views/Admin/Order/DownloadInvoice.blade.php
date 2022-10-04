@@ -429,8 +429,12 @@
 
 				</tbody>
 			</table>   
-{{-- for the footer of the invoice --}}
+
+			<div style="margin-top: 5px;">
+				<h2 style="text-align: center; opacity: 50%;"><i>Thank you for your order!</i></h2>	
+			</div>
 
         </div>
+        ----------------------------------------------------------------------------------------------------------------------------------------
     </body>
 </html>

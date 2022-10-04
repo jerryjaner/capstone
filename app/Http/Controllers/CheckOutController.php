@@ -16,9 +16,26 @@ class CheckOutController extends Controller
 {
     public function payment()
     {
+        $CartDish = Cart::content();
+
         if(Auth::check())
         {
-            return view('User.CheckOut.CheckOutField');
+            // check if the cart is empty or not. If empty the user redirect back
+            if(count($CartDish) > 0){
+
+                 return view('User.CheckOut.CheckOutField');
+            }
+            else{
+
+                $notification = array (
+
+                    'message' => 'Your cart is empty please make sure that your cart is not empty',
+                    'alert-type' =>'warning'
+                );
+
+                return redirect()->back()->with($notification);
+            }
+           
         }
         else
         {
@@ -70,6 +87,7 @@ class CheckOutController extends Controller
                 'message' => 'Your order has been Successfully processed',
                 'alert-type' =>'success'
             );
+
             return redirect('/')->with($notification);
 
      	   //  Session::flash('success', 'Your order has been successfully processed.');

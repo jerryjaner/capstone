@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Dish;
-
+use App\Models\shippingfee;
 use Cart;
 
 
@@ -35,15 +35,15 @@ class CartController extends Controller
             'alert-type' =>'success'
         );
     	
-    	// return redirect()->route('cart_show'); 
+    	
          return back()->with($notification);
     }
 
     public function show()
-    {
-        
-     	$CartDish = Cart::content();
-     	return view('User.Cart.Show',data: compact(var_name:'CartDish'));
+    {   
+        $CartDish = Cart::content();
+        $ShipFee =  shippingfee::first();
+     	return view('User.Cart.Show', compact('CartDish','ShipFee'));
     }
 
     public function remove($rowId)

@@ -81,7 +81,7 @@
 
 										    	<input type="hidden" class="form-control"  name="id" value="{{$CustomerProfile -> id}}">
 										      
-										      	<input class="agile-ltext" type="text" name="name" placeholder="Enter your Full Name" required>
+										      	<input class="agile-ltext" type="text" name="name" placeholder="Enter your First Name" required>
 	   	
 										      	<input class="agile-ltext" type="text" name="middlename" placeholder="Enter your Middle Name" required>
 				  									      	

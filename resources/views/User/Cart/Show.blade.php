@@ -16,7 +16,7 @@
 	<div class="container" style="margin-top: 10px;">
 		<h3><b>Note:</b></h3>
 		<ul style="margin-left: 50px;">
-		   <li style="color: red;"><b>Cash on Delivery (COD) have Addional 50 pesos for the Shipping Fee </b> </li>
+		   <li style="color: red; font-size: 14px;"><b>Cash on Delivery (COD) have Addional {{$ShipFee -> fee}} pesos for the Shipping Fee </b> </li>
 	    </ul>
 	</div>
 
@@ -35,7 +35,7 @@
 			<div class="card-body">
 				<table class="table table-hover table-bordered">
 					<thead>					
-						<tr>
+						<tr style="width: auto">
 						<!--	<th scope="col"><h5 style="color:Black; font-size: 18px;">SL</h5></th> -->
 							<th scope="col"><h5 style="color:Black;  font-size: 18px;">Remove</h5></th>
 							<th scope="col" class="text-success"> <h5 style="color:Black;  font-size: 18px;">Dish Name</h5></th>
@@ -65,7 +65,11 @@
 			 				
 			 				<td id="display"><p style="color:black; font-size: 17px; ">{{$dish ->name}}</p></td>
 
-			 				<td> <img src="{{asset($dish->options->image)}}" style="max-height:150px; width:150px auto; "  alt=" " class="img-responsive"></td>
+			 				<td>
+			 					<center>
+			 					      <img src="{{asset($dish->options->image)}}" style="max-height:150px; width:160px auto; "  alt="Nick's Resto Menu" class="img-responsive">
+			 					</center>
+			 				</td>
 						    <td> <p style="color:black; font-size: 17px; ">₱{{$dish -> price }}</p></td>
 						   
 						    <!-- For Updating Cart -->
@@ -91,8 +95,6 @@
 							  <input type="hidden" value="{{$sum = $sum + $subTotal}}">
 			 					
 			 			  </tr>
-
-			 			<!-- This is for the end of the loop -->
 			 			@endforeach
 
 			 				<tr>
@@ -112,67 +114,22 @@
 			   </table>
 			</div>
 		</div>			
-	<!-- Button for check out -->
-{{-- 
-	    @if(Auth::check())
-
-	 	    @foreach($CartDish as $dish) 
-
-		 	   	@if($dish -> rowId != null)
-		    	
-					<div class="col-md-12 product-w3ls-right">
-						<a href="{{url('/shipping')}}" class="btn btn-info" style="float: right;">
-							<i class="fa fa-shopping-bag" ></i>
-							Checkout
-						</a>
-					</div>	
-
-				@else
-
-				@endif
-
-
-		    @endforeach
-		    <div class="col-md-12 product-w3ls-right">
-				<a href="{{url('/shipping')}}" class="btn btn-info" style="float: right;">
-					<i class="fa fa-shopping-bag" ></i>
-					Checkout
-				</a>
-			</div>	
-			
-		@else
-
-	<!-- Button For the modal -->	
-		
-		<div class="col-md-12 product-w3ls-right">
-			<a href=""  data-toggle="modal"  data-target="#login_or_register" class="btn btn-info" style="float: right;">
-				<i class="fa fa-shopping-bag" ></i>
-				Checkout
-			</a>
-		</div>
-
-		@endif
- --}}
-
- 		 @foreach($CartDish as $dish) 
-
- 		 	@if($dish -> rowId != null)
-
- 		 		<div class="col-md-12 product-w3ls-right">
-					<a href="{{url('/shipping')}}" class="btn btn-info" style="float: right;">
-						<i class="fa fa-shopping-bag" ></i>
-						Checkout
-					</a>
-				</div>	
-
- 		 	@endif
-
-
- 		 @endforeach
-
-
-
-
+ 		
+ 		 @if(count($CartDish) > 0)
+	 		 <div class="col-md-12 product-w3ls-right">
+	 		 	<a href="{{url('/shipping')}}" class="btn btn-primary" style="float: right;">
+	 		 		<i class="fa fa-shopping-bag" ></i>
+	 		 		Checkout
+	 		 	</a>
+	 		 </div>
+ 		 @else
+	 		 <div class="col-md-12 product-w3ls-right">
+	 		 	<a href="" class="btn btn-primary" disabled style="float: right;" >
+	 		 		<i class="fa fa-shopping-bag" ></i>
+	 		 		Checkout
+	 		 	</a>
+	 		 </div>
+	 	 @endif
 	</div>
 </div>
 
@@ -242,3 +199,4 @@
 
 
 @endsection
+

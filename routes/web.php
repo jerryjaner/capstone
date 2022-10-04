@@ -121,10 +121,10 @@ Route::group(['prefix'=>'staff','middleware'=>['isStaff','auth','PreventBackHist
 
     /* Customer  */
 
-Route::group(['prefix'=>'user','middleware'=>['isUser','auth','PreventBackHistory'] ],function(){
+// Route::group(['prefix'=>'user','middleware'=>['isUser','auth','PreventBackHistory'] ],function(){
 
 
-		});
+// 		});
 
 	Route::get('/', [UserController::class, 'index'])->name('user_dashboard');
 	Route::get('/category/dish/show{category_id}', [UserController::class, 'dish_show'])->name('category_dish');

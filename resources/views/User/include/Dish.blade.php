@@ -178,9 +178,9 @@
 												 		style="padding: 3px; margin-left:10px; border-top:none; border-right: none; border-left: none; outline: none;" 
 												 		required><br>
 
-												  <h5 class="single-price-text" style="text-align: center; 
-												  								margin-top: 15px; margin-bottom: 20px;
-												  								overflow: hidden;">
+												  <h5  style="margin-top: 15px; margin-bottom: 20px; ">
+												  								
+												  								
 												  	{{$dish -> dish_detail}}
 												  	
 												  </h5>

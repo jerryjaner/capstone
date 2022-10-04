@@ -65,6 +65,14 @@
               </p>
             </a>
           </li>
+           <li class="nav-item has-treeview ">
+            <a href="=" class="nav-link">
+                <i class="nav-icon fas fa-utensil-spoon"></i>
+              <p class="sidebarfont">
+                  Shipping Fee
+              </p>
+            </a>
+          </li>
           <li class="nav-item has-treeview ">
             <a href="{{route('show_order')}}" class="nav-link {{($route == 'show_order ' || $route == 'view_invoice')?'active':''}}">
               <i class="nav-icon fas fa-shopping-cart"></i>

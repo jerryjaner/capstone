@@ -243,7 +243,8 @@
             <div class="input-group-text">
               <span class="fas fa-lock"></span>
             </div>
-          </div>
+            
+           </div> 
            @error('password')
                 <span class="invalid-feedback" role="alert">
                     <strong>{{ $message }}</strong>
@@ -254,9 +255,9 @@
         <div class="input-group mb-3">
           <input id="password-confirm" type="password" placeholder="Confirm Password" class="form-control" name="password_confirmation" required autocomplete="new-password">
           <div class="input-group-append">
-            <div class="input-group-text">
+            <div class="input-group-text ">
               <span class="fas fa-lock"></span>
-            </div>
+            </div>  
           </div>
           @error('password-confirm')
             <span class="invalid-feedback" role="alert">
@@ -318,6 +319,9 @@
 
   }
 
+
 </script> 
+
+
 
 @endsection

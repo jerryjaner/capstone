@@ -7,6 +7,7 @@ use App\Models\User;
 use App\Models\Dish;
 use App\Models\Payment;
 use App\Models\Shipping;
+use App\Models\shippingfee;
 use DB;
 // use PDF;
 use Barryvdh\DomPDF\Facade\Pdf;
@@ -21,7 +22,7 @@ class OrderController extends Controller
     {
     	$orders = DB::table('orders')
     		->join('users','orders.user_id','=', 'users.id')
-    		->join('payments','orders.id','=', 'payments.order_id')
+    		->join('payments','orders.id','=', 'payments.order_id')      
     		->select('orders.*', 'users.name','users.middlename','users.lastname' ,'payments.payment_type','payments.payment_status')
     		->get();
 
@@ -50,14 +51,20 @@ class OrderController extends Controller
         $shipping = Shipping::find($order -> shipping_id);
         $payment = payment::where('id',$order-> id)->first();
         $OrderD = OrderDetail::where('order_id', $order-> id)->get();
+            
 
         $orders = DB::table('orders')
             ->join('users','orders.user_id','=', 'users.id')
             ->join('payments','orders.id','=', 'payments.order_id')
-            ->select('orders.*', 'users.name','users.middlename','users.lastname','payments.payment_type','payments.payment_status')
+            ->join('shippingfees','orders.id', '=', 'shippingfees.id')
+            ->select('orders.*', 'users.name','users.middlename','users.lastname','payments.payment_type','payments.payment_status','shippingfees.fee')
             ->get();
 
-        return view('Admin.Order.OrderInvoice',data: compact('order','customer','shipping','payment','OrderD','orders'));
+        foreach ($orders as $shipfee) {
+          $shippingfee = $shipfee -> fee;
+        }
+
+        return view('Admin.Order.OrderInvoice',data: compact('order','customer','shipping','payment','OrderD','orders','shippingfee'));
     }
 
     public function delete_order($id)
@@ -94,10 +101,9 @@ class OrderController extends Controller
 
   
         $pdf = PDF::loadView('Admin.Order.DownloadInvoice',compact('order','customer','shipping','payment','OrderD','orders'));
-        return $pdf  
-
-                    ->setPaper('short', 'landscape')
+        return $pdf ->setPaper('short', 'portrait')
                     ->stream('OrderInvoice.pdf');
+                   
      
     }
 

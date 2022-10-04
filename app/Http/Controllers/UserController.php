@@ -7,6 +7,7 @@ use App\Models\User;
 use App\Models\Shipping;
 use App\Models\order;
 use App\Models\OrderDetail;
+use Cart;
 use DB;
 use Session;
 use Illuminate\Support\Facades\Auth;
@@ -36,10 +37,26 @@ class UserController extends Controller
    public function shipping(){
       if(Auth::check())
       {
-        
+        $CartDish = Cart::content();
         $user_id = Auth::user()->id;
         $customer = User::find($user_id);
-        return view('User.CheckOut.Shipping',data: compact('customer'));
+
+        if(count($CartDish) > 0){
+
+          return view('User.CheckOut.Shipping',data: compact('customer'));
+        }
+        else{
+
+          $notification = array (
+
+            'message' => 'Your cart is Empty',
+            'alert-type' =>'error'
+        );
+      
+     
+         return redirect()-> back()->with($notification);
+        }
+        
       }
       else{
 
@@ -78,8 +95,7 @@ class UserController extends Controller
           ->join('payments','orders.id','=', 'payments.order_id')
           ->select('orders.*', 'users.name','users.middlename','users.lastname' ,'payments.payment_type','payments.payment_status')
           ->get();
-
-          
+  
         return view('User.Order.ViewOrder',data: compact('orders'));
       }
       else{
@@ -131,7 +147,7 @@ class UserController extends Controller
         );
 
         return back()->with($notification);
-      //  return back();
+      
     }
 
     public function customerprofile(){

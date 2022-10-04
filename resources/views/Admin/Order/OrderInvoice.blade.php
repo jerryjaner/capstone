@@ -1,9 +1,9 @@
- @extends('Admin.master')
+@extends('Admin.master')
 @section('title')
 
    Order Invoice
 
-@endsection
+@endsection 
 @section('content')
 	
 	<!DOCTYPE html>
@@ -45,17 +45,12 @@
 					    line-height: 1.5;
 					    border-radius: .2rem;
 					}
-					/*#invoicefont{
-						font-family: poppins;
-					}*/
+					
 
 
 		</style>
 	</head>
 	<body>
-		<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
-		<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
-
 		<div class="container-fluid mt-100 mb-100">
 			<div id="ui-view">
 				<div>
@@ -70,30 +65,29 @@
 							
 							
 							<div class="pull-right">
-							
 							</div>
 						</div>
 						<div class="card-body">
 							<div class="row mb-4">
 								<div class="col-sm-4">
 									<h5 class="mb-3" id="invoicefont"> <strong>From:</strong> </h5>
-									<div id="invoicefont">Name: <strong>Nicks Resto Bar & Cafe Restaurant</strong></div>
-									<div id="invoicefont">Address: Gadgaron Matnog Sorsogon</div>
-									<div id="invoicefont">Email: Nicks@gmail.com</div>
-									<div id="invoicefont">Phone: 09706677438</div>
+									<div>Name: <strong>Nicks Resto Bar & Cafe Restaurant</strong></div>
+									<div>Address: Gadgaron Matnog Sorsogon</div>
+									<div>Email: Nicks@gmail.com</div>
+									<div>Phone: 09706677438</div>
 								</div>
 
 								<div class="col-sm-4">
 									<h5 class="mb-3"  id="invoicefont"><strong>To:</strong></h5>
-									<div  id="invoicefont">Name: <strong>{{$shipping -> name}}</strong></div>
-								    <div  id="invoicefont">Address: {{$shipping -> address}}</div>
-									<div  id="invoicefont">Email: {{$customer -> email}}</div>
-									<div  id="invoicefont">Phone: {{$shipping -> phone_no}}</div>
+									<div>Name: <strong>{{$shipping -> name}}</strong></div>
+								    <div>Address: {{$shipping -> address}}</div>
+									<div>Email: {{$customer -> email}}</div>
+									<div>Phone: {{$shipping -> phone_no}}</div>
 								</div>
 
 								<div class="col-sm-4">
-									<h5 class="mb-3"  id="invoicefont"><strong>Details:</strong></h5>
-									<div  id="invoicefont">Payment :
+									<h5 class="mb-3"><strong>Details:</strong></h5>
+									<div>Payment :
 										
 										@if($payment -> payment_type == 'Cash_on_Delivery')
 
@@ -106,7 +100,7 @@
 										@endif
 										      
 									</div>
-									<div  id="invoicefont">Date: {{\Carbon\Carbon::parse($payment -> created_at)->toFormattedDateString() }}</div>
+									<div>Date: {{\Carbon\Carbon::parse($payment -> created_at)->toFormattedDateString() }}</div>
 								</div>
 						</div>
 
@@ -114,49 +108,60 @@
 							<table class="table table-striped">
 								<thead>
 									<tr>
-									<th id="invoicefont">#</th>
-									<th id="invoicefont">Item</th>
-									<th id="invoicefont">Quantity</th>
-									<th id="invoicefont">Price</th>
-									<th id="invoicefont">Total</th>
+									<th>#</th>
+									<th>Item</th>
+									<th>Quantity</th>
+									<th>Price</th>
+									<th>Total</th>
 									</tr>
 								</thead>
 								<tbody>
 									@php($i = 1)
 									@php($sum = 0)
-									@php($ship = 50)
+									{{-- @php($ship = 50) --}}
 
 									@foreach($OrderD as $orderdetail)
 									<tr>
-										<td  id="invoicefont" >{{$i++}}</td>
-										<td  id="invoicefont">{{$orderdetail -> dish_name}}</td>	
-										<td  id="invoicefont">{{$orderdetail -> dish_qty}}</td>
-										<td  id="invoicefont">{{$orderdetail -> dish_price}}</td>
-										<td  id="invoicefont">{{$total = $orderdetail -> dish_price * $orderdetail -> dish_qty}}</td>
+										<td>{{$i++}}</td>
+										<td>{{$orderdetail -> dish_name}}</td>	
+										<td>{{$orderdetail -> dish_qty}}</td>
+										<td>{{$orderdetail -> dish_price}}</td>
+
+										<td>{{$total = $orderdetail -> dish_price * $orderdetail -> dish_qty}}</td>
 									</tr>
-									@php($sum = $sum + $total)
-									@php ($totalAmount = $sum + $ship)
+								
 									@endforeach
+
+									@php($sum = $sum + $total)
+									@php($totalAmount = $sum + $shippingfee)
+
+									
+									{{-- @php ($totalAmount = $sum + $ship) --}}
+									
 								</tbody>
 							</table>
 						</div>
 						<div class="row">
-						 <div class="col-lg-4 col-sm-5"  id="invoicefont"><br><br><br><h5>Thank You For Your Order :)</h5></div> 
-						<div class="col-lg-3 col-sm-4 ml-auto " style="margin-left: 1000px;"  id="invoicefont">
+						 <div class="col-lg-4 col-sm-5"><br><br><br><h5>Thank You For Your Order :)</h5></div> 
+						<div class="col-lg-3 col-sm-4 ml-auto " style="margin-left: 1000px;">
 							<table class="table table-clear" >
 								<tbody>
 
 									@if($payment -> payment_type == 'Cash_on_Delivery')
 									<tr >
-										<td  id="invoicefont"><strong> Shipping Fee : 50</strong></td>
+										{{-- <td  id="invoicefont"><strong> Shipping Fee : 50</strong></td> --}}
+										@foreach($orders as $shipfee)
+										    <td>SF: {{$shipfee -> fee}}</td>
+										@endforeach
+
 									</tr>
 									<tr>
-										<td  id="invoicefont"><strong>Total Amount: {{$totalAmount}} </strong> </td>
+										<td><strong>Total Amount: {{$totalAmount}} </strong> </td>
 									</tr>
 
 									@else
 									<tr>
-										<td  id="invoicefont"><strong>Total Amount: {{$sum}} </strong> </td>
+										<td><strong>Total Amount: {{$sum}} </strong> </td>
 									</tr>
 
 									@endif
