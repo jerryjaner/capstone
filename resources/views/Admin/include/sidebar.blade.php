@@ -2,6 +2,7 @@
 
     $prefix = Request::route()->getPrefix();
     $route = Route::current()->getName();
+    $pending_orders = \App\Models\order::where('order_status','pending')->count();
     
   @endphp
   <aside class="main-sidebar sidebar-dark-primary elevation-4">
@@ -41,6 +42,7 @@
               </p>
             </a>
           </li>
+          
           <li class="nav-item has-treeview ">
             <a href="{{route('manage_user')}}" class="nav-link {{($route == 'manage_user')?'active':''}}" >
                <i class="nav-icon fas fa-users"></i>
@@ -66,19 +68,22 @@
             </a>
           </li>
            <li class="nav-item has-treeview ">
-            <a href="=" class="nav-link">
-                <i class="nav-icon fas fa-utensil-spoon"></i>
+            <a href="{{ route('shipping_fee') }}" class="nav-link {{($route == 'shipping_fee')?'active':''}}">
+                <i class="nav-icon fas fa-truck"></i>
               <p class="sidebarfont">
                   Shipping Fee
               </p>
             </a>
           </li>
           <li class="nav-item has-treeview ">
-            <a href="{{route('show_order')}}" class="nav-link {{($route == 'show_order ' || $route == 'view_invoice')?'active':''}}">
+            <a href="{{route('show_order')}}" class="nav-link {{($route == 'show_order'|| $route == 'view_invoice')?'active':''}}">
               <i class="nav-icon fas fa-shopping-cart"></i>
               <p class="sidebarfont">
                   Orders
               </p>
+                @if($pending_orders > 0)
+                  <span class="badge badge-info right" title="Pending Orders">{{$pending_orders}}</span>
+                @endif
             </a>
           </li>
           <li class="nav-item has-treeview ">
@@ -97,14 +102,14 @@
               </p>
             </a>
           </li>
-           <li class="nav-item has-treeview ">
+         {{--  <li class="nav-item has-treeview ">
             <a href="{{route('monthly')}}" class="nav-link {{($route == 'monthly')?'active':''}}">
               <i class="nav-icon fas fa-folder"></i>
               <p class="sidebarfont">
                   Monthly Order 
               </p>
             </a>
-          </li>
+          </li> --}}
            <li class="nav-item has-treeview ">
             <a href="{{route('month')}}" class="nav-link {{($route == 'month')?'active':''}}">
               <i class="nav-icon fas fa-folder"></i>

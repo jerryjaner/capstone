@@ -13,10 +13,6 @@
 
 </style>
 
-
-
-
-
      {{--    @if(Session::get('sms'))
             <div class="alert alert-warning alert-dismissible fade show" role="alert">
               <strong> {{session::get('sms')}}</strong>
@@ -54,7 +50,7 @@
  --}}
  
      
-          <div class="card my-5">
+          <div class="card my-2">
               <div class="card-header">
                 <h3 class="card-title" id="messagefont"><b>Manage Orders</b></h3>
               </div>
@@ -94,11 +90,24 @@
                               <select name="order_status" class="form-select"  required >
 
                                   <option value="" hidden> ---Select Order Status---</option>
-                                  <option>On Process</option>
-                                  <option>On Delivery</option>
-                                  <option>Delivered</option>
-                                  <option>Cancelled</option>
-                              {{--     <option>Ready to Pick up</option> --}}
+
+                                     <option>On Process</option>
+
+                                  @if($order -> payment_type == 'Cash_on_Pickup')
+
+                                    <option>Ready to Pickup</option>
+
+                                  @elseif($order -> payment_type == 'Cash_on_Delivery')
+
+                                    <option>On Delivery</option>
+                                    <option>Delivered</option>
+
+                                  @endif
+                                  
+                                    <option>Cancelled</option>
+                                    
+                                    
+                             
                               </select>                        
                             </div>
 
@@ -153,7 +162,16 @@
                            <span class="badge badge-secondary">On Process</span>
                         </p>
 
+                      @elseif($order->order_status == "Ready to Pickup")
+
+                        <p class="text-center">
+                           <span class="badge badge-primary">Ready to Pickup</span>
+                        </p>
+
+
                       @endif
+
+
 
                     </td>
                     <td>{{\Carbon\Carbon::parse($order->created_at)->toFormattedDateString() }}</td>
@@ -220,7 +238,7 @@
                              <li><a class="dropdown-item" href="#" type="button" data-bs-toggle ="modal" data-bs-target="#edit{{$order->id}}" data-bs-whatever="@fat"> <i class="fas fa-edit"  title="Edit Payment Status">  </i> Edit Payment Status</a></li>
 
                           @endif  
-                             <li><a class="dropdown-item" href="{{route('delete_order',['id'=>$order->id])}}"> <i class="fas fa-trash"  title="click to delete" > </i> Delete Order</a></li>
+                            {{--  <li><a class="dropdown-item" href="{{route('delete_order',['id'=>$order->id])}}"> <i class="fas fa-trash"  title="click to delete" > </i> Delete Order</a></li> --}}
                           
                         </ul>
                       </div>
@@ -283,5 +301,4 @@
 
 
 
-                               
 @endsection

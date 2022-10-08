@@ -84,7 +84,7 @@ class CheckOutController extends Controller
              
               $notification = array (
 
-                'message' => 'Your order has been Successfully processed',
+                'message' => 'Your order has been successfully processed',
                 'alert-type' =>'success'
             );
 

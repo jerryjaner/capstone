@@ -37,6 +37,14 @@
     font-family: poppins;
   }
 */
+
+
+  div.dataTables_wrapper div.dataTables_length select {
+      width: 60px;
+
+    }
+
+
 </style>
 
 <body class="hold-transition sidebar-mini">
@@ -182,8 +190,9 @@
   $(function () {
     $("#example3").DataTable({
       "responsive": true, "lengthChange": false, "autoWidth": false,
-      "buttons": ["excel", "pdf", "print"]
+      "buttons": ["pdf", "print"]
     }).buttons().container().appendTo('#example3_wrapper .col-md-6:eq(0)');
+   
     $('#example2').DataTable({
       "paging": true,
       "lengthChange": false,
@@ -195,17 +204,17 @@
     });
   });
 </script>
-
+{{-- 
 <script type="text/javascript">
   
- // Example starter JavaScript for disabling form submissions if there are invalid fields
+
 (function () {
   'use strict'
 
-  // Fetch all the forms we want to apply custom Bootstrap validation styles to
+
   var forms = document.querySelectorAll('.needs-validation')
 
-  // Loop over them and prevent submission
+  
   Array.prototype.slice.call(forms)
     .forEach(function (form) {
       form.addEventListener('submit', function (event) {
@@ -218,15 +227,15 @@
       }, false)
     })
 })()
- </script>
+ </script> --}}
 
- <script type="text/javascript">
+{{--  <script type="text/javascript">
      function loading(){
 
       $(".btn .fa-spinner").show();
       $(".btn .btn-text").html(" Processing...");
      }
-</script>
+</script> --}}
 
 </body>
 </html>

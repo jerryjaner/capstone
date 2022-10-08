@@ -151,7 +151,7 @@
 									<tr >
 										{{-- <td  id="invoicefont"><strong> Shipping Fee : 50</strong></td> --}}
 										@foreach($orders as $shipfee)
-										    <td>SF: {{$shipfee -> fee}}</td>
+										    <td>Shipping Fee: {{$shipfee -> fee}}</td>
 										@endforeach
 
 									</tr>

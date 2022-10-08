@@ -6,6 +6,14 @@
 @endsection
 @section('content')
 
+@error('email')
+      <div class="alert alert-danger alert-dismissible fade show" role="alert">
+           <strong>{{ $message }}</strong>
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+          <span aria-hiddden="true">&times;</span>
+        </button>
+      </div>
+  @enderror
 
  <section class="content">
       <div class="container-fluid">
@@ -68,6 +76,10 @@
 									  <div class="col-12">
 									    <label for="address" class="form-label">Address</label>
 									    <input type="text" class="form-control"  placeholder="1234 Main St" name="address" required>
+									  </div>
+									   <div class="col-12">
+									    <label for="email" class="form-label">Email</label>
+									    <input class="form-control" id="email" type="email" name="email" placeholder="New Email" required>
 									  </div>
 									  
 									  <div class="col-12">

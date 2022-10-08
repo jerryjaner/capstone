@@ -44,7 +44,7 @@
 
 
   
-      <div class="card my-5">
+      <div class="card my-2">
           <div class="card-header">
             <h3 class="card-title" id ="add_user"><b>Manage User</b></h3>
 

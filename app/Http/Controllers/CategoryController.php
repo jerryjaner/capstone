@@ -41,7 +41,7 @@ class CategoryController extends Controller
 
     	$categories = Category::all();
       
-    	return view('Admin.Category.ManageCategory', data: compact(var_name:'categories'));
+    	return view('Admin.Category.ManageCategory',compact('categories'));
     }
 
     public function active($category_id){

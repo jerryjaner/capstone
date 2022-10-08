@@ -76,12 +76,18 @@ class AdminController extends Controller
 
     public function profile_update(Request $request){
 
+       $validated = $request->validate([
+        'email' => 'required|email|string|unique:users|max:255',
+
+      ]);
+
 
     	$profile = User::find($request->id);
     	$profile->name = $request->name;
     	$profile->middlename = $request->middlename;
     	$profile->lastname = $request->lastname;
     	$profile -> address = $request -> address;
+      $profile -> email = $request -> email;
     	$profile->save();
 
         $notification = array (

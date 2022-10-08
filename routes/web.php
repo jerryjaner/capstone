@@ -13,6 +13,7 @@ use App\Http\Controllers\ReportController;
 use App\Http\Controllers\GoogleLoginController;
 use App\Http\Controllers\FacebookLoginController;
 use App\Http\Controllers\MessageController;
+use App\Http\Controllers\ShippingFeeController;
 use Illuminate\Support\Facades\Auth;
 
 /*
@@ -78,6 +79,12 @@ Route::group(['prefix'=>'admin','middleware'=>['isAdmin','auth','PreventBackHist
 	Route::get('/order/delete{id}', [OrderController::class, 'delete_order'])->name('delete_order');
 	Route::get('/view/invoice{id}', [OrderController::class, 'view_invoice'])->name('view_invoice');
 	Route::get('/download/invoice{id}', [OrderController::class, 'download_invoice'])->name('download_invoice');
+
+	/* Shipping Fee */
+	Route::get('/shippingfee',[ShippingFeeController::class,'shippingfee_index'])->name('shipping_fee');
+	Route::post('/add/shippingfee', [ShippingFeeController::class, 'add_shipping_fee'])->name('add_shippingfee');
+	Route::post('shippinfee/edit',[ShippingFeeController::class, 'edit_shippingfee'])->name('shippingfee_edit');
+	Route::get('shippinfee/delete{id}',[ShippingFeeController::class, 'delete_shippingfee'])->name('shippingfee_delete');
 
 	/* For the payment update */
 	Route::post('/update/payment', [OrderController::class, 'update'])->name('order_update');

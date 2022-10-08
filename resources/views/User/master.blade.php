@@ -77,7 +77,7 @@
 	</script>
 	<!-- //Owl-Carousel-JavaScript -->  
 	<!-- start-smooth-scrolling -->
-	<script src="{{asset('FrontEndSourceFile')}}/js/SmoothScroll.min.js"></script>  
+{{-- 	<script src="{{asset('FrontEndSourceFile')}}/js/SmoothScroll.min.js"></script>   --}}
 	<script type="text/javascript" src="{{asset('FrontEndSourceFile')}}/js/move-top.js"></script>
 	<script type="text/javascript" src="{{asset('FrontEndSourceFile')}}/js/easing.js"></script>	
 	<script type="text/javascript">

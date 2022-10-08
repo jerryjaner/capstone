@@ -387,7 +387,7 @@
                 <tbody>	                    				                  
                     @php($i = 1)
 					@php($sum = 0)
-					@php($ship = 50)
+					
 				@foreach($OrderD as $orderdetail)
 
                   <tr>
@@ -398,10 +398,8 @@
 					<td class="right" style="text-align: center;">{{$total = $orderdetail -> dish_price * $orderdetail -> dish_qty}}</td>
 				 </tr>
 
-				 	@php($sum = $sum + $total)
-					@php ($totalAmount = $sum + $ship)
-
-
+					@php($sum = $sum + $total)
+				    @php($totalAmount = $sum + $shippingfee)
 				@endforeach
 
 					@if($payment -> payment_type == 'Cash_on_Delivery')
@@ -411,8 +409,13 @@
 						<td></td>
 						<td></td>
 						<td></td>
-						<td>Shipping Fee :<strong> 50</strong><br>
-							Total Amount :<strong> {{$totalAmount}}</strong>
+						<td>
+							@foreach($orders as $shipfee)
+							
+								Shipping Fee: {{$shipfee -> fee}}<br> 
+	
+							@endforeach
+								Total Amount :<strong> {{$totalAmount}}</strong>
 						</td>										
 					</tr>
 					

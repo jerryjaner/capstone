@@ -20,6 +20,7 @@ class OrderController extends Controller
     
     public function Manage_Order()
     {
+       
     	$orders = DB::table('orders')
     		->join('users','orders.user_id','=', 'users.id')
     		->join('payments','orders.id','=', 'payments.order_id')      
@@ -96,11 +97,16 @@ class OrderController extends Controller
         $orders = DB::table('orders')
             ->join('users','orders.user_id','=', 'users.id')
             ->join('payments','orders.id','=', 'payments.order_id')
-            ->select('orders.*', 'users.name','payments.payment_type','payments.payment_status')
+            ->join('shippingfees','orders.id', '=', 'shippingfees.id')
+            ->select('orders.*', 'users.name','payments.payment_type','payments.payment_status','shippingfees.fee')
             ->get();
 
-  
-        $pdf = PDF::loadView('Admin.Order.DownloadInvoice',compact('order','customer','shipping','payment','OrderD','orders'));
+        
+        foreach ($orders as $shipfee) {
+          $shippingfee = $shipfee -> fee;
+        }
+        
+        $pdf = PDF::loadView('Admin.Order.DownloadInvoice',compact('order','customer','shipping','payment','OrderD','orders','shippingfee'));
         return $pdf ->setPaper('short', 'portrait')
                     ->stream('OrderInvoice.pdf');
                    

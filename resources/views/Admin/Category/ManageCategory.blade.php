@@ -6,26 +6,6 @@
   @endsection
   @section('content')
 
-  <style>
-
-    div.dataTables_wrapper div.dataTables_length select {
-      width: 60px;
-
-    }
-
-  /*#userfont{
-    font-family: poppins;
-    }*/
-
-  /*#example1 th{
-    text-align: center;
-  }
-  */
-
-  </style>
-  
-
-
 
   {{-- 
   @if(Session::get('added_msg'))
@@ -73,7 +53,7 @@
 
 
 
-  <div class="card my-5">
+  <div class="card my-2">
     <div class="card-header">
       <h3 class="card-title" id="messagefont"><b>Manage Category</b></h3>
       <button type="button" class="btn btn-success btn-sm" style="float: right;" data-bs-toggle="modal" data-bs-target="#add" data-bs-whatever="@fat" id="userfont"> Add Category  </button>
@@ -167,20 +147,22 @@
 
               @if($cate->category_status == 1)
 
-               <li><a class="dropdown-item" href="{{route('Inactive_cate',['category_id'=>$cate->category_id])}}" ><i class="fas fa-arrow-down "  title="click to Inactive"  ></i> Click to Inactive</li>
+               <li><a class="dropdown-item" href="{{route('Inactive_cate',['category_id'=>$cate->category_id])}}" ><i class="fas fa-arrow-down "  title="click to Inactive"  ></i> Click to Inactive</li></a>
 
               @else
               
-               <li><a class="dropdown-item" href="{{route('category_active',['category_id'=>$cate->category_id])}}"> <i class="fas fa-arrow-up"  title="click to Active"  ></i> Click to Active</li>     
+               <li><a class="dropdown-item" href="{{route('category_active',['category_id'=>$cate->category_id])}}"> <i class="fas fa-arrow-up"  title="click to Active"  ></i> Click to Active</li></a>     
 
               @endif 
 
 
                <li><a href="" class="dropdown-item" data-bs-toggle="modal" data-bs-target="#edit{{$cate->category_id}}" data-bs-whatever="@fat">
-                <i class="fas fa-edit"  title="click to Change it"  ></i> Edit Category</li>
+                   <i class="fas fa-edit"  title="click to Change it" ></i>
+                    Edit Category </a>
+                </li>
 
-                  <li><a class="dropdown-item"  href="{{route('cate_delete',['category_id'=>$cate->category_id])}}"  id="userfont">
-                    <i class="fas fa-trash"  title="click to Delete"></i> Delete Category </li>
+                  <li><a class="dropdown-item"  href="{{route('cate_delete',['category_id'=>$cate->category_id])}}">
+                    <i class="fas fa-trash"  title="click to Delete"></i> Delete Category </a></li>
                   </ul>
                 </div>  
               </td>
@@ -229,6 +211,7 @@
       </table>
     </div>
   </div>
+
 
 
   @endsection

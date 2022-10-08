@@ -27,7 +27,7 @@
   </style>
 </head>
 <body>
-    <div class="card my-5">
+    <div class="card my-2">
         <div class="card-body">
           <center>
             <h1 style="margin:50px;">Customer Report</h1>

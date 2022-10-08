@@ -8,15 +8,6 @@
 
 
 
-<style>
-
-    div.dataTables_wrapper div.dataTables_length select {
-       width: 60px;
-    }
-
-</style>
-
-
 
 {{-- 
             @if(Session::get('added_msg'))
@@ -54,7 +45,7 @@
             @endif --}}
 
             
-        <div class="card my-5">
+        <div class="card my-2">
               <div class="card-header">
                 <h3 class="card-title" id="menu_font"><b> Manage Menu </b></h3>
                  <button  id="menu_font" type="button" class="btn btn-success btn-sm" style="float: right;" data-bs-toggle="modal" data-bs-target="#add" data-bs-whatever="@fat"> Add Menu  </button>
@@ -111,8 +102,7 @@
                                   <div class="form-group">
                                     <label> Price :</label>     
                                     <input type="number" step="any" min="1" max="1000"  name="full_price"
-                                             id="menu_font"
-                                             style="border-right: none; border-left: none; border-top: none; outline: none;" 
+                                             class="form-control" 
                                              required>
                                   </div>
 
@@ -239,10 +229,10 @@
 
                                   <div class="form-group">
                                     <label> Price</label>                
-                                      <input type="number" step="any" min="1" max="1000" name="full_price" 
+                                      <input type="number" class="form-control" step="any" min="1" max="1000" name="full_price" 
                                              placeholder="Enter Price"
-                                             value="{{$dish->full_price}}"
-                                             style="border-right: none; border-left: none; border-top: none; outline: none;">
+                                             value="{{$dish->full_price}}">
+                                             
                                   </div>
 
                                   <div class="form-group">
@@ -286,6 +276,7 @@
   }
 
 </script>
+
 
 
 @endsection

@@ -27,9 +27,7 @@
 			<div class="card">
 				<h1 class="card-header text-center mt-3" style="background-color: rgba(253, 70, 62, 0.84); height: 70px; width: auto;">
 					Cart Items 
-				</h1>
-				
-				
+				</h1>	
 			</div>
 			
 			<div class="card-body">
@@ -113,6 +111,10 @@
 			 		</tbody>
 			   </table>
 			</div>
+		
+		
+			
+		
 		</div>			
  		
  		 @if(count($CartDish) > 0)
