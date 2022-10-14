@@ -86,14 +86,14 @@
                 @endif
             </a>
           </li>
-          <li class="nav-item has-treeview ">
+         {{--  <li class="nav-item has-treeview ">
             <a href="{{route('message')}}" class="nav-link {{($route == 'message')?'active':''}}">
               <i class="nav-icon fas fa-envelope"></i>
               <p class="sidebarfont">
                   Message Customer
               </p>
             </a>
-          </li>
+          </li> --}}
           <li class="nav-item has-treeview ">
             <a href="{{route('client_report')}}" class="nav-link {{($route == 'client_report')?'active':''}} ">
               <i class="nav-icon fas fa-folder"></i>

@@ -93,7 +93,21 @@
 
 								<div class="col-sm-4">
 									<h5 class="mb-3"><strong>Details:</strong></h5>
-									<div>Payment :<strong> {{$payment -> payment_type}}</strong></div>
+									<div>Payment :
+
+										
+										@if($payment -> payment_type == 'Cash_on_Delivery')
+
+										   <strong> Cash On Delivery </strong>
+
+										@elseif($payment -> payment_type == 'Cash_on_Pickup')
+
+										   <strong> Cash On Pickup </strong>
+										   
+										@endif
+
+
+									</div>
 									<div>Date: {{\Carbon\Carbon::parse($payment -> created_at)->toFormattedDateString() }}</div>
 							 <!--		<div>Amount: </div>
 									<div>Account Name: BANK OF AMERICA</div>
@@ -115,20 +129,20 @@
 								<tbody>
 									@php($i = 1)
 									@php($sum = 0)
-									@php($ship = 1)
-
+								
 									@foreach($OrderD as $orderdetail)
 									<tr>
 										<td class="center">{{$i++}}</td>
 										<td class="left">{{$orderdetail -> dish_name}}</td>
-										
 										<td class="center">{{$orderdetail -> dish_qty}}</td>
 										<td class="right">{{$orderdetail -> dish_price}}</td>
 										<td class="right">{{$total = $orderdetail -> dish_price * $orderdetail -> dish_qty}}</td>
 									</tr>
-									@php($sum = $sum + $total)
-									@php ($totalAmount = $sum + $ship)
+							
 									@endforeach
+									@php($sum = $sum + $total)
+									@php($totalAmount = $sum + $shippingfee)
+									
 								</tbody>
 							</table>
 						</div>
@@ -137,12 +151,25 @@
 						<div class="col-lg-3 col-sm-4 ml-auto " style="margin-left: 1000px;">
 							<table class="table table-clear">
 								<tbody>
-									<tr>
-										<td class="right"><strong> Shipping Fee : 1</strong></td>
+									
+									@if($payment -> payment_type == 'Cash_on_Delivery')
+									<tr >
+										
+										@foreach($orders as $SF)
+										    <td>Shipping Fee: {{$SF -> fee}}</td>
+										@endforeach
+
 									</tr>
 									<tr>
-										<td class="right"><strong>Total Amount: {{$totalAmount}} </strong> </td>
+										<td><strong>Total Amount: {{$totalAmount}} </strong> </td>
 									</tr>
+
+									@else
+									<tr>
+										<td><strong>Total Amount: {{$sum}} </strong> </td>
+									</tr>
+
+									@endif
 								</tbody>
 							</table>
 

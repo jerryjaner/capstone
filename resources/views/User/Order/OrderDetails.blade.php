@@ -51,11 +51,11 @@
       @foreach($OrderD as $orderdetail)
 
       <tr>   
-          <td style="text-align: center;">{{$i++}}</td>
-          <td style="text-align: center;">{{$orderdetail -> dish_name}}</td>
-          <td style="text-align: center;">{{$orderdetail -> dish_qty}}</td>
-          <td style="text-align: center;">{{$orderdetail -> dish_price}}</td>
-          <td style="text-align: center;">{{$total = $orderdetail -> dish_price * $orderdetail -> dish_qty}}</td>
+          <td style="text-align: center; color: black">{{$i++}}</td>
+          <td style="text-align: center; color: black">{{$orderdetail -> dish_name}}</td>
+          <td style="text-align: center; color: black">{{$orderdetail -> dish_qty}}</td>
+          <td style="text-align: center; color: black">{{$orderdetail -> dish_price}}</td>
+          <td style="text-align: center; color: black">{{$total = $orderdetail -> dish_price * $orderdetail -> dish_qty}}</td>
      </tr>
      
   

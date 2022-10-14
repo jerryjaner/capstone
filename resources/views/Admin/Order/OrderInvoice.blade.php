@@ -126,7 +126,6 @@
 										<td>{{$orderdetail -> dish_name}}</td>	
 										<td>{{$orderdetail -> dish_qty}}</td>
 										<td>{{$orderdetail -> dish_price}}</td>
-
 										<td>{{$total = $orderdetail -> dish_price * $orderdetail -> dish_qty}}</td>
 									</tr>
 								

@@ -18,11 +18,11 @@
 			</div> 
 			<div class="col-md-6 subscribe-right">
 				<h3 class="w3ls-title">Follow us on <br><span>Facebook</span></h3>  
-				<form action="#" method="post"> 
+			{{-- 	<form action="#" method="post"> 
 					<input type="email" name="email" placeholder="Enter your Email..." required="">
 					<input type="submit" value="Subscribe">
 					<div class="clearfix"> </div> 
-				</form>  
+				</form>   --}}
 				<img src="{{asset('FrontEndSourceFile')}}/images/i1.png" class="sub-w3lsimg" alt=""/>
 			</div>
 			<div class="clearfix"> </div> 

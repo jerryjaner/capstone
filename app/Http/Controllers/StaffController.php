@@ -8,6 +8,7 @@ use App\Models\category;
 use App\Models\Dish;
 use App\Models\Payment;
 use App\Models\Shipping;
+use App\Models\shippingfee;
 use DB;
 use PDF;
 use Illuminate\Support\Facades\Auth;
@@ -58,10 +59,15 @@ class StaffController extends Controller
         $orders = DB::table('orders')
             ->join('users','orders.user_id','=', 'users.id')
             ->join('payments','orders.id','=', 'payments.order_id')
-            ->select('orders.*', 'users.name','users.middlename','users.lastname','payments.payment_type','payments.payment_status')
+            ->join('shippingfees','orders.id', '=', 'shippingfees.id')
+            ->select('orders.*', 'users.name','users.middlename','users.lastname','payments.payment_type','payments.payment_status','shippingfees.fee')
             ->get();
 
-        return view('Staff.CustomerOrder.CustomerInvoice',data: compact('order','customer','shipping','payment','OrderD','orders'));
+        foreach ($orders as $SF) {
+          $shippingfee = $SF -> fee;
+        }
+
+        return view('Staff.CustomerOrder.CustomerInvoice',data: compact('order','customer','shipping','payment','OrderD','orders','shippingfee'));
     }
 
     public function DownloadCustomerInvoice($id)
@@ -75,7 +81,8 @@ class StaffController extends Controller
         $orders = DB::table('orders')
                     ->join('users','orders.user_id','=', 'users.id')
                     ->join('payments','orders.id','=', 'payments.order_id')
-                    ->select('orders.*', 'users.name','users.middlename','users.lastname','payments.payment_type','payments.payment_status')
+                    ->join('shippingfees','orders.id', '=', 'shippingfees.id')
+                    ->select('orders.*', 'users.name','users.middlename','users.lastname','payments.payment_type','payments.payment_status','shippingfees.fee')
                     ->get();
 
         $pdf = PDF::loadView('Staff.CustomerOrder.Receipt',compact('order','customer','shipping','payment','OrderD','orders'));

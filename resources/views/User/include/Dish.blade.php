@@ -50,7 +50,10 @@
 										<!-- dapat dire mag add to cart an user kapag hindi pa nakakalogin -->									 
 										<a href="#" data-toggle="modal" data-target="#myModal2{{$dish -> id}}" style="text-decoration: none;">
 											<i class="fa fa-cart-plus" aria-hidden="true"></i> Add to cart
-										</a>				
+										</a>	
+
+
+                                       		
 									</form>
 								</div>
 							</div>
@@ -162,7 +165,7 @@
 												{{$dish -> dish_name}}        
 												
 											</h3>
-										    <h3 style="margin-top: 5px; margin-bottom: 5px;">
+										    <h3 style="margin-top: 5px; margin-bottom: 10px;">
 										    	₱{{$dish -> full_price}}
 										    </h3>
 
@@ -170,20 +173,30 @@
 											<form action="{{route('add_to_cart')}}" method="post" onsubmit="btn.disabled = true; return true;">
 												@csrf
 												<input type="hidden" name="id" value="{{$dish->id}}">
-												 <b> Quantity: </b> 
 
-												 <input type="number"
+												 <label for="Quantity" style="margin-bottom: 5px;"> Quantity: </label> 
+
+												{{--  <input type="number"
+												 		class="form-control" 
 													    min="1" max="10" step="1" 
 													    name="qty" 
-												 		style="padding: 3px; margin-left:10px; border-top:none; border-right: none; border-left: none; outline: none;" 
-												 		required><br>
+												 		required><br> --}}
+												
+												 <div class="input-group-text mb-3" style="130px; align-items: center;">
+												 	<button class="decrement-btn">-</button>
+												 	<input type="number" readonly name="qty" value="1" class="form-group qty-input text-center" style="outline: none;">
+												 	<button class="increment-btn">+</button>
+												 </div>
+										
+												
 
-												  <h5  style="margin-top: 15px; margin-bottom: 20px; ">
+
+												 {{--  <h5  style="margin-top: 15px; margin-bottom: 20px; ">
 												  								
 												  								
 												  	{{$dish -> dish_detail}}
 												  	
-												  </h5>
+												  </h5>  --}}
 
 												<button type="submit" name="btn" class="btn btn-primary" id="oneclick" style=" float: right; outline: none;">
 											       <i class="fa fa-cart-plus" aria-hidden="true"></i> 
@@ -297,4 +310,40 @@
 	</div>
 //deals --> 
 
+<script>
+	$(document).ready(function() {
+
+		$('.increment-btn').click(function (e) {
+
+			e.preventDefault();
+
+			var inc_value = $('.qty-input').val();
+			var value = parseInt(inc_value,10);
+			value = isNaN(value)? 0 : value;
+
+			if(value < 20 ){
+				value++;
+				$('.qty-input').val(value);
+
+			}
+		});
+
+		$('.decrement-btn').click(function (e) {
+
+			e.preventDefault();
+
+			var dec_value = $('.qty-input').val();
+			var value = parseInt(dec_value,10);
+			value = isNaN(value)? 0 : value;
+
+			if(value > 1){
+				value--;
+				$('.qty-input').val(value);
+
+			}
+		});
+
+		
+	});	
+</script>
 @endsection

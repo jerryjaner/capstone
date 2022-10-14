@@ -6,7 +6,8 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 --*/
 body{
 	margin:0; 
-	font-family: 'Yantramanav', sans-serif;
+	/*font-family: 'Yantramanav', sans-serif;*/
+    font-family: poppins; 
 	background: #fff;  
 }
 body a{
@@ -481,7 +482,8 @@ img.w3order-img {
 .deals-left i.fa {
     font-size: 2em;
     border: 1px solid;
-    color: #176aff;
+    /*color: #176aff;*/
+    color: #e8ff00;
     width: 70px;
     height: 70px;
     text-align: center;

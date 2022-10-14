@@ -103,7 +103,7 @@
                                     <option>Delivered</option>
 
                                   @endif
-                                  
+
                                     <option>Cancelled</option>
                                     
                                     
@@ -113,10 +113,8 @@
 
                             <div class="modal-footer">
                          {{--      <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>  --}}
-                              <button type="submit" class="btn btn-primary">Update</button>
-{{--                               <button class="btn btn-primary" type="submit" name="btn" id="submit" onclick="loading()" >
-                               <i class="fas fa-spinner fa-spin" style="display: none;"></i><span class="btn-text">Update</span>
-                              </button> --}}
+                              <button type="submit" class="btn btn-primary" name="btn">Update</button>
+
                             </div>
 
                           </form>
@@ -272,10 +270,10 @@
 
                                     @if($order -> order_status == 'Cancelled')
                                         {{-- <option id="orderfont">Paid</option> --}}
-                                        <option id="orderfont">Cancelled</option>
+                                        <option>Cancelled</option>
                                     @else
-                                        <option id="orderfont">Paid</option>
-                                        <option id="orderfont">Cancelled</option>
+                                        <option>Paid</option>
+                                        <option>Cancelled</option>
                                     @endif
                                    
 

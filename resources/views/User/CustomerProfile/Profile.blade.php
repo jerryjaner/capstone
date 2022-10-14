@@ -43,8 +43,7 @@
 			            <p class="text-muted text-center"><b>Administator</b></p> <br> <br>
 		      
 		           		
-		           		<h4><b>Name:</b> {{$CustomerProfile -> name}} {{$CustomerProfile -> middlename}} {{$CustomerProfile -> lastname}}  </h4><hr> 
-
+		           		<h4><b>Name:</b> {{$CustomerProfile -> name}} {{$CustomerProfile -> middlename}} {{$CustomerProfile -> lastname}}  </h4><hr>
 		              	<h4><b>Email:</b> {{$CustomerProfile -> email}}  </h4><hr> 
 		           	   
 			          	<h4><b>Address:</b> {{$CustomerProfile -> address}} </h4><hr>
@@ -60,7 +59,12 @@
 								Edit Profile
 						</button>
 
-						<a href="{{ route('view_of_changepassword') }}" type="button" class="btn btn-success">Change Password</a>
+						@if($CustomerProfile -> google_id == '')
+
+							<a href="{{ route('view_of_changepassword') }}" type="button" class="btn btn-success">Change Password</a>
+							
+						@endif
+						
 
 
 						<br>
@@ -89,7 +93,7 @@
 
 										      	<input class="agile-ltext" type="text" name="address" placeholder="Address" required>
 
-										      	<input class="agile-ltext @error('email') is-invalid @enderror" id="email" type="email" name="email" placeholder="New Email" required>
+										      	<input class="agile-ltext @error('email') is-invalid @enderror" id="email" type="email" name="email" placeholder="New Email">
 
 										      	 
 

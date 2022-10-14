@@ -13,11 +13,20 @@
 			<li class="active">Cart</li>
 		</ol>
 	</div>
+
 	<div class="container" style="margin-top: 10px;">
+		
 		<h3><b>Note:</b></h3>
-		<ul style="margin-left: 50px;">
-		   <li style="color: red; font-size: 14px;"><b>Cash on Delivery (COD) have Addional {{$ShipFee -> fee}} pesos for the Shipping Fee </b> </li>
-	    </ul>
+		
+	  
+		<ul style="margin-left: 50px;">	
+			@foreach($ShipFees as $ShipFee )
+			    <li style="color: red; font-size: 14px;"><b>Cash on Delivery (COD) have Addional {{$ShipFee -> fee}} pesos for the Shipping Fee </b> </li>
+		   	@endforeach
+		</ul>
+	    
+
+
 	</div>
 
 <div class="products">
@@ -41,7 +50,7 @@
 							<th scope="col"><h5 style="color:Black;  font-size: 18px;">Dish Price<h5></th>
 							<th scope="col"><h5 style="color:Black;  font-size: 18px;">Quantity</h5></th>
 							<th scope="col"><h5 style="color:Black;  font-size: 18px;">Total Price</h5></th>
-					        <th scope="col"><h5 style="color:Black;  font-size: 18px;">Grand Total Price</h5></th> 
+					      {{--   <th scope="col"><h5 style="color:Black;  font-size: 18px;">Grand Total Price</h5></th>  --}}
 						</tr>
 					</thead>
 			 		<tbody>
@@ -61,34 +70,36 @@
 			 					</a>
 			 				</th>
 			 				
-			 				<td id="display"><p style="color:black; font-size: 17px; ">{{$dish ->name}}</p></td>
+			 				<td id="display"><p style="color:black; font-size: 14px; ">{{$dish ->name}}</p></td>
 
 			 				<td>
 			 					<center>
-			 					      <img src="{{asset($dish->options->image)}}" style="max-height:150px; width:160px auto; "  alt="Nick's Resto Menu" class="img-responsive">
+			 					      <img src="{{asset($dish->options->image)}}" style="max-height:100px; width:100px auto; "  alt="Nick's Resto Menu" class="img-responsive">
 			 					</center>
 			 				</td>
-						    <td> <p style="color:black; font-size: 17px; ">₱{{$dish -> price }}</p></td>
+						    <td> <p style="color:black; font-size: 14px; ">₱{{$dish -> price }}</p></td>
 						   
 						    <!-- For Updating Cart -->
 							<td>
-							 	<form action="{{route('update_cart')}}" method="post" onsubmit="btn.disabled = true; return true;">
+							 	{{-- <form action="{{route('update_cart')}}" method="post" onsubmit="btn.disabled = true; return true;">
 							 		@csrf
 							 		<input type="hidden" name="rowId" value="{{$dish -> rowId}}">
 							    	<input type="number" name="qty" value="{{$dish -> qty}}" style="width: 50px; padding: 5px; margin-top: 1px; height: auto;" min="1" max="10" step="1">
 							 	    <input type="submit" name="btn" class="btn btn-success" value="Update" style="margin-top: 5px;">
-							 	</form>
+							 	</form> --}}
+							 	<p style="color:black; font-size: 14px;">{{$dish -> qty}} Pieces</p>
 							 </td>
 							 <!-- For the Price -->	
 						    @if($dish -> half_price == null)
 
-							    <td><p style="color:black; font-size: 17px; ">₱{{$subTotal = $dish -> price * $dish -> qty}}</p></td>
+							    <td><p style="color:black; font-size: 14px; ">₱{{$subTotal = $dish -> price * $dish -> qty}}</p></td>
 							@else
-							    <td><p style="color:black; font-size: 17px; ">₱{{$subTotal = $dish -> half_price * $dish -> qty }}</p></td>
+							    <td><p style="color:black; font-size: 14px; ">₱{{$subTotal = $dish -> half_price * $dish -> qty }}</p></td>
 
 							@endif
 
-						  <td>{{$dish -> subTotal}}</td>
+						 {{--   <td></td> --}}
+						  {{$dish -> subTotal}}
 						
 							  <input type="hidden" value="{{$sum = $sum + $subTotal}}">
 			 					
@@ -101,8 +112,8 @@
 			 					<td></td>
 			 					<td></td>
 			 					<td></td> 
-			 				    <td></td> 
-			 					<td class="text-center"> <p style="color:black; font-size: 17px; ">₱{{$sum}}</p></td>
+			 				    <td><p style="color:black; font-size: 14px; ">₱{{$sum}}</p></td> 
+			 					{{-- <td></td> --}}
 			 					
 			 					<?php
 			 						Session::put('sum', $sum);

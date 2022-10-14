@@ -6,6 +6,7 @@ use Illuminate\Support\Facades\Auth;
 use Laravel\Socialite\Facades\Socialite;
 use Illuminate\Http\Request;
 
+
 class GoogleLoginController extends Controller
 {
     public function redirect()
@@ -32,13 +33,7 @@ class GoogleLoginController extends Controller
 
     			Auth::login($new_user);
 
-                $notification = array (
-
-                    'message' => 'Welcome Customer',
-                    'alert-type' =>'success'
-                );
-
-    			return redirect()->intended('/home')->with($notification);
+    			return redirect()->intended('/home');
     		}
     		else{
     			Auth::login($user);

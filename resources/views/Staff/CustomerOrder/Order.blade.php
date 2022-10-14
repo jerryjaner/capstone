@@ -15,10 +15,6 @@
 </style>
 
 
-
-<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
-
 <!-- for display mesage -->
 
   @if(Session::get('sms'))
@@ -62,7 +58,7 @@
                           <h5 class="modal-title w-100" id="orderstatus{{$order->id}}">Update Order Status</h5>
                         </div>
                         <div class="modal-body">
-                          <form action="{{route('update_order')}}" method="post" >
+                          <form action="{{route('update_order')}}" method="post" onsubmit="btn.disabled = true; return true;">
                             @csrf
                             
                             <div class="form-group">
@@ -70,17 +66,27 @@
                              <label> Select Order Status  </label>
                               <select name="order_status" class="form-select"  required>
     
-                                  <option value="" hidden> ---Select Order Status---</option>
-                                  <option>On Process</option>
-                                  <option>Out of Delivery</option>
-                                  <option>Delivered</option>
-                                  <option>Cancelled</option>
+                                 <option value="" hidden> ---Select Order Status---</option>
+                                    <option>On Process</option>
+
+                                  @if($order -> payment_type == 'Cash_on_Pickup')
+
+                                    <option>Ready to Pickup</option>
+
+                                  @elseif($order -> payment_type == 'Cash_on_Delivery')
+
+                                    <option>On Delivery</option>
+                                    <option>Delivered</option>
+
+                                  @endif
+
+                                    <option>Cancelled</option>
 
                               </select>                        
                             </div>
                             <div class="modal-footer">
-                              <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button> 
-                              <button type="submit" class="btn btn-primary">Update</button>
+                             {{--  <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>  --}}
+                              <button type="submit" name="btn" class="btn btn-primary">Update</button>
                             </div>
                           </form>
                         </div>
@@ -186,16 +192,26 @@
 
                             <li><a class="dropdown-item" href="{{route('customer_invoice',['id'=>$order->id])}}" id="orderfont"><i class="fas fa-search-plus"  title="View Invoice"> </i> View Invoice</a></li>
 
-                        
-                            <li><a class="dropdown-item" href="#" type="button" data-bs-toggle ="modal" data-bs-target="#orderstatus{{$order->id}}" data-bs-whatever="@fat" id="orderfont"> <i class="fas fa-edit"  title="Edit Order Status">  </i> Edit Order Status</a></li> 
+                          {{-- if the order status is cancelled thr button will hide --}}
+                          @if($order->order_status =='Cancelled' || $order->order_status =='Delivered')
+                            
 
+                          @else
+                            <li><a class="dropdown-item" href="#" type="button" data-bs-toggle ="modal" data-bs-target="#orderstatus{{$order->id}}" data-bs-whatever="@fat" id="orderfont"> <i class="fas fa-edit"  title="Edit Order Status">  </i> Edit Order Status</a></li> 
+                          @endif
+
+                         {{--  if the payment status is paid the button will hide --}}
+                          @if($order -> payment_status == 'Cancelled' || $order -> payment_status == 'Paid')
+
+                          @else
 
                             <li><a class="dropdown-item" href="#" type="button" data-bs-toggle ="modal" data-bs-target="#edit{{$order->id}}" data-bs-whatever="@fat" id="orderfont"> <i class="fas fa-edit"  title="Edit Payment Status">  </i> Edit Payment Status</a></li>
+
+                          @endif
 
                           
                           </ul>
                         </div>
-
                       </td>
                    </tr>
 
@@ -207,7 +223,7 @@
                               <!-- <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button> -->
                             </div>
                             <div class="modal-body">
-                              <form action="{{route('update_payment')}}" method="post" >
+                              <form action="{{route('update_payment')}}" method="post" onsubmit="btn.disabled = true; return true;">
                               
                                 @csrf
          
@@ -225,8 +241,8 @@
                                   </select>                       
                   
                                   <div class="modal-footer">
-                                     <button id="orderfont" type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button> 
-                                    <button type="submit" class="btn btn-primary">Update</button>
+                                   {{--  <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>  --}}
+                                    <button type="submit" name="btn" class="btn btn-primary">Update</button>
                                   </div>
                               </form>
                              </div>

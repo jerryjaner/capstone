@@ -1,8 +1,4 @@
- <!--Bootstrap  -->
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
 
-  
  <nav class="main-header navbar navbar-expand navbar-white navbar-light">
     <!-- Left navbar links -->
     <ul class="navbar-nav">
@@ -51,28 +47,27 @@
         <li class="nav-item dropdown">
            
            <a class="nav-link" data-toggle="dropdown" href="#">
-              <i class="fas fa-user"></i> Staff
+             <i class="fas fa-user"></i> {{Auth::user()->name}}
          {{--  <span class="badge badge-warning navbar-badge">15</span> --}}
           </a>
             <div class="dropdown-menu dropdown-menu-lg dropdown-menu-right">
-             {{--  <span class="dropdown-item dropdown-header text-center">Hi <b>{{Auth::user()->name}}</b></span>
-              <div class="dropdown-divider"></div> --}}
-              <a href="{{route('admin_profile')}}" class="dropdown-item" style="text-align: center; font-size: 16px;">
-                {{-- <i class="fas fa-user mr-2"></i>  --}}View Profile
-               {{--  <span class="float-right text-muted text-sm">3 mins</span> --}}
-              </a>
+        
+            {{--   <a href="{{route('admin_profile')}}" class="dropdown-item" style="text-align: center; font-size: 16px;">
+             
+              </a> --}}
           
-              <div class="dropdown-divider"></div>
+            {{--   <div class="dropdown-divider"></div>
+ --}}
+            
+              <a class="dropdown-item " style="font-size: 16px;"  href="{{ route('logout') }}"
+                 onclick="event.preventDefault();
+                 document.getElementById('logout-form').submit();" >
 
-              <a   class="dropdown-item dropdown-footer" style="text-align: center; font-size: 16px;" href="{{ route('logout') }}"
-                     onclick="event.preventDefault();
-                     document.getElementById('logout-form').submit();" >
+                  <i class="fas fa-sign-out-alt mr-3"></i>Logout
 
-                      Logout
-
-                    <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
-                        @csrf
-                    </form>
+                <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+                    @csrf
+                </form>
 
               </a>
             </div>

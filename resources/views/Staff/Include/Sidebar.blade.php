@@ -2,6 +2,7 @@
 
     $prefix = Request::route()->getPrefix();
     $route = Route::current()->getName();
+    $Pending_Order = \App\Models\order::where('order_status','pending')->count();
     
   @endphp
 
@@ -39,80 +40,21 @@
                  Staff Dashboard
                
               </p>
+               
             </a>
             
           </li>
 
-       <!--   
-         <li class="nav-item has-treeview ">
-            <a href="#" class="nav-link ">
-              <i class="nav-icon fas fa-users"></i>
-              <p>
-                  Users 
-                <i class="right fas fa-angle-left"></i>
-              </p>
-            </a>
-            <ul class="nav nav-treeview">
-      
-              <li class="nav-item"> 
-                <a href="" class="nav-link">
-                  <i class="far fa-edit nav-icon"></i>
-                  <p>Manage Users</p>
-                </a>
-              </li>
-
-            </ul>
-          </li>
-
-
-          <li class="nav-item has-treeview ">
-            <a href="#" class="nav-link ">
-              <i class="nav-icon fas fa-tachometer-alt"></i>
-              <p>
-                 Category
-                <i class="right fas fa-angle-left"></i>
-              </p>
-            </a>
-            <ul class="nav nav-treeview">
-
-              <li class="nav-item">
-                <a href="" class="nav-link">
-                  <i class="far fa-edit nav-icon"></i>
-                  <p>Manage Category</p>
-                </a>
-              </li>
-            </ul>
-          </li>
-
-          
-
-         <li class="nav-item has-treeview ">
-            <a href="#" class="nav-link ">
-              <i class="nav-icon fas fa-bars"></i>
-              <p>
-                 Dish 
-                <i class="right fas fa-angle-left"></i>
-              </p>
-            </a>
-            <ul class="nav nav-treeview">
-           
-          
-
-              <li class="nav-item"> 
-                <a href="" class="nav-link">
-                  <i class="far fa-edit nav-icon"></i>
-                  <p>Manage Dish</p>
-                </a>
-              </li>
-            </ul>
-          </li>
-        -->
+     
            <li class="nav-item has-treeview ">
             <a href="{{route('manage_customer_orders')}}" class="nav-link {{($route == 'manage_customer_orders')?'active':''}}">
               <i class="nav-icon fas fa-shopping-cart"></i>
               <p>
                    Customer Orders 
               </p>
+                @if($Pending_Order > 0)
+                  <span class="badge badge-info right" title="Pending Order">{{$Pending_Order}}</span>
+                @endif
             </a>
            <!--  <ul class="nav nav-treeview">
               <li class="nav-item"> 
@@ -124,36 +66,7 @@
             </ul> -->
           </li>
 
-         <!-- 
-           <li class="nav-item has-treeview ">
-            <a href="#" class="nav-link ">
-              <i class="nav-icon fas fa-shopping-cart "></i>
-              <p>
-                  Report 
-                <i class="right fas fa-angle-left"></i>
-              </p>
-            </a>
-            <ul class="nav nav-treeview">
-      
-              <li class="nav-item"> 
-                <a href="" class="nav-link">
-                  <i class="far fa-edit nav-icon"></i>
-                  <p>Client Report</p>
-                </a>
-              </li>
-                <li class="nav-item"> 
-                <a href="" class="nav-link">
-                  <i class="far fa-edit nav-icon"></i>
-                  <p>Sales Report</p>
-                </a>
-              </li>
-
-            </ul>
-          </li>
-          -->
-
-          
-              
+        
           </li>
 
         </ul>

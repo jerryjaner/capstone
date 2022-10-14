@@ -84,7 +84,7 @@
 
 								<li><a href="about.html">About</a></li>  --> 
 								 
-								<li><a href="contact.html">Contact Us</a></li> 
+								{{-- <li><a href="contact.html">Contact Us</a></li>  --}}
 
 
 
@@ -161,6 +161,10 @@
 
 						</div> 
 						@endif
+
+
+						
+						
 					</nav>
 				</div>
 			</div>
@@ -208,5 +212,9 @@
 				}
 			});
 		}
+
+
+
+		
 	});
 	</script>

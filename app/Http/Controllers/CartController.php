@@ -42,8 +42,8 @@ class CartController extends Controller
     public function show()
     {   
         $CartDish = Cart::content();
-        $ShipFee =  shippingfee::first();
-     	return view('User.Cart.Show', compact('CartDish','ShipFee'));
+        $ShipFees =  shippingfee::all();
+     	return view('User.Cart.Show', compact('CartDish','ShipFees'));
     }
 
     public function remove($rowId)

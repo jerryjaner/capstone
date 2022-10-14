@@ -78,7 +78,7 @@
 			<div class="spldishes-agileinfo">
 				<div class="col-md-3 spldishes-w3left">
 					<h5 class="w3ltitle" style="font-family: Poppins;">Nick's Resto </h5>
-					<p style="font-family: Poppins;">Vero vulputate enim non justo posuere placerat Phasellus mauris justo enim .</p>
+					<p style="font-family: Poppins;">We provide happiness through delicious food and will comfort you</p>
 				</div> 
 
 
@@ -97,11 +97,11 @@
 								 @foreach($dishes as $dish)
 
 									<a href="{{route('category_dish',['category_id' => $dish -> category_id]) }}" class="item g1">
-										<img class="lazyOwl" src="{{asset('BackEndSourceFile/dish_image/'.$dish->dish_image)}}" style="height: 190px; width:250px;" title="Our latest gallery" alt=""/>
+										<img class="lazyOwl" src="{{asset('BackEndSourceFile/dish_image/'.$dish->dish_image)}}" style="height: 190px; width:286px; border: 1px solid white;" title="Our latest gallery" alt=""/>
 										<div class="agile-dish-caption">
 											<h4>{{$dish -> dish_name}}</h4>
-										<!-- 	<span>{{$dish -> dish_detail}}</span> -->
-										</div>
+											<{{-- span>{{$dish -> dish_detail}}</span> 	 --}}
+									    </div>
 									</a>
 
 
@@ -117,29 +117,29 @@
 	<!-- deals -->
 	<div class="w3agile-deals">
 		<div class="container">
-			<h3 class="w3ls-title" style="font-family: Poppins;">Special Services</h3>
+			<h3 class="w3ls-title" style="font-family: Poppins;">Delivery Options</h3>
 			<div class="dealsrow">
 				<div class="col-md-6 col-sm-6 deals-grids">
 					<div class="deals-left">
 						<i class="fa fa-truck" aria-hidden="true"></i>
 					</div> 
 					<div class="deals-right">
-						<h4 style="font-family: Poppins;">FREE DELIVERY</h4>
+						<h4 style="font-family: Poppins;">Cash on Delivery</h4>
 						<p style="font-family: Poppins;">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce tempus justo ac </p>
 					</div> 
 					<div class="clearfix"> </div>
 				</div> 
 				<div class="col-md-6 col-sm-6 deals-grids">
 					<div class="deals-left">
-						<i class="fa fa-birthday-cake" aria-hidden="true"></i>
+						<i class="fa fa-truck" aria-hidden="true"></i>
 					</div> 
 					<div class="deals-right">
-						<h4 style="font-family: Poppins;">Party Orders</h4>
+						<h4 style="font-family: Poppins;">Cash on Pickup</h4>
 						<p style="font-family: Poppins;">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce tempus justo ac </p>
 					</div> 
 					<div class="clearfix"> </div>
 				</div>
-				<div class="col-md-6 col-sm-6 deals-grids">
+				{{-- <div class="col-md-6 col-sm-6 deals-grids">
 					<div class="deals-left">
 						<i class="fa fa-users" aria-hidden="true"></i>
 					</div> 
@@ -158,7 +158,7 @@
 						<p style="font-family: Poppins;">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce tempus justo ac </p>
 					</div>
 					<div class="clearfix"> </div>
-				</div> 
+				</div>  --}}
 				<div class="clearfix"> </div>
 			</div>
 		</div>
